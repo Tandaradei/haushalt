@@ -14,7 +14,7 @@
    <string>BenutzerWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="mainLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">
      <number>0</number>
     </property>
@@ -31,31 +31,224 @@
      <number>0</number>
     </property>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QVBoxLayout" name="mainLayout">
       <property name="spacing">
        <number>0</number>
       </property>
       <item>
-       <widget class="QTabWidget" name="tabWidget">
+       <widget class="QTabWidget" name="mainTabWidget">
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>0</number>
+        </property>
+        <property name="elideMode">
+         <enum>Qt::ElideLeft</enum>
+        </property>
+        <property name="documentMode">
+         <bool>false</bool>
         </property>
         <widget class="QWidget" name="transaktionenTab">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>resources/transactions.png</normaloff>resources/transactions.png</iconset>
+         </attribute>
          <attribute name="title">
           <string>Transaktionen</string>
          </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <layout class="QVBoxLayout" name="transaktionenTabLayout">
+            <property name="leftMargin">
+             <number>2</number>
+            </property>
+            <property name="topMargin">
+             <number>2</number>
+            </property>
+            <property name="rightMargin">
+             <number>2</number>
+            </property>
+            <property name="bottomMargin">
+             <number>2</number>
+            </property>
+            <item>
+             <widget class="QTabWidget" name="transaktionenTabWidget">
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+              <widget class="QWidget" name="transaktionenListeTab">
+               <attribute name="icon">
+                <iconset>
+                 <normaloff>resources/overview.png</normaloff>resources/overview.png</iconset>
+               </attribute>
+               <attribute name="title">
+                <string>Übersicht</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_4">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <layout class="QVBoxLayout" name="listeLayout">
+                  <property name="leftMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <layout class="QGridLayout" name="filterLayout">
+                    <property name="sizeConstraint">
+                     <enum>QLayout::SetNoConstraint</enum>
+                    </property>
+                    <property name="leftMargin">
+                     <number>2</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>2</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>2</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>2</number>
+                    </property>
+                    <item row="1" column="1">
+                     <widget class="QDateEdit" name="bisDate">
+                      <property name="calendarPopup">
+                       <bool>true</bool>
+                      </property>
+                      <property name="date">
+                       <date>
+                        <year>2017</year>
+                        <month>6</month>
+                        <day>6</day>
+                       </date>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="vonLabel">
+                      <property name="text">
+                       <string>Von</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QDateEdit" name="vonDate">
+                      <property name="calendarPopup">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QLabel" name="bisLabel">
+                      <property name="text">
+                       <string>Bis</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="2">
+                     <widget class="QLabel" name="kategorieLabel">
+                      <property name="text">
+                       <string>Kategorie</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="3">
+                     <widget class="QLabel" name="zahlungsartLabel">
+                      <property name="text">
+                       <string>Zahlungsart</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="2">
+                     <widget class="QComboBox" name="kategorieComboBox"/>
+                    </item>
+                    <item row="1" column="3">
+                     <widget class="QComboBox" name="zahlungsartComboBox"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QColumnView" name="transaktionenColumnView"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="transaktionenNeuTab">
+               <attribute name="icon">
+                <iconset>
+                 <normaloff>resources/add.png</normaloff>resources/add.png</iconset>
+               </attribute>
+               <attribute name="title">
+                <string>Neue Transaktion</string>
+               </attribute>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </widget>
         <widget class="QWidget" name="zahlungsartenTab">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>resources/paymethods.png</normaloff>resources/paymethods.png</iconset>
+         </attribute>
          <attribute name="title">
           <string>Zahlungsarten</string>
          </attribute>
         </widget>
         <widget class="QWidget" name="einstellungenTab">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>resources/settings.png</normaloff>resources/settings.png</iconset>
+         </attribute>
          <attribute name="title">
           <string>Einstellungen</string>
          </attribute>
         </widget>
         <widget class="QWidget" name="abmeldenTab">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>resources/exit.png</normaloff>resources/exit.png</iconset>
+         </attribute>
          <attribute name="title">
           <string>Abmelden</string>
          </attribute>
