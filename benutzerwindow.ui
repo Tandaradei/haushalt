@@ -59,6 +59,19 @@
          <attribute name="title">
           <string>Abmelden</string>
          </attribute>
+         <widget class="QPushButton" name="pushButton">
+          <property name="geometry">
+           <rect>
+            <x>260</x>
+            <y>180</y>
+            <width>75</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>PushButton</string>
+          </property>
+         </widget>
         </widget>
        </widget>
       </item>
