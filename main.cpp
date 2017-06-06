@@ -1,14 +1,19 @@
 #include "benutzerwindow.h"
-#include "erster_systemstart.h"
+#include "Erster_systemstart.h"
+#include "login.h"
 #include <QApplication>
+
+
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     BenutzerWindow w;
-    erster_systemstart s;
     w.show();
+    Erster_systemstart s;
     s.show();
+    Login l;
+    l.show();
 
     return a.exec();
 }

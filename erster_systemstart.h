@@ -7,13 +7,13 @@ namespace Ui {
 class erster_systemstart;
 }
 
-class erster_systemstart : public QWidget
+class Erster_systemstart : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit erster_systemstart(QWidget *parent = 0);
-    ~erster_systemstart();
+    explicit Erster_systemstart(QWidget *parent = 0);
+    ~Erster_systemstart();
 
 private:
     Ui::erster_systemstart *ui;
