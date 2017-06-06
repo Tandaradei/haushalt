@@ -14,10 +14,13 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         benutzerwindow.cpp \
+    login.cpp \
     erster_systemstart.cpp
 
 HEADERS  += benutzerwindow.h \
-    erster_systemstart.h
+    erster_systemstart.h \
+    login.h
 
 FORMS    += benutzerwindow.ui \
+    login.ui \
     erster_systemstart.ui
