@@ -607,7 +607,7 @@
         <widget class="QWidget" name="zahlungsartenTab">
          <attribute name="icon">
           <iconset>
-           <normaloff>resources/paymethod.png</normaloff>resources/paymethod.png</iconset>
+           <normaloff>resources/paymethods.png</normaloff>resources/paymethods.png</iconset>
          </attribute>
          <attribute name="title">
           <string>Zahlungsarten</string>
