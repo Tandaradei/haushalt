@@ -1,5 +1,4 @@
-#ifndef BENUTZERWINDOW_H
-#define BENUTZERWINDOW_H
+#pragma once
 
 #include <QMainWindow>
 
@@ -24,4 +23,3 @@ private:
     size_t transactionEntriesCount;
 };
 
-#endif // BENUTZERWINDOW_H

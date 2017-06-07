@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>240</width>
-    <height>260</height>
+    <height>280</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>240</width>
-    <height>260</height>
+    <height>280</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>240</width>
-    <height>260</height>
+    <height>280</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -28,9 +28,27 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGraphicsView" name="graphicsView">
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
      <property name="backgroundBrush">
-      <brush brushstyle="Dense4Pattern">
-       <color alpha="255">
+      <brush brushstyle="NoBrush">
+       <color alpha="0">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </property>
+     <property name="foregroundBrush">
+      <brush brushstyle="NoBrush">
+       <color alpha="0">
         <red>0</red>
         <green>0</green>
         <blue>0</blue>
@@ -45,31 +63,56 @@
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
      <item row="0" column="0">
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="emailLabel">
        <property name="text">
         <string>E-Mail</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="emailField"/>
      </item>
      <item row="1" column="0">
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="passwordLabel">
        <property name="text">
         <string>Passwort</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="lineEdit_2">
+      <widget class="QLineEdit" name="passwordField">
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
        </property>
       </widget>
      </item>
+     <item row="2" column="1">
+      <widget class="QLabel" name="errorLabel">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
      <item row="3" column="1">
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="loginButton">
        <property name="text">
         <string>Login</string>
        </property>
@@ -77,20 +120,13 @@
         <iconset>
          <normaloff>resources/login.png</normaloff>resources/login.png</iconset>
        </property>
+       <property name="autoDefault">
+        <bool>true</bool>
+       </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
       </widget>
-     </item>
-     <item row="2" column="1">
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
      </item>
     </layout>
    </item>
