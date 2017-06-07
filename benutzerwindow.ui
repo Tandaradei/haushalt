@@ -41,7 +41,7 @@
          <bool>false</bool>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <property name="elideMode">
          <enum>Qt::ElideLeft</enum>
@@ -607,7 +607,7 @@
         <widget class="QWidget" name="zahlungsartenTab">
          <attribute name="icon">
           <iconset>
-           <normaloff>resources/paymethods.png</normaloff>resources/paymethods.png</iconset>
+           <normaloff>resources/paymethod.png</normaloff>resources/paymethod.png</iconset>
          </attribute>
          <attribute name="title">
           <string>Zahlungsarten</string>

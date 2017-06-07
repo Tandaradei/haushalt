@@ -7,13 +7,7 @@ BenutzerWindow::BenutzerWindow(QWidget *parent) :
     transactionEntriesCount(0)
 {
     ui->setupUi(this);
-    // transaktionen table
-    QStringList tableHeaderLabels;
-    tableHeaderLabels<<"Datum"<<"Betrag"<<"Beschreibung"<<"Kategorie"<<"Zahlungsart";
-    ui->transaktionenTable->setHorizontalHeaderLabels(tableHeaderLabels);
-    QDate date;
-    addTransactionEntry(date.currentDate(), -30.0f, "Test Einkauf", "Lebensmittel", "Bar");
-    addTransactionEntry(date.currentDate().addDays(-2), 2000.0f, "Lohn", "Lohn", "Banküberweisung");
+    initTable();
 }
 
 BenutzerWindow::~BenutzerWindow()
@@ -31,4 +25,18 @@ void BenutzerWindow::addTransactionEntry(QDate date, float amount, QString descr
     ui->transaktionenTable->setItem(transactionEntriesCount, 4, new QTableWidgetItem(payMethod));
 
     ++transactionEntriesCount;
+}
+
+void BenutzerWindow::initTable()
+{
+    // set table headers with icons
+    ui->transaktionenTable->setHorizontalHeaderItem(0, new QTableWidgetItem(QIcon(QString("resources/calendar.png")), "Datum"));
+    ui->transaktionenTable->setHorizontalHeaderItem(1, new QTableWidgetItem(QIcon(QString("resources/money.png")), "Betrag"));
+    ui->transaktionenTable->setHorizontalHeaderItem(2, new QTableWidgetItem(QIcon(QString("resources/description.png")), "Beschreibung"));
+    ui->transaktionenTable->setHorizontalHeaderItem(3, new QTableWidgetItem(QIcon(QString("resources/category.png")), "Kategorie"));
+    ui->transaktionenTable->setHorizontalHeaderItem(4, new QTableWidgetItem(QIcon(QString("resources/paymethod.png")), "Zahlungsart"));
+    // add test entries
+    QDate date;
+    addTransactionEntry(date.currentDate(), -30.0f, "Test Einkauf", "Lebensmittel", "Bar");
+    addTransactionEntry(date.currentDate().addDays(-2), 2000.0f, "Lohn", "Lohn", "Banküberweisung");
 }

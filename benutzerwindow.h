@@ -19,6 +19,7 @@ public:
     void addTransactionEntry(QDate date, float amount, QString description, QString category, QString payMethod);
 
 private:
+    void initTable();
     Ui::BenutzerWindow *ui;
     size_t transactionEntriesCount;
 };
