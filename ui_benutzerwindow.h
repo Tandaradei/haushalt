@@ -22,6 +22,8 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QListView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -80,11 +82,34 @@ public:
     QSpacerItem *verticalSpacer_2;
     QSpacerItem *verticalSpacer;
     QWidget *zahlungsartenTab;
-    QVBoxLayout *verticalLayout_7;
-    QVBoxLayout *verticalLayout_6;
+    QVBoxLayout *verticalLayout_2;
+    QHBoxLayout *horizontalLayout_2;
+    QGridLayout *gridLayout_2;
+    QGridLayout *gridLayout_3;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton_3;
+    QListView *listView;
+    QGridLayout *gridLayout;
+    QLineEdit *lineEdit;
+    QLabel *label_6;
+    QPushButton *pushButton_4;
     QWidget *einstellungenTab;
-    QVBoxLayout *verticalLayout_9;
+    QVBoxLayout *verticalLayout_6;
     QVBoxLayout *verticalLayout_5;
+    QHBoxLayout *horizontalLayout_3;
+    QFormLayout *formLayout_2;
+    QLabel *label_7;
+    QLineEdit *lineEdit_2;
+    QLabel *label_8;
+    QDateEdit *dateEdit_2;
+    QLabel *label_9;
+    QLineEdit *lineEdit_3;
+    QLabel *label_10;
+    QLineEdit *lineEdit_4;
+    QLabel *label_11;
+    QLineEdit *lineEdit_5;
+    QLabel *label_12;
+    QPushButton *pushButton_5;
     QWidget *abmeldenTab;
     QVBoxLayout *verticalLayout_8;
     QVBoxLayout *abmeldenTabLayout;
@@ -355,30 +380,169 @@ public:
         mainTabWidget->addTab(transaktionenTab, icon4, QString());
         zahlungsartenTab = new QWidget();
         zahlungsartenTab->setObjectName(QStringLiteral("zahlungsartenTab"));
-        verticalLayout_7 = new QVBoxLayout(zahlungsartenTab);
-        verticalLayout_7->setSpacing(6);
-        verticalLayout_7->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
-        verticalLayout_6 = new QVBoxLayout();
-        verticalLayout_6->setSpacing(6);
-        verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
+        verticalLayout_2 = new QVBoxLayout(zahlungsartenTab);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        gridLayout_2 = new QGridLayout();
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        gridLayout_3 = new QGridLayout();
+        gridLayout_3->setSpacing(6);
+        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
+        pushButton_2 = new QPushButton(zahlungsartenTab);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setMaximumSize(QSize(100, 16777215));
 
-        verticalLayout_7->addLayout(verticalLayout_6);
+        gridLayout_3->addWidget(pushButton_2, 0, 0, 1, 1);
+
+        pushButton_3 = new QPushButton(zahlungsartenTab);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        pushButton_3->setMaximumSize(QSize(100, 16777215));
+
+        gridLayout_3->addWidget(pushButton_3, 0, 1, 1, 1);
+
+
+        gridLayout_2->addLayout(gridLayout_3, 1, 0, 1, 1);
+
+        listView = new QListView(zahlungsartenTab);
+        listView->setObjectName(QStringLiteral("listView"));
+
+        gridLayout_2->addWidget(listView, 0, 0, 1, 1);
+
+
+        horizontalLayout_2->addLayout(gridLayout_2);
+
+        gridLayout = new QGridLayout();
+        gridLayout->setSpacing(6);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        lineEdit = new QLineEdit(zahlungsartenTab);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+
+        gridLayout->addWidget(lineEdit, 2, 0, 1, 1);
+
+        label_6 = new QLabel(zahlungsartenTab);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        label_6->setAlignment(Qt::AlignCenter);
+
+        gridLayout->addWidget(label_6, 1, 0, 1, 1, Qt::AlignBottom);
+
+        pushButton_4 = new QPushButton(zahlungsartenTab);
+        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+        pushButton_4->setMaximumSize(QSize(100, 16777215));
+
+        gridLayout->addWidget(pushButton_4, 3, 0, 1, 1, Qt::AlignHCenter|Qt::AlignTop);
+
+        gridLayout->setRowMinimumHeight(1, 176);
+        gridLayout->setRowMinimumHeight(2, 100);
+        gridLayout->setRowMinimumHeight(3, 176);
+
+        horizontalLayout_2->addLayout(gridLayout);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_2);
 
         QIcon icon5;
         icon5.addFile(QStringLiteral("resources/paymethod.png"), QSize(), QIcon::Normal, QIcon::Off);
         mainTabWidget->addTab(zahlungsartenTab, icon5, QString());
         einstellungenTab = new QWidget();
         einstellungenTab->setObjectName(QStringLiteral("einstellungenTab"));
-        verticalLayout_9 = new QVBoxLayout(einstellungenTab);
-        verticalLayout_9->setSpacing(6);
-        verticalLayout_9->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_9->setObjectName(QStringLiteral("verticalLayout_9"));
+        verticalLayout_6 = new QVBoxLayout(einstellungenTab);
+        verticalLayout_6->setSpacing(6);
+        verticalLayout_6->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setSpacing(6);
         verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        formLayout_2 = new QFormLayout();
+        formLayout_2->setSpacing(6);
+        formLayout_2->setObjectName(QStringLiteral("formLayout_2"));
+        label_7 = new QLabel(einstellungenTab);
+        label_7->setObjectName(QStringLiteral("label_7"));
 
-        verticalLayout_9->addLayout(verticalLayout_5);
+        formLayout_2->setWidget(0, QFormLayout::LabelRole, label_7);
+
+        lineEdit_2 = new QLineEdit(einstellungenTab);
+        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
+        lineEdit_2->setMaximumSize(QSize(300, 16777215));
+
+        formLayout_2->setWidget(0, QFormLayout::FieldRole, lineEdit_2);
+
+        label_8 = new QLabel(einstellungenTab);
+        label_8->setObjectName(QStringLiteral("label_8"));
+
+        formLayout_2->setWidget(1, QFormLayout::LabelRole, label_8);
+
+        dateEdit_2 = new QDateEdit(einstellungenTab);
+        dateEdit_2->setObjectName(QStringLiteral("dateEdit_2"));
+        dateEdit_2->setMaximumSize(QSize(300, 16777215));
+        dateEdit_2->setCorrectionMode(QAbstractSpinBox::CorrectToNearestValue);
+        dateEdit_2->setCalendarPopup(true);
+
+        formLayout_2->setWidget(1, QFormLayout::FieldRole, dateEdit_2);
+
+        label_9 = new QLabel(einstellungenTab);
+        label_9->setObjectName(QStringLiteral("label_9"));
+
+        formLayout_2->setWidget(2, QFormLayout::LabelRole, label_9);
+
+        lineEdit_3 = new QLineEdit(einstellungenTab);
+        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
+        lineEdit_3->setMaximumSize(QSize(300, 16777215));
+        lineEdit_3->setEchoMode(QLineEdit::Password);
+
+        formLayout_2->setWidget(2, QFormLayout::FieldRole, lineEdit_3);
+
+        label_10 = new QLabel(einstellungenTab);
+        label_10->setObjectName(QStringLiteral("label_10"));
+
+        formLayout_2->setWidget(3, QFormLayout::LabelRole, label_10);
+
+        lineEdit_4 = new QLineEdit(einstellungenTab);
+        lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
+        lineEdit_4->setMaximumSize(QSize(300, 16777215));
+        lineEdit_4->setEchoMode(QLineEdit::Password);
+
+        formLayout_2->setWidget(3, QFormLayout::FieldRole, lineEdit_4);
+
+        label_11 = new QLabel(einstellungenTab);
+        label_11->setObjectName(QStringLiteral("label_11"));
+
+        formLayout_2->setWidget(4, QFormLayout::LabelRole, label_11);
+
+        lineEdit_5 = new QLineEdit(einstellungenTab);
+        lineEdit_5->setObjectName(QStringLiteral("lineEdit_5"));
+        lineEdit_5->setMaximumSize(QSize(300, 16777215));
+        lineEdit_5->setEchoMode(QLineEdit::Password);
+
+        formLayout_2->setWidget(4, QFormLayout::FieldRole, lineEdit_5);
+
+        label_12 = new QLabel(einstellungenTab);
+        label_12->setObjectName(QStringLiteral("label_12"));
+        label_12->setMaximumSize(QSize(16777215, 20));
+
+        formLayout_2->setWidget(5, QFormLayout::FieldRole, label_12);
+
+        pushButton_5 = new QPushButton(einstellungenTab);
+        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
+        pushButton_5->setMaximumSize(QSize(100, 16777215));
+
+        formLayout_2->setWidget(6, QFormLayout::FieldRole, pushButton_5);
+
+
+        horizontalLayout_3->addLayout(formLayout_2);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_3);
+
+
+        verticalLayout_6->addLayout(verticalLayout_5);
 
         QIcon icon6;
         icon6.addFile(QStringLiteral("resources/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -437,8 +601,8 @@ public:
 
         retranslateUi(BenutzerWindow);
 
-        mainTabWidget->setCurrentIndex(0);
-        transaktionenTabWidget->setCurrentIndex(0);
+        mainTabWidget->setCurrentIndex(2);
+        transaktionenTabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(BenutzerWindow);
@@ -462,7 +626,18 @@ public:
         pushButton->setText(QApplication::translate("BenutzerWindow", "Hinzuf\303\274gen", 0));
         transaktionenTabWidget->setTabText(transaktionenTabWidget->indexOf(transaktionenNeuTab), QApplication::translate("BenutzerWindow", "Neue Transaktion", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(transaktionenTab), QApplication::translate("BenutzerWindow", "Transaktionen", 0));
+        pushButton_2->setText(QApplication::translate("BenutzerWindow", "Bearbeiten", 0));
+        pushButton_3->setText(QApplication::translate("BenutzerWindow", "L\303\266schen", 0));
+        label_6->setText(QApplication::translate("BenutzerWindow", "Bitte geben sie die Zahlungsart an die sie hinzuf\303\274gen  m\303\266chten", 0));
+        pushButton_4->setText(QApplication::translate("BenutzerWindow", "Hinzuf\303\274gen", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(zahlungsartenTab), QApplication::translate("BenutzerWindow", "Zahlungsarten", 0));
+        label_7->setText(QApplication::translate("BenutzerWindow", "Name", 0));
+        label_8->setText(QApplication::translate("BenutzerWindow", "Geburtsdatum", 0));
+        label_9->setText(QApplication::translate("BenutzerWindow", "Altes Passwort", 0));
+        label_10->setText(QApplication::translate("BenutzerWindow", "Neues Passwort", 0));
+        label_11->setText(QApplication::translate("BenutzerWindow", "Neues Passwort wiederholen", 0));
+        label_12->setText(QApplication::translate("BenutzerWindow", "TextLabel", 0));
+        pushButton_5->setText(QApplication::translate("BenutzerWindow", "Best\303\244tigen", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(einstellungenTab), QApplication::translate("BenutzerWindow", "Einstellungen", 0));
         abmeldenLabel->setText(QApplication::translate("BenutzerWindow", "Benutzer <Benutzer> wirklich abmelden?", 0));
         abmeldenButton->setText(QApplication::translate("BenutzerWindow", "Abmelden", 0));
