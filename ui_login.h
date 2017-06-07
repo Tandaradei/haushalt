@@ -48,9 +48,15 @@ public:
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         graphicsView = new QGraphicsView(Login);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        QBrush brush(QColor(0, 0, 0, 255));
-        brush.setStyle(Qt::Dense4Pattern);
+        graphicsView->setFrameShape(QFrame::NoFrame);
+        graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        QBrush brush(QColor(0, 0, 0, 0));
+        brush.setStyle(Qt::NoBrush);
         graphicsView->setBackgroundBrush(brush);
+        QBrush brush1(QColor(0, 0, 0, 0));
+        brush1.setStyle(Qt::NoBrush);
+        graphicsView->setForegroundBrush(brush1);
 
         verticalLayout->addWidget(graphicsView);
 

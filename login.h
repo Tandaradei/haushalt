@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QWidget>
+#include <QGraphicsScene>
+#include <QGraphicsPixmapItem>
 
 namespace Ui {
 class Login;
@@ -14,11 +16,16 @@ class Login : public QWidget
 public:
     explicit Login(QWidget *parent = 0);
     ~Login();
+
 private slots:
     void handleLoginButton();
+
 private:
     Ui::Login *ui;
     BenutzerWindow* benutzerWindow;
+    QGraphicsScene scene;
+    QImage image;
+    QGraphicsPixmapItem* imageItem;
 
 };
 

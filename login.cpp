@@ -5,15 +5,25 @@
 Login::Login(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Login),
-    benutzerWindow(nullptr)
+    benutzerWindow(nullptr),
+    scene(),
+    image("resources/logo.png"),
+    imageItem(nullptr)
+
 {
     ui->setupUi(this);
     connect(ui->loginButton, SIGNAL (released()), this, SLOT (handleLoginButton()));
+
+    imageItem = new QGraphicsPixmapItem(QPixmap::fromImage(image));
+    scene.addItem(imageItem);
+
+    ui->graphicsView->setScene(&scene);
 }
 
 Login::~Login()
 {
   delete ui;
+  //delete imageItem;
 }
 
 void Login::handleLoginButton()
