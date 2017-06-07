@@ -1,11 +1,11 @@
-#ifndef LOGIN_H
-#define LOGIN_H
+#pragma once
 
 #include <QWidget>
 
 namespace Ui {
 class Login;
 }
+class BenutzerWindow;
 
 class Login : public QWidget
 {
@@ -14,9 +14,11 @@ class Login : public QWidget
 public:
     explicit Login(QWidget *parent = 0);
     ~Login();
-
+private slots:
+    void handleLoginButton();
 private:
     Ui::Login *ui;
+    BenutzerWindow* benutzerWindow;
+
 };
 
-#endif // LOGIN_H
