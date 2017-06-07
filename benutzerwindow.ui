@@ -41,7 +41,7 @@
          <bool>false</bool>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>3</number>
         </property>
         <property name="elideMode">
          <enum>Qt::ElideLeft</enum>
@@ -90,7 +90,7 @@
             <item>
              <widget class="QTabWidget" name="transaktionenTabWidget">
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="transaktionenListeTab">
                <property name="autoFillBackground">
@@ -476,6 +476,11 @@
          <attribute name="title">
           <string>Zahlungsarten</string>
          </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_6"/>
+          </item>
+         </layout>
         </widget>
         <widget class="QWidget" name="einstellungenTab">
          <attribute name="icon">
@@ -485,6 +490,11 @@
          <attribute name="title">
           <string>Einstellungen</string>
          </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_9">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_5"/>
+          </item>
+         </layout>
         </widget>
         <widget class="QWidget" name="abmeldenTab">
          <attribute name="icon">
@@ -494,6 +504,45 @@
          <attribute name="title">
           <string>Abmelden</string>
          </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_8">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <widget class="QLabel" name="abmeldenLabel">
+              <property name="text">
+               <string>Benutzer &lt;Benutzer&gt; wirklich abmelden?</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="abmeldenButton">
+              <property name="text">
+               <string>Abmelden</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>resources/exit.png</normaloff>resources/exit.png</iconset>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </widget>
        </widget>
       </item>
