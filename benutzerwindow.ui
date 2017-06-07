@@ -675,7 +675,7 @@
              </widget>
             </item>
             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-             <widget class="QPushButton" name="abmeldenButton">
+             <widget class="QPushButton" name="logoutButton">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                 <horstretch>0</horstretch>

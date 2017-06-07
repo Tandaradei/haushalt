@@ -7,6 +7,7 @@ BenutzerWindow::BenutzerWindow(QWidget *parent) :
     transactionEntriesCount(0)
 {
     ui->setupUi(this);
+    connect(ui->logoutButton, SIGNAL (released()), this, SLOT (handleLogoutButton()));
     initTable();
 }
 
@@ -25,6 +26,12 @@ void BenutzerWindow::addTransactionEntry(QDate date, float amount, QString descr
     ui->transaktionenTable->setItem(transactionEntriesCount, 4, new QTableWidgetItem(payMethod));
 
     ++transactionEntriesCount;
+}
+
+void BenutzerWindow::handleLogoutButton()
+{
+  this->hide();
+  this->destroy();
 }
 
 void BenutzerWindow::initTable()

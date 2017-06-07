@@ -23,7 +23,7 @@ Login::Login(QWidget *parent) :
 Login::~Login()
 {
   delete ui;
-  //delete imageItem;
+  delete benutzerWindow;
 }
 
 void Login::handleLoginButton()
@@ -33,6 +33,7 @@ void Login::handleLoginButton()
     this->hide();
     benutzerWindow = new BenutzerWindow();
     benutzerWindow->show();
+    this->destroy();
   }
   else
   {

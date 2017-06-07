@@ -89,7 +89,7 @@ public:
     QVBoxLayout *verticalLayout_8;
     QVBoxLayout *abmeldenTabLayout;
     QLabel *abmeldenLabel;
-    QPushButton *abmeldenButton;
+    QPushButton *logoutButton;
     QMenuBar *menuBar;
     QStatusBar *statusBar;
 
@@ -401,20 +401,20 @@ public:
 
         abmeldenTabLayout->addWidget(abmeldenLabel, 0, Qt::AlignBottom);
 
-        abmeldenButton = new QPushButton(abmeldenTab);
-        abmeldenButton->setObjectName(QStringLiteral("abmeldenButton"));
+        logoutButton = new QPushButton(abmeldenTab);
+        logoutButton->setObjectName(QStringLiteral("logoutButton"));
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(abmeldenButton->sizePolicy().hasHeightForWidth());
-        abmeldenButton->setSizePolicy(sizePolicy);
-        abmeldenButton->setMaximumSize(QSize(100, 50));
+        sizePolicy.setHeightForWidth(logoutButton->sizePolicy().hasHeightForWidth());
+        logoutButton->setSizePolicy(sizePolicy);
+        logoutButton->setMaximumSize(QSize(100, 50));
         QIcon icon7;
         icon7.addFile(QStringLiteral("resources/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
-        abmeldenButton->setIcon(icon7);
-        abmeldenButton->setFlat(false);
+        logoutButton->setIcon(icon7);
+        logoutButton->setFlat(false);
 
-        abmeldenTabLayout->addWidget(abmeldenButton, 0, Qt::AlignHCenter|Qt::AlignTop);
+        abmeldenTabLayout->addWidget(logoutButton, 0, Qt::AlignHCenter|Qt::AlignTop);
 
 
         verticalLayout_8->addLayout(abmeldenTabLayout);
@@ -465,7 +465,7 @@ public:
         mainTabWidget->setTabText(mainTabWidget->indexOf(zahlungsartenTab), QApplication::translate("BenutzerWindow", "Zahlungsarten", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(einstellungenTab), QApplication::translate("BenutzerWindow", "Einstellungen", 0));
         abmeldenLabel->setText(QApplication::translate("BenutzerWindow", "Benutzer <Benutzer> wirklich abmelden?", 0));
-        abmeldenButton->setText(QApplication::translate("BenutzerWindow", "Abmelden", 0));
+        logoutButton->setText(QApplication::translate("BenutzerWindow", "Abmelden", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(abmeldenTab), QApplication::translate("BenutzerWindow", "Abmelden", 0));
     } // retranslateUi
 
