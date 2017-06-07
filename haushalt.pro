@@ -24,3 +24,5 @@ HEADERS  += benutzerwindow.h \
 FORMS    += benutzerwindow.ui \
     login.ui \
     systemstart.ui
+
+QMAKE_CXXFLAGS += -std=c++11
