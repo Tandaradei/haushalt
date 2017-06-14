@@ -124,7 +124,7 @@ public:
 };
 
 namespace Ui {
-    class Login: public Ui_Login {};
+    class LoginWindow: public Ui_Login {};
 } // namespace Ui
 
 QT_END_NAMESPACE

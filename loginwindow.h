@@ -5,7 +5,7 @@
 #include <QGraphicsPixmapItem>
 
 namespace Ui {
-class Login;
+class LoginWindow;
 }
 class UserWindow;
 
@@ -21,7 +21,7 @@ private slots:
     void handleLoginButton();
 
 private:
-    Ui::Login *ui;
+    Ui::LoginWindow *ui;
     UserWindow* benutzerWindow;
     QGraphicsScene scene;
     QImage image;

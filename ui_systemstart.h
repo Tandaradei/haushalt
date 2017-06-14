@@ -152,7 +152,7 @@ public:
 };
 
 namespace Ui {
-    class Systemstart: public Ui_Systemstart {};
+    class FirstStartWindow: public Ui_Systemstart {};
 } // namespace Ui
 
 QT_END_NAMESPACE

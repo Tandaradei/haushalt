@@ -1,5 +1,5 @@
 #include "dbmanager.h"
-#include "login.h"
+#include "loginwindow.h"
 #include <QApplication>
 
 
@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 {
     DbManager dbManager("haushalt.db");
     QApplication a(argc, argv);
-    Login login;
+    LoginWindow login;
     login.show();
 
     return a.exec();

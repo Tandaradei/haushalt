@@ -14,20 +14,20 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    systemstart.cpp \
     dbmanager.cpp \
     userwindow.cpp \
-    loginwindow.cpp
+    loginwindow.cpp \
+    firststartwindow.cpp
 
 HEADERS  += \
-    systemstart.h \
     dbmanager.h \
     userwindow.h \
-    loginwindow.h
+    loginwindow.h \
+    firststartwindow.h
 
 FORMS    += \
-    login.ui \
-    systemstart.ui \
-    userwindow.ui
+    userwindow.ui \
+    loginwindow.ui \
+    firststartwindow.ui
 
 QMAKE_CXXFLAGS += -std=c++11

@@ -1,9 +1,9 @@
-#include "benutzerwindow.h"
+#include "userwindow.h"
 #include "ui_benutzerwindow.h"
 
-BenutzerWindow::BenutzerWindow(QWidget *parent) :
+UserWindow::UserWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::BenutzerWindow),
+    ui(new Ui::UserWindow),
     transactionEntriesCount(0)
 {
     ui->setupUi(this);
@@ -11,13 +11,13 @@ BenutzerWindow::BenutzerWindow(QWidget *parent) :
     initTable();
 }
 
-BenutzerWindow::~BenutzerWindow()
+UserWindow::~UserWindow()
 {
     delete ui;
 }
 
 // TODO change category and payMethod to reference on Category/PayMethod objects and use .name for table entry
-void BenutzerWindow::addTransactionEntry(QDate date, float amount, QString description, QString category, QString payMethod)
+void UserWindow::addTransactionEntry(QDate date, float amount, QString description, QString category, QString payMethod)
 {
     ui->transaktionenTable->setItem(transactionEntriesCount, 0, new QTableWidgetItem(date.toString("yyyy-MM-dd")));
     ui->transaktionenTable->setItem(transactionEntriesCount, 1, new QTableWidgetItem(QString::number(amount, 'f', 2).replace(QChar('.'), QChar(','))));
@@ -28,13 +28,13 @@ void BenutzerWindow::addTransactionEntry(QDate date, float amount, QString descr
     ++transactionEntriesCount;
 }
 
-void BenutzerWindow::handleLogoutButton()
+void UserWindow::handleLogoutButton()
 {
   this->hide();
   this->destroy();
 }
 
-void BenutzerWindow::initTable()
+void UserWindow::initTable()
 {
     // set table headers with icons
     ui->transaktionenTable->setHorizontalHeaderItem(0, new QTableWidgetItem(QIcon(QString("resources/calendar.png")), "Datum"));

@@ -1,10 +1,10 @@
-#include "login.h"
+#include "loginwindow.h"
 #include "ui_login.h"
-#include "benutzerwindow.h"
+#include "userwindow.h"
 
-Login::Login(QWidget *parent) :
+LoginWindow::LoginWindow(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Login),
+    ui(new Ui::LoginWindow),
     benutzerWindow(nullptr),
     scene(),
     image("resources/logo.png"),
@@ -20,18 +20,18 @@ Login::Login(QWidget *parent) :
     ui->graphicsView->setScene(&scene);
 }
 
-Login::~Login()
+LoginWindow::~LoginWindow()
 {
   delete ui;
   delete benutzerWindow;
 }
 
-void Login::handleLoginButton()
+void LoginWindow::handleLoginButton()
 {
   if(ui->emailField->text() == "Admin" && ui->passwordField->text() == "admin")
   {
     this->hide();
-    benutzerWindow = new BenutzerWindow();
+    benutzerWindow = new UserWindow();
     benutzerWindow->show();
     this->destroy();
   }
