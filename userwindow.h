@@ -3,16 +3,16 @@
 #include <QMainWindow>
 
 namespace Ui {
-class BenutzerWindow;
+class UserWindow;
 }
 
-class BenutzerWindow : public QMainWindow
+class UserWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit BenutzerWindow(QWidget *parent = 0);
-    ~BenutzerWindow();
+    explicit UserWindow(QWidget *parent = 0);
+    ~UserWindow();
 
     // TODO change category and payMethod to reference on Category/PayMethod objects and use .name for table entry
     void addTransactionEntry(QDate date, float amount, QString description, QString category, QString payMethod);
@@ -22,7 +22,7 @@ private slots:
 
 private:
     void initTable();
-    Ui::BenutzerWindow *ui;
+    Ui::UserWindow *ui;
     size_t transactionEntriesCount;
 };
 

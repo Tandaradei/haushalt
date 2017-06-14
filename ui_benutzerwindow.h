@@ -110,6 +110,7 @@ public:
     QLineEdit *lineEdit_5;
     QLabel *label_12;
     QPushButton *pushButton_5;
+    QSpacerItem *verticalSpacer_3;
     QWidget *abmeldenTab;
     QVBoxLayout *verticalLayout_8;
     QVBoxLayout *abmeldenTabLayout;
@@ -396,12 +397,14 @@ public:
         pushButton_2 = new QPushButton(zahlungsartenTab);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         pushButton_2->setMaximumSize(QSize(100, 16777215));
+        pushButton_2->setIcon(icon);
 
         gridLayout_3->addWidget(pushButton_2, 0, 0, 1, 1);
 
         pushButton_3 = new QPushButton(zahlungsartenTab);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
         pushButton_3->setMaximumSize(QSize(100, 16777215));
+        pushButton_3->setIcon(icon1);
 
         gridLayout_3->addWidget(pushButton_3, 0, 1, 1, 1);
 
@@ -433,6 +436,7 @@ public:
         pushButton_4 = new QPushButton(zahlungsartenTab);
         pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
         pushButton_4->setMaximumSize(QSize(100, 16777215));
+        pushButton_4->setIcon(icon3);
 
         gridLayout->addWidget(pushButton_4, 3, 0, 1, 1, Qt::AlignHCenter|Qt::AlignTop);
 
@@ -502,38 +506,45 @@ public:
         label_10 = new QLabel(einstellungenTab);
         label_10->setObjectName(QStringLiteral("label_10"));
 
-        formLayout_2->setWidget(3, QFormLayout::LabelRole, label_10);
+        formLayout_2->setWidget(4, QFormLayout::LabelRole, label_10);
 
         lineEdit_4 = new QLineEdit(einstellungenTab);
         lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
         lineEdit_4->setMaximumSize(QSize(300, 16777215));
         lineEdit_4->setEchoMode(QLineEdit::Password);
 
-        formLayout_2->setWidget(3, QFormLayout::FieldRole, lineEdit_4);
+        formLayout_2->setWidget(4, QFormLayout::FieldRole, lineEdit_4);
 
         label_11 = new QLabel(einstellungenTab);
         label_11->setObjectName(QStringLiteral("label_11"));
 
-        formLayout_2->setWidget(4, QFormLayout::LabelRole, label_11);
+        formLayout_2->setWidget(5, QFormLayout::LabelRole, label_11);
 
         lineEdit_5 = new QLineEdit(einstellungenTab);
         lineEdit_5->setObjectName(QStringLiteral("lineEdit_5"));
         lineEdit_5->setMaximumSize(QSize(300, 16777215));
         lineEdit_5->setEchoMode(QLineEdit::Password);
 
-        formLayout_2->setWidget(4, QFormLayout::FieldRole, lineEdit_5);
+        formLayout_2->setWidget(5, QFormLayout::FieldRole, lineEdit_5);
 
         label_12 = new QLabel(einstellungenTab);
         label_12->setObjectName(QStringLiteral("label_12"));
         label_12->setMaximumSize(QSize(16777215, 20));
 
-        formLayout_2->setWidget(5, QFormLayout::FieldRole, label_12);
+        formLayout_2->setWidget(6, QFormLayout::FieldRole, label_12);
 
         pushButton_5 = new QPushButton(einstellungenTab);
         pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
         pushButton_5->setMaximumSize(QSize(100, 16777215));
+        QIcon icon6;
+        icon6.addFile(QStringLiteral("resources/check.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_5->setIcon(icon6);
 
-        formLayout_2->setWidget(6, QFormLayout::FieldRole, pushButton_5);
+        formLayout_2->setWidget(7, QFormLayout::FieldRole, pushButton_5);
+
+        verticalSpacer_3 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        formLayout_2->setItem(3, QFormLayout::FieldRole, verticalSpacer_3);
 
 
         horizontalLayout_3->addLayout(formLayout_2);
@@ -544,9 +555,9 @@ public:
 
         verticalLayout_6->addLayout(verticalLayout_5);
 
-        QIcon icon6;
-        icon6.addFile(QStringLiteral("resources/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
-        mainTabWidget->addTab(einstellungenTab, icon6, QString());
+        QIcon icon7;
+        icon7.addFile(QStringLiteral("resources/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
+        mainTabWidget->addTab(einstellungenTab, icon7, QString());
         abmeldenTab = new QWidget();
         abmeldenTab->setObjectName(QStringLiteral("abmeldenTab"));
         verticalLayout_8 = new QVBoxLayout(abmeldenTab);
@@ -573,9 +584,9 @@ public:
         sizePolicy.setHeightForWidth(logoutButton->sizePolicy().hasHeightForWidth());
         logoutButton->setSizePolicy(sizePolicy);
         logoutButton->setMaximumSize(QSize(100, 50));
-        QIcon icon7;
-        icon7.addFile(QStringLiteral("resources/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
-        logoutButton->setIcon(icon7);
+        QIcon icon8;
+        icon8.addFile(QStringLiteral("resources/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        logoutButton->setIcon(icon8);
         logoutButton->setFlat(false);
 
         abmeldenTabLayout->addWidget(logoutButton, 0, Qt::AlignHCenter|Qt::AlignTop);
@@ -583,7 +594,7 @@ public:
 
         verticalLayout_8->addLayout(abmeldenTabLayout);
 
-        mainTabWidget->addTab(abmeldenTab, icon7, QString());
+        mainTabWidget->addTab(abmeldenTab, icon8, QString());
 
         mainLayout->addWidget(mainTabWidget);
 
@@ -602,7 +613,7 @@ public:
         retranslateUi(BenutzerWindow);
 
         mainTabWidget->setCurrentIndex(2);
-        transaktionenTabWidget->setCurrentIndex(1);
+        transaktionenTabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(BenutzerWindow);
@@ -615,7 +626,7 @@ public:
         kategorieLabel->setText(QApplication::translate("BenutzerWindow", "Kategorie", 0));
         bisLabel->setText(QApplication::translate("BenutzerWindow", "Bis", 0));
         vonLabel->setText(QApplication::translate("BenutzerWindow", "Von", 0));
-        editButton->setText(QApplication::translate("BenutzerWindow", "\303\204ndern", 0));
+        editButton->setText(QApplication::translate("BenutzerWindow", "Bearbeiten", 0));
         deleteButton->setText(QApplication::translate("BenutzerWindow", "Entfernen", 0));
         transaktionenTabWidget->setTabText(transaktionenTabWidget->indexOf(transaktionenListeTab), QApplication::translate("BenutzerWindow", "\303\234bersicht", 0));
         label->setText(QApplication::translate("BenutzerWindow", "Betrag", 0));
@@ -627,7 +638,7 @@ public:
         transaktionenTabWidget->setTabText(transaktionenTabWidget->indexOf(transaktionenNeuTab), QApplication::translate("BenutzerWindow", "Neue Transaktion", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(transaktionenTab), QApplication::translate("BenutzerWindow", "Transaktionen", 0));
         pushButton_2->setText(QApplication::translate("BenutzerWindow", "Bearbeiten", 0));
-        pushButton_3->setText(QApplication::translate("BenutzerWindow", "L\303\266schen", 0));
+        pushButton_3->setText(QApplication::translate("BenutzerWindow", "Entfernen", 0));
         label_6->setText(QApplication::translate("BenutzerWindow", "Bitte geben sie die Zahlungsart an die sie hinzuf\303\274gen  m\303\266chten", 0));
         pushButton_4->setText(QApplication::translate("BenutzerWindow", "Hinzuf\303\274gen", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(zahlungsartenTab), QApplication::translate("BenutzerWindow", "Zahlungsarten", 0));
@@ -636,7 +647,7 @@ public:
         label_9->setText(QApplication::translate("BenutzerWindow", "Altes Passwort", 0));
         label_10->setText(QApplication::translate("BenutzerWindow", "Neues Passwort", 0));
         label_11->setText(QApplication::translate("BenutzerWindow", "Neues Passwort wiederholen", 0));
-        label_12->setText(QApplication::translate("BenutzerWindow", "TextLabel", 0));
+        label_12->setText(QString());
         pushButton_5->setText(QApplication::translate("BenutzerWindow", "Best\303\244tigen", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(einstellungenTab), QApplication::translate("BenutzerWindow", "Einstellungen", 0));
         abmeldenLabel->setText(QApplication::translate("BenutzerWindow", "Benutzer <Benutzer> wirklich abmelden?", 0));
@@ -647,7 +658,7 @@ public:
 };
 
 namespace Ui {
-    class BenutzerWindow: public Ui_BenutzerWindow {};
+    class UserWindow: public Ui_BenutzerWindow {};
 } // namespace Ui
 
 QT_END_NAMESPACE

@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,16 +14,20 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        benutzerwindow.cpp \
-    login.cpp \
-    systemstart.cpp
+    systemstart.cpp \
+    dbmanager.cpp \
+    userwindow.cpp \
+    loginwindow.cpp
 
-HEADERS  += benutzerwindow.h \
-    login.h \
-    systemstart.h
+HEADERS  += \
+    systemstart.h \
+    dbmanager.h \
+    userwindow.h \
+    loginwindow.h
 
-FORMS    += benutzerwindow.ui \
+FORMS    += \
     login.ui \
-    systemstart.ui
+    systemstart.ui \
+    userwindow.ui
 
 QMAKE_CXXFLAGS += -std=c++11

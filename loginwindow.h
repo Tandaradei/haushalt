@@ -7,22 +7,22 @@
 namespace Ui {
 class Login;
 }
-class BenutzerWindow;
+class UserWindow;
 
-class Login : public QWidget
+class LoginWindow : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit Login(QWidget *parent = 0);
-    ~Login();
+    explicit LoginWindow(QWidget *parent = 0);
+    ~LoginWindow();
 
 private slots:
     void handleLoginButton();
 
 private:
     Ui::Login *ui;
-    BenutzerWindow* benutzerWindow;
+    UserWindow* benutzerWindow;
     QGraphicsScene scene;
     QImage image;
     QGraphicsPixmapItem* imageItem;
