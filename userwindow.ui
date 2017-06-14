@@ -41,7 +41,7 @@
          <bool>false</bool>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>3</number>
         </property>
         <property name="elideMode">
          <enum>Qt::ElideLeft</enum>
@@ -90,7 +90,7 @@
             <item>
              <widget class="QTabWidget" name="transaktionenTabWidget">
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="transaktionenListeTab">
                <property name="autoFillBackground">
@@ -435,14 +435,14 @@
                      <number>12</number>
                     </property>
                     <item row="1" column="0">
-                     <widget class="QLabel" name="label">
+                     <widget class="QLabel" name="amountLabel">
                       <property name="text">
                        <string>Betrag</string>
                       </property>
                      </widget>
                     </item>
                     <item row="1" column="1">
-                     <widget class="QDoubleSpinBox" name="doubleSpinBox">
+                     <widget class="QDoubleSpinBox" name="amountdoubleSpinBox">
                       <property name="minimumSize">
                        <size>
                         <width>80</width>
@@ -464,7 +464,7 @@
                      </widget>
                     </item>
                     <item row="2" column="0">
-                     <widget class="QLabel" name="label_2">
+                     <widget class="QLabel" name="dateLabel">
                       <property name="text">
                        <string>Datum</string>
                       </property>
@@ -490,14 +490,14 @@
                      </widget>
                     </item>
                     <item row="3" column="0">
-                     <widget class="QLabel" name="label_3">
+                     <widget class="QLabel" name="categoryLabel">
                       <property name="text">
                        <string>Kategorie</string>
                       </property>
                      </widget>
                     </item>
                     <item row="3" column="1">
-                     <widget class="QComboBox" name="comboBox">
+                     <widget class="QComboBox" name="categoryDropdown">
                       <property name="minimumSize">
                        <size>
                         <width>80</width>
@@ -513,14 +513,14 @@
                      </widget>
                     </item>
                     <item row="5" column="0">
-                     <widget class="QLabel" name="label_4">
+                     <widget class="QLabel" name="descriptionLabel">
                       <property name="text">
                        <string>Beschreibung</string>
                       </property>
                      </widget>
                     </item>
                     <item row="5" column="1">
-                     <widget class="QTextEdit" name="textEdit">
+                     <widget class="QTextEdit" name="descriptionTextedit">
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
@@ -530,14 +530,14 @@
                      </widget>
                     </item>
                     <item row="4" column="0">
-                     <widget class="QLabel" name="label_5">
+                     <widget class="QLabel" name="paymethodLabel">
                       <property name="text">
                        <string>Zahlungsart</string>
                       </property>
                      </widget>
                     </item>
                     <item row="4" column="1">
-                     <widget class="QComboBox" name="comboBox_2">
+                     <widget class="QComboBox" name="paymethodDropdwon">
                       <property name="minimumSize">
                        <size>
                         <width>80</width>
@@ -553,7 +553,7 @@
                      </widget>
                     </item>
                     <item row="7" column="1">
-                     <widget class="QPushButton" name="pushButton">
+                     <widget class="QPushButton" name="addButton">
                       <property name="enabled">
                        <bool>false</bool>
                       </property>
@@ -620,7 +620,7 @@
               <item row="1" column="0">
                <layout class="QGridLayout" name="gridLayout_3">
                 <item row="0" column="0">
-                 <widget class="QPushButton" name="pushButton_2">
+                 <widget class="QPushButton" name="paymethodeditButton">
                   <property name="maximumSize">
                    <size>
                     <width>100</width>
@@ -637,7 +637,7 @@
                  </widget>
                 </item>
                 <item row="0" column="1">
-                 <widget class="QPushButton" name="pushButton_3">
+                 <widget class="QPushButton" name="paymethoddeleteButton">
                   <property name="maximumSize">
                    <size>
                     <width>100</width>
@@ -663,10 +663,10 @@
             <item>
              <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0" rowminimumheight="0,176,100,176">
               <item row="2" column="0">
-               <widget class="QLineEdit" name="lineEdit"/>
+               <widget class="QLineEdit" name="paymethodField"/>
               </item>
               <item row="1" column="0" alignment="Qt::AlignBottom">
-               <widget class="QLabel" name="label_6">
+               <widget class="QLabel" name="paymethodLabel_2">
                 <property name="text">
                  <string>Bitte geben sie die Zahlungsart an die sie hinzufügen  möchten</string>
                 </property>
@@ -676,7 +676,7 @@
                </widget>
               </item>
               <item row="3" column="0" alignment="Qt::AlignHCenter|Qt::AlignTop">
-               <widget class="QPushButton" name="pushButton_4">
+               <widget class="QPushButton" name="paymethodaddButton">
                 <property name="maximumSize">
                  <size>
                   <width>100</width>
@@ -715,14 +715,14 @@
               <item>
                <layout class="QFormLayout" name="formLayout_2">
                 <item row="0" column="0">
-                 <widget class="QLabel" name="label_7">
+                 <widget class="QLabel" name="settingsnameLabel">
                   <property name="text">
                    <string>Name</string>
                   </property>
                  </widget>
                 </item>
                 <item row="0" column="1">
-                 <widget class="QLineEdit" name="lineEdit_2">
+                 <widget class="QLineEdit" name="settingsnameField">
                   <property name="maximumSize">
                    <size>
                     <width>300</width>
@@ -732,7 +732,7 @@
                  </widget>
                 </item>
                 <item row="1" column="0">
-                 <widget class="QLabel" name="label_8">
+                 <widget class="QLabel" name="settingsbirthLabel">
                   <property name="text">
                    <string>Geburtsdatum</string>
                   </property>
@@ -755,14 +755,14 @@
                  </widget>
                 </item>
                 <item row="2" column="0">
-                 <widget class="QLabel" name="label_9">
+                 <widget class="QLabel" name="settingsoldpwLabel">
                   <property name="text">
                    <string>Altes Passwort</string>
                   </property>
                  </widget>
                 </item>
                 <item row="2" column="1">
-                 <widget class="QLineEdit" name="lineEdit_3">
+                 <widget class="QLineEdit" name="settingsoldpwField">
                   <property name="maximumSize">
                    <size>
                     <width>300</width>
@@ -775,14 +775,14 @@
                  </widget>
                 </item>
                 <item row="4" column="0">
-                 <widget class="QLabel" name="label_10">
+                 <widget class="QLabel" name="settingsnewpwLabel">
                   <property name="text">
                    <string>Neues Passwort</string>
                   </property>
                  </widget>
                 </item>
                 <item row="4" column="1">
-                 <widget class="QLineEdit" name="lineEdit_4">
+                 <widget class="QLineEdit" name="settingsnewpwField">
                   <property name="maximumSize">
                    <size>
                     <width>300</width>
@@ -795,14 +795,14 @@
                  </widget>
                 </item>
                 <item row="5" column="0">
-                 <widget class="QLabel" name="label_11">
+                 <widget class="QLabel" name="settingsnewpwwdhLabel">
                   <property name="text">
                    <string>Neues Passwort wiederholen</string>
                   </property>
                  </widget>
                 </item>
                 <item row="5" column="1">
-                 <widget class="QLineEdit" name="lineEdit_5">
+                 <widget class="QLineEdit" name="settingsnewpwwdhField">
                   <property name="maximumSize">
                    <size>
                     <width>300</width>
@@ -828,7 +828,7 @@
                  </widget>
                 </item>
                 <item row="7" column="1">
-                 <widget class="QPushButton" name="pushButton_5">
+                 <widget class="QPushButton" name="settingsacceptButton">
                   <property name="maximumSize">
                    <size>
                     <width>100</width>

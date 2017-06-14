@@ -41,41 +41,41 @@
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
      <item row="0" column="0">
-      <widget class="QLabel" name="label_3">
+      <widget class="QLabel" name="nameLabel">
        <property name="text">
         <string>Name</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="nameField"/>
      </item>
      <item row="1" column="0">
-      <widget class="QLabel" name="label_4">
+      <widget class="QLabel" name="emaillabel">
        <property name="text">
         <string>E-Mail</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="lineEdit_2"/>
+      <widget class="QLineEdit" name="emailField"/>
      </item>
      <item row="2" column="0">
-      <widget class="QLabel" name="label_5">
+      <widget class="QLabel" name="birthLabel">
        <property name="text">
         <string>Geburtsdatum</string>
        </property>
       </widget>
      </item>
      <item row="3" column="0">
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="pwLabel">
        <property name="text">
         <string>Passwort</string>
        </property>
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QLineEdit" name="lineEdit_4">
+      <widget class="QLineEdit" name="pwField">
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
        </property>
@@ -85,7 +85,7 @@
       </widget>
      </item>
      <item row="7" column="1">
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="admincreateButton">
        <property name="text">
         <string>Anlegen</string>
        </property>
@@ -103,7 +103,7 @@
       </widget>
      </item>
      <item row="4" column="0">
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="pwwdhLabel">
        <property name="text">
         <string>Passwort wiederholen</string>
        </property>
@@ -123,14 +123,14 @@
       </spacer>
      </item>
      <item row="4" column="1">
-      <widget class="QLineEdit" name="lineEdit_3">
+      <widget class="QLineEdit" name="pwwdhField">
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
        </property>
       </widget>
      </item>
      <item row="5" column="1">
-      <widget class="QLabel" name="label_6">
+      <widget class="QLabel" name="erroLabel">
        <property name="text">
         <string/>
        </property>
