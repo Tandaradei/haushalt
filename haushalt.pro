@@ -17,13 +17,27 @@ SOURCES += main.cpp\
     dbmanager.cpp \
     userwindow.cpp \
     loginwindow.cpp \
-    firststartwindow.cpp
+    firststartwindow.cpp \
+    maincontroller.cpp \
+    startcontroller.cpp \
+    usercontroller.cpp \
+    admincontroller.cpp \
+    startdao.cpp \
+    userdao.cpp \
+    admindao.cpp
 
 HEADERS  += \
     dbmanager.h \
     userwindow.h \
     loginwindow.h \
-    firststartwindow.h
+    firststartwindow.h \
+    maincontroller.h \
+    startcontroller.h \
+    usercontroller.h \
+    admincontroller.h \
+    startdao.h \
+    userdao.h \
+    admindao.h
 
 FORMS    += \
     userwindow.ui \
