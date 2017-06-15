@@ -1,14 +1,16 @@
+#include "usercontroller.h"
 #include "userwindow.h"
 #include "ui_benutzerwindow.h"
 
-UserWindow::UserWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::UserWindow),
-    transactionEntriesCount(0)
+UserWindow::UserWindow(UserController& userController, QWidget *parent)
+    :QMainWindow(parent)
+    ,userController(userController)
+    ,ui(new Ui::UserWindow)
+    ,transactionEntriesCount(0)
 {
     ui->setupUi(this);
     connect(ui->logoutButton, SIGNAL (released()), this, SLOT (handleLogoutButton()));
-    initTable();
+    //initTable();
 }
 
 UserWindow::~UserWindow()
@@ -30,8 +32,7 @@ void UserWindow::addTransactionEntry(QDate date, float amount, QString descripti
 
 void UserWindow::handleLogoutButton()
 {
-  this->hide();
-  this->destroy();
+    userController.onLogout();
 }
 
 void UserWindow::initTable()

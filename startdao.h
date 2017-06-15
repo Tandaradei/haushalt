@@ -1,12 +1,18 @@
-#ifndef STARTDAO_H
-#define STARTDAO_H
+#pragma once
 
+#include <QString>
+
+class DbManager;
 
 class StartDAO
 {
 public:
-    StartDAO();
+    StartDAO(DbManager& dbManager);
     ~StartDAO();
-};
 
-#endif // STARTDAO_H
+    bool isFirstStart();
+    bool isValid(const QString& email, const QString& password);
+
+private:
+    DbManager& dbManager;
+};

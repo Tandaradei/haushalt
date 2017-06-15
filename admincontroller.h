@@ -2,12 +2,21 @@
 
 
 #include "usercontroller.h"
+#include "admindao.h"
+
+class DbManager;
 
 class AdminController : public UserController
 {
 public:
-    AdminController();
+    AdminController(MainController &mainController, DbManager& dbManager);
     ~AdminController();
+
+
+    void start();
+private:
+    AdminDAO adminDAO;
+    //AdminWindow adminWindow;
 };
 
 

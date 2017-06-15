@@ -6,12 +6,14 @@ namespace Ui {
 class UserWindow;
 }
 
+class UserController;
+
 class UserWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit UserWindow(QWidget *parent = 0);
+    explicit UserWindow(UserController& userController, QWidget *parent = 0);
     ~UserWindow();
 
     // TODO change category and payMethod to reference on Category/PayMethod objects and use .name for table entry
@@ -22,6 +24,9 @@ private slots:
 
 private:
     void initTable();
+
+    UserController& userController;
+
     Ui::UserWindow *ui;
     size_t transactionEntriesCount;
 };

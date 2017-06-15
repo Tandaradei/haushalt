@@ -1,6 +1,8 @@
+#include "dbmanager.h"
 #include "admindao.h"
 
-AdminDAO::AdminDAO()
+AdminDAO::AdminDAO(DbManager &dbManager)
+    :dbManager(dbManager)
 {
 
 }

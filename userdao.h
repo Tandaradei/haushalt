@@ -1,12 +1,13 @@
-#ifndef USERDAO_H
-#define USERDAO_H
+#pragma once
 
+class DbManager;
 
 class UserDAO
 {
 public:
-    UserDAO();
+    UserDAO(DbManager& dbManager);
     ~UserDAO();
-};
 
-#endif // USERDAO_H
+private:
+    DbManager& dbManager;
+};

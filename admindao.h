@@ -1,12 +1,14 @@
-#ifndef ADMINDAO_H
-#define ADMINDAO_H
+#pragma once
 
+class DbManager;
 
 class AdminDAO
 {
 public:
-    AdminDAO();
+    AdminDAO(DbManager& dbManager);
     ~AdminDAO();
+
+private:
+    DbManager& dbManager;
 };
 
-#endif // ADMINDAO_H

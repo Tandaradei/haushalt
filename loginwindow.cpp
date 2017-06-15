@@ -1,14 +1,14 @@
 #include "loginwindow.h"
 #include "ui_login.h"
-#include "userwindow.h"
+#include "startcontroller.h"
 
-LoginWindow::LoginWindow(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::LoginWindow),
-    benutzerWindow(nullptr),
-    scene(),
-    image("resources/logo.png"),
-    imageItem(nullptr)
+LoginWindow::LoginWindow(StartController& startController, QWidget *parent) :
+    QWidget(parent)
+    ,startController(startController)
+    ,ui(new Ui::LoginWindow)
+    ,scene()
+    ,image("resources/logo.png")
+    ,imageItem(nullptr)
 
 {
     ui->setupUi(this);
@@ -23,20 +23,12 @@ LoginWindow::LoginWindow(QWidget *parent) :
 LoginWindow::~LoginWindow()
 {
   delete ui;
-  delete benutzerWindow;
 }
 
 void LoginWindow::handleLoginButton()
 {
-  if(ui->emailField->text() == "Admin" && ui->passwordField->text() == "admin")
+  if(!startController.onLoginClicked(ui->emailField->text(), ui->passwordField->text()))
   {
-    this->hide();
-    benutzerWindow = new UserWindow();
-    benutzerWindow->show();
-    this->destroy();
-  }
-  else
-  {
-    ui->errorLabel->setText("Email und Passwort stimmen nicht überein");
+      ui->errorLabel->setText("E-Mail und Password stimmen nicht überein");
   }
 }

@@ -1,6 +1,9 @@
+#include "dbmanager.h"
 #include "userdao.h"
 
-UserDAO::UserDAO()
+
+UserDAO::UserDAO(DbManager &dbManager)
+    :dbManager(dbManager)
 {
 
 }
