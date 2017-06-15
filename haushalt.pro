@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     admincontroller.cpp \
     startdao.cpp \
     userdao.cpp \
-    admindao.cpp
+    admindao.cpp \
+    adminwindow.cpp
 
 HEADERS  += \
     dbmanager.h \
@@ -37,11 +38,13 @@ HEADERS  += \
     admincontroller.h \
     startdao.h \
     userdao.h \
-    admindao.h
+    admindao.h \
+    adminwindow.h
 
 FORMS    += \
     userwindow.ui \
     loginwindow.ui \
-    firststartwindow.ui
+    firststartwindow.ui \
+    adminwindow.ui
 
 QMAKE_CXXFLAGS += -std=c++11
