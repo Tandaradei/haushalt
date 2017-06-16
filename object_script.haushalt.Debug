@@ -1,0 +1,17 @@
+INPUT(
+./debug\main.o
+./debug\dbmanager.o
+./debug\userwindow.o
+./debug\loginwindow.o
+./debug\firststartwindow.o
+./debug\maincontroller.o
+./debug\startcontroller.o
+./debug\usercontroller.o
+./debug\admincontroller.o
+./debug\startdao.o
+./debug\userdao.o
+./debug\admindao.o
+./debug\moc_userwindow.o
+./debug\moc_loginwindow.o
+./debug\moc_firststartwindow.o
+);

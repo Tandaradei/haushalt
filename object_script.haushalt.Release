@@ -1,0 +1,17 @@
+INPUT(
+./release\main.o
+./release\dbmanager.o
+./release\userwindow.o
+./release\loginwindow.o
+./release\firststartwindow.o
+./release\maincontroller.o
+./release\startcontroller.o
+./release\usercontroller.o
+./release\admincontroller.o
+./release\startdao.o
+./release\userdao.o
+./release\admindao.o
+./release\moc_userwindow.o
+./release\moc_loginwindow.o
+./release\moc_firststartwindow.o
+);
