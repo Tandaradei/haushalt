@@ -18,31 +18,41 @@ StartDAO::~StartDAO()
 
 bool StartDAO::isFirstStart()
 {
-    return false;
+    QSqlQuery query(dbManager.getDatabase());
+    query.prepare("SELECT * FROM Benutzer WHERE BID = 1;");
+    if(query.exec())
+    {
+        return !query.next();
+    }
+    else
+    {
+        qDebug() << "isFirstStart error:  "
+                 << query.lastError().text();
+    }
+    return true;
 }
 
 // returns userid or -1 if no user was found
 int StartDAO::getUserId(const QString &email, const QString &password)
 {
-    qDebug() << "Try to get user with email" << email << " and password " << password;
-    //return (email == "Test@test.com" && password == "1234");
     int userId = -1;
     QSqlQuery query(dbManager.getDatabase());
-    query.prepare("SELECT userid FROM user WHERE email = '"+ email +"' AND password = '"+password+"';");
+    query.prepare("SELECT BID FROM Benutzer WHERE Email = '"+ email +"' AND HashedKennwort = '"+ password +"';");
     query.bindValue(":email", email);
     query.bindValue(":password", password);
+    qDebug() << query.executedQuery();
     if(query.exec())
     {
+        qDebug() << "execution successful";
         if(query.next())
         {
-            int indexUserId = query.record().indexOf("userid");
-            userId = query.value(indexUserId).toInt();
+            userId = query.value(0).toInt();
         }
     }
     else
     {
         qDebug() << "getUserId error:  "
-                 << query.lastError();
+                 << query.lastError().text();
     }
 
     return userId;

@@ -18,10 +18,10 @@ DbManager::DbManager(const QString& path)
 
 DbManager::~DbManager()
 {
-
+    database.close();
 }
 
-QSqlDatabase &DbManager::getDatabase()
+QSqlDatabase& DbManager::getDatabase()
 {
     return database;
 }
