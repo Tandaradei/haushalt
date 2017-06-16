@@ -11,7 +11,7 @@ public:
     ~StartDAO();
 
     bool isFirstStart();
-    bool isValid(const QString& email, const QString& password);
+    int getUserId(const QString& email, const QString& password);
 
 private:
     DbManager& dbManager;

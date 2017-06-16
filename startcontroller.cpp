@@ -2,7 +2,7 @@
 #include "maincontroller.h"
 #include "startcontroller.h"
 
-StartController::StartController(MainController &mainController, DbManager &dbManager)
+StartController::StartController(MainController& mainController, DbManager &dbManager)
     :mainController(mainController)
     ,startDAO(dbManager)
     ,firstStartWindow()
@@ -30,7 +30,7 @@ void StartController::start()
 
 bool StartController::onLoginClicked(const QString& email, const QString& password)
 {
-    if(startDAO.isValid(email, password))
+    if(startDAO.getUserId(email, password) >= 0)
     {
         loginWindow.hide();
         mainController.onLoggedIn(1);

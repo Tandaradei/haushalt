@@ -8,6 +8,7 @@ class DbManager
 public:
     DbManager(const QString& path);
     ~DbManager();
+    QSqlDatabase& getDatabase();
 private:
     QSqlDatabase database;
 };
