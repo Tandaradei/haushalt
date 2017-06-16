@@ -1,3 +1,7 @@
+#include <QSqlQuery>
+#include <QSqlRecord>
+#include <QSqlError>
+#include <QDebug>
 #include "dbmanager.h"
 #include "startdao.h"
 
@@ -23,7 +27,7 @@ int StartDAO::getUserId(const QString &email, const QString &password)
     //return (email == "Test@test.com" && password == "1234");
     int userId = -1;
    // you should check if args are ok first...
-   QSqlQuery query;
+   QSqlQuery query(dbManager.getDatabase());
    query.prepare("SELECT * from user WHERE email = (:email) AND password = (:password)");
    query.bindValue(":email", email);
    query.bindValue(":password", password);

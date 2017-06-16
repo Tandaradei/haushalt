@@ -21,3 +21,8 @@ DbManager::~DbManager()
 
 }
 
+QSqlDatabase &DbManager::getDatabase()
+{
+    return database;
+}
+
