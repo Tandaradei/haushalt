@@ -101,7 +101,7 @@ public:
     QLabel *settingsnameLabel;
     QLineEdit *settingsnameField;
     QLabel *settingsbirthLabel;
-    QDateEdit *dateEdit_2;
+    QDateEdit *settingsBirthdateField;
     QLabel *settingsoldpwLabel;
     QLineEdit *settingsoldpwField;
     QLabel *settingsnewpwLabel;
@@ -109,8 +109,9 @@ public:
     QLabel *settingsnewpwwdhLabel;
     QLineEdit *settingsnewpwwdhField;
     QLabel *label_12;
-    QPushButton *settingsacceptButton;
+    QPushButton *settingsNewPasswordButton;
     QSpacerItem *verticalSpacer_3;
+    QPushButton *settingsSaveButton;
     QWidget *userTab;
     QVBoxLayout *verticalLayout_9;
     QVBoxLayout *verticalLayout_7;
@@ -498,68 +499,74 @@ public:
 
         formLayout_2->setWidget(1, QFormLayout::LabelRole, settingsbirthLabel);
 
-        dateEdit_2 = new QDateEdit(einstellungenTab);
-        dateEdit_2->setObjectName(QStringLiteral("dateEdit_2"));
-        dateEdit_2->setMaximumSize(QSize(300, 16777215));
-        dateEdit_2->setCorrectionMode(QAbstractSpinBox::CorrectToNearestValue);
-        dateEdit_2->setCalendarPopup(true);
+        settingsBirthdateField = new QDateEdit(einstellungenTab);
+        settingsBirthdateField->setObjectName(QStringLiteral("settingsBirthdateField"));
+        settingsBirthdateField->setMaximumSize(QSize(300, 16777215));
+        settingsBirthdateField->setCorrectionMode(QAbstractSpinBox::CorrectToNearestValue);
+        settingsBirthdateField->setCalendarPopup(true);
 
-        formLayout_2->setWidget(1, QFormLayout::FieldRole, dateEdit_2);
+        formLayout_2->setWidget(1, QFormLayout::FieldRole, settingsBirthdateField);
 
         settingsoldpwLabel = new QLabel(einstellungenTab);
         settingsoldpwLabel->setObjectName(QStringLiteral("settingsoldpwLabel"));
 
-        formLayout_2->setWidget(2, QFormLayout::LabelRole, settingsoldpwLabel);
+        formLayout_2->setWidget(4, QFormLayout::LabelRole, settingsoldpwLabel);
 
         settingsoldpwField = new QLineEdit(einstellungenTab);
         settingsoldpwField->setObjectName(QStringLiteral("settingsoldpwField"));
         settingsoldpwField->setMaximumSize(QSize(300, 16777215));
         settingsoldpwField->setEchoMode(QLineEdit::Password);
 
-        formLayout_2->setWidget(2, QFormLayout::FieldRole, settingsoldpwField);
+        formLayout_2->setWidget(4, QFormLayout::FieldRole, settingsoldpwField);
 
         settingsnewpwLabel = new QLabel(einstellungenTab);
         settingsnewpwLabel->setObjectName(QStringLiteral("settingsnewpwLabel"));
 
-        formLayout_2->setWidget(4, QFormLayout::LabelRole, settingsnewpwLabel);
+        formLayout_2->setWidget(6, QFormLayout::LabelRole, settingsnewpwLabel);
 
         settingsnewpwField = new QLineEdit(einstellungenTab);
         settingsnewpwField->setObjectName(QStringLiteral("settingsnewpwField"));
         settingsnewpwField->setMaximumSize(QSize(300, 16777215));
         settingsnewpwField->setEchoMode(QLineEdit::Password);
 
-        formLayout_2->setWidget(4, QFormLayout::FieldRole, settingsnewpwField);
+        formLayout_2->setWidget(6, QFormLayout::FieldRole, settingsnewpwField);
 
         settingsnewpwwdhLabel = new QLabel(einstellungenTab);
         settingsnewpwwdhLabel->setObjectName(QStringLiteral("settingsnewpwwdhLabel"));
 
-        formLayout_2->setWidget(5, QFormLayout::LabelRole, settingsnewpwwdhLabel);
+        formLayout_2->setWidget(7, QFormLayout::LabelRole, settingsnewpwwdhLabel);
 
         settingsnewpwwdhField = new QLineEdit(einstellungenTab);
         settingsnewpwwdhField->setObjectName(QStringLiteral("settingsnewpwwdhField"));
         settingsnewpwwdhField->setMaximumSize(QSize(300, 16777215));
         settingsnewpwwdhField->setEchoMode(QLineEdit::Password);
 
-        formLayout_2->setWidget(5, QFormLayout::FieldRole, settingsnewpwwdhField);
+        formLayout_2->setWidget(7, QFormLayout::FieldRole, settingsnewpwwdhField);
 
         label_12 = new QLabel(einstellungenTab);
         label_12->setObjectName(QStringLiteral("label_12"));
         label_12->setMaximumSize(QSize(16777215, 20));
 
-        formLayout_2->setWidget(6, QFormLayout::FieldRole, label_12);
+        formLayout_2->setWidget(9, QFormLayout::FieldRole, label_12);
 
-        settingsacceptButton = new QPushButton(einstellungenTab);
-        settingsacceptButton->setObjectName(QStringLiteral("settingsacceptButton"));
-        settingsacceptButton->setMaximumSize(QSize(100, 16777215));
+        settingsNewPasswordButton = new QPushButton(einstellungenTab);
+        settingsNewPasswordButton->setObjectName(QStringLiteral("settingsNewPasswordButton"));
+        settingsNewPasswordButton->setMaximumSize(QSize(100, 16777215));
         QIcon icon6;
         icon6.addFile(QStringLiteral("resources/check.png"), QSize(), QIcon::Normal, QIcon::Off);
-        settingsacceptButton->setIcon(icon6);
+        settingsNewPasswordButton->setIcon(icon6);
 
-        formLayout_2->setWidget(7, QFormLayout::FieldRole, settingsacceptButton);
+        formLayout_2->setWidget(10, QFormLayout::FieldRole, settingsNewPasswordButton);
 
         verticalSpacer_3 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         formLayout_2->setItem(3, QFormLayout::FieldRole, verticalSpacer_3);
+
+        settingsSaveButton = new QPushButton(einstellungenTab);
+        settingsSaveButton->setObjectName(QStringLiteral("settingsSaveButton"));
+        settingsSaveButton->setMaximumSize(QSize(100, 16777215));
+
+        formLayout_2->setWidget(2, QFormLayout::FieldRole, settingsSaveButton);
 
 
         horizontalLayout_3->addLayout(formLayout_2);
@@ -678,7 +685,7 @@ public:
 
         retranslateUi(UserWindow);
 
-        mainTabWidget->setCurrentIndex(0);
+        mainTabWidget->setCurrentIndex(2);
         transaktionenTabWidget->setCurrentIndex(0);
 
 
@@ -714,7 +721,8 @@ public:
         settingsnewpwLabel->setText(QApplication::translate("UserWindow", "Neues Passwort", 0));
         settingsnewpwwdhLabel->setText(QApplication::translate("UserWindow", "Neues Passwort wiederholen", 0));
         label_12->setText(QString());
-        settingsacceptButton->setText(QApplication::translate("UserWindow", "Best\303\244tigen", 0));
+        settingsNewPasswordButton->setText(QApplication::translate("UserWindow", "Passwort \303\244ndern", 0));
+        settingsSaveButton->setText(QApplication::translate("UserWindow", "Speichern", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(einstellungenTab), QApplication::translate("UserWindow", "Einstellungen", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(userTab), QApplication::translate("UserWindow", "Benutzer", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(categoryTab), QApplication::translate("UserWindow", "Kategorien", 0));

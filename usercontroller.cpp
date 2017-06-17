@@ -12,15 +12,8 @@ UserController::UserController(MainController& mainController, DbManager &dbMana
     ,transactions()
 {
     userWindow.setWindowTitle(user->Name);
-    transactions = userDAO.getTransactions();
-    for(auto transactionsIt = transactions.begin(), transactionsEnd = transactions.end(); transactionsIt != transactionsEnd; ++transactionsIt)
-    {
-        userWindow.addTransactionEntry((*transactionsIt)->Date
-                                       , ((float)(*transactionsIt)->Amount)/100.0f
-                                       , (*transactionsIt)->Description
-                                       , "Category"
-                                       , "PaymentMethod");
-    }
+    loadTransactions();
+    loadSettings();
 }
 
 UserController::~UserController()
@@ -37,5 +30,23 @@ void UserController::onLogout()
 {
     userWindow.hide();
     mainController.close();
+}
+
+void UserController::loadTransactions()
+{
+    transactions = userDAO.getTransactions();
+    for(auto transactionsIt = transactions.begin(), transactionsEnd = transactions.end(); transactionsIt != transactionsEnd; ++transactionsIt)
+    {
+        userWindow.addTransactionEntry((*transactionsIt)->Date
+                                       , ((float)(*transactionsIt)->Amount)/100.0f
+                                       , (*transactionsIt)->Description
+                                       , "Category"
+                                       , "PaymentMethod");
+    }
+}
+
+void UserController::loadSettings()
+{
+    userWindow.setSettings(user->Name, user->Birthdate);
 }
 

@@ -45,6 +45,12 @@ void UserWindow::enableAdminTabs()
     ui->mainTabWidget->addTab(ui->logoutTab, "Abmelden");
 }
 
+void UserWindow::setSettings(QString name, QDate birthdate)
+{
+    ui->settingsnameField->setText(name);
+    ui->settingsBirthdateField->setDate(birthdate);
+}
+
 void UserWindow::handleLogoutButton()
 {
     userController.onLogout();
