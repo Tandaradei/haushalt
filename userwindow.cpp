@@ -16,7 +16,7 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
     ui->mainTabWidget->removeTab(3);
 
 
-    //initTable();
+    initTable();
 }
 
 UserWindow::~UserWindow()
@@ -32,6 +32,8 @@ void UserWindow::addTransactionEntry(QDate date, float amount, QString descripti
     ui->transaktionenTable->setItem(transactionEntriesCount, 2, new QTableWidgetItem(description));
     ui->transaktionenTable->setItem(transactionEntriesCount, 3, new QTableWidgetItem(category));
     ui->transaktionenTable->setItem(transactionEntriesCount, 4, new QTableWidgetItem(payMethod));
+
+    ui->transaktionenTable->item(transactionEntriesCount, 1)->setBackgroundColor(amount < 0 ? QColor(255,0,0) : QColor(0, 255, 0));
 
     ++transactionEntriesCount;
 }
@@ -64,8 +66,4 @@ void UserWindow::initTable()
     ui->transaktionenTable->setHorizontalHeaderItem(2, new QTableWidgetItem(QIcon(QString("resources/description.png")), "Beschreibung"));
     ui->transaktionenTable->setHorizontalHeaderItem(3, new QTableWidgetItem(QIcon(QString("resources/category.png")), "Kategorie"));
     ui->transaktionenTable->setHorizontalHeaderItem(4, new QTableWidgetItem(QIcon(QString("resources/paymethod.png")), "Zahlungsart"));
-    // add test entries
-    QDate date;
-    addTransactionEntry(date.currentDate(), -30.0f, "Test Einkauf", "Lebensmittel", "Bar");
-    addTransactionEntry(date.currentDate().addDays(-2), 2000.0f, "Lohn", "Lohn", "Banküberweisung");
 }
