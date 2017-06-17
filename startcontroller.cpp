@@ -1,6 +1,8 @@
 #include "dbmanager.h"
 #include "maincontroller.h"
 #include "startcontroller.h"
+#include "user.h"
+#include <memory>
 
 StartController::StartController(MainController& mainController, DbManager &dbManager)
     :mainController(mainController)
@@ -30,11 +32,11 @@ void StartController::start()
 
 bool StartController::onLoginClicked(const QString& email, const QString& password)
 {
-    int userId = startDAO.getUserId(email, password);
-    if(userId >= 0)
+    std::shared_ptr<User> user = startDAO.getUser(email, password);
+    if(user != nullptr)
     {
         loginWindow.hide();
-        mainController.onLoggedIn(userId);
+        mainController.onLoggedIn(user);
     }
     else
     {

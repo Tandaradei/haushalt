@@ -4,6 +4,8 @@
 #include "dbmanager.h"
 #include <memory>
 
+class User;
+
 class StartController;
 class UserController;
 class AdminController;
@@ -15,7 +17,7 @@ public:
     ~MainController();
 
     int exec();
-    void onLoggedIn(int userID);
+    void onLoggedIn(std::shared_ptr<User> user);
     void close();
 
 private:

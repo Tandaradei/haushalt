@@ -2,6 +2,7 @@
 #include "usercontroller.h"
 #include "admincontroller.h"
 #include "maincontroller.h"
+#include "user.h"
 
 MainController::MainController(int argc, char *argv[])
     :application(argc, argv)
@@ -25,17 +26,17 @@ int MainController::exec()
     return application.exec();
 }
 
-void MainController::onLoggedIn(int userId)
+void MainController::onLoggedIn(std::shared_ptr<User> user)
 {
-    // userId == 1 -> admin
-    if(userId == 1)
+    // user->BID == 1 -> admin
+    if(user->BID == 1)
     {
-        adminController = std::make_shared<AdminController>(*this, dbManager);
+        adminController = std::make_shared<AdminController>(*this, dbManager, user);
         adminController->start();
     }
     else
     {
-        userController = std::make_shared<UserController>(*this, dbManager);
+        userController = std::make_shared<UserController>(*this, dbManager, user);
         userController->start();
     }
 
