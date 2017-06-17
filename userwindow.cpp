@@ -1,6 +1,6 @@
 #include "usercontroller.h"
 #include "userwindow.h"
-#include "ui_benutzerwindow.h"
+#include "ui_userwindow.h"
 
 UserWindow::UserWindow(UserController& userController, QWidget *parent)
     :QMainWindow(parent)
@@ -10,6 +10,12 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->logoutButton, SIGNAL (released()), this, SLOT (handleLogoutButton()));
+
+    ui->mainTabWidget->removeTab(5);
+    ui->mainTabWidget->removeTab(4);
+    ui->mainTabWidget->removeTab(3);
+
+
     //initTable();
 }
 
@@ -28,6 +34,15 @@ void UserWindow::addTransactionEntry(QDate date, float amount, QString descripti
     ui->transaktionenTable->setItem(transactionEntriesCount, 4, new QTableWidgetItem(payMethod));
 
     ++transactionEntriesCount;
+}
+
+void UserWindow::enableAdminTabs()
+{
+    ui->mainTabWidget->removeTab(3);
+    ui->mainTabWidget->addTab(ui->userTab, "Benutzer");
+    ui->mainTabWidget->addTab(ui->categoryTab, "Kategorien");
+    ui->mainTabWidget->addTab(ui->standardPaymentMethodsTab, "Standardzahlungsarten");
+    ui->mainTabWidget->addTab(ui->logoutTab, "Abmelden");
 }
 
 void UserWindow::handleLogoutButton()

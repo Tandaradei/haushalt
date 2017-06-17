@@ -30,10 +30,11 @@ void StartController::start()
 
 bool StartController::onLoginClicked(const QString& email, const QString& password)
 {
-    if(startDAO.getUserId(email, password) >= 0)
+    int userId = startDAO.getUserId(email, password);
+    if(userId >= 0)
     {
         loginWindow.hide();
-        mainController.onLoggedIn(1);
+        mainController.onLoggedIn(userId);
     }
     else
     {

@@ -25,9 +25,10 @@ int MainController::exec()
     return application.exec();
 }
 
-void MainController::onLoggedIn(int userID)
+void MainController::onLoggedIn(int userId)
 {
-    if(userID == 0)
+    // userId == 1 -> admin
+    if(userId == 1)
     {
         adminController = std::make_shared<AdminController>(*this, dbManager);
         adminController->start();

@@ -37,7 +37,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_BenutzerWindow
+class Ui_UserWindow
 {
 public:
     QWidget *centralWidget;
@@ -111,7 +111,16 @@ public:
     QLabel *label_12;
     QPushButton *settingsacceptButton;
     QSpacerItem *verticalSpacer_3;
-    QWidget *abmeldenTab;
+    QWidget *userTab;
+    QVBoxLayout *verticalLayout_9;
+    QVBoxLayout *verticalLayout_7;
+    QWidget *categoryTab;
+    QVBoxLayout *verticalLayout_13;
+    QVBoxLayout *verticalLayout_12;
+    QWidget *standardPaymentMethodsTab;
+    QVBoxLayout *verticalLayout_11;
+    QVBoxLayout *verticalLayout_10;
+    QWidget *logoutTab;
     QVBoxLayout *verticalLayout_8;
     QVBoxLayout *abmeldenTabLayout;
     QLabel *abmeldenLabel;
@@ -119,12 +128,12 @@ public:
     QMenuBar *menuBar;
     QStatusBar *statusBar;
 
-    void setupUi(QMainWindow *BenutzerWindow)
+    void setupUi(QMainWindow *UserWindow)
     {
-        if (BenutzerWindow->objectName().isEmpty())
-            BenutzerWindow->setObjectName(QStringLiteral("BenutzerWindow"));
-        BenutzerWindow->resize(800, 600);
-        centralWidget = new QWidget(BenutzerWindow);
+        if (UserWindow->objectName().isEmpty())
+            UserWindow->setObjectName(QStringLiteral("UserWindow"));
+        UserWindow->resize(800, 600);
+        centralWidget = new QWidget(UserWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         horizontalLayout = new QHBoxLayout(centralWidget);
         horizontalLayout->setSpacing(0);
@@ -136,7 +145,13 @@ public:
         mainLayout->setObjectName(QStringLiteral("mainLayout"));
         mainTabWidget = new QTabWidget(centralWidget);
         mainTabWidget->setObjectName(QStringLiteral("mainTabWidget"));
+        mainTabWidget->setEnabled(true);
+        QFont font;
+        font.setBold(false);
+        font.setWeight(50);
+        mainTabWidget->setFont(font);
         mainTabWidget->setAutoFillBackground(false);
+        mainTabWidget->setTabShape(QTabWidget::Rounded);
         mainTabWidget->setElideMode(Qt::ElideLeft);
         mainTabWidget->setDocumentMode(false);
         transaktionenTab = new QWidget();
@@ -558,9 +573,60 @@ public:
         QIcon icon7;
         icon7.addFile(QStringLiteral("resources/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
         mainTabWidget->addTab(einstellungenTab, icon7, QString());
-        abmeldenTab = new QWidget();
-        abmeldenTab->setObjectName(QStringLiteral("abmeldenTab"));
-        verticalLayout_8 = new QVBoxLayout(abmeldenTab);
+        userTab = new QWidget();
+        userTab->setObjectName(QStringLiteral("userTab"));
+        userTab->setEnabled(true);
+        QFont font1;
+        font1.setFamily(QStringLiteral("MS Shell Dlg 2"));
+        font1.setBold(false);
+        font1.setWeight(50);
+        userTab->setFont(font1);
+        userTab->setAutoFillBackground(false);
+        verticalLayout_9 = new QVBoxLayout(userTab);
+        verticalLayout_9->setSpacing(6);
+        verticalLayout_9->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_9->setObjectName(QStringLiteral("verticalLayout_9"));
+        verticalLayout_9->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_7 = new QVBoxLayout();
+        verticalLayout_7->setSpacing(6);
+        verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
+
+        verticalLayout_9->addLayout(verticalLayout_7);
+
+        mainTabWidget->addTab(userTab, QString());
+        categoryTab = new QWidget();
+        categoryTab->setObjectName(QStringLiteral("categoryTab"));
+        categoryTab->setEnabled(true);
+        verticalLayout_13 = new QVBoxLayout(categoryTab);
+        verticalLayout_13->setSpacing(6);
+        verticalLayout_13->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_13->setObjectName(QStringLiteral("verticalLayout_13"));
+        verticalLayout_13->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_12 = new QVBoxLayout();
+        verticalLayout_12->setSpacing(6);
+        verticalLayout_12->setObjectName(QStringLiteral("verticalLayout_12"));
+
+        verticalLayout_13->addLayout(verticalLayout_12);
+
+        mainTabWidget->addTab(categoryTab, QString());
+        standardPaymentMethodsTab = new QWidget();
+        standardPaymentMethodsTab->setObjectName(QStringLiteral("standardPaymentMethodsTab"));
+        standardPaymentMethodsTab->setEnabled(true);
+        verticalLayout_11 = new QVBoxLayout(standardPaymentMethodsTab);
+        verticalLayout_11->setSpacing(6);
+        verticalLayout_11->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_11->setObjectName(QStringLiteral("verticalLayout_11"));
+        verticalLayout_11->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_10 = new QVBoxLayout();
+        verticalLayout_10->setSpacing(6);
+        verticalLayout_10->setObjectName(QStringLiteral("verticalLayout_10"));
+
+        verticalLayout_11->addLayout(verticalLayout_10);
+
+        mainTabWidget->addTab(standardPaymentMethodsTab, QString());
+        logoutTab = new QWidget();
+        logoutTab->setObjectName(QStringLiteral("logoutTab"));
+        verticalLayout_8 = new QVBoxLayout(logoutTab);
         verticalLayout_8->setSpacing(6);
         verticalLayout_8->setContentsMargins(11, 11, 11, 11);
         verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
@@ -568,7 +634,7 @@ public:
         abmeldenTabLayout = new QVBoxLayout();
         abmeldenTabLayout->setSpacing(6);
         abmeldenTabLayout->setObjectName(QStringLiteral("abmeldenTabLayout"));
-        abmeldenLabel = new QLabel(abmeldenTab);
+        abmeldenLabel = new QLabel(logoutTab);
         abmeldenLabel->setObjectName(QStringLiteral("abmeldenLabel"));
         abmeldenLabel->setMaximumSize(QSize(16777215, 50));
         abmeldenLabel->setScaledContents(false);
@@ -576,7 +642,7 @@ public:
 
         abmeldenTabLayout->addWidget(abmeldenLabel, 0, Qt::AlignBottom);
 
-        logoutButton = new QPushButton(abmeldenTab);
+        logoutButton = new QPushButton(logoutTab);
         logoutButton->setObjectName(QStringLiteral("logoutButton"));
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
@@ -594,71 +660,74 @@ public:
 
         verticalLayout_8->addLayout(abmeldenTabLayout);
 
-        mainTabWidget->addTab(abmeldenTab, icon8, QString());
+        mainTabWidget->addTab(logoutTab, icon8, QString());
 
         mainLayout->addWidget(mainTabWidget);
 
 
         horizontalLayout->addLayout(mainLayout);
 
-        BenutzerWindow->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(BenutzerWindow);
+        UserWindow->setCentralWidget(centralWidget);
+        menuBar = new QMenuBar(UserWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 800, 21));
-        BenutzerWindow->setMenuBar(menuBar);
-        statusBar = new QStatusBar(BenutzerWindow);
+        UserWindow->setMenuBar(menuBar);
+        statusBar = new QStatusBar(UserWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
-        BenutzerWindow->setStatusBar(statusBar);
+        UserWindow->setStatusBar(statusBar);
 
-        retranslateUi(BenutzerWindow);
+        retranslateUi(UserWindow);
 
-        mainTabWidget->setCurrentIndex(2);
-        transaktionenTabWidget->setCurrentIndex(1);
+        mainTabWidget->setCurrentIndex(6);
+        transaktionenTabWidget->setCurrentIndex(0);
 
 
-        QMetaObject::connectSlotsByName(BenutzerWindow);
+        QMetaObject::connectSlotsByName(UserWindow);
     } // setupUi
 
-    void retranslateUi(QMainWindow *BenutzerWindow)
+    void retranslateUi(QMainWindow *UserWindow)
     {
-        BenutzerWindow->setWindowTitle(QApplication::translate("BenutzerWindow", "BenutzerWindow", 0));
-        zahlungsartLabel->setText(QApplication::translate("BenutzerWindow", "Zahlungsart", 0));
-        kategorieLabel->setText(QApplication::translate("BenutzerWindow", "Kategorie", 0));
-        bisLabel->setText(QApplication::translate("BenutzerWindow", "Bis", 0));
-        vonLabel->setText(QApplication::translate("BenutzerWindow", "Von", 0));
-        editButton->setText(QApplication::translate("BenutzerWindow", "Bearbeiten", 0));
-        deleteButton->setText(QApplication::translate("BenutzerWindow", "Entfernen", 0));
-        transaktionenTabWidget->setTabText(transaktionenTabWidget->indexOf(transaktionenListeTab), QApplication::translate("BenutzerWindow", "\303\234bersicht", 0));
-        amountLabel->setText(QApplication::translate("BenutzerWindow", "Betrag", 0));
-        dateLabel->setText(QApplication::translate("BenutzerWindow", "Datum", 0));
-        categoryLabel->setText(QApplication::translate("BenutzerWindow", "Kategorie", 0));
-        descriptionLabel->setText(QApplication::translate("BenutzerWindow", "Beschreibung", 0));
-        paymethodLabel->setText(QApplication::translate("BenutzerWindow", "Zahlungsart", 0));
-        addButton->setText(QApplication::translate("BenutzerWindow", "Hinzuf\303\274gen", 0));
-        transaktionenTabWidget->setTabText(transaktionenTabWidget->indexOf(transaktionenNeuTab), QApplication::translate("BenutzerWindow", "Neue Transaktion", 0));
-        mainTabWidget->setTabText(mainTabWidget->indexOf(transaktionenTab), QApplication::translate("BenutzerWindow", "Transaktionen", 0));
-        paymethodeditButton->setText(QApplication::translate("BenutzerWindow", "Bearbeiten", 0));
-        paymethoddeleteButton->setText(QApplication::translate("BenutzerWindow", "Entfernen", 0));
-        paymethodLabel_2->setText(QApplication::translate("BenutzerWindow", "Bitte geben sie die Zahlungsart an die sie hinzuf\303\274gen  m\303\266chten", 0));
-        paymethodaddButton->setText(QApplication::translate("BenutzerWindow", "Hinzuf\303\274gen", 0));
-        mainTabWidget->setTabText(mainTabWidget->indexOf(zahlungsartenTab), QApplication::translate("BenutzerWindow", "Zahlungsarten", 0));
-        settingsnameLabel->setText(QApplication::translate("BenutzerWindow", "Name", 0));
-        settingsbirthLabel->setText(QApplication::translate("BenutzerWindow", "Geburtsdatum", 0));
-        settingsoldpwLabel->setText(QApplication::translate("BenutzerWindow", "Altes Passwort", 0));
-        settingsnewpwLabel->setText(QApplication::translate("BenutzerWindow", "Neues Passwort", 0));
-        settingsnewpwwdhLabel->setText(QApplication::translate("BenutzerWindow", "Neues Passwort wiederholen", 0));
+        UserWindow->setWindowTitle(QApplication::translate("UserWindow", "<User>", 0));
+        zahlungsartLabel->setText(QApplication::translate("UserWindow", "Zahlungsart", 0));
+        kategorieLabel->setText(QApplication::translate("UserWindow", "Kategorie", 0));
+        bisLabel->setText(QApplication::translate("UserWindow", "Bis", 0));
+        vonLabel->setText(QApplication::translate("UserWindow", "Von", 0));
+        editButton->setText(QApplication::translate("UserWindow", "Bearbeiten", 0));
+        deleteButton->setText(QApplication::translate("UserWindow", "Entfernen", 0));
+        transaktionenTabWidget->setTabText(transaktionenTabWidget->indexOf(transaktionenListeTab), QApplication::translate("UserWindow", "\303\234bersicht", 0));
+        amountLabel->setText(QApplication::translate("UserWindow", "Betrag", 0));
+        dateLabel->setText(QApplication::translate("UserWindow", "Datum", 0));
+        categoryLabel->setText(QApplication::translate("UserWindow", "Kategorie", 0));
+        descriptionLabel->setText(QApplication::translate("UserWindow", "Beschreibung", 0));
+        paymethodLabel->setText(QApplication::translate("UserWindow", "Zahlungsart", 0));
+        addButton->setText(QApplication::translate("UserWindow", "Hinzuf\303\274gen", 0));
+        transaktionenTabWidget->setTabText(transaktionenTabWidget->indexOf(transaktionenNeuTab), QApplication::translate("UserWindow", "Neue Transaktion", 0));
+        mainTabWidget->setTabText(mainTabWidget->indexOf(transaktionenTab), QApplication::translate("UserWindow", "Transaktionen", 0));
+        paymethodeditButton->setText(QApplication::translate("UserWindow", "Bearbeiten", 0));
+        paymethoddeleteButton->setText(QApplication::translate("UserWindow", "Entfernen", 0));
+        paymethodLabel_2->setText(QApplication::translate("UserWindow", "Bitte geben sie die Zahlungsart an die sie hinzuf\303\274gen  m\303\266chten", 0));
+        paymethodaddButton->setText(QApplication::translate("UserWindow", "Hinzuf\303\274gen", 0));
+        mainTabWidget->setTabText(mainTabWidget->indexOf(zahlungsartenTab), QApplication::translate("UserWindow", "Zahlungsarten", 0));
+        settingsnameLabel->setText(QApplication::translate("UserWindow", "Name", 0));
+        settingsbirthLabel->setText(QApplication::translate("UserWindow", "Geburtsdatum", 0));
+        settingsoldpwLabel->setText(QApplication::translate("UserWindow", "Altes Passwort", 0));
+        settingsnewpwLabel->setText(QApplication::translate("UserWindow", "Neues Passwort", 0));
+        settingsnewpwwdhLabel->setText(QApplication::translate("UserWindow", "Neues Passwort wiederholen", 0));
         label_12->setText(QString());
-        settingsacceptButton->setText(QApplication::translate("BenutzerWindow", "Best\303\244tigen", 0));
-        mainTabWidget->setTabText(mainTabWidget->indexOf(einstellungenTab), QApplication::translate("BenutzerWindow", "Einstellungen", 0));
-        abmeldenLabel->setText(QApplication::translate("BenutzerWindow", "Benutzer <Benutzer> wirklich abmelden?", 0));
-        logoutButton->setText(QApplication::translate("BenutzerWindow", "Abmelden", 0));
-        mainTabWidget->setTabText(mainTabWidget->indexOf(abmeldenTab), QApplication::translate("BenutzerWindow", "Abmelden", 0));
+        settingsacceptButton->setText(QApplication::translate("UserWindow", "Best\303\244tigen", 0));
+        mainTabWidget->setTabText(mainTabWidget->indexOf(einstellungenTab), QApplication::translate("UserWindow", "Einstellungen", 0));
+        mainTabWidget->setTabText(mainTabWidget->indexOf(userTab), QApplication::translate("UserWindow", "Benutzer", 0));
+        mainTabWidget->setTabText(mainTabWidget->indexOf(categoryTab), QApplication::translate("UserWindow", "Kategorien", 0));
+        mainTabWidget->setTabText(mainTabWidget->indexOf(standardPaymentMethodsTab), QApplication::translate("UserWindow", "Standardzahlungsarten", 0));
+        abmeldenLabel->setText(QApplication::translate("UserWindow", "Benutzer <Benutzer> wirklich abmelden?", 0));
+        logoutButton->setText(QApplication::translate("UserWindow", "Abmelden", 0));
+        mainTabWidget->setTabText(mainTabWidget->indexOf(logoutTab), QApplication::translate("UserWindow", "Abmelden", 0));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class BenutzerWindow: public Ui_BenutzerWindow {};
+    class UserWindow: public Ui_UserWindow {};
 } // namespace Ui
 
 QT_END_NAMESPACE

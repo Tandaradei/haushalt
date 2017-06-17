@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>BenutzerWindow</class>
- <widget class="QMainWindow" name="BenutzerWindow">
+ <class>UserWindow</class>
+ <widget class="QMainWindow" name="UserWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>BenutzerWindow</string>
+   <string>&lt;User&gt;</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -37,11 +37,23 @@
       </property>
       <item>
        <widget class="QTabWidget" name="mainTabWidget">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="font">
+         <font>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
         <property name="autoFillBackground">
          <bool>false</bool>
         </property>
+        <property name="tabShape">
+         <enum>QTabWidget::Rounded</enum>
+        </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>6</number>
         </property>
         <property name="elideMode">
          <enum>Qt::ElideLeft</enum>
@@ -90,7 +102,7 @@
             <item>
              <widget class="QTabWidget" name="transaktionenTabWidget">
               <property name="currentIndex">
-               <number>1</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="transaktionenListeTab">
                <property name="autoFillBackground">
@@ -865,7 +877,92 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="abmeldenTab">
+        <widget class="QWidget" name="userTab">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="font">
+          <font>
+           <family>MS Shell Dlg 2</family>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <attribute name="title">
+          <string>Benutzer</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_9">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_7"/>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="categoryTab">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <attribute name="title">
+          <string>Kategorien</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_13">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_12"/>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="standardPaymentMethodsTab">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <attribute name="title">
+          <string>Standardzahlungsarten</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_11">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_10"/>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="logoutTab">
          <attribute name="icon">
           <iconset>
            <normaloff>resources/exit.png</normaloff>resources/exit.png</iconset>

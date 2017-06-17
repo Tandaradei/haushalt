@@ -18,6 +18,7 @@ public:
 
     // TODO change category and payMethod to reference on Category/PayMethod objects and use .name for table entry
     void addTransactionEntry(QDate date, float amount, QString description, QString category, QString payMethod);
+    void enableAdminTabs();
 
 private slots:
     void handleLogoutButton();

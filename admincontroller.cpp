@@ -6,7 +6,7 @@ AdminController::AdminController(MainController& mainController, DbManager &dbMa
     :UserController(mainController, dbManager)
     ,adminDAO(dbManager)
 {
-
+    userWindow.enableAdminTabs();
 }
 
 AdminController::~AdminController()
@@ -16,6 +16,5 @@ AdminController::~AdminController()
 
 void AdminController::start()
 {
-
+    userWindow.show();
 }
-

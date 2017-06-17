@@ -18,8 +18,8 @@ public:
 protected:
     MainController& mainController;
     UserDAO userDAO;
+    UserWindow userWindow;
 
 private:
-    UserWindow userWindow;
 };
 

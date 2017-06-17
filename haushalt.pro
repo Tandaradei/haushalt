@@ -37,7 +37,8 @@ HEADERS  += \
     admincontroller.h \
     startdao.h \
     userdao.h \
-    admindao.h
+    admindao.h \
+    user.h
 
 FORMS    += \
     userwindow.ui \
