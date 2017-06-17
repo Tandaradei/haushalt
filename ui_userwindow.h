@@ -678,7 +678,7 @@ public:
 
         retranslateUi(UserWindow);
 
-        mainTabWidget->setCurrentIndex(6);
+        mainTabWidget->setCurrentIndex(0);
         transaktionenTabWidget->setCurrentIndex(0);
 
 

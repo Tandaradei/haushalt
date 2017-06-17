@@ -5,6 +5,7 @@
 #include <memory>
 
 class User;
+class Transaction;
 
 class MainController;
 class DbManager;
@@ -23,6 +24,7 @@ protected:
     UserDAO userDAO;
     UserWindow userWindow;
     std::shared_ptr<User> user;
+    std::list<std::shared_ptr<Transaction>> transactions;
 private:
 };
 

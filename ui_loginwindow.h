@@ -119,7 +119,9 @@ public:
     {
         LoginWindow->setWindowTitle(QApplication::translate("LoginWindow", "Login", 0));
         emailLabel->setText(QApplication::translate("LoginWindow", "E-Mail", 0));
+        emailField->setText(QString());
         passwordLabel->setText(QApplication::translate("LoginWindow", "Passwort", 0));
+        passwordField->setText(QString());
         errorLabel->setText(QString());
         loginButton->setText(QApplication::translate("LoginWindow", "Login", 0));
     } // retranslateUi

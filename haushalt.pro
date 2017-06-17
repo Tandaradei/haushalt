@@ -38,7 +38,8 @@ HEADERS  += \
     startdao.h \
     userdao.h \
     admindao.h \
-    user.h
+    user.h \
+    transaction.h
 
 FORMS    += \
     userwindow.ui \
