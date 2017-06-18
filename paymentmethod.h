@@ -1,0 +1,5 @@
+#ifndef PAYMENTMETHOD
+#define PAYMENTMETHOD
+
+#endif // PAYMENTMETHOD
+
