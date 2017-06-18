@@ -27,8 +27,12 @@ protected:
     UserDAO userDAO;
     UserWindow userWindow;
     std::shared_ptr<User> user;
-    std::list<std::shared_ptr<Transaction>> transactions;
+    std::shared_ptr<std::list<std::shared_ptr<Category>>> categories;
+    std::shared_ptr<std::list<std::shared_ptr<PaymentMethod>>> paymentMethods;
+    std::shared_ptr<std::list<std::shared_ptr<Transaction>>> transactions;
 private:
+    void loadCategories();
+    void loadPaymentMethods();
     void loadTransactions();
     void loadSettings();
 };

@@ -162,13 +162,6 @@
                     <property name="bottomMargin">
                      <number>0</number>
                     </property>
-                    <item row="0" column="3">
-                     <widget class="QLabel" name="zahlungsartLabel">
-                      <property name="text">
-                       <string>Zahlungsart</string>
-                      </property>
-                     </widget>
-                    </item>
                     <item row="1" column="0">
                      <widget class="QDateEdit" name="vonDate">
                       <property name="calendarPopup">
@@ -183,6 +176,16 @@
                       </property>
                      </widget>
                     </item>
+                    <item row="0" column="3">
+                     <widget class="QLabel" name="zahlungsartLabel">
+                      <property name="text">
+                       <string>Zahlungsart</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="3">
+                     <widget class="QComboBox" name="paymentMethodsComboBox"/>
+                    </item>
                     <item row="0" column="1">
                      <widget class="QLabel" name="bisLabel">
                       <property name="text">
@@ -190,18 +193,15 @@
                       </property>
                      </widget>
                     </item>
-                    <item row="1" column="2">
-                     <widget class="QComboBox" name="kategorieComboBox"/>
-                    </item>
-                    <item row="1" column="3">
-                     <widget class="QComboBox" name="zahlungsartComboBox"/>
-                    </item>
                     <item row="0" column="0">
                      <widget class="QLabel" name="vonLabel">
                       <property name="text">
                        <string>Von</string>
                       </property>
                      </widget>
+                    </item>
+                    <item row="1" column="2">
+                     <widget class="QComboBox" name="categoriesComboBox"/>
                     </item>
                     <item row="1" column="1">
                      <widget class="QDateEdit" name="bisDate">
@@ -214,6 +214,17 @@
                         <month>6</month>
                         <day>6</day>
                        </date>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="4">
+                     <widget class="QPushButton" name="filterTransactionButton">
+                      <property name="text">
+                       <string>Filter anwenden</string>
+                      </property>
+                      <property name="icon">
+                       <iconset>
+                        <normaloff>resources/settings.png</normaloff>resources/settings.png</iconset>
                       </property>
                      </widget>
                     </item>
@@ -668,7 +679,7 @@
                </layout>
               </item>
               <item row="0" column="0">
-               <widget class="QListView" name="listView"/>
+               <widget class="QListView" name="paymentMethodsList"/>
               </item>
              </layout>
             </item>

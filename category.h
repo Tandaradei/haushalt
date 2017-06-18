@@ -1,5 +1,9 @@
-#ifndef CATEGORY
-#define CATEGORY
+#pragma once
 
-#endif // CATEGORY
+#include <QString>
 
+struct Category
+{
+    size_t ID;
+    QString Name;
+};

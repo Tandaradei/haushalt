@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QMainWindow>
+#include <QStringListModel>
+
 
 namespace Ui {
 class UserWindow;
@@ -18,6 +20,9 @@ public:
 
     // TODO change category and payMethod to reference on Category/PayMethod objects and use .name for table entry
     void addTransactionEntry(QDate date, float amount, QString description, QString category, QString payMethod);
+    void addCategory(const QString& name);
+    void addPaymentMethod(const QString& name);
+
     void enableAdminTabs();
     void setSettings(QString name, QDate birthdate);
 
@@ -27,9 +32,12 @@ private slots:
 private:
     void initTable();
 
+
+
     UserController& userController;
 
     Ui::UserWindow *ui;
     size_t transactionEntriesCount;
+    QStringListModel paymentMethodsModel;
 };
 

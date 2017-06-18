@@ -1,5 +1,9 @@
-#ifndef PAYMENTMETHOD
-#define PAYMENTMETHOD
+#pragma once
 
-#endif // PAYMENTMETHOD
+#include <QString>
 
+struct PaymentMethod
+{
+    size_t ID;
+    QString Name;
+};

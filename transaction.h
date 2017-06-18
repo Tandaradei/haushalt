@@ -2,17 +2,17 @@
 
 #include <memory>
 #include "user.h"
-//#include "category.h"
-//#include "paymentmethod.h"
+
+class Category;
+class PaymentMethod;
 
 struct Transaction
 {
 public:
-    size_t TID;
-    std::shared_ptr<User> User;
+    size_t ID;
     int Amount; // in euro cents
     QString Description;
     QDate Date;
-    // std::shared_ptr<Category> Category;
-    // std::shared_ptr<PaymentMethod> PaymentMethod;
+    std::shared_ptr<Category> Category;
+    std::shared_ptr<PaymentMethod> PaymentMethod;
 };

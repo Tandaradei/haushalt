@@ -52,14 +52,15 @@ public:
     QVBoxLayout *verticalLayout;
     QVBoxLayout *listeLayout;
     QGridLayout *filterLayout;
-    QLabel *zahlungsartLabel;
     QDateEdit *vonDate;
     QLabel *kategorieLabel;
+    QLabel *zahlungsartLabel;
+    QComboBox *paymentMethodsComboBox;
     QLabel *bisLabel;
-    QComboBox *kategorieComboBox;
-    QComboBox *zahlungsartComboBox;
     QLabel *vonLabel;
+    QComboBox *categoriesComboBox;
     QDateEdit *bisDate;
+    QPushButton *filterTransactionButton;
     QTableWidget *transaktionenTable;
     QHBoxLayout *optionsLayout;
     QPushButton *editButton;
@@ -88,7 +89,7 @@ public:
     QGridLayout *gridLayout_3;
     QPushButton *paymethodeditButton;
     QPushButton *paymethoddeleteButton;
-    QListView *listView;
+    QListView *paymentMethodsList;
     QGridLayout *gridLayout;
     QLineEdit *paymethodField;
     QLabel *paymethodLabel_2;
@@ -186,11 +187,6 @@ public:
         filterLayout->setObjectName(QStringLiteral("filterLayout"));
         filterLayout->setSizeConstraint(QLayout::SetNoConstraint);
         filterLayout->setContentsMargins(0, 2, 0, 0);
-        zahlungsartLabel = new QLabel(transaktionenListeTab);
-        zahlungsartLabel->setObjectName(QStringLiteral("zahlungsartLabel"));
-
-        filterLayout->addWidget(zahlungsartLabel, 0, 3, 1, 1);
-
         vonDate = new QDateEdit(transaktionenListeTab);
         vonDate->setObjectName(QStringLiteral("vonDate"));
         vonDate->setCalendarPopup(true);
@@ -202,25 +198,30 @@ public:
 
         filterLayout->addWidget(kategorieLabel, 0, 2, 1, 1);
 
+        zahlungsartLabel = new QLabel(transaktionenListeTab);
+        zahlungsartLabel->setObjectName(QStringLiteral("zahlungsartLabel"));
+
+        filterLayout->addWidget(zahlungsartLabel, 0, 3, 1, 1);
+
+        paymentMethodsComboBox = new QComboBox(transaktionenListeTab);
+        paymentMethodsComboBox->setObjectName(QStringLiteral("paymentMethodsComboBox"));
+
+        filterLayout->addWidget(paymentMethodsComboBox, 1, 3, 1, 1);
+
         bisLabel = new QLabel(transaktionenListeTab);
         bisLabel->setObjectName(QStringLiteral("bisLabel"));
 
         filterLayout->addWidget(bisLabel, 0, 1, 1, 1);
 
-        kategorieComboBox = new QComboBox(transaktionenListeTab);
-        kategorieComboBox->setObjectName(QStringLiteral("kategorieComboBox"));
-
-        filterLayout->addWidget(kategorieComboBox, 1, 2, 1, 1);
-
-        zahlungsartComboBox = new QComboBox(transaktionenListeTab);
-        zahlungsartComboBox->setObjectName(QStringLiteral("zahlungsartComboBox"));
-
-        filterLayout->addWidget(zahlungsartComboBox, 1, 3, 1, 1);
-
         vonLabel = new QLabel(transaktionenListeTab);
         vonLabel->setObjectName(QStringLiteral("vonLabel"));
 
         filterLayout->addWidget(vonLabel, 0, 0, 1, 1);
+
+        categoriesComboBox = new QComboBox(transaktionenListeTab);
+        categoriesComboBox->setObjectName(QStringLiteral("categoriesComboBox"));
+
+        filterLayout->addWidget(categoriesComboBox, 1, 2, 1, 1);
 
         bisDate = new QDateEdit(transaktionenListeTab);
         bisDate->setObjectName(QStringLiteral("bisDate"));
@@ -228,6 +229,14 @@ public:
         bisDate->setDate(QDate(2017, 6, 6));
 
         filterLayout->addWidget(bisDate, 1, 1, 1, 1);
+
+        filterTransactionButton = new QPushButton(transaktionenListeTab);
+        filterTransactionButton->setObjectName(QStringLiteral("filterTransactionButton"));
+        QIcon icon;
+        icon.addFile(QStringLiteral("resources/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
+        filterTransactionButton->setIcon(icon);
+
+        filterLayout->addWidget(filterTransactionButton, 1, 4, 1, 1);
 
 
         listeLayout->addLayout(filterLayout);
@@ -258,9 +267,9 @@ public:
         editButton->setObjectName(QStringLiteral("editButton"));
         editButton->setMaximumSize(QSize(100, 25));
         editButton->setLayoutDirection(Qt::LeftToRight);
-        QIcon icon;
-        icon.addFile(QStringLiteral("resources/edit.png"), QSize(), QIcon::Normal, QIcon::Off);
-        editButton->setIcon(icon);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral("resources/edit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        editButton->setIcon(icon1);
         editButton->setFlat(false);
 
         optionsLayout->addWidget(editButton);
@@ -268,9 +277,9 @@ public:
         deleteButton = new QPushButton(transaktionenListeTab);
         deleteButton->setObjectName(QStringLiteral("deleteButton"));
         deleteButton->setMaximumSize(QSize(100, 25));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral("resources/remove.png"), QSize(), QIcon::Normal, QIcon::Off);
-        deleteButton->setIcon(icon1);
+        QIcon icon2;
+        icon2.addFile(QStringLiteral("resources/remove.png"), QSize(), QIcon::Normal, QIcon::Off);
+        deleteButton->setIcon(icon2);
 
         optionsLayout->addWidget(deleteButton);
 
@@ -280,9 +289,9 @@ public:
 
         verticalLayout->addLayout(listeLayout);
 
-        QIcon icon2;
-        icon2.addFile(QStringLiteral("resources/overview.png"), QSize(), QIcon::Normal, QIcon::Off);
-        transaktionenTabWidget->addTab(transaktionenListeTab, icon2, QString());
+        QIcon icon3;
+        icon3.addFile(QStringLiteral("resources/overview.png"), QSize(), QIcon::Normal, QIcon::Off);
+        transaktionenTabWidget->addTab(transaktionenListeTab, icon3, QString());
         transaktionenNeuTab = new QWidget();
         transaktionenNeuTab->setObjectName(QStringLiteral("transaktionenNeuTab"));
         verticalLayout_4 = new QVBoxLayout(transaktionenNeuTab);
@@ -365,9 +374,9 @@ public:
         addButton = new QPushButton(transaktionenNeuTab);
         addButton->setObjectName(QStringLiteral("addButton"));
         addButton->setEnabled(false);
-        QIcon icon3;
-        icon3.addFile(QStringLiteral("resources/add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addButton->setIcon(icon3);
+        QIcon icon4;
+        icon4.addFile(QStringLiteral("resources/add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addButton->setIcon(icon4);
 
         formLayout->setWidget(7, QFormLayout::FieldRole, addButton);
 
@@ -385,16 +394,16 @@ public:
 
         verticalLayout_4->addLayout(transaktionenNeuTabLayout);
 
-        transaktionenTabWidget->addTab(transaktionenNeuTab, icon3, QString());
+        transaktionenTabWidget->addTab(transaktionenNeuTab, icon4, QString());
 
         transaktionenTabLayout->addWidget(transaktionenTabWidget);
 
 
         verticalLayout_3->addLayout(transaktionenTabLayout);
 
-        QIcon icon4;
-        icon4.addFile(QStringLiteral("resources/transactions.png"), QSize(), QIcon::Normal, QIcon::Off);
-        mainTabWidget->addTab(transaktionenTab, icon4, QString());
+        QIcon icon5;
+        icon5.addFile(QStringLiteral("resources/transactions.png"), QSize(), QIcon::Normal, QIcon::Off);
+        mainTabWidget->addTab(transaktionenTab, icon5, QString());
         zahlungsartenTab = new QWidget();
         zahlungsartenTab->setObjectName(QStringLiteral("zahlungsartenTab"));
         verticalLayout_2 = new QVBoxLayout(zahlungsartenTab);
@@ -413,24 +422,24 @@ public:
         paymethodeditButton = new QPushButton(zahlungsartenTab);
         paymethodeditButton->setObjectName(QStringLiteral("paymethodeditButton"));
         paymethodeditButton->setMaximumSize(QSize(100, 16777215));
-        paymethodeditButton->setIcon(icon);
+        paymethodeditButton->setIcon(icon1);
 
         gridLayout_3->addWidget(paymethodeditButton, 0, 0, 1, 1);
 
         paymethoddeleteButton = new QPushButton(zahlungsartenTab);
         paymethoddeleteButton->setObjectName(QStringLiteral("paymethoddeleteButton"));
         paymethoddeleteButton->setMaximumSize(QSize(100, 16777215));
-        paymethoddeleteButton->setIcon(icon1);
+        paymethoddeleteButton->setIcon(icon2);
 
         gridLayout_3->addWidget(paymethoddeleteButton, 0, 1, 1, 1);
 
 
         gridLayout_2->addLayout(gridLayout_3, 1, 0, 1, 1);
 
-        listView = new QListView(zahlungsartenTab);
-        listView->setObjectName(QStringLiteral("listView"));
+        paymentMethodsList = new QListView(zahlungsartenTab);
+        paymentMethodsList->setObjectName(QStringLiteral("paymentMethodsList"));
 
-        gridLayout_2->addWidget(listView, 0, 0, 1, 1);
+        gridLayout_2->addWidget(paymentMethodsList, 0, 0, 1, 1);
 
 
         horizontalLayout_2->addLayout(gridLayout_2);
@@ -452,7 +461,7 @@ public:
         paymethodaddButton = new QPushButton(zahlungsartenTab);
         paymethodaddButton->setObjectName(QStringLiteral("paymethodaddButton"));
         paymethodaddButton->setMaximumSize(QSize(100, 16777215));
-        paymethodaddButton->setIcon(icon3);
+        paymethodaddButton->setIcon(icon4);
 
         gridLayout->addWidget(paymethodaddButton, 3, 0, 1, 1, Qt::AlignHCenter|Qt::AlignTop);
 
@@ -465,9 +474,9 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_2);
 
-        QIcon icon5;
-        icon5.addFile(QStringLiteral("resources/paymethod.png"), QSize(), QIcon::Normal, QIcon::Off);
-        mainTabWidget->addTab(zahlungsartenTab, icon5, QString());
+        QIcon icon6;
+        icon6.addFile(QStringLiteral("resources/paymethod.png"), QSize(), QIcon::Normal, QIcon::Off);
+        mainTabWidget->addTab(zahlungsartenTab, icon6, QString());
         einstellungenTab = new QWidget();
         einstellungenTab->setObjectName(QStringLiteral("einstellungenTab"));
         verticalLayout_6 = new QVBoxLayout(einstellungenTab);
@@ -552,9 +561,9 @@ public:
         settingsNewPasswordButton = new QPushButton(einstellungenTab);
         settingsNewPasswordButton->setObjectName(QStringLiteral("settingsNewPasswordButton"));
         settingsNewPasswordButton->setMaximumSize(QSize(100, 16777215));
-        QIcon icon6;
-        icon6.addFile(QStringLiteral("resources/check.png"), QSize(), QIcon::Normal, QIcon::Off);
-        settingsNewPasswordButton->setIcon(icon6);
+        QIcon icon7;
+        icon7.addFile(QStringLiteral("resources/check.png"), QSize(), QIcon::Normal, QIcon::Off);
+        settingsNewPasswordButton->setIcon(icon7);
 
         formLayout_2->setWidget(10, QFormLayout::FieldRole, settingsNewPasswordButton);
 
@@ -577,9 +586,7 @@ public:
 
         verticalLayout_6->addLayout(verticalLayout_5);
 
-        QIcon icon7;
-        icon7.addFile(QStringLiteral("resources/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
-        mainTabWidget->addTab(einstellungenTab, icon7, QString());
+        mainTabWidget->addTab(einstellungenTab, icon, QString());
         userTab = new QWidget();
         userTab->setObjectName(QStringLiteral("userTab"));
         userTab->setEnabled(true);
@@ -695,10 +702,11 @@ public:
     void retranslateUi(QMainWindow *UserWindow)
     {
         UserWindow->setWindowTitle(QApplication::translate("UserWindow", "<User>", 0));
-        zahlungsartLabel->setText(QApplication::translate("UserWindow", "Zahlungsart", 0));
         kategorieLabel->setText(QApplication::translate("UserWindow", "Kategorie", 0));
+        zahlungsartLabel->setText(QApplication::translate("UserWindow", "Zahlungsart", 0));
         bisLabel->setText(QApplication::translate("UserWindow", "Bis", 0));
         vonLabel->setText(QApplication::translate("UserWindow", "Von", 0));
+        filterTransactionButton->setText(QApplication::translate("UserWindow", "Filter anwenden", 0));
         editButton->setText(QApplication::translate("UserWindow", "Bearbeiten", 0));
         deleteButton->setText(QApplication::translate("UserWindow", "Entfernen", 0));
         transaktionenTabWidget->setTabText(transaktionenTabWidget->indexOf(transaktionenListeTab), QApplication::translate("UserWindow", "\303\234bersicht", 0));

@@ -7,6 +7,7 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
     ,userController(userController)
     ,ui(new Ui::UserWindow)
     ,transactionEntriesCount(0)
+    ,paymentMethodsModel()
 {
     ui->setupUi(this);
     connect(ui->logoutButton, SIGNAL (released()), this, SLOT (handleLogoutButton()));
@@ -15,6 +16,7 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
     ui->mainTabWidget->removeTab(4);
     ui->mainTabWidget->removeTab(3);
 
+    ui->paymentMethodsList->setModel(&paymentMethodsModel);
 
     initTable();
 }
@@ -24,7 +26,7 @@ UserWindow::~UserWindow()
     delete ui;
 }
 
-// TODO change category and payMethod to reference on Category/PayMethod objects and use .name for table entry
+// TODO change category and payMethod to reference on Category/PayMethod objects and use .Name for table entry
 void UserWindow::addTransactionEntry(QDate date, float amount, QString description, QString category, QString payMethod)
 {
     ui->transaktionenTable->setItem(transactionEntriesCount, 0, new QTableWidgetItem(date.toString("yyyy-MM-dd")));
@@ -33,22 +35,43 @@ void UserWindow::addTransactionEntry(QDate date, float amount, QString descripti
     ui->transaktionenTable->setItem(transactionEntriesCount, 3, new QTableWidgetItem(category));
     ui->transaktionenTable->setItem(transactionEntriesCount, 4, new QTableWidgetItem(payMethod));
 
+    // color amount field (red if < 0; green if >= 0)
     ui->transaktionenTable->item(transactionEntriesCount, 1)->setBackgroundColor(amount < 0 ? QColor(255,0,0) : QColor(0, 255, 0));
 
     ++transactionEntriesCount;
 }
 
+void UserWindow::addCategory(const QString& name)
+{
+    ui->categoriesComboBox->addItem(name);
+}
+
+void UserWindow::addPaymentMethod(const QString &name)
+{
+    ui->paymentMethodsComboBox->addItem(name);
+
+    paymentMethodsModel.insertRow(paymentMethodsModel.rowCount());
+    QModelIndex index = paymentMethodsModel.index(paymentMethodsModel.rowCount()-1);
+    paymentMethodsModel.setData(index, name);
+}
+
 void UserWindow::enableAdminTabs()
 {
+    // remove logout tab
     ui->mainTabWidget->removeTab(3);
-    ui->mainTabWidget->addTab(ui->userTab, "Benutzer");
-    ui->mainTabWidget->addTab(ui->categoryTab, "Kategorien");
-    ui->mainTabWidget->addTab(ui->standardPaymentMethodsTab, "Standardzahlungsarten");
-    ui->mainTabWidget->addTab(ui->logoutTab, "Abmelden");
+
+    // add admin tabs with icons
+    ui->mainTabWidget->addTab(ui->userTab, QIcon(QString("resources/user.png")), "Benutzer");
+    ui->mainTabWidget->addTab(ui->categoryTab, QIcon(QString("resources/category.png")), "Kategorien");
+    ui->mainTabWidget->addTab(ui->standardPaymentMethodsTab, QIcon(QString("resources/paymethod.png")), "Standardzahlungsarten");
+
+    // add logout tab behind
+    ui->mainTabWidget->addTab(ui->logoutTab, QIcon(QString("resources/exit.png")), "Abmelden");
 }
 
 void UserWindow::setSettings(QString name, QDate birthdate)
 {
+    // prefill settings fields
     ui->settingsnameField->setText(name);
     ui->settingsBirthdateField->setDate(birthdate);
 }

@@ -39,7 +39,9 @@ HEADERS  += \
     userdao.h \
     admindao.h \
     user.h \
-    transaction.h
+    transaction.h \
+    category.h \
+    paymentmethod.h
 
 FORMS    += \
     userwindow.ui \
