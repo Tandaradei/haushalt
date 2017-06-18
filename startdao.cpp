@@ -70,7 +70,7 @@ std::shared_ptr<User> StartDAO::getUser(const QString &email, const QString &pas
         if(query.next())
         {
             user = std::make_shared<User>();
-            user->BID = query.value(0).toInt();
+            user->ID = query.value(0).toInt();
             user->Email = query.value(1).toString();
             // no password
             user->Name = query.value(3).toString();

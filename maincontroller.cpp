@@ -28,8 +28,8 @@ int MainController::exec()
 
 void MainController::onLoggedIn(std::shared_ptr<User> user)
 {
-    // user->BID == 1 -> admin
-    if(user->BID == 1)
+    // user->ID == 1 -> admin
+    if(user->ID == 1)
     {
         adminController = std::make_shared<AdminController>(*this, dbManager, user);
         adminController->start();

@@ -6,7 +6,7 @@
 struct User
 {
 public:
-    size_t BID; // BID >= 0
+    size_t ID;
     QString Email;
     // No password
     QString Name;
