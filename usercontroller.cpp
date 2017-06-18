@@ -41,9 +41,12 @@ void UserController::onLogout()
 void UserController::loadCategories()
 {
     categories = userDAO.loadCategories();
-    for(auto categoriesIt = categories->begin(), categoriesEnd = categories->end(); categoriesIt != categoriesEnd; ++categoriesIt)
+    if(categories != nullptr)
     {
-        userWindow.addCategory((*categoriesIt)->Name);
+        for(auto categoriesIt = categories->begin(), categoriesEnd = categories->end(); categoriesIt != categoriesEnd; ++categoriesIt)
+        {
+            userWindow.addCategory((*categoriesIt)->Name);
+        }
     }
 
 }
@@ -51,9 +54,12 @@ void UserController::loadCategories()
 void UserController::loadPaymentMethods()
 {
     paymentMethods = userDAO.loadPaymentMethods();
-    for(auto paymentMethodIt = paymentMethods->begin(), paymentMethodEnd = paymentMethods->end(); paymentMethodIt != paymentMethodEnd; ++paymentMethodIt)
+    if(paymentMethods != nullptr)
     {
-        userWindow.addPaymentMethod((*paymentMethodIt)->Name);
+        for(auto paymentMethodIt = paymentMethods->begin(), paymentMethodEnd = paymentMethods->end(); paymentMethodIt != paymentMethodEnd; ++paymentMethodIt)
+        {
+            userWindow.addPaymentMethod((*paymentMethodIt)->Name);
+        }
     }
 }
 
@@ -65,8 +71,8 @@ void UserController::loadTransactions()
         userWindow.addTransactionEntry((*transactionsIt)->Date
                                        , ((float)(*transactionsIt)->Amount)/100.0f
                                        , (*transactionsIt)->Description
-                                       , (*transactionsIt)->Category->Name
-                                       , (*transactionsIt)->PaymentMethod->Name);
+                                       , (*transactionsIt)->Category != nullptr ? (*transactionsIt)->Category->Name : QString()
+                                       , (*transactionsIt)->PaymentMethod != nullptr ? (*transactionsIt)->PaymentMethod->Name : QString());
     }
 }
 

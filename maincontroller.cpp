@@ -44,7 +44,7 @@ void MainController::onLoggedIn(std::shared_ptr<User> user)
 
 void MainController::close()
 {
-
+    application.quit();
 }
 
 
