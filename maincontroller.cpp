@@ -6,7 +6,7 @@
 
 MainController::MainController(int argc, char *argv[])
     :application(argc, argv)
-    ,dbManager("haushalt.db")
+    ,dbManager("C:\\Users\\PH\\Desktop\\SE\\Git\\haushalt3\\haushalt\\haushalt.db")
     ,startController()
     ,userController()
     ,adminController()

@@ -53,7 +53,7 @@
          <enum>QTabWidget::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>3</number>
         </property>
         <property name="elideMode">
          <enum>Qt::ElideLeft</enum>
@@ -932,7 +932,314 @@
            <number>0</number>
           </property>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_7"/>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <widget class="QTabWidget" name="usertabWidget">
+              <property name="currentIndex">
+               <number>1</number>
+              </property>
+              <widget class="QWidget" name="useroverviewTab_2">
+               <attribute name="title">
+                <string>Nutzerübersicht</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_23">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_22">
+                  <item>
+                   <widget class="QTableWidget" name="userTable_2">
+                    <property name="verticalScrollBarPolicy">
+                     <enum>Qt::ScrollBarAlwaysOn</enum>
+                    </property>
+                    <property name="horizontalScrollBarPolicy">
+                     <enum>Qt::ScrollBarAsNeeded</enum>
+                    </property>
+                    <property name="rowCount">
+                     <number>100</number>
+                    </property>
+                    <property name="columnCount">
+                     <number>3</number>
+                    </property>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <column/>
+                    <column/>
+                    <column/>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignHCenter">
+                   <widget class="QLabel" name="userdelLabel_2">
+                    <property name="text">
+                     <string>Bitte markieren sie die User die gelöscht werden sollen</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignHCenter">
+                   <widget class="QPushButton" name="userdelButton_2">
+                    <property name="maximumSize">
+                     <size>
+                      <width>100</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Löschen</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="useraddTab_2">
+               <attribute name="title">
+                <string>Nutzer hinzufügen</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_26">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_24">
+                  <item>
+                   <layout class="QGridLayout" name="gridLayout_11">
+                    <item row="1" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+                     <widget class="QLabel" name="useraddpwLabel_2">
+                      <property name="text">
+                       <string>Passwort</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="0" alignment="Qt::AlignHCenter|Qt::AlignBottom">
+                     <widget class="QLabel" name="useraddemailLabel_2">
+                      <property name="text">
+                       <string>E-Mail</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1" alignment="Qt::AlignLeft|Qt::AlignBottom">
+                     <widget class="QLineEdit" name="useraddemailField_2">
+                      <property name="maximumSize">
+                       <size>
+                        <width>300</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1" alignment="Qt::AlignLeft|Qt::AlignVCenter">
+                     <widget class="QLineEdit" name="useraddpwField_2">
+                      <property name="maximumSize">
+                       <size>
+                        <width>300</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QVBoxLayout" name="verticalLayout_25">
+                    <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+                     <widget class="QPushButton" name="useraddconfButton_2">
+                      <property name="maximumSize">
+                       <size>
+                        <width>100</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string>Bestätigen</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="userpwresetTab">
+               <attribute name="title">
+                <string>Nutzer Passwort zurücksetzen</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_29">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_27">
+                  <item>
+                   <layout class="QGridLayout" name="gridLayout_12">
+                    <item row="1" column="1" alignment="Qt::AlignHCenter|Qt::AlignBottom">
+                     <widget class="QLabel" name="userresetpwemailLabel_2">
+                      <property name="text">
+                       <string>E-Mail</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="1" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+                     <widget class="QLabel" name="userresetpwnewpwLabel_2">
+                      <property name="text">
+                       <string>Neues Kennwort</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="4" column="1" alignment="Qt::AlignHCenter|Qt::AlignTop">
+                     <widget class="QLabel" name="userresetpwnewpwwdhLabel_2">
+                      <property name="text">
+                       <string>Neues Kennwort wiederholen</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="2" alignment="Qt::AlignLeft|Qt::AlignBottom">
+                     <widget class="QLineEdit" name="userresetpwemailField_2">
+                      <property name="maximumSize">
+                       <size>
+                        <width>300</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="2" alignment="Qt::AlignLeft|Qt::AlignVCenter">
+                     <widget class="QLineEdit" name="userresetpwnewpwField_2">
+                      <property name="maximumSize">
+                       <size>
+                        <width>300</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="4" column="2" alignment="Qt::AlignLeft|Qt::AlignTop">
+                     <widget class="QLineEdit" name="userresetpwnewpwwdhField_2">
+                      <property name="maximumSize">
+                       <size>
+                        <width>300</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QVBoxLayout" name="verticalLayout_28">
+                    <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+                     <widget class="QPushButton" name="userresetpwconfirmButton_2">
+                      <property name="maximumSize">
+                       <size>
+                        <width>100</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string>Bestätigen</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
@@ -944,20 +1251,161 @@
           <string>Kategorien</string>
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_13">
-          <property name="leftMargin">
-           <number>0</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_12"/>
+           <layout class="QVBoxLayout" name="verticalLayout_12">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetDefaultConstraint</enum>
+            </property>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <layout class="QGridLayout" name="gridLayout_5">
+                <item row="0" column="0">
+                 <widget class="QListView" name="categorylistView">
+                  <property name="maximumSize">
+                   <size>
+                    <width>400</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="verticalScrollBarPolicy">
+                   <enum>Qt::ScrollBarAlwaysOn</enum>
+                  </property>
+                  <property name="horizontalScrollBarPolicy">
+                   <enum>Qt::ScrollBarAsNeeded</enum>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QGridLayout" name="gridLayout_4">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="delcategoryLabel">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>200</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>Bitte markieren sie links die Kategorieen die gelöscht werden sollen</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="0" alignment="Qt::AlignHCenter|Qt::AlignTop">
+                 <widget class="QLineEdit" name="addcategoryField">
+                  <property name="minimumSize">
+                   <size>
+                    <width>300</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>300</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0" alignment="Qt::AlignHCenter|Qt::AlignTop">
+                 <widget class="QPushButton" name="delcategoryButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>100</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>100</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>löschen</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <spacer name="verticalSpacer_4">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Fixed</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="4" column="0">
+                 <widget class="QLabel" name="addcategoryLabel">
+                  <property name="text">
+                   <string>Bitte geben sie hier neue Kategorien an</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="6" column="0" alignment="Qt::AlignHCenter|Qt::AlignTop">
+                 <widget class="QPushButton" name="addcategoryButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>100</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>100</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LeftToRight</enum>
+                  </property>
+                  <property name="text">
+                   <string>hinzufügen</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="Line" name="line">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                    <horstretch>1</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>400</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
@@ -969,20 +1417,109 @@
           <string>Standardzahlungsarten</string>
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_11">
-          <property name="leftMargin">
-           <number>0</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_10"/>
+           <layout class="QVBoxLayout" name="verticalLayout_10">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <layout class="QGridLayout" name="gridLayout_7">
+                <item row="0" column="0">
+                 <widget class="QListView" name="stanpaylistView">
+                  <property name="maximumSize">
+                   <size>
+                    <width>400</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="verticalScrollBarPolicy">
+                   <enum>Qt::ScrollBarAlwaysOn</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <layout class="QGridLayout" name="gridLayout_8">
+                  <item row="0" column="0">
+                   <widget class="QPushButton" name="stanpaychangeButton">
+                    <property name="maximumSize">
+                     <size>
+                      <width>100</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Bearbeiten</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QPushButton" name="stanpaydelButton">
+                    <property name="maximumSize">
+                     <size>
+                      <width>100</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Entfernen</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QGridLayout" name="gridLayout_6">
+                <item row="1" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+                 <widget class="QLineEdit" name="stanpayaddField">
+                  <property name="minimumSize">
+                   <size>
+                    <width>300</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>300</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0" alignment="Qt::AlignHCenter|Qt::AlignTop">
+                 <widget class="QPushButton" name="stanpayaddButton">
+                  <property name="maximumSize">
+                   <size>
+                    <width>100</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>Hinzufügen</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" alignment="Qt::AlignBottom">
+                 <widget class="QLabel" name="stanpayaddLabel">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>200</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>Bitte geben sie hier neue Standartzahlungsarten and die sie hinzufügen möchsten</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>

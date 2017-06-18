@@ -18,6 +18,7 @@
 #include <QtWidgets/QDateEdit>
 #include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QFormLayout>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -116,12 +117,62 @@ public:
     QWidget *userTab;
     QVBoxLayout *verticalLayout_9;
     QVBoxLayout *verticalLayout_7;
+    QTabWidget *usertabWidget;
+    QWidget *useroverviewTab_2;
+    QVBoxLayout *verticalLayout_23;
+    QVBoxLayout *verticalLayout_22;
+    QTableWidget *userTable_2;
+    QLabel *userdelLabel_2;
+    QPushButton *userdelButton_2;
+    QWidget *useraddTab_2;
+    QVBoxLayout *verticalLayout_26;
+    QVBoxLayout *verticalLayout_24;
+    QGridLayout *gridLayout_11;
+    QLabel *useraddpwLabel_2;
+    QLabel *useraddemailLabel_2;
+    QLineEdit *useraddemailField_2;
+    QLineEdit *useraddpwField_2;
+    QVBoxLayout *verticalLayout_25;
+    QPushButton *useraddconfButton_2;
+    QWidget *userpwresetTab;
+    QVBoxLayout *verticalLayout_29;
+    QVBoxLayout *verticalLayout_27;
+    QGridLayout *gridLayout_12;
+    QLabel *userresetpwemailLabel_2;
+    QLabel *userresetpwnewpwLabel_2;
+    QLabel *userresetpwnewpwwdhLabel_2;
+    QLineEdit *userresetpwemailField_2;
+    QLineEdit *userresetpwnewpwField_2;
+    QLineEdit *userresetpwnewpwwdhField_2;
+    QVBoxLayout *verticalLayout_28;
+    QPushButton *userresetpwconfirmButton_2;
     QWidget *categoryTab;
     QVBoxLayout *verticalLayout_13;
     QVBoxLayout *verticalLayout_12;
+    QHBoxLayout *horizontalLayout_4;
+    QGridLayout *gridLayout_5;
+    QListView *categorylistView;
+    QGridLayout *gridLayout_4;
+    QLabel *delcategoryLabel;
+    QLineEdit *addcategoryField;
+    QPushButton *delcategoryButton;
+    QSpacerItem *verticalSpacer_4;
+    QLabel *addcategoryLabel;
+    QPushButton *addcategoryButton;
+    QFrame *line;
     QWidget *standardPaymentMethodsTab;
     QVBoxLayout *verticalLayout_11;
     QVBoxLayout *verticalLayout_10;
+    QHBoxLayout *horizontalLayout_5;
+    QGridLayout *gridLayout_7;
+    QListView *stanpaylistView;
+    QGridLayout *gridLayout_8;
+    QPushButton *stanpaychangeButton;
+    QPushButton *stanpaydelButton;
+    QGridLayout *gridLayout_6;
+    QLineEdit *stanpayaddField;
+    QPushButton *stanpayaddButton;
+    QLabel *stanpayaddLabel;
     QWidget *logoutTab;
     QVBoxLayout *verticalLayout_8;
     QVBoxLayout *abmeldenTabLayout;
@@ -604,6 +655,165 @@ public:
         verticalLayout_7 = new QVBoxLayout();
         verticalLayout_7->setSpacing(6);
         verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
+        usertabWidget = new QTabWidget(userTab);
+        usertabWidget->setObjectName(QStringLiteral("usertabWidget"));
+        useroverviewTab_2 = new QWidget();
+        useroverviewTab_2->setObjectName(QStringLiteral("useroverviewTab_2"));
+        verticalLayout_23 = new QVBoxLayout(useroverviewTab_2);
+        verticalLayout_23->setSpacing(6);
+        verticalLayout_23->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_23->setObjectName(QStringLiteral("verticalLayout_23"));
+        verticalLayout_22 = new QVBoxLayout();
+        verticalLayout_22->setSpacing(6);
+        verticalLayout_22->setObjectName(QStringLiteral("verticalLayout_22"));
+        userTable_2 = new QTableWidget(useroverviewTab_2);
+        if (userTable_2->columnCount() < 3)
+            userTable_2->setColumnCount(3);
+        if (userTable_2->rowCount() < 100)
+            userTable_2->setRowCount(100);
+        userTable_2->setObjectName(QStringLiteral("userTable_2"));
+        userTable_2->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        userTable_2->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        userTable_2->setRowCount(100);
+        userTable_2->setColumnCount(3);
+
+        verticalLayout_22->addWidget(userTable_2);
+
+        userdelLabel_2 = new QLabel(useroverviewTab_2);
+        userdelLabel_2->setObjectName(QStringLiteral("userdelLabel_2"));
+
+        verticalLayout_22->addWidget(userdelLabel_2, 0, Qt::AlignHCenter);
+
+        userdelButton_2 = new QPushButton(useroverviewTab_2);
+        userdelButton_2->setObjectName(QStringLiteral("userdelButton_2"));
+        userdelButton_2->setMaximumSize(QSize(100, 16777215));
+
+        verticalLayout_22->addWidget(userdelButton_2, 0, Qt::AlignHCenter);
+
+
+        verticalLayout_23->addLayout(verticalLayout_22);
+
+        usertabWidget->addTab(useroverviewTab_2, QString());
+        useraddTab_2 = new QWidget();
+        useraddTab_2->setObjectName(QStringLiteral("useraddTab_2"));
+        verticalLayout_26 = new QVBoxLayout(useraddTab_2);
+        verticalLayout_26->setSpacing(6);
+        verticalLayout_26->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_26->setObjectName(QStringLiteral("verticalLayout_26"));
+        verticalLayout_24 = new QVBoxLayout();
+        verticalLayout_24->setSpacing(6);
+        verticalLayout_24->setObjectName(QStringLiteral("verticalLayout_24"));
+        gridLayout_11 = new QGridLayout();
+        gridLayout_11->setSpacing(6);
+        gridLayout_11->setObjectName(QStringLiteral("gridLayout_11"));
+        useraddpwLabel_2 = new QLabel(useraddTab_2);
+        useraddpwLabel_2->setObjectName(QStringLiteral("useraddpwLabel_2"));
+
+        gridLayout_11->addWidget(useraddpwLabel_2, 1, 0, 1, 1, Qt::AlignHCenter|Qt::AlignVCenter);
+
+        useraddemailLabel_2 = new QLabel(useraddTab_2);
+        useraddemailLabel_2->setObjectName(QStringLiteral("useraddemailLabel_2"));
+
+        gridLayout_11->addWidget(useraddemailLabel_2, 0, 0, 1, 1, Qt::AlignHCenter|Qt::AlignBottom);
+
+        useraddemailField_2 = new QLineEdit(useraddTab_2);
+        useraddemailField_2->setObjectName(QStringLiteral("useraddemailField_2"));
+        useraddemailField_2->setMaximumSize(QSize(300, 16777215));
+
+        gridLayout_11->addWidget(useraddemailField_2, 0, 1, 1, 1, Qt::AlignLeft|Qt::AlignBottom);
+
+        useraddpwField_2 = new QLineEdit(useraddTab_2);
+        useraddpwField_2->setObjectName(QStringLiteral("useraddpwField_2"));
+        useraddpwField_2->setMaximumSize(QSize(300, 16777215));
+
+        gridLayout_11->addWidget(useraddpwField_2, 1, 1, 1, 1, Qt::AlignLeft|Qt::AlignVCenter);
+
+
+        verticalLayout_24->addLayout(gridLayout_11);
+
+        verticalLayout_25 = new QVBoxLayout();
+        verticalLayout_25->setSpacing(6);
+        verticalLayout_25->setObjectName(QStringLiteral("verticalLayout_25"));
+        useraddconfButton_2 = new QPushButton(useraddTab_2);
+        useraddconfButton_2->setObjectName(QStringLiteral("useraddconfButton_2"));
+        useraddconfButton_2->setMaximumSize(QSize(100, 16777215));
+
+        verticalLayout_25->addWidget(useraddconfButton_2, 0, Qt::AlignHCenter|Qt::AlignTop);
+
+
+        verticalLayout_24->addLayout(verticalLayout_25);
+
+
+        verticalLayout_26->addLayout(verticalLayout_24);
+
+        usertabWidget->addTab(useraddTab_2, QString());
+        userpwresetTab = new QWidget();
+        userpwresetTab->setObjectName(QStringLiteral("userpwresetTab"));
+        verticalLayout_29 = new QVBoxLayout(userpwresetTab);
+        verticalLayout_29->setSpacing(6);
+        verticalLayout_29->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_29->setObjectName(QStringLiteral("verticalLayout_29"));
+        verticalLayout_27 = new QVBoxLayout();
+        verticalLayout_27->setSpacing(6);
+        verticalLayout_27->setObjectName(QStringLiteral("verticalLayout_27"));
+        gridLayout_12 = new QGridLayout();
+        gridLayout_12->setSpacing(6);
+        gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
+        userresetpwemailLabel_2 = new QLabel(userpwresetTab);
+        userresetpwemailLabel_2->setObjectName(QStringLiteral("userresetpwemailLabel_2"));
+
+        gridLayout_12->addWidget(userresetpwemailLabel_2, 1, 1, 1, 1, Qt::AlignHCenter|Qt::AlignBottom);
+
+        userresetpwnewpwLabel_2 = new QLabel(userpwresetTab);
+        userresetpwnewpwLabel_2->setObjectName(QStringLiteral("userresetpwnewpwLabel_2"));
+
+        gridLayout_12->addWidget(userresetpwnewpwLabel_2, 3, 1, 1, 1, Qt::AlignHCenter|Qt::AlignVCenter);
+
+        userresetpwnewpwwdhLabel_2 = new QLabel(userpwresetTab);
+        userresetpwnewpwwdhLabel_2->setObjectName(QStringLiteral("userresetpwnewpwwdhLabel_2"));
+
+        gridLayout_12->addWidget(userresetpwnewpwwdhLabel_2, 4, 1, 1, 1, Qt::AlignHCenter|Qt::AlignTop);
+
+        userresetpwemailField_2 = new QLineEdit(userpwresetTab);
+        userresetpwemailField_2->setObjectName(QStringLiteral("userresetpwemailField_2"));
+        userresetpwemailField_2->setMaximumSize(QSize(300, 16777215));
+
+        gridLayout_12->addWidget(userresetpwemailField_2, 1, 2, 1, 1, Qt::AlignLeft|Qt::AlignBottom);
+
+        userresetpwnewpwField_2 = new QLineEdit(userpwresetTab);
+        userresetpwnewpwField_2->setObjectName(QStringLiteral("userresetpwnewpwField_2"));
+        userresetpwnewpwField_2->setMaximumSize(QSize(300, 16777215));
+
+        gridLayout_12->addWidget(userresetpwnewpwField_2, 3, 2, 1, 1, Qt::AlignLeft|Qt::AlignVCenter);
+
+        userresetpwnewpwwdhField_2 = new QLineEdit(userpwresetTab);
+        userresetpwnewpwwdhField_2->setObjectName(QStringLiteral("userresetpwnewpwwdhField_2"));
+        userresetpwnewpwwdhField_2->setMaximumSize(QSize(300, 16777215));
+
+        gridLayout_12->addWidget(userresetpwnewpwwdhField_2, 4, 2, 1, 1, Qt::AlignLeft|Qt::AlignTop);
+
+
+        verticalLayout_27->addLayout(gridLayout_12);
+
+        verticalLayout_28 = new QVBoxLayout();
+        verticalLayout_28->setSpacing(6);
+        verticalLayout_28->setObjectName(QStringLiteral("verticalLayout_28"));
+        userresetpwconfirmButton_2 = new QPushButton(userpwresetTab);
+        userresetpwconfirmButton_2->setObjectName(QStringLiteral("userresetpwconfirmButton_2"));
+        userresetpwconfirmButton_2->setMaximumSize(QSize(100, 16777215));
+
+        verticalLayout_28->addWidget(userresetpwconfirmButton_2, 0, Qt::AlignHCenter|Qt::AlignTop);
+
+
+        verticalLayout_27->addLayout(verticalLayout_28);
+
+
+        verticalLayout_29->addLayout(verticalLayout_27);
+
+        usertabWidget->addTab(userpwresetTab, QString());
+
+        verticalLayout_7->addWidget(usertabWidget);
+
 
         verticalLayout_9->addLayout(verticalLayout_7);
 
@@ -615,10 +825,89 @@ public:
         verticalLayout_13->setSpacing(6);
         verticalLayout_13->setContentsMargins(11, 11, 11, 11);
         verticalLayout_13->setObjectName(QStringLiteral("verticalLayout_13"));
-        verticalLayout_13->setContentsMargins(0, 0, 0, 0);
         verticalLayout_12 = new QVBoxLayout();
         verticalLayout_12->setSpacing(6);
         verticalLayout_12->setObjectName(QStringLiteral("verticalLayout_12"));
+        verticalLayout_12->setSizeConstraint(QLayout::SetDefaultConstraint);
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        gridLayout_5 = new QGridLayout();
+        gridLayout_5->setSpacing(6);
+        gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
+        categorylistView = new QListView(categoryTab);
+        categorylistView->setObjectName(QStringLiteral("categorylistView"));
+        categorylistView->setMaximumSize(QSize(400, 16777215));
+        categorylistView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        categorylistView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+
+        gridLayout_5->addWidget(categorylistView, 0, 0, 1, 1);
+
+
+        horizontalLayout_4->addLayout(gridLayout_5);
+
+        gridLayout_4 = new QGridLayout();
+        gridLayout_4->setSpacing(6);
+        gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
+        delcategoryLabel = new QLabel(categoryTab);
+        delcategoryLabel->setObjectName(QStringLiteral("delcategoryLabel"));
+        delcategoryLabel->setMaximumSize(QSize(16777215, 200));
+        delcategoryLabel->setAlignment(Qt::AlignCenter);
+
+        gridLayout_4->addWidget(delcategoryLabel, 0, 0, 1, 1);
+
+        addcategoryField = new QLineEdit(categoryTab);
+        addcategoryField->setObjectName(QStringLiteral("addcategoryField"));
+        addcategoryField->setMinimumSize(QSize(300, 0));
+        addcategoryField->setMaximumSize(QSize(300, 16777215));
+        addcategoryField->setAlignment(Qt::AlignCenter);
+
+        gridLayout_4->addWidget(addcategoryField, 5, 0, 1, 1, Qt::AlignHCenter|Qt::AlignTop);
+
+        delcategoryButton = new QPushButton(categoryTab);
+        delcategoryButton->setObjectName(QStringLiteral("delcategoryButton"));
+        delcategoryButton->setMinimumSize(QSize(100, 25));
+        delcategoryButton->setMaximumSize(QSize(100, 25));
+
+        gridLayout_4->addWidget(delcategoryButton, 1, 0, 1, 1, Qt::AlignHCenter|Qt::AlignTop);
+
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        gridLayout_4->addItem(verticalSpacer_4, 2, 0, 1, 1);
+
+        addcategoryLabel = new QLabel(categoryTab);
+        addcategoryLabel->setObjectName(QStringLiteral("addcategoryLabel"));
+        addcategoryLabel->setAlignment(Qt::AlignCenter);
+
+        gridLayout_4->addWidget(addcategoryLabel, 4, 0, 1, 1);
+
+        addcategoryButton = new QPushButton(categoryTab);
+        addcategoryButton->setObjectName(QStringLiteral("addcategoryButton"));
+        addcategoryButton->setMinimumSize(QSize(100, 25));
+        addcategoryButton->setMaximumSize(QSize(100, 25));
+        addcategoryButton->setLayoutDirection(Qt::LeftToRight);
+
+        gridLayout_4->addWidget(addcategoryButton, 6, 0, 1, 1, Qt::AlignHCenter|Qt::AlignTop);
+
+        line = new QFrame(categoryTab);
+        line->setObjectName(QStringLiteral("line"));
+        QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(1);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(line->sizePolicy().hasHeightForWidth());
+        line->setSizePolicy(sizePolicy);
+        line->setMinimumSize(QSize(400, 0));
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_4->addWidget(line, 3, 0, 1, 1);
+
+
+        horizontalLayout_4->addLayout(gridLayout_4);
+
+
+        verticalLayout_12->addLayout(horizontalLayout_4);
+
 
         verticalLayout_13->addLayout(verticalLayout_12);
 
@@ -630,10 +919,72 @@ public:
         verticalLayout_11->setSpacing(6);
         verticalLayout_11->setContentsMargins(11, 11, 11, 11);
         verticalLayout_11->setObjectName(QStringLiteral("verticalLayout_11"));
-        verticalLayout_11->setContentsMargins(0, 0, 0, 0);
         verticalLayout_10 = new QVBoxLayout();
         verticalLayout_10->setSpacing(6);
         verticalLayout_10->setObjectName(QStringLiteral("verticalLayout_10"));
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        gridLayout_7 = new QGridLayout();
+        gridLayout_7->setSpacing(6);
+        gridLayout_7->setObjectName(QStringLiteral("gridLayout_7"));
+        stanpaylistView = new QListView(standardPaymentMethodsTab);
+        stanpaylistView->setObjectName(QStringLiteral("stanpaylistView"));
+        stanpaylistView->setMaximumSize(QSize(400, 16777215));
+        stanpaylistView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+
+        gridLayout_7->addWidget(stanpaylistView, 0, 0, 1, 1);
+
+        gridLayout_8 = new QGridLayout();
+        gridLayout_8->setSpacing(6);
+        gridLayout_8->setObjectName(QStringLiteral("gridLayout_8"));
+        stanpaychangeButton = new QPushButton(standardPaymentMethodsTab);
+        stanpaychangeButton->setObjectName(QStringLiteral("stanpaychangeButton"));
+        stanpaychangeButton->setMaximumSize(QSize(100, 16777215));
+
+        gridLayout_8->addWidget(stanpaychangeButton, 0, 0, 1, 1);
+
+        stanpaydelButton = new QPushButton(standardPaymentMethodsTab);
+        stanpaydelButton->setObjectName(QStringLiteral("stanpaydelButton"));
+        stanpaydelButton->setMaximumSize(QSize(100, 16777215));
+
+        gridLayout_8->addWidget(stanpaydelButton, 0, 1, 1, 1);
+
+
+        gridLayout_7->addLayout(gridLayout_8, 1, 0, 1, 1);
+
+
+        horizontalLayout_5->addLayout(gridLayout_7);
+
+        gridLayout_6 = new QGridLayout();
+        gridLayout_6->setSpacing(6);
+        gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
+        stanpayaddField = new QLineEdit(standardPaymentMethodsTab);
+        stanpayaddField->setObjectName(QStringLiteral("stanpayaddField"));
+        stanpayaddField->setMinimumSize(QSize(300, 0));
+        stanpayaddField->setMaximumSize(QSize(300, 16777215));
+
+        gridLayout_6->addWidget(stanpayaddField, 1, 0, 1, 1, Qt::AlignHCenter|Qt::AlignVCenter);
+
+        stanpayaddButton = new QPushButton(standardPaymentMethodsTab);
+        stanpayaddButton->setObjectName(QStringLiteral("stanpayaddButton"));
+        stanpayaddButton->setMaximumSize(QSize(100, 16777215));
+
+        gridLayout_6->addWidget(stanpayaddButton, 2, 0, 1, 1, Qt::AlignHCenter|Qt::AlignTop);
+
+        stanpayaddLabel = new QLabel(standardPaymentMethodsTab);
+        stanpayaddLabel->setObjectName(QStringLiteral("stanpayaddLabel"));
+        stanpayaddLabel->setMaximumSize(QSize(16777215, 200));
+        stanpayaddLabel->setAlignment(Qt::AlignCenter);
+
+        gridLayout_6->addWidget(stanpayaddLabel, 0, 0, 1, 1, Qt::AlignBottom);
+
+
+        horizontalLayout_5->addLayout(gridLayout_6);
+
+
+        verticalLayout_10->addLayout(horizontalLayout_5);
+
 
         verticalLayout_11->addLayout(verticalLayout_10);
 
@@ -658,11 +1009,11 @@ public:
 
         logoutButton = new QPushButton(logoutTab);
         logoutButton->setObjectName(QStringLiteral("logoutButton"));
-        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(logoutButton->sizePolicy().hasHeightForWidth());
-        logoutButton->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(logoutButton->sizePolicy().hasHeightForWidth());
+        logoutButton->setSizePolicy(sizePolicy1);
         logoutButton->setMaximumSize(QSize(100, 50));
         QIcon icon8;
         icon8.addFile(QStringLiteral("resources/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -692,8 +1043,9 @@ public:
 
         retranslateUi(UserWindow);
 
-        mainTabWidget->setCurrentIndex(0);
+        mainTabWidget->setCurrentIndex(3);
         transaktionenTabWidget->setCurrentIndex(0);
+        usertabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(UserWindow);
@@ -732,8 +1084,28 @@ public:
         settingsNewPasswordButton->setText(QApplication::translate("UserWindow", "Passwort \303\244ndern", 0));
         settingsSaveButton->setText(QApplication::translate("UserWindow", "Speichern", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(einstellungenTab), QApplication::translate("UserWindow", "Einstellungen", 0));
+        userdelLabel_2->setText(QApplication::translate("UserWindow", "Bitte markieren sie die User die gel\303\266scht werden sollen", 0));
+        userdelButton_2->setText(QApplication::translate("UserWindow", "L\303\266schen", 0));
+        usertabWidget->setTabText(usertabWidget->indexOf(useroverviewTab_2), QApplication::translate("UserWindow", "Nutzer\303\274bersicht", 0));
+        useraddpwLabel_2->setText(QApplication::translate("UserWindow", "Passwort", 0));
+        useraddemailLabel_2->setText(QApplication::translate("UserWindow", "E-Mail", 0));
+        useraddconfButton_2->setText(QApplication::translate("UserWindow", "Best\303\244tigen", 0));
+        usertabWidget->setTabText(usertabWidget->indexOf(useraddTab_2), QApplication::translate("UserWindow", "Nutzer hinzuf\303\274gen", 0));
+        userresetpwemailLabel_2->setText(QApplication::translate("UserWindow", "E-Mail", 0));
+        userresetpwnewpwLabel_2->setText(QApplication::translate("UserWindow", "Neues Kennwort", 0));
+        userresetpwnewpwwdhLabel_2->setText(QApplication::translate("UserWindow", "Neues Kennwort wiederholen", 0));
+        userresetpwconfirmButton_2->setText(QApplication::translate("UserWindow", "Best\303\244tigen", 0));
+        usertabWidget->setTabText(usertabWidget->indexOf(userpwresetTab), QApplication::translate("UserWindow", "Nutzer Passwort zur\303\274cksetzen", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(userTab), QApplication::translate("UserWindow", "Benutzer", 0));
+        delcategoryLabel->setText(QApplication::translate("UserWindow", "Bitte markieren sie links die Kategorieen die gel\303\266scht werden sollen", 0));
+        delcategoryButton->setText(QApplication::translate("UserWindow", "l\303\266schen", 0));
+        addcategoryLabel->setText(QApplication::translate("UserWindow", "Bitte geben sie hier neue Kategorien an", 0));
+        addcategoryButton->setText(QApplication::translate("UserWindow", "hinzuf\303\274gen", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(categoryTab), QApplication::translate("UserWindow", "Kategorien", 0));
+        stanpaychangeButton->setText(QApplication::translate("UserWindow", "Bearbeiten", 0));
+        stanpaydelButton->setText(QApplication::translate("UserWindow", "Entfernen", 0));
+        stanpayaddButton->setText(QApplication::translate("UserWindow", "Hinzuf\303\274gen", 0));
+        stanpayaddLabel->setText(QApplication::translate("UserWindow", "Bitte geben sie hier neue Standartzahlungsarten and die sie hinzuf\303\274gen m\303\266chsten", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(standardPaymentMethodsTab), QApplication::translate("UserWindow", "Standardzahlungsarten", 0));
         abmeldenLabel->setText(QApplication::translate("UserWindow", "Benutzer <Benutzer> wirklich abmelden?", 0));
         logoutButton->setText(QApplication::translate("UserWindow", "Abmelden", 0));
