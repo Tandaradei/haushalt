@@ -37,10 +37,8 @@ bool StartController::onLoginClicked(const QString& email, const QString& passwo
     {
         loginWindow.hide();
         mainController.onLoggedIn(user);
+        return true;
     }
-    else
-    {
-        return false;
-    }
+    return false;
 }
 

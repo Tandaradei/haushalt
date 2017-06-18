@@ -1,6 +1,11 @@
 #pragma once
+
+
 #include <list>
 #include <memory>
+
+#include <QString>
+#include <QDate>
 
 class DbManager;
 
@@ -26,6 +31,8 @@ public:
 
     std::shared_ptr<Category> getCategory(size_t ID);
     std::shared_ptr<PaymentMethod> getPaymentMethod(size_t ID);
+
+    void addTransaction(int amount, const QString& description, const QDate& date, std::shared_ptr<Category> category, std::shared_ptr<PaymentMethod> paymentMethod);
 private:
     std::shared_ptr<std::list<std::shared_ptr<Transaction>>> transactions;
     std::shared_ptr<std::list<std::shared_ptr<Category>>> categories;
