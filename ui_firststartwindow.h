@@ -19,7 +19,6 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -35,14 +34,13 @@ public:
     QLabel *emaillabel;
     QLineEdit *emailField;
     QLabel *birthLabel;
+    QDateEdit *dateEdit;
     QLabel *pwLabel;
     QLineEdit *pwField;
-    QPushButton *admincreateButton;
-    QDateEdit *dateEdit;
     QLabel *pwwdhLabel;
-    QSpacerItem *verticalSpacer;
     QLineEdit *pwwdhField;
-    QLabel *erroLabel;
+    QLabel *errorLabel;
+    QPushButton *admincreateButton;
 
     void setupUi(QWidget *FirstStartWindow)
     {
@@ -82,6 +80,12 @@ public:
 
         formLayout->setWidget(2, QFormLayout::LabelRole, birthLabel);
 
+        dateEdit = new QDateEdit(FirstStartWindow);
+        dateEdit->setObjectName(QStringLiteral("dateEdit"));
+        dateEdit->setCalendarPopup(true);
+
+        formLayout->setWidget(2, QFormLayout::FieldRole, dateEdit);
+
         pwLabel = new QLabel(FirstStartWindow);
         pwLabel->setObjectName(QStringLiteral("pwLabel"));
 
@@ -94,28 +98,10 @@ public:
 
         formLayout->setWidget(3, QFormLayout::FieldRole, pwField);
 
-        admincreateButton = new QPushButton(FirstStartWindow);
-        admincreateButton->setObjectName(QStringLiteral("admincreateButton"));
-        QIcon icon;
-        icon.addFile(QStringLiteral("resources/user.png"), QSize(), QIcon::Normal, QIcon::Off);
-        admincreateButton->setIcon(icon);
-
-        formLayout->setWidget(7, QFormLayout::FieldRole, admincreateButton);
-
-        dateEdit = new QDateEdit(FirstStartWindow);
-        dateEdit->setObjectName(QStringLiteral("dateEdit"));
-        dateEdit->setCalendarPopup(true);
-
-        formLayout->setWidget(2, QFormLayout::FieldRole, dateEdit);
-
         pwwdhLabel = new QLabel(FirstStartWindow);
         pwwdhLabel->setObjectName(QStringLiteral("pwwdhLabel"));
 
         formLayout->setWidget(4, QFormLayout::LabelRole, pwwdhLabel);
-
-        verticalSpacer = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        formLayout->setItem(6, QFormLayout::FieldRole, verticalSpacer);
 
         pwwdhField = new QLineEdit(FirstStartWindow);
         pwwdhField->setObjectName(QStringLiteral("pwwdhField"));
@@ -123,10 +109,20 @@ public:
 
         formLayout->setWidget(4, QFormLayout::FieldRole, pwwdhField);
 
-        erroLabel = new QLabel(FirstStartWindow);
-        erroLabel->setObjectName(QStringLiteral("erroLabel"));
+        errorLabel = new QLabel(FirstStartWindow);
+        errorLabel->setObjectName(QStringLiteral("errorLabel"));
+        errorLabel->setMinimumSize(QSize(0, 40));
+        errorLabel->setWordWrap(true);
 
-        formLayout->setWidget(5, QFormLayout::FieldRole, erroLabel);
+        formLayout->setWidget(5, QFormLayout::FieldRole, errorLabel);
+
+        admincreateButton = new QPushButton(FirstStartWindow);
+        admincreateButton->setObjectName(QStringLiteral("admincreateButton"));
+        QIcon icon;
+        icon.addFile(QStringLiteral("resources/user.png"), QSize(), QIcon::Normal, QIcon::Off);
+        admincreateButton->setIcon(icon);
+
+        formLayout->setWidget(6, QFormLayout::FieldRole, admincreateButton);
 
 
         verticalLayout->addLayout(formLayout);
@@ -144,9 +140,9 @@ public:
         emaillabel->setText(QApplication::translate("FirstStartWindow", "E-Mail", 0));
         birthLabel->setText(QApplication::translate("FirstStartWindow", "Geburtsdatum", 0));
         pwLabel->setText(QApplication::translate("FirstStartWindow", "Passwort", 0));
-        admincreateButton->setText(QApplication::translate("FirstStartWindow", "Anlegen", 0));
         pwwdhLabel->setText(QApplication::translate("FirstStartWindow", "Passwort wiederholen", 0));
-        erroLabel->setText(QString());
+        errorLabel->setText(QString());
+        admincreateButton->setText(QApplication::translate("FirstStartWindow", "Anlegen", 0));
     } // retranslateUi
 
 };

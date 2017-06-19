@@ -3,6 +3,7 @@
 
 DbManager::DbManager(const QString& path)
 {
+  // set sqlite database driver
   database = QSqlDatabase::addDatabase("QSQLITE");
   database.setDatabaseName(path);
 

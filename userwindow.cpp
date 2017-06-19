@@ -10,12 +10,15 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
     ,paymentMethodsModel()
 {
     ui->setupUi(this);
+    // connect button with handle function
     connect(ui->logoutButton, SIGNAL (released()), this, SLOT (handleLogoutButton()));
 
+    // remove admin tabs
     ui->mainTabWidget->removeTab(5);
     ui->mainTabWidget->removeTab(4);
     ui->mainTabWidget->removeTab(3);
 
+    // set model for payment methods list
     ui->paymentMethodsList->setModel(&paymentMethodsModel);
 
     initTable();
@@ -26,7 +29,6 @@ UserWindow::~UserWindow()
     delete ui;
 }
 
-// TODO change category and payMethod to reference on Category/PayMethod objects and use .Name for table entry
 void UserWindow::addTransactionEntry(QDate date, float amount, QString description, QString category, QString payMethod)
 {
     ui->transaktionenTable->setItem(transactionEntriesCount, 0, new QTableWidgetItem(date.toString("yyyy-MM-dd")));
@@ -43,13 +45,16 @@ void UserWindow::addTransactionEntry(QDate date, float amount, QString descripti
 
 void UserWindow::addCategory(const QString& name)
 {
+    // add category name to filter
     ui->categoriesComboBox->addItem(name);
 }
 
 void UserWindow::addPaymentMethod(const QString &name)
 {
+    // add payment method name to filter
     ui->paymentMethodsComboBox->addItem(name);
 
+    // add payment method name to list view
     paymentMethodsModel.insertRow(paymentMethodsModel.rowCount());
     QModelIndex index = paymentMethodsModel.index(paymentMethodsModel.rowCount()-1);
     paymentMethodsModel.setData(index, name);

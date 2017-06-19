@@ -14,6 +14,7 @@ LoginWindow::LoginWindow(StartController& startController, QWidget *parent) :
     ui->setupUi(this);
     connect(ui->loginButton, SIGNAL (released()), this, SLOT (handleLoginButton()));
 
+    // set logo
     imageItem = new QGraphicsPixmapItem(QPixmap::fromImage(image));
     scene.addItem(imageItem);
 
@@ -27,6 +28,7 @@ LoginWindow::~LoginWindow()
 
 void LoginWindow::handleLoginButton()
 {
+  // if login failed
   if(!startController.onLoginClicked(ui->emailField->text(), ui->passwordField->text()))
   {
       ui->errorLabel->setText("E-Mail und Password stimmen nicht überein");

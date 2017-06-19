@@ -40,11 +40,14 @@ void UserController::onLogout()
 
 void UserController::loadCategories()
 {
+    // load all categories from database
     categories = userDAO.loadCategories();
     if(categories != nullptr)
     {
+        // iterate through categories
         for(auto categoriesIt = categories->begin(), categoriesEnd = categories->end(); categoriesIt != categoriesEnd; ++categoriesIt)
         {
+            // add category to UI (combo boxes)
             userWindow.addCategory((*categoriesIt)->Name);
         }
     }
@@ -53,11 +56,14 @@ void UserController::loadCategories()
 
 void UserController::loadPaymentMethods()
 {
+    // load all payment methods for logged in user from database
     paymentMethods = userDAO.loadPaymentMethods();
     if(paymentMethods != nullptr)
     {
+        // iterate through payment methods
         for(auto paymentMethodIt = paymentMethods->begin(), paymentMethodEnd = paymentMethods->end(); paymentMethodIt != paymentMethodEnd; ++paymentMethodIt)
         {
+            // add payment method to UI (list and combo boxes)
             userWindow.addPaymentMethod((*paymentMethodIt)->Name);
         }
     }
@@ -65,19 +71,27 @@ void UserController::loadPaymentMethods()
 
 void UserController::loadTransactions()
 {
+    // load all transactions for logged in user from database
     transactions = userDAO.loadTransactions();
-    for(auto transactionsIt = transactions->begin(), transactionsEnd = transactions->end(); transactionsIt != transactionsEnd; ++transactionsIt)
+    if(transactions != nullptr)
     {
-        userWindow.addTransactionEntry((*transactionsIt)->Date
-                                       , ((float)(*transactionsIt)->Amount)/100.0f
-                                       , (*transactionsIt)->Description
-                                       , (*transactionsIt)->Category != nullptr ? (*transactionsIt)->Category->Name : QString()
-                                       , (*transactionsIt)->PaymentMethod != nullptr ? (*transactionsIt)->PaymentMethod->Name : QString());
+        // iterate through all transactions
+        for(auto transactionsIt = transactions->begin(), transactionsEnd = transactions->end(); transactionsIt != transactionsEnd; ++transactionsIt)
+        {
+            // add transaction to UI (table)
+            userWindow.addTransactionEntry((*transactionsIt)->Date
+                                           , ((float)(*transactionsIt)->Amount)/100.0f // cents to euro
+                                           , (*transactionsIt)->Description
+                                           , (*transactionsIt)->Category != nullptr ? (*transactionsIt)->Category->Name : QString() // if category is nullptr -> empty QString
+                                           , (*transactionsIt)->PaymentMethod != nullptr ? (*transactionsIt)->PaymentMethod->Name : QString() // if payment method is nullptr -> empty QString
+                                          );
+        }
     }
 }
 
 void UserController::loadSettings()
 {
+    // add user name and birthdate to UI
     userWindow.setSettings(user->Name, user->Birthdate);
 }
 

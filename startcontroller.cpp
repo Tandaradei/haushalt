@@ -37,13 +37,16 @@ void StartController::createAdmin(const QString& name, const QString& email, con
 
 bool StartController::onLoginClicked(const QString& email, const QString& password)
 {
+    // get user with this email and password from database (if exists)
     std::shared_ptr<User> user = startDAO.getUser(email, password);
+    // if user exists -> log in
     if(user != nullptr)
     {
         loginWindow.hide();
         mainController.onLoggedIn(user);
         return true;
     }
+    // login failed
     return false;
 }
 

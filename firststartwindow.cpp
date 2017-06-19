@@ -1,6 +1,5 @@
 #include "firststartwindow.h"
 #include "ui_firststartwindow.h"
-//#include "ui_systemstart.h"
 #include "startcontroller.h"
 
 
@@ -10,27 +9,33 @@ FirstStartWindow::FirstStartWindow(StartController& startController, QWidget *pa
     ui(new Ui::FirstStartWindow)
 {
     ui->setupUi(this);
+    // connect button with handle function
     connect(ui->admincreateButton, SIGNAL (released()), this, SLOT (handlesetAdminButton()));
 }
 
 void FirstStartWindow::handlesetAdminButton()
 {
-  if(ui->pwField->text() != ui->pwwdhField->text())
+  // test if name is empty
+  if(ui->nameField->text().isEmpty())
   {
-      ui->erroLabel->setText("Passwort stimmt nicht überein");
+      ui->errorLabel->setText("Bitte geben sie einen gültigen Namen ein");
   }
-  else if(ui->pwField->text().isEmpty())
-  {
-      ui->erroLabel->setText("Bitte geben sie ein gültige Passwort an");
-  }
-  else if(ui->nameField->text().isEmpty())
-  {
-      ui->erroLabel->setText("Bitte geben sie einen gültigen Namen ein");
-  }
+  // test if email is empty
   else if(ui->emailField->text().isEmpty())
   {
-      ui->erroLabel->setText("Bitte geben sie eine gültige Email ein");
+      ui->errorLabel->setText("Bitte geben sie eine gültige Email ein");
   }
+  // test if password is empty
+  else if(ui->pwField->text().isEmpty())
+  {
+      ui->errorLabel->setText("Bitte geben sie ein gültige Passwort an");
+  }
+  // test if passwords are not same
+  else if(ui->pwField->text() != ui->pwwdhField->text())
+  {
+      ui->errorLabel->setText("Passwort stimmt nicht überein");
+  }
+  // create admin
   else
   {
       startController.createAdmin(ui->nameField->text(), ui->emailField->text(), ui->dateEdit->date(), ui->pwField->text());

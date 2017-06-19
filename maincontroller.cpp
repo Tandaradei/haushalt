@@ -21,8 +21,10 @@ MainController::~MainController()
 
 int MainController::exec()
 {
+    // create startController and start it
     startController = std::make_shared<StartController>(*this, dbManager);
     startController->start();
+    // enter main loop
     return application.exec();
 }
 

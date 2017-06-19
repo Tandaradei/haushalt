@@ -14,7 +14,6 @@ public:
     ~StartDAO();
 
     bool isFirstStart();
-    int getUserId(const QString& email, const QString& password);
     std::shared_ptr<User> getUser(const QString& email, const QString& password);
 
 private:
