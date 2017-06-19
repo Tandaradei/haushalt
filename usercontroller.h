@@ -19,7 +19,7 @@ public:
     void start();
     void onLogout();
     void addTransaction(float amount, const QDate& date, const QString& categoryName, const QString& payMethodName, const QString& description);
-    void deleteTransaktion(int index);
+    void deleteTransaction(size_t ID);
 
 protected:
 

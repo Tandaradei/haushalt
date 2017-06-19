@@ -14,9 +14,9 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
     // connect buttons with handle functions
     connect(ui->logoutButton, SIGNAL (released()), this, SLOT (handleLogoutButton()));
     connect(ui->addTransactionButton, SIGNAL (released()), this, SLOT (handleAddTransactionButton()));
+    connect(ui->deleteTransactionButton, SIGNAL (released()), this, SLOT (handleDeleteTransactionButton()));
 
-    connect(ui->transaktionenTable, SIGNAL (itemSelectionChanged()), this, SLOT (handleTransactionsItemSelectionChanged();
-    connect(ui->deletedeleteTransactionButton, SIGNAL (released()), this, SLOT (handledeleteTransactionButton()));                                                                             ));
+    connect(ui->transaktionenTable, SIGNAL (itemSelectionChanged()), this, SLOT (handleTransactionsItemSelectionChanged()));
 
     // remove admin tabs
     ui->mainTabWidget->removeTab(5);
@@ -159,8 +159,18 @@ void UserWindow::initTable()
     ui->transaktionenTable->setHorizontalHeaderItem(5, new QTableWidgetItem(QIcon(QString("resources/id.png")), "ID"));
 }
 
-void UserWindow::handledeleteButton()
+void UserWindow::handleDeleteTransactionButton()
 {
-  userController.deleteTransaktion(ui->transaktionenTable->currentRow());
+    QItemSelectionModel *select = ui->transaktionenTable->selectionModel();
+
+    if(select->hasSelection())
+    {
+        QModelIndex index = select->selectedRows().front();
+        if((size_t)index.row() <= transactionEntriesCount)
+        {
+            userController.deleteTransaction(ui->transaktionenTable->item(index.row(), 5)->text().toInt());
+        }
+    }
+
 
 }

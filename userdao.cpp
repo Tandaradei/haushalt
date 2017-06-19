@@ -196,13 +196,21 @@ std::shared_ptr<Transaction> UserDAO::addTransaction(int amount, const QString& 
     return nullptr;
 }
 
-void UserDAO::deleteTransaktion(int index)
+bool UserDAO::deleteTransaction(size_t ID)
 {
     QSqlQuery query(dbManager.getDatabase());
-    query.prepare("DELETE FROM Transaktionen where TID = ?");
-    query.addBindValue(index);
-    std::cout << index;
-    //qDebug() << query.executedQuery();
-    query.exec();
-   // loadTransactions();
+    query.prepare("DELETE FROM Transaktion WHERE TID = :TID");
+    query.bindValue(":TID", ID);
+    qDebug() << query.executedQuery();
+    if(query.exec())
+    {
+         qDebug() << "execution successful";
+         return true;
+    }
+    else
+    {
+        qDebug() << "addTransaction error:  "
+                 << query.lastError().text();
+    }
+    return false;
 }
