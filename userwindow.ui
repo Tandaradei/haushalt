@@ -53,7 +53,7 @@
          <enum>QTabWidget::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>0</number>
         </property>
         <property name="elideMode">
          <enum>Qt::ElideLeft</enum>
@@ -102,7 +102,7 @@
             <item>
              <widget class="QTabWidget" name="transaktionenTabWidget">
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="transaktionenListeTab">
                <property name="autoFillBackground">
@@ -465,7 +465,7 @@
                      </widget>
                     </item>
                     <item row="1" column="1">
-                     <widget class="QDoubleSpinBox" name="amountdoubleSpinBox">
+                     <widget class="QDoubleSpinBox" name="atAmountSpinner">
                       <property name="minimumSize">
                        <size>
                         <width>80</width>
@@ -494,7 +494,7 @@
                      </widget>
                     </item>
                     <item row="2" column="1">
-                     <widget class="QDateEdit" name="dateEdit">
+                     <widget class="QDateEdit" name="atDateEdit">
                       <property name="minimumSize">
                        <size>
                         <width>80</width>
@@ -520,7 +520,7 @@
                      </widget>
                     </item>
                     <item row="3" column="1">
-                     <widget class="QComboBox" name="categoryDropdown">
+                     <widget class="QComboBox" name="atCategoriesComboBox">
                       <property name="minimumSize">
                        <size>
                         <width>80</width>
@@ -543,7 +543,7 @@
                      </widget>
                     </item>
                     <item row="5" column="1">
-                     <widget class="QTextEdit" name="descriptionTextedit">
+                     <widget class="QTextEdit" name="atDescriptionTextEdit">
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
@@ -560,7 +560,7 @@
                      </widget>
                     </item>
                     <item row="4" column="1">
-                     <widget class="QComboBox" name="paymethodDropdwon">
+                     <widget class="QComboBox" name="atPaymentMethodsComboBox">
                       <property name="minimumSize">
                        <size>
                         <width>80</width>
@@ -576,9 +576,9 @@
                      </widget>
                     </item>
                     <item row="7" column="1">
-                     <widget class="QPushButton" name="addButton">
+                     <widget class="QPushButton" name="addTransactionButton">
                       <property name="enabled">
-                       <bool>false</bool>
+                       <bool>true</bool>
                       </property>
                       <property name="text">
                        <string>Hinzufügen</string>
@@ -936,7 +936,7 @@
             <item>
              <widget class="QTabWidget" name="usertabWidget">
               <property name="currentIndex">
-               <number>1</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="useroverviewTab_2">
                <attribute name="title">

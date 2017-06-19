@@ -162,14 +162,14 @@ std::shared_ptr<PaymentMethod> UserDAO::getPaymentMethod(size_t ID)
     return nullptr;
 }
 
-void UserDAO::addTransaction(int amount, const QString& description, const QDate& date, std::shared_ptr<Category> category, std::shared_ptr<PaymentMethod> paymentMethod)
+void UserDAO::addTransaction(int amount, const QString& description, const QString& dateString, std::shared_ptr<Category> category, std::shared_ptr<PaymentMethod> paymentMethod)
 {
     QSqlQuery query(dbManager.getDatabase());
     query.prepare("INSERT INTO Transaktion(BID, Betrag, Beschreibung, Datum, KID, ZID) VALUES(:BID, :Betrag, :Beschreibung, :Datum, :KID, :ZID');");
     query.bindValue(":BID", user->ID);
     query.bindValue(":Betrag", amount);
     query.bindValue(":Beschreibung", description);
-    query.bindValue(":Datum", date.toString("yyyy-MM-dd"));
+    query.bindValue(":Datum", dateString);
     query.bindValue(":KID", category->ID);
     query.bindValue(":ZID", paymentMethod->ID);
     qDebug() << query.executedQuery();

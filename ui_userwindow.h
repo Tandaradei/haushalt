@@ -71,16 +71,16 @@ public:
     QVBoxLayout *transaktionenNeuTabLayout;
     QFormLayout *formLayout;
     QLabel *amountLabel;
-    QDoubleSpinBox *amountdoubleSpinBox;
+    QDoubleSpinBox *atAmountSpinner;
     QLabel *dateLabel;
-    QDateEdit *dateEdit;
+    QDateEdit *atDateEdit;
     QLabel *categoryLabel;
-    QComboBox *categoryDropdown;
+    QComboBox *atCategoriesComboBox;
     QLabel *descriptionLabel;
-    QTextEdit *descriptionTextedit;
+    QTextEdit *atDescriptionTextEdit;
     QLabel *paymethodLabel;
-    QComboBox *paymethodDropdwon;
-    QPushButton *addButton;
+    QComboBox *atPaymentMethodsComboBox;
+    QPushButton *addTransactionButton;
     QSpacerItem *verticalSpacer_2;
     QSpacerItem *verticalSpacer;
     QWidget *zahlungsartenTab;
@@ -365,71 +365,71 @@ public:
 
         formLayout->setWidget(1, QFormLayout::LabelRole, amountLabel);
 
-        amountdoubleSpinBox = new QDoubleSpinBox(transaktionenNeuTab);
-        amountdoubleSpinBox->setObjectName(QStringLiteral("amountdoubleSpinBox"));
-        amountdoubleSpinBox->setMinimumSize(QSize(80, 0));
-        amountdoubleSpinBox->setMaximumSize(QSize(80, 16777215));
-        amountdoubleSpinBox->setMinimum(-1e+08);
-        amountdoubleSpinBox->setMaximum(1e+08);
+        atAmountSpinner = new QDoubleSpinBox(transaktionenNeuTab);
+        atAmountSpinner->setObjectName(QStringLiteral("atAmountSpinner"));
+        atAmountSpinner->setMinimumSize(QSize(80, 0));
+        atAmountSpinner->setMaximumSize(QSize(80, 16777215));
+        atAmountSpinner->setMinimum(-1e+08);
+        atAmountSpinner->setMaximum(1e+08);
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, amountdoubleSpinBox);
+        formLayout->setWidget(1, QFormLayout::FieldRole, atAmountSpinner);
 
         dateLabel = new QLabel(transaktionenNeuTab);
         dateLabel->setObjectName(QStringLiteral("dateLabel"));
 
         formLayout->setWidget(2, QFormLayout::LabelRole, dateLabel);
 
-        dateEdit = new QDateEdit(transaktionenNeuTab);
-        dateEdit->setObjectName(QStringLiteral("dateEdit"));
-        dateEdit->setMinimumSize(QSize(80, 0));
-        dateEdit->setMaximumSize(QSize(80, 16777215));
-        dateEdit->setCalendarPopup(true);
+        atDateEdit = new QDateEdit(transaktionenNeuTab);
+        atDateEdit->setObjectName(QStringLiteral("atDateEdit"));
+        atDateEdit->setMinimumSize(QSize(80, 0));
+        atDateEdit->setMaximumSize(QSize(80, 16777215));
+        atDateEdit->setCalendarPopup(true);
 
-        formLayout->setWidget(2, QFormLayout::FieldRole, dateEdit);
+        formLayout->setWidget(2, QFormLayout::FieldRole, atDateEdit);
 
         categoryLabel = new QLabel(transaktionenNeuTab);
         categoryLabel->setObjectName(QStringLiteral("categoryLabel"));
 
         formLayout->setWidget(3, QFormLayout::LabelRole, categoryLabel);
 
-        categoryDropdown = new QComboBox(transaktionenNeuTab);
-        categoryDropdown->setObjectName(QStringLiteral("categoryDropdown"));
-        categoryDropdown->setMinimumSize(QSize(80, 0));
-        categoryDropdown->setMaximumSize(QSize(100, 16777215));
+        atCategoriesComboBox = new QComboBox(transaktionenNeuTab);
+        atCategoriesComboBox->setObjectName(QStringLiteral("atCategoriesComboBox"));
+        atCategoriesComboBox->setMinimumSize(QSize(80, 0));
+        atCategoriesComboBox->setMaximumSize(QSize(100, 16777215));
 
-        formLayout->setWidget(3, QFormLayout::FieldRole, categoryDropdown);
+        formLayout->setWidget(3, QFormLayout::FieldRole, atCategoriesComboBox);
 
         descriptionLabel = new QLabel(transaktionenNeuTab);
         descriptionLabel->setObjectName(QStringLiteral("descriptionLabel"));
 
         formLayout->setWidget(5, QFormLayout::LabelRole, descriptionLabel);
 
-        descriptionTextedit = new QTextEdit(transaktionenNeuTab);
-        descriptionTextedit->setObjectName(QStringLiteral("descriptionTextedit"));
-        descriptionTextedit->setMaximumSize(QSize(16777215, 100));
+        atDescriptionTextEdit = new QTextEdit(transaktionenNeuTab);
+        atDescriptionTextEdit->setObjectName(QStringLiteral("atDescriptionTextEdit"));
+        atDescriptionTextEdit->setMaximumSize(QSize(16777215, 100));
 
-        formLayout->setWidget(5, QFormLayout::FieldRole, descriptionTextedit);
+        formLayout->setWidget(5, QFormLayout::FieldRole, atDescriptionTextEdit);
 
         paymethodLabel = new QLabel(transaktionenNeuTab);
         paymethodLabel->setObjectName(QStringLiteral("paymethodLabel"));
 
         formLayout->setWidget(4, QFormLayout::LabelRole, paymethodLabel);
 
-        paymethodDropdwon = new QComboBox(transaktionenNeuTab);
-        paymethodDropdwon->setObjectName(QStringLiteral("paymethodDropdwon"));
-        paymethodDropdwon->setMinimumSize(QSize(80, 0));
-        paymethodDropdwon->setMaximumSize(QSize(80, 16777215));
+        atPaymentMethodsComboBox = new QComboBox(transaktionenNeuTab);
+        atPaymentMethodsComboBox->setObjectName(QStringLiteral("atPaymentMethodsComboBox"));
+        atPaymentMethodsComboBox->setMinimumSize(QSize(80, 0));
+        atPaymentMethodsComboBox->setMaximumSize(QSize(80, 16777215));
 
-        formLayout->setWidget(4, QFormLayout::FieldRole, paymethodDropdwon);
+        formLayout->setWidget(4, QFormLayout::FieldRole, atPaymentMethodsComboBox);
 
-        addButton = new QPushButton(transaktionenNeuTab);
-        addButton->setObjectName(QStringLiteral("addButton"));
-        addButton->setEnabled(false);
+        addTransactionButton = new QPushButton(transaktionenNeuTab);
+        addTransactionButton->setObjectName(QStringLiteral("addTransactionButton"));
+        addTransactionButton->setEnabled(true);
         QIcon icon4;
         icon4.addFile(QStringLiteral("resources/add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addButton->setIcon(icon4);
+        addTransactionButton->setIcon(icon4);
 
-        formLayout->setWidget(7, QFormLayout::FieldRole, addButton);
+        formLayout->setWidget(7, QFormLayout::FieldRole, addTransactionButton);
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -1043,9 +1043,9 @@ public:
 
         retranslateUi(UserWindow);
 
-        mainTabWidget->setCurrentIndex(3);
-        transaktionenTabWidget->setCurrentIndex(0);
-        usertabWidget->setCurrentIndex(1);
+        mainTabWidget->setCurrentIndex(0);
+        transaktionenTabWidget->setCurrentIndex(1);
+        usertabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(UserWindow);
@@ -1067,7 +1067,7 @@ public:
         categoryLabel->setText(QApplication::translate("UserWindow", "Kategorie", 0));
         descriptionLabel->setText(QApplication::translate("UserWindow", "Beschreibung", 0));
         paymethodLabel->setText(QApplication::translate("UserWindow", "Zahlungsart", 0));
-        addButton->setText(QApplication::translate("UserWindow", "Hinzuf\303\274gen", 0));
+        addTransactionButton->setText(QApplication::translate("UserWindow", "Hinzuf\303\274gen", 0));
         transaktionenTabWidget->setTabText(transaktionenTabWidget->indexOf(transaktionenNeuTab), QApplication::translate("UserWindow", "Neue Transaktion", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(transaktionenTab), QApplication::translate("UserWindow", "Transaktionen", 0));
         paymethodeditButton->setText(QApplication::translate("UserWindow", "Bearbeiten", 0));

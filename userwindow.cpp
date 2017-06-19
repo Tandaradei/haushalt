@@ -47,12 +47,17 @@ void UserWindow::addCategory(const QString& name)
 {
     // add category name to filter
     ui->categoriesComboBox->addItem(name);
+    // add category name to add transaction form
+    ui->atCategoriesComboBox->addItem(name);
 }
 
 void UserWindow::addPaymentMethod(const QString &name)
 {
     // add payment method name to filter
     ui->paymentMethodsComboBox->addItem(name);
+
+    // add payment method name to add transaction form
+    ui->atPaymentMethodsComboBox->addItem(name);
 
     // add payment method name to list view
     paymentMethodsModel.insertRow(paymentMethodsModel.rowCount());
@@ -83,7 +88,17 @@ void UserWindow::setSettings(QString name, QDate birthdate)
 
 void UserWindow::handleLogoutButton()
 {
-    userController.onLogout();
+  userController.onLogout();
+}
+
+void UserWindow::handleAddTransactionButton()
+{
+
+  userController.addTransaction(ui->atAmountSpinner->value()
+                                , ui->atDateEdit->date()
+                                , ui->atCategoriesComboBox->currentData().toString()
+                                , ui->atPaymentMethodsComboBox->currentData().toString()
+                                , ui->atDescriptionTextEdit->toPlainText());
 }
 
 void UserWindow::initTable()

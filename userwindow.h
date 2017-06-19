@@ -28,6 +28,7 @@ public:
 
 private slots:
     void handleLogoutButton();
+    void handleAddTransactionButton();
 
 private:
     void initTable();

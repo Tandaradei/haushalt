@@ -38,6 +38,15 @@ void UserController::onLogout()
     mainController.close();
 }
 
+void UserController::addTransaction(float amount, const QDate &date, const QString &categoryName, const QString &paymentMethodName, const QString &description)
+{
+  userDAO.addTransaction((int)(amount * 100.0f)
+                         , description
+                         , date.toString("yyyy-MM-dd")
+                         , getCategoryByName(categoryName)
+                         , getPaymentMethodByName(paymentMethodName));
+}
+
 void UserController::loadCategories()
 {
     // load all categories from database
@@ -92,6 +101,38 @@ void UserController::loadTransactions()
 void UserController::loadSettings()
 {
     // add user name and birthdate to UI
-    userWindow.setSettings(user->Name, user->Birthdate);
+  userWindow.setSettings(user->Name, user->Birthdate);
+}
+
+std::shared_ptr<Category> UserController::getCategoryByName(const QString &name)
+{
+    if(categories != nullptr)
+    {
+        // iterate through categories
+        for(auto categoriesIt = categories->begin(), categoriesEnd = categories->end(); categoriesIt != categoriesEnd; ++categoriesIt)
+        {
+            if((*categoriesIt)->Name == name)
+            {
+                return *categoriesIt;
+            }
+        }
+    }
+    return nullptr;
+}
+
+std::shared_ptr<PaymentMethod> UserController::getPaymentMethodByName(const QString &name)
+{
+    if(paymentMethods != nullptr)
+    {
+        // iterate through payment methods
+        for(auto paymentMethodIt = paymentMethods->begin(), paymentMethodEnd = paymentMethods->end(); paymentMethodIt != paymentMethodEnd; ++paymentMethodIt)
+        {
+            if((*paymentMethodIt)->Name == name)
+            {
+                return *paymentMethodIt;
+            }
+        }
+    }
+    return nullptr;
 }
 

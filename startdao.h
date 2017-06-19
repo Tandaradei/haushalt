@@ -15,6 +15,7 @@ public:
 
     bool isFirstStart();
     std::shared_ptr<User> getUser(const QString& email, const QString& password);
+    bool createAdmin(const QString& name, const QString& email, const QString& dateString, const QString& password);
 
 private:
     DbManager& dbManager;

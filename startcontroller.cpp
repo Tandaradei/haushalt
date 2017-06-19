@@ -30,8 +30,13 @@ void StartController::start()
     }
 }
 
-void StartController::createAdmin(const QString& name, const QString& email, const QDate date, QString pw){
-
+void StartController::createAdmin(const QString& name, const QString& email, const QDate date, QString password)
+{
+    if(startDAO.createAdmin(name, email, date.toString("yyyy-MM-dd"), password))
+    {
+        firstStartWindow.hide();
+        onLoginClicked(email, password);
+    }
 
 }
 
