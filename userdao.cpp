@@ -195,3 +195,14 @@ std::shared_ptr<Transaction> UserDAO::addTransaction(int amount, const QString& 
     }
     return nullptr;
 }
+
+void UserDAO::deleteTransaktion(int index)
+{
+    QSqlQuery query(dbManager.getDatabase());
+    query.prepare("DELETE FROM Transaktionen where TID = ?");
+    query.addBindValue(index);
+    std::cout << index;
+    //qDebug() << query.executedQuery();
+    query.exec();
+   // loadTransactions();
+}

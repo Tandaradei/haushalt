@@ -152,3 +152,7 @@ std::shared_ptr<PayMethod> UserController::getPayMethodByName(const QString &nam
     return nullptr;
 }
 
+void UserController::deleteTransaktion(int index)
+{
+    userDAO.deleteTransaktion(index);
+}

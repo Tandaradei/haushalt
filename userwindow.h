@@ -27,11 +27,13 @@ public:
 
     void enableAdminTabs();
     void setSettings(QString name, QDate birthdate);
+    void handledeleteButton();
 
 private slots:
     void handleLogoutButton();
     void handleAddTransactionButton();
     void handleTransactionsItemSelectionChanged();
+
 
 private:
     void initTable();
