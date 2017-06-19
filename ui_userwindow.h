@@ -77,7 +77,6 @@ public:
     QPushButton *addTransactionButton;
     QPushButton *editTransactionButton;
     QPushButton *deleteTransactionButton;
-    QVBoxLayout *transaktionenNeuTabLayout;
     QWidget *zahlungsartenTab;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_2;
@@ -283,17 +282,20 @@ public:
         if (transaktionenTable->rowCount() < 100)
             transaktionenTable->setRowCount(100);
         transaktionenTable->setObjectName(QStringLiteral("transaktionenTable"));
+        transaktionenTable->setMinimumSize(QSize(600, 0));
         transaktionenTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
         transaktionenTable->setSelectionMode(QAbstractItemView::SingleSelection);
         transaktionenTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+        transaktionenTable->setGridStyle(Qt::SolidLine);
         transaktionenTable->setSortingEnabled(true);
+        transaktionenTable->setCornerButtonEnabled(true);
         transaktionenTable->setRowCount(100);
         transaktionenTable->setColumnCount(6);
-        transaktionenTable->horizontalHeader()->setCascadingSectionResizes(false);
+        transaktionenTable->horizontalHeader()->setCascadingSectionResizes(true);
         transaktionenTable->horizontalHeader()->setMinimumSectionSize(50);
         transaktionenTable->horizontalHeader()->setProperty("showSortIndicator", QVariant(true));
         transaktionenTable->horizontalHeader()->setStretchLastSection(true);
-        transaktionenTable->verticalHeader()->setVisible(false);
+        transaktionenTable->verticalHeader()->setVisible(true);
 
         verticalLayout_14->addWidget(transaktionenTable);
 
@@ -303,6 +305,7 @@ public:
         formLayout = new QFormLayout();
         formLayout->setSpacing(6);
         formLayout->setObjectName(QStringLiteral("formLayout"));
+        formLayout->setSizeConstraint(QLayout::SetFixedSize);
         formLayout->setFieldGrowthPolicy(QFormLayout::FieldsStayAtSizeHint);
         formLayout->setLabelAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         formLayout->setFormAlignment(Qt::AlignHCenter|Qt::AlignTop);
@@ -336,8 +339,8 @@ public:
 
         atCategoriesComboBox = new QComboBox(transaktionenTab);
         atCategoriesComboBox->setObjectName(QStringLiteral("atCategoriesComboBox"));
-        atCategoriesComboBox->setMinimumSize(QSize(80, 0));
-        atCategoriesComboBox->setMaximumSize(QSize(100, 16777215));
+        atCategoriesComboBox->setMinimumSize(QSize(120, 0));
+        atCategoriesComboBox->setMaximumSize(QSize(120, 16777215));
 
         formLayout->setWidget(3, QFormLayout::FieldRole, atCategoriesComboBox);
 
@@ -348,8 +351,8 @@ public:
 
         atPayMethodsComboBox = new QComboBox(transaktionenTab);
         atPayMethodsComboBox->setObjectName(QStringLiteral("atPayMethodsComboBox"));
-        atPayMethodsComboBox->setMinimumSize(QSize(80, 0));
-        atPayMethodsComboBox->setMaximumSize(QSize(80, 16777215));
+        atPayMethodsComboBox->setMinimumSize(QSize(120, 0));
+        atPayMethodsComboBox->setMaximumSize(QSize(120, 16777215));
 
         formLayout->setWidget(4, QFormLayout::FieldRole, atPayMethodsComboBox);
 
@@ -360,7 +363,8 @@ public:
 
         atDescriptionTextEdit = new QTextEdit(transaktionenTab);
         atDescriptionTextEdit->setObjectName(QStringLiteral("atDescriptionTextEdit"));
-        atDescriptionTextEdit->setMaximumSize(QSize(16777215, 100));
+        atDescriptionTextEdit->setMinimumSize(QSize(200, 100));
+        atDescriptionTextEdit->setMaximumSize(QSize(200, 100));
 
         formLayout->setWidget(5, QFormLayout::FieldRole, atDescriptionTextEdit);
 
@@ -380,9 +384,12 @@ public:
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setSpacing(6);
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        horizontalLayout_6->setSizeConstraint(QLayout::SetMaximumSize);
         addTransactionButton = new QPushButton(transaktionenTab);
         addTransactionButton->setObjectName(QStringLiteral("addTransactionButton"));
         addTransactionButton->setEnabled(true);
+        addTransactionButton->setMinimumSize(QSize(100, 25));
+        addTransactionButton->setMaximumSize(QSize(100, 25));
         QIcon icon1;
         icon1.addFile(QStringLiteral("resources/add.png"), QSize(), QIcon::Normal, QIcon::Off);
         addTransactionButton->setIcon(icon1);
@@ -391,6 +398,7 @@ public:
 
         editTransactionButton = new QPushButton(transaktionenTab);
         editTransactionButton->setObjectName(QStringLiteral("editTransactionButton"));
+        editTransactionButton->setMinimumSize(QSize(100, 25));
         editTransactionButton->setMaximumSize(QSize(100, 25));
         editTransactionButton->setLayoutDirection(Qt::LeftToRight);
         QIcon icon2;
@@ -402,6 +410,7 @@ public:
 
         deleteTransactionButton = new QPushButton(transaktionenTab);
         deleteTransactionButton->setObjectName(QStringLiteral("deleteTransactionButton"));
+        deleteTransactionButton->setMinimumSize(QSize(100, 25));
         deleteTransactionButton->setMaximumSize(QSize(100, 25));
         QIcon icon3;
         icon3.addFile(QStringLiteral("resources/remove.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -414,12 +423,6 @@ public:
 
 
         horizontalLayout_9->addLayout(formLayout);
-
-        transaktionenNeuTabLayout = new QVBoxLayout();
-        transaktionenNeuTabLayout->setSpacing(6);
-        transaktionenNeuTabLayout->setObjectName(QStringLiteral("transaktionenNeuTabLayout"));
-
-        horizontalLayout_9->addLayout(transaktionenNeuTabLayout);
 
 
         verticalLayout_3->addLayout(horizontalLayout_9);
