@@ -67,6 +67,13 @@
        </property>
       </widget>
      </item>
+     <item row="2" column="1">
+      <widget class="QDateEdit" name="dateEdit">
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
      <item row="3" column="0">
       <widget class="QLabel" name="pwLabel">
        <property name="text">
@@ -84,43 +91,12 @@
        </property>
       </widget>
      </item>
-     <item row="7" column="1">
-      <widget class="QPushButton" name="admincreateButton">
-       <property name="text">
-        <string>Anlegen</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>resources/user.png</normaloff>resources/user.png</iconset>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QDateEdit" name="dateEdit">
-       <property name="calendarPopup">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
      <item row="4" column="0">
       <widget class="QLabel" name="pwwdhLabel">
        <property name="text">
         <string>Passwort wiederholen</string>
        </property>
       </widget>
-     </item>
-     <item row="6" column="1">
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
      </item>
      <item row="4" column="1">
       <widget class="QLineEdit" name="pwwdhField">
@@ -131,8 +107,28 @@
      </item>
      <item row="5" column="1">
       <widget class="QLabel" name="erroLabel">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
        <property name="text">
         <string/>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QPushButton" name="admincreateButton">
+       <property name="text">
+        <string>Anlegen</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>resources/user.png</normaloff>resources/user.png</iconset>
        </property>
       </widget>
      </item>

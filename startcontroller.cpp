@@ -7,7 +7,7 @@
 StartController::StartController(MainController& mainController, DbManager &dbManager)
     :mainController(mainController)
     ,startDAO(dbManager)
-    ,firstStartWindow()
+    ,firstStartWindow(*this)
     ,loginWindow(*this)
 {
 
@@ -28,6 +28,11 @@ void StartController::start()
     {
         loginWindow.show();
     }
+}
+
+void StartController::createAdmin(const QString& name, const QString& email, const QDate date, QString pw){
+
+
 }
 
 bool StartController::onLoginClicked(const QString& email, const QString& password)
