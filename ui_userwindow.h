@@ -161,12 +161,13 @@ public:
     QGridLayout *gridLayout_7;
     QListView *stanpaylistView;
     QGridLayout *gridLayout_8;
-    QPushButton *stanpaychangeButton;
-    QPushButton *stanpaydelButton;
     QGridLayout *gridLayout_6;
     QLineEdit *stanpayaddField;
-    QPushButton *stanpayaddButton;
     QLabel *stanpayaddLabel;
+    QHBoxLayout *horizontalLayout_7;
+    QPushButton *stanpayaddButton;
+    QPushButton *stanpaychangeButton;
+    QPushButton *stanpaydelButton;
     QWidget *logoutTab;
     QVBoxLayout *verticalLayout_8;
     QVBoxLayout *abmeldenTabLayout;
@@ -295,7 +296,7 @@ public:
         transaktionenTable->horizontalHeader()->setMinimumSectionSize(50);
         transaktionenTable->horizontalHeader()->setProperty("showSortIndicator", QVariant(true));
         transaktionenTable->horizontalHeader()->setStretchLastSection(true);
-        transaktionenTable->verticalHeader()->setVisible(true);
+        transaktionenTable->verticalHeader()->setVisible(false);
 
         verticalLayout_14->addWidget(transaktionenTable);
 
@@ -913,18 +914,6 @@ public:
         gridLayout_8 = new QGridLayout();
         gridLayout_8->setSpacing(6);
         gridLayout_8->setObjectName(QStringLiteral("gridLayout_8"));
-        stanpaychangeButton = new QPushButton(standardPayMethodsTab);
-        stanpaychangeButton->setObjectName(QStringLiteral("stanpaychangeButton"));
-        stanpaychangeButton->setMaximumSize(QSize(100, 16777215));
-
-        gridLayout_8->addWidget(stanpaychangeButton, 0, 0, 1, 1);
-
-        stanpaydelButton = new QPushButton(standardPayMethodsTab);
-        stanpaydelButton->setObjectName(QStringLiteral("stanpaydelButton"));
-        stanpaydelButton->setMaximumSize(QSize(100, 16777215));
-
-        gridLayout_8->addWidget(stanpaydelButton, 0, 1, 1, 1);
-
 
         gridLayout_7->addLayout(gridLayout_8, 1, 0, 1, 1);
 
@@ -941,18 +930,36 @@ public:
 
         gridLayout_6->addWidget(stanpayaddField, 1, 0, 1, 1, Qt::AlignHCenter|Qt::AlignVCenter);
 
-        stanpayaddButton = new QPushButton(standardPayMethodsTab);
-        stanpayaddButton->setObjectName(QStringLiteral("stanpayaddButton"));
-        stanpayaddButton->setMaximumSize(QSize(100, 16777215));
-
-        gridLayout_6->addWidget(stanpayaddButton, 2, 0, 1, 1, Qt::AlignHCenter|Qt::AlignTop);
-
         stanpayaddLabel = new QLabel(standardPayMethodsTab);
         stanpayaddLabel->setObjectName(QStringLiteral("stanpayaddLabel"));
         stanpayaddLabel->setMaximumSize(QSize(16777215, 200));
         stanpayaddLabel->setAlignment(Qt::AlignCenter);
 
         gridLayout_6->addWidget(stanpayaddLabel, 0, 0, 1, 1, Qt::AlignBottom);
+
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setSpacing(6);
+        horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
+        stanpayaddButton = new QPushButton(standardPayMethodsTab);
+        stanpayaddButton->setObjectName(QStringLiteral("stanpayaddButton"));
+        stanpayaddButton->setMaximumSize(QSize(100, 16777215));
+
+        horizontalLayout_7->addWidget(stanpayaddButton, 0, Qt::AlignTop);
+
+        stanpaychangeButton = new QPushButton(standardPayMethodsTab);
+        stanpaychangeButton->setObjectName(QStringLiteral("stanpaychangeButton"));
+        stanpaychangeButton->setMaximumSize(QSize(100, 16777215));
+
+        horizontalLayout_7->addWidget(stanpaychangeButton, 0, Qt::AlignTop);
+
+        stanpaydelButton = new QPushButton(standardPayMethodsTab);
+        stanpaydelButton->setObjectName(QStringLiteral("stanpaydelButton"));
+        stanpaydelButton->setMaximumSize(QSize(100, 16777215));
+
+        horizontalLayout_7->addWidget(stanpaydelButton, 0, Qt::AlignTop);
+
+
+        gridLayout_6->addLayout(horizontalLayout_7, 2, 0, 1, 1);
 
 
         horizontalLayout_5->addLayout(gridLayout_6);
@@ -1018,7 +1025,7 @@ public:
 
         retranslateUi(UserWindow);
 
-        mainTabWidget->setCurrentIndex(0);
+        mainTabWidget->setCurrentIndex(5);
         usertabWidget->setCurrentIndex(0);
 
 
@@ -1074,10 +1081,10 @@ public:
         addcategoryLabel->setText(QApplication::translate("UserWindow", "Bitte geben sie hier neue Kategorien an", 0));
         addcategoryButton->setText(QApplication::translate("UserWindow", "hinzuf\303\274gen", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(categoryTab), QApplication::translate("UserWindow", "Kategorien", 0));
+        stanpayaddLabel->setText(QApplication::translate("UserWindow", "Bitte geben sie hier neue Standartzahlungsarten and die sie hinzuf\303\274gen m\303\266chsten", 0));
+        stanpayaddButton->setText(QApplication::translate("UserWindow", "Hinzuf\303\274gen", 0));
         stanpaychangeButton->setText(QApplication::translate("UserWindow", "Bearbeiten", 0));
         stanpaydelButton->setText(QApplication::translate("UserWindow", "Entfernen", 0));
-        stanpayaddButton->setText(QApplication::translate("UserWindow", "Hinzuf\303\274gen", 0));
-        stanpayaddLabel->setText(QApplication::translate("UserWindow", "Bitte geben sie hier neue Standartzahlungsarten and die sie hinzuf\303\274gen m\303\266chsten", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(standardPayMethodsTab), QApplication::translate("UserWindow", "Standardzahlungsarten", 0));
         abmeldenLabel->setText(QApplication::translate("UserWindow", "Benutzer <Benutzer> wirklich abmelden?", 0));
         logoutButton->setText(QApplication::translate("UserWindow", "Abmelden", 0));

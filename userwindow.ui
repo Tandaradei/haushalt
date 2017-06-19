@@ -53,7 +53,7 @@
          <enum>QTabWidget::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>5</number>
         </property>
         <property name="elideMode">
          <enum>Qt::ElideLeft</enum>
@@ -246,7 +246,7 @@
                  <bool>true</bool>
                 </attribute>
                 <attribute name="verticalHeaderVisible">
-                 <bool>true</bool>
+                 <bool>false</bool>
                 </attribute>
                 <row/>
                 <row/>
@@ -1429,34 +1429,7 @@
                  </widget>
                 </item>
                 <item row="1" column="0">
-                 <layout class="QGridLayout" name="gridLayout_8">
-                  <item row="0" column="0">
-                   <widget class="QPushButton" name="stanpaychangeButton">
-                    <property name="maximumSize">
-                     <size>
-                      <width>100</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="text">
-                     <string>Bearbeiten</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="1">
-                   <widget class="QPushButton" name="stanpaydelButton">
-                    <property name="maximumSize">
-                     <size>
-                      <width>100</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="text">
-                     <string>Entfernen</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
+                 <layout class="QGridLayout" name="gridLayout_8"/>
                 </item>
                </layout>
               </item>
@@ -1478,19 +1451,6 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0" alignment="Qt::AlignHCenter|Qt::AlignTop">
-                 <widget class="QPushButton" name="stanpayaddButton">
-                  <property name="maximumSize">
-                   <size>
-                    <width>100</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string>Hinzufügen</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="0" column="0" alignment="Qt::AlignBottom">
                  <widget class="QLabel" name="stanpayaddLabel">
                   <property name="maximumSize">
@@ -1506,6 +1466,49 @@
                    <set>Qt::AlignCenter</set>
                   </property>
                  </widget>
+                </item>
+                <item row="2" column="0">
+                 <layout class="QHBoxLayout" name="horizontalLayout_7">
+                  <item alignment="Qt::AlignTop">
+                   <widget class="QPushButton" name="stanpayaddButton">
+                    <property name="maximumSize">
+                     <size>
+                      <width>100</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Hinzufügen</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignTop">
+                   <widget class="QPushButton" name="stanpaychangeButton">
+                    <property name="maximumSize">
+                     <size>
+                      <width>100</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Bearbeiten</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignTop">
+                   <widget class="QPushButton" name="stanpaydelButton">
+                    <property name="maximumSize">
+                     <size>
+                      <width>100</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Entfernen</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </item>
                </layout>
               </item>
