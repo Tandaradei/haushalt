@@ -21,6 +21,8 @@ public:
     void addTransaction(float amount, const QDate& date, const QString& categoryName, const QString& payMethodName, const QString& description);
     void deleteTransaction(size_t ID);
 
+    void addPayMethod(const QString& name);
+
 protected:
 
     MainController& mainController;

@@ -214,3 +214,28 @@ bool UserDAO::deleteTransaction(size_t ID)
     }
     return false;
 }
+
+std::shared_ptr<PayMethod> UserDAO::addPayMethod(const QString &name)
+{
+    QSqlQuery query(dbManager.getDatabase());
+    query.prepare("INSERT INTO Zahlungsart(BID, Name) VALUES(:BID, Name);");
+    query.bindValue(":BID", user->ID);
+    query.bindValue(":Name", name);
+    qDebug() << query.executedQuery();
+    if(query.exec())
+    {
+        qDebug() << "execution successful";
+        std::shared_ptr<PayMethod> payMethod = std::make_shared<PayMethod>();
+        payMethod->ID = query.lastInsertId().toInt();
+        // no BID
+        payMethod->Name = name;
+        payMethods->push_back(payMethod);
+        return payMethod;
+    }
+    else
+    {
+        qDebug() << "addPayMethod error:  "
+                 << query.lastError().text();
+    }
+    return nullptr;
+}

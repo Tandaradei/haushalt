@@ -159,3 +159,14 @@ void UserController::deleteTransaction(size_t ID)
         //
     }
 }
+
+void UserController::addPayMethod(const QString &name)
+{
+    std::shared_ptr<PayMethod> payMethod = nullptr;
+    payMethod = userDAO.addPayMethod(name);
+    if(payMethod != nullptr)
+    {
+        userWindow.addPayMethod(name);
+        payMethods = UserDAO.getPayMethods();
+    }
+}
