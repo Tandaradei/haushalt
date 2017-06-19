@@ -2,7 +2,7 @@
 
 #include <QString>
 
-struct PaymentMethod
+struct PayMethod
 {
     size_t ID;
     QString Name;

@@ -4,7 +4,7 @@
 #include "user.h"
 #include "transaction.h"
 #include "category.h"
-#include "paymentmethod.h"
+#include "payMethod.h"
 
 UserController::UserController(MainController& mainController, DbManager &dbManager, std::shared_ptr<User> user)
     :mainController(mainController)
@@ -12,12 +12,12 @@ UserController::UserController(MainController& mainController, DbManager &dbMana
     ,userWindow(*this)
     ,user(user)
     ,categories(nullptr)
-    ,paymentMethods(nullptr)
+    ,payMethods(nullptr)
     ,transactions(nullptr)
 {
     userWindow.setWindowTitle(user->Name);
     loadCategories();
-    loadPaymentMethods();
+    loadPayMethods();
     loadTransactions();
     loadSettings();
 }
@@ -38,17 +38,24 @@ void UserController::onLogout()
     mainController.close();
 }
 
-void UserController::addTransaction(float amount, const QDate &date, const QString &categoryName, const QString &paymentMethodName, const QString &description)
+void UserController::addTransaction(float amount, const QDate &date, const QString &categoryName, const QString &payMethodName, const QString &description)
 {
-  userDAO.addTransaction((int)(amount * 100.0f)
+    std::shared_ptr<Transaction> transaction = nullptr;
+    transaction = userDAO.addTransaction((int)(amount * 100.0f)
                          , description
                          , date.toString("yyyy-MM-dd")
                          , getCategoryByName(categoryName)
-                         , getPaymentMethodByName(paymentMethodName));
+                         , getPayMethodByName(payMethodName));
+    if(transaction != nullptr)
+    {
+      addTransactionToUI(transaction);
+      transactions = userDAO.getTransactions();
+    }
 }
 
 void UserController::loadCategories()
 {
+    userWindow.clearCategories();
     // load all categories from database
     categories = userDAO.loadCategories();
     if(categories != nullptr)
@@ -63,23 +70,25 @@ void UserController::loadCategories()
 
 }
 
-void UserController::loadPaymentMethods()
+void UserController::loadPayMethods()
 {
+    userWindow.clearPayMethods();
     // load all payment methods for logged in user from database
-    paymentMethods = userDAO.loadPaymentMethods();
-    if(paymentMethods != nullptr)
+    payMethods = userDAO.loadPayMethods();
+    if(payMethods != nullptr)
     {
         // iterate through payment methods
-        for(auto paymentMethodIt = paymentMethods->begin(), paymentMethodEnd = paymentMethods->end(); paymentMethodIt != paymentMethodEnd; ++paymentMethodIt)
+        for(auto payMethodIt = payMethods->begin(), payMethodEnd = payMethods->end(); payMethodIt != payMethodEnd; ++payMethodIt)
         {
             // add payment method to UI (list and combo boxes)
-            userWindow.addPaymentMethod((*paymentMethodIt)->Name);
+            userWindow.addPayMethod((*payMethodIt)->Name);
         }
     }
 }
 
 void UserController::loadTransactions()
 {
+    userWindow.clearTransactionEntries();
     // load all transactions for logged in user from database
     transactions = userDAO.loadTransactions();
     if(transactions != nullptr)
@@ -88,12 +97,7 @@ void UserController::loadTransactions()
         for(auto transactionsIt = transactions->begin(), transactionsEnd = transactions->end(); transactionsIt != transactionsEnd; ++transactionsIt)
         {
             // add transaction to UI (table)
-            userWindow.addTransactionEntry((*transactionsIt)->Date
-                                           , ((float)(*transactionsIt)->Amount)/100.0f // cents to euro
-                                           , (*transactionsIt)->Description
-                                           , (*transactionsIt)->Category != nullptr ? (*transactionsIt)->Category->Name : QString() // if category is nullptr -> empty QString
-                                           , (*transactionsIt)->PaymentMethod != nullptr ? (*transactionsIt)->PaymentMethod->Name : QString() // if payment method is nullptr -> empty QString
-                                          );
+            addTransactionToUI(*transactionsIt);
         }
     }
 }
@@ -101,7 +105,19 @@ void UserController::loadTransactions()
 void UserController::loadSettings()
 {
     // add user name and birthdate to UI
-  userWindow.setSettings(user->Name, user->Birthdate);
+    userWindow.setSettings(user->Name, user->Birthdate);
+}
+
+void UserController::addTransactionToUI(std::shared_ptr<Transaction> transaction)
+{
+    // add transaction to UI (table)
+    userWindow.addTransactionEntry(transaction->Date
+                                   , ((float)transaction->Amount)/100.0f // cents to euro
+                                   , transaction->Description
+                                   , transaction->Category != nullptr ? transaction->Category->Name : QString() // if category is nullptr -> empty QString
+                                   , transaction->PayMethod != nullptr ? transaction->PayMethod->Name : QString() // if payment method is nullptr -> empty QString
+                                   , transaction->ID
+                                  );
 }
 
 std::shared_ptr<Category> UserController::getCategoryByName(const QString &name)
@@ -120,16 +136,16 @@ std::shared_ptr<Category> UserController::getCategoryByName(const QString &name)
     return nullptr;
 }
 
-std::shared_ptr<PaymentMethod> UserController::getPaymentMethodByName(const QString &name)
+std::shared_ptr<PayMethod> UserController::getPayMethodByName(const QString &name)
 {
-    if(paymentMethods != nullptr)
+    if(payMethods != nullptr)
     {
         // iterate through payment methods
-        for(auto paymentMethodIt = paymentMethods->begin(), paymentMethodEnd = paymentMethods->end(); paymentMethodIt != paymentMethodEnd; ++paymentMethodIt)
+        for(auto payMethodIt = payMethods->begin(), payMethodEnd = payMethods->end(); payMethodIt != payMethodEnd; ++payMethodIt)
         {
-            if((*paymentMethodIt)->Name == name)
+            if((*payMethodIt)->Name == name)
             {
-                return *paymentMethodIt;
+                return *payMethodIt;
             }
         }
     }

@@ -4,7 +4,7 @@
 #include "user.h"
 
 class Category;
-class PaymentMethod;
+class PayMethod;
 
 struct Transaction
 {
@@ -14,5 +14,5 @@ public:
     QString Description;
     QDate Date;
     std::shared_ptr<Category> Category;
-    std::shared_ptr<PaymentMethod> PaymentMethod;
+    std::shared_ptr<PayMethod> PayMethod;
 };
