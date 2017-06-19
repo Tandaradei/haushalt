@@ -19,6 +19,10 @@ void FirstStartWindow::handlesetAdminButton()
   {
       ui->erroLabel->setText("Passwort stimmt nicht überein");
   }
+  else if(ui->pwField->text().isEmpty())
+  {
+      ui->erroLabel->setText("Bitte geben sie ein gültige Passwort an");
+  }
   else if(ui->nameField->text().isEmpty())
   {
       ui->erroLabel->setText("Bitte geben sie einen gültigen Namen ein");
