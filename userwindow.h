@@ -52,6 +52,7 @@ private slots:
     void handleAddPayMethodButton();
     void handleDeletePayMethodButton();
 
+    void handleUsersItemSelectionChanged();
     void handleAddUserButton();
 
 

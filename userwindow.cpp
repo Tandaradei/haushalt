@@ -34,6 +34,7 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
     connect(ui->deletePayMethodButton, SIGNAL (released()), this, SLOT (handleDeletePayMethodButton()));
 
     //users
+    connect(ui->userTable, SIGNAL(itemSelectionChanged()), this, SLOT (handleUsersItemSelectionChanged()));
     connect(ui->addUserButton, SIGNAL (released()), this, SLOT(handleAddUserButton()));
 
 
@@ -273,6 +274,20 @@ void UserWindow::handleDeletePayMethodButton()
         if(userController.deletePayMethod(ui->payMethodNameField->text()))
         {
 
+        }
+    }
+}
+
+void UserWindow::handleUsersItemSelectionChanged()
+{
+    QItemSelectionModel *select = ui->userTable->selectionModel();
+
+    if(select->hasSelection())
+    {
+        QModelIndex index = select->selectedRows().front();
+        if(index.row() <= userEntriesCount)
+        {
+            ui->userEmailField->setText(ui->userTable->item(index.row(), 0)->text());
         }
     }
 }
