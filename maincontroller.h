@@ -3,6 +3,7 @@
 #include <QApplication>
 #include "dbmanager.h"
 #include <memory>
+#include <string>
 
 class User;
 
@@ -16,7 +17,7 @@ public:
     MainController(int argc, char *argv[]);
     ~MainController();
 
-    int exec();
+    int exec(char *argv[]);
     void onLoggedIn(std::shared_ptr<User> user);
     void close();
 
@@ -27,5 +28,6 @@ private:
     std::shared_ptr<StartController> startController;
     std::shared_ptr<UserController> userController;
     std::shared_ptr<AdminController> adminController;
+
 };
 

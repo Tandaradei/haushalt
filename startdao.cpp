@@ -233,10 +233,11 @@ void StartDAO::setDAO()
 
 void StartDAO::cleanDAO()
 {
-    QSqlQuery query(dbManager.getDatabase());
-    query.exec("DELETE * FROM Benutzer");
-    query.exec("DELETE * FROM Kategorie");
-    query.exec("DELETE * FROM Standardzahlungsart");
-    query.exec("DELETE * FROM Transaktion");
-    query.exec("DELETE * FROM Zahlungsart");
-}
+    printf("hallo");
+    QSqlQuery query2(dbManager.getDatabase());
+    query2.exec("DELETE FROM Benutzer");
+    query2.exec("DELETE FROM Kategorie");
+    query2.exec("DELETE FROM Standardzahlungsart");
+    query2.exec("DELETE FROM Transaktion");
+    query2.exec("DELETE FROM Zahlungsart");
+  }

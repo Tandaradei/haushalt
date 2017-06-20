@@ -15,17 +15,8 @@ MainController::MainController(int argc, char *argv[])
     ,adminController()
 {
 
-    std::string argument1(argv[1]);
-    //std::cout << argument1;
-    if(argument1 == "test")
-    {
-        startController->setDAO();
-    }
-    else// if(argument1 == "clean")
-    {
-        std::cout << argument1;
-        //startController->cleanDAO();
-    }
+
+
 
 }
 
@@ -34,10 +25,21 @@ MainController::~MainController()
 
 }
 
-int MainController::exec()
+int MainController::exec(char *argv[])
 {
     // create startController and start it
     startController = std::make_shared<StartController>(*this, dbManager);
+
+    std::string argument1(argv[1]);
+    if(argument1 == "test")
+    {
+        startController->setDAO();
+    }
+    else// if(argument1 == "clean")
+    {
+        startController->cleanDAO();
+    }
+
     startController->start();
 
     // enter main loop
