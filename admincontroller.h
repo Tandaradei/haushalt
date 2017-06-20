@@ -16,8 +16,10 @@ public:
 
     void start();
 private:
+    void loadUsers();
+
     AdminDAO adminDAO;
-    //AdminWindow adminWindow;
+    std::shared_ptr<std::list<std::shared_ptr<User>>> users;
 };
 
 

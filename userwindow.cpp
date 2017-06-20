@@ -5,8 +5,10 @@
 UserWindow::UserWindow(UserController& userController, QWidget *parent)
     :QMainWindow(parent)
     ,userController(userController)
+    ,adminController(nullptr)
     ,ui(new Ui::UserWindow)
     ,transactionEntriesCount(0)
+    ,userEntriesCount(0)
     ,payMethodsModel()
     ,selectedTransactionID(0)
 {
@@ -140,9 +142,9 @@ void UserWindow::deletePayMethod(const QString &name)
    }
 }
 
-void UserWindow::enableAdmin(std::shared_ptr<AdminController> adminController)
+void UserWindow::enableAdmin(AdminController *newAdminController)
 {
-    adminController = adminController;
+    adminController = newAdminController;
     // remove logout tab
     ui->mainTabWidget->removeTab(3);
 
@@ -153,6 +155,15 @@ void UserWindow::enableAdmin(std::shared_ptr<AdminController> adminController)
 
     // add logout tab behind
     ui->mainTabWidget->addTab(ui->logoutTab, QIcon(QString("resources/exit.png")), "Abmelden");
+}
+
+void UserWindow::addUserEntry(const QString &email, const QString &name, QDate date, float balance, size_t ID)
+{
+    ui->userTable->setItem(userEntriesCount, 0, new QTableWidgetItem(email));
+    ui->userTable->setItem(userEntriesCount, 1, new QTableWidgetItem(name));
+    ui->userTable->setItem(userEntriesCount, 2, new QTableWidgetItem(date.toString("yyyy-MM-dd")));
+    ui->userTable->setItem(userEntriesCount, 3, new QTableWidgetItem(QString::number(balance, 'f', 2).replace(QChar('.'), QChar(','))));
+    ui->userTable->setItem(userEntriesCount, 4, new QTableWidgetItem(QString::number(ID)));
 }
 
 void UserWindow::setSettings(QString name, QDate birthdate)
