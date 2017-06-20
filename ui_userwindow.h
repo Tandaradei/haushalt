@@ -89,7 +89,7 @@ public:
     QHBoxLayout *horizontalLayout_8;
     QPushButton *addPayMethodButton;
     QPushButton *paymethodeditButton;
-    QPushButton *paymethoddeleteButton;
+    QPushButton *deletePayMethodButton;
     QWidget *einstellungenTab;
     QVBoxLayout *verticalLayout_6;
     QVBoxLayout *verticalLayout_5;
@@ -452,6 +452,8 @@ public:
 
         payMethodsList = new QListView(zahlungsartenTab);
         payMethodsList->setObjectName(QStringLiteral("payMethodsList"));
+        payMethodsList->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        payMethodsList->setSelectionBehavior(QAbstractItemView::SelectRows);
 
         gridLayout_2->addWidget(payMethodsList, 0, 0, 1, 1);
 
@@ -493,12 +495,12 @@ public:
 
         horizontalLayout_8->addWidget(paymethodeditButton);
 
-        paymethoddeleteButton = new QPushButton(zahlungsartenTab);
-        paymethoddeleteButton->setObjectName(QStringLiteral("paymethoddeleteButton"));
-        paymethoddeleteButton->setMaximumSize(QSize(100, 16777215));
-        paymethoddeleteButton->setIcon(icon3);
+        deletePayMethodButton = new QPushButton(zahlungsartenTab);
+        deletePayMethodButton->setObjectName(QStringLiteral("deletePayMethodButton"));
+        deletePayMethodButton->setMaximumSize(QSize(100, 16777215));
+        deletePayMethodButton->setIcon(icon3);
 
-        horizontalLayout_8->addWidget(paymethoddeleteButton);
+        horizontalLayout_8->addWidget(deletePayMethodButton);
 
 
         formLayout_3->setLayout(1, QFormLayout::FieldRole, horizontalLayout_8);
@@ -1033,7 +1035,7 @@ public:
 
         retranslateUi(UserWindow);
 
-        mainTabWidget->setCurrentIndex(0);
+        mainTabWidget->setCurrentIndex(1);
         usertabWidget->setCurrentIndex(0);
 
 
@@ -1060,7 +1062,7 @@ public:
         paymethodLabel_2->setText(QApplication::translate("UserWindow", "Name", 0));
         addPayMethodButton->setText(QApplication::translate("UserWindow", "Neu", 0));
         paymethodeditButton->setText(QApplication::translate("UserWindow", "Bearbeiten", 0));
-        paymethoddeleteButton->setText(QApplication::translate("UserWindow", "Entfernen", 0));
+        deletePayMethodButton->setText(QApplication::translate("UserWindow", "Entfernen", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(zahlungsartenTab), QApplication::translate("UserWindow", "Zahlungsarten", 0));
         settingsnameLabel->setText(QApplication::translate("UserWindow", "Name", 0));
         settingsbirthLabel->setText(QApplication::translate("UserWindow", "Geburtsdatum", 0));

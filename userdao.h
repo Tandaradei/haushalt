@@ -38,6 +38,7 @@ public:
     bool deleteTransaction(size_t ID);
 
     std::shared_ptr<PayMethod> addPayMethod(const QString& name);
+    bool deletePayMethod(std::shared_ptr<PayMethod> payMethod);
 private:
     std::shared_ptr<std::list<std::shared_ptr<Transaction>>> transactions;
     std::shared_ptr<std::list<std::shared_ptr<Category>>> categories;

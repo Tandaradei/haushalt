@@ -194,3 +194,19 @@ bool UserController::addPayMethod(const QString &name)
     }
     return true;
 }
+
+bool UserController::deletePayMethod(const QString &name)
+{
+    std::shared_ptr<PayMethod> payMethod = nullptr;
+    payMethod = getPayMethodByName(name);
+    if(payMethod == nullptr)
+    {
+        return false;
+    }
+    if(userDAO.deletePayMethod(payMethod))
+    {
+        userWindow.deletePayMethod(name);
+        payMethods = userDAO.getPayMethods();
+    }
+    return true;
+}

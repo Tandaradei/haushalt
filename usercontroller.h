@@ -23,6 +23,7 @@ public:
     void deleteTransaction(size_t ID);
 
     bool addPayMethod(const QString& name);
+    bool deletePayMethod(const QString& name);
 
 protected:
 

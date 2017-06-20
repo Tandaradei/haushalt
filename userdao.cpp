@@ -285,3 +285,41 @@ std::shared_ptr<PayMethod> UserDAO::addPayMethod(const QString &name)
     }
     return nullptr;
 }
+
+bool UserDAO::deletePayMethod(std::shared_ptr<PayMethod> payMethod)
+{
+    QSqlQuery selQuery(dbManager.getDatabase());
+    selQuery.prepare("SELECT * FROM Transaktion WHERE ZID = :ZID;");
+    selQuery.bindValue(":ZID", payMethod->ID);
+    qDebug() << selQuery.executedQuery();
+    if(selQuery.exec())
+    {
+        if(!selQuery.next())
+        {
+            QSqlQuery query(dbManager.getDatabase());
+            query.prepare("DELETE FROM Zahlungsart WHERE ZID = :ZID;");
+            query.bindValue(":ZID", payMethod->ID);
+            qDebug() << query.executedQuery();
+            if(query.exec())
+            {
+                return true;
+            }
+            else
+            {
+                qDebug() << "deletePayMethod delete error:  "
+                         << query.lastError().text();
+            }
+        }
+        else
+        {
+            // transactions with this pay method found
+            return false;
+        }
+    }
+    else
+    {
+        qDebug() << "deletePayMethod select error:  "
+                 << selQuery.lastError().text();
+    }
+    return false;
+}

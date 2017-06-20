@@ -11,24 +11,33 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
     ,selectedTransactionID(0)
 {
     ui->setupUi(this);
-    // connect buttons with handle functions
+
+    // set model for payment methods list
+    ui->payMethodsList->setModel(&payMethodsModel);
+
+    // connections
     connect(ui->logoutButton, SIGNAL (released()), this, SLOT (handleLogoutButton()));
 
+    // transactions
+    connect(ui->transaktionenTable, SIGNAL (itemSelectionChanged()), this, SLOT (handleTransactionsItemSelectionChanged()));
     connect(ui->addTransactionButton, SIGNAL (released()), this, SLOT (handleAddTransactionButton()));
     connect(ui->editTransactionButton, SIGNAL (released()), this, SLOT (handleEditTransactionButton()));
     connect(ui->deleteTransactionButton, SIGNAL (released()), this, SLOT (handleDeleteTransactionButton()));
 
-    connect(ui->addPayMethodButton, SIGNAL (released()), this, SLOT (handleAddPayMethodButton()));
+    // pay methods
 
-    connect(ui->transaktionenTable, SIGNAL (itemSelectionChanged()), this, SLOT (handleTransactionsItemSelectionChanged()));
+    connect(ui->payMethodsList->selectionModel(), SIGNAL (selectionChanged(QItemSelection, QItemSelection)), this, SLOT(handlePayMethodsItemSelectionChanged(QItemSelection, QItemSelection)));
+    connect(ui->addPayMethodButton, SIGNAL (released()), this, SLOT (handleAddPayMethodButton()));
+    connect(ui->deletePayMethodButton, SIGNAL (released()), this, SLOT (handleDeletePayMethodButton()));
+
+
 
     // remove admin tabs
     ui->mainTabWidget->removeTab(5);
     ui->mainTabWidget->removeTab(4);
     ui->mainTabWidget->removeTab(3);
 
-    // set model for payment methods list
-    ui->payMethodsList->setModel(&payMethodsModel);
+
 
     initTable();
 }
@@ -112,6 +121,23 @@ void UserWindow::addPayMethod(const QString &name)
     payMethodsModel.insertRow(payMethodsModel.rowCount());
     QModelIndex index = payMethodsModel.index(payMethodsModel.rowCount()-1);
     payMethodsModel.setData(index, name);
+}
+
+void UserWindow::deletePayMethod(const QString &name)
+{
+    ui->payMethodsComboBox->removeItem(ui->payMethodsComboBox->findText(name));
+
+    ui->atPayMethodsComboBox->removeItem(ui->atPayMethodsComboBox->findText(name));
+
+
+   for(int i = 0; i < payMethodsModel.rowCount(); ++i)
+   {
+       QModelIndex index = payMethodsModel.index(i);
+       if(payMethodsModel.data(index, 0) == name)
+       {
+           payMethodsModel.removeRow(i);
+       }
+   }
 }
 
 void UserWindow::enableAdminTabs()
@@ -206,11 +232,27 @@ void UserWindow::handleDeleteTransactionButton()
 
 }
 
+void UserWindow::handlePayMethodsItemSelectionChanged(const QItemSelection& selection, const QItemSelection &deselection)
+{
+    ui->payMethodNameField->setText(payMethodsModel.data(selection.indexes().front(), 0).toString());
+}
+
 void UserWindow::handleAddPayMethodButton()
 {
     if(!ui->payMethodNameField->text().isEmpty())
     {
         if(userController.addPayMethod(ui->payMethodNameField->text()))
+        {
+
+        }
+    }
+}
+
+void UserWindow::handleDeletePayMethodButton()
+{
+    if(!ui->payMethodNameField->text().isEmpty())
+    {
+        if(userController.deletePayMethod(ui->payMethodNameField->text()))
         {
 
         }

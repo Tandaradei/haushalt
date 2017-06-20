@@ -2,6 +2,7 @@
 
 #include <QMainWindow>
 #include <QStringListModel>
+#include <QItemSelection>
 
 
 namespace Ui {
@@ -25,6 +26,7 @@ public:
     void addCategory(const QString& name);
     void clearPayMethods();
     void addPayMethod(const QString& name);
+    void deletePayMethod(const QString& name);
 
     void enableAdminTabs();
     void setSettings(QString name, QDate birthdate);
@@ -38,7 +40,9 @@ private slots:
     void handleEditTransactionButton();
     void handleDeleteTransactionButton();
 
+    void handlePayMethodsItemSelectionChanged(const QItemSelection& selection, const QItemSelection& deselection);
     void handleAddPayMethodButton();
+    void handleDeletePayMethodButton();
 
 
 private:
