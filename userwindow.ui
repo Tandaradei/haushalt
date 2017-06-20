@@ -53,7 +53,7 @@
          <enum>QTabWidget::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>4</number>
+         <number>0</number>
         </property>
         <property name="elideMode">
          <enum>Qt::ElideLeft</enum>
@@ -529,7 +529,7 @@
                </widget>
               </item>
               <item row="7" column="1">
-               <layout class="QHBoxLayout" name="horizontalLayout_6">
+               <layout class="QVBoxLayout" name="verticalLayout">
                 <property name="sizeConstraint">
                  <enum>QLayout::SetMaximumSize</enum>
                 </property>
@@ -540,13 +540,13 @@
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>100</width>
+                    <width>120</width>
                     <height>25</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>100</width>
+                    <width>120</width>
                     <height>25</height>
                    </size>
                   </property>
@@ -563,13 +563,13 @@
                  <widget class="QPushButton" name="editTransactionButton">
                   <property name="minimumSize">
                    <size>
-                    <width>100</width>
+                    <width>120</width>
                     <height>25</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>100</width>
+                    <width>120</width>
                     <height>25</height>
                    </size>
                   </property>
@@ -592,13 +592,13 @@
                  <widget class="QPushButton" name="deleteTransactionButton">
                   <property name="minimumSize">
                    <size>
-                    <width>100</width>
+                    <width>120</width>
                     <height>25</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>100</width>
+                    <width>120</width>
                     <height>25</height>
                    </size>
                   </property>
@@ -649,6 +649,12 @@
             </item>
             <item>
              <layout class="QFormLayout" name="formLayout_3">
+              <property name="fieldGrowthPolicy">
+               <enum>QFormLayout::FieldsStayAtSizeHint</enum>
+              </property>
+              <property name="labelAlignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
               <property name="formAlignment">
                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
@@ -679,13 +685,19 @@
                </widget>
               </item>
               <item row="1" column="1">
-               <layout class="QHBoxLayout" name="horizontalLayout_8">
+               <layout class="QVBoxLayout" name="verticalLayout_4">
                 <item>
                  <widget class="QPushButton" name="addPayMethodButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>120</width>
+                    <height>25</height>
+                   </size>
+                  </property>
                   <property name="maximumSize">
                    <size>
-                    <width>100</width>
-                    <height>16777215</height>
+                    <width>120</width>
+                    <height>25</height>
                    </size>
                   </property>
                   <property name="text">
@@ -702,10 +714,16 @@
                   <property name="enabled">
                    <bool>false</bool>
                   </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>120</width>
+                    <height>25</height>
+                   </size>
+                  </property>
                   <property name="maximumSize">
                    <size>
-                    <width>100</width>
-                    <height>16777215</height>
+                    <width>120</width>
+                    <height>25</height>
                    </size>
                   </property>
                   <property name="text">
@@ -719,10 +737,16 @@
                 </item>
                 <item>
                  <widget class="QPushButton" name="deletePayMethodButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>120</width>
+                    <height>25</height>
+                   </size>
+                  </property>
                   <property name="maximumSize">
                    <size>
-                    <width>100</width>
-                    <height>16777215</height>
+                    <width>120</width>
+                    <height>25</height>
                    </size>
                   </property>
                   <property name="text">
@@ -873,10 +897,16 @@
                 </item>
                 <item row="10" column="1">
                  <widget class="QPushButton" name="settingsNewPasswordButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>120</width>
+                    <height>25</height>
+                   </size>
+                  </property>
                   <property name="maximumSize">
                    <size>
-                    <width>100</width>
-                    <height>16777215</height>
+                    <width>120</width>
+                    <height>25</height>
                    </size>
                   </property>
                   <property name="text">
@@ -884,7 +914,7 @@
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>resources/check.png</normaloff>resources/check.png</iconset>
+                    <normaloff>resources/id.png</normaloff>resources/id.png</iconset>
                   </property>
                  </widget>
                 </item>
@@ -903,14 +933,24 @@
                 </item>
                 <item row="2" column="1">
                  <widget class="QPushButton" name="settingsSaveButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>120</width>
+                    <height>25</height>
+                   </size>
+                  </property>
                   <property name="maximumSize">
                    <size>
-                    <width>100</width>
-                    <height>16777215</height>
+                    <width>120</width>
+                    <height>25</height>
                    </size>
                   </property>
                   <property name="text">
                    <string>Speichern</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>resources/edit.png</normaloff>resources/edit.png</iconset>
                   </property>
                  </widget>
                 </item>
@@ -1020,6 +1060,9 @@
               </item>
               <item>
                <layout class="QFormLayout" name="formLayout_4">
+                <property name="fieldGrowthPolicy">
+                 <enum>QFormLayout::FieldsStayAtSizeHint</enum>
+                </property>
                 <property name="labelAlignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
@@ -1088,10 +1131,16 @@
                 </item>
                 <item row="6" column="1">
                  <widget class="QPushButton" name="addUserButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>120</width>
+                    <height>25</height>
+                   </size>
+                  </property>
                   <property name="maximumSize">
                    <size>
-                    <width>100</width>
-                    <height>16777215</height>
+                    <width>120</width>
+                    <height>25</height>
                    </size>
                   </property>
                   <property name="text">
@@ -1105,10 +1154,16 @@
                 </item>
                 <item row="7" column="1">
                  <widget class="QPushButton" name="resetPasswordButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>120</width>
+                    <height>25</height>
+                   </size>
+                  </property>
                   <property name="maximumSize">
                    <size>
                     <width>120</width>
-                    <height>16777215</height>
+                    <height>25</height>
                    </size>
                   </property>
                   <property name="text">
@@ -1122,10 +1177,16 @@
                 </item>
                 <item row="8" column="1">
                  <widget class="QPushButton" name="deleteUserButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>120</width>
+                    <height>25</height>
+                   </size>
+                  </property>
                   <property name="maximumSize">
                    <size>
-                    <width>100</width>
-                    <height>16777215</height>
+                    <width>120</width>
+                    <height>25</height>
                    </size>
                   </property>
                   <property name="text">
@@ -1178,36 +1239,23 @@
               </item>
               <item>
                <layout class="QFormLayout" name="formLayout_5">
+                <property name="fieldGrowthPolicy">
+                 <enum>QFormLayout::FieldsStayAtSizeHint</enum>
+                </property>
+                <property name="labelAlignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
                 <property name="formAlignment">
                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                 </property>
-                <item row="0" column="0" colspan="2">
-                 <widget class="Line" name="line">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                    <horstretch>1</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>400</width>
-                    <height>0</height>
-                   </size>
-                  </property>
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
+                <item row="0" column="0">
                  <widget class="QLabel" name="categoryNameLabel">
                   <property name="text">
                    <string>Name</string>
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="1">
+                <item row="0" column="1">
                  <widget class="QLineEdit" name="categoryNameField">
                   <property name="minimumSize">
                    <size>
@@ -1226,8 +1274,8 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="1">
-                 <layout class="QHBoxLayout" name="horizontalLayout_13">
+                <item row="1" column="1">
+                 <layout class="QVBoxLayout" name="verticalLayout_7">
                   <item>
                    <widget class="QPushButton" name="addCategoryButton">
                     <property name="minimumSize">
@@ -1322,48 +1370,50 @@
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_11">
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_10">
+           <layout class="QHBoxLayout" name="horizontalLayout_14">
+            <item>
+             <widget class="QListView" name="stanpaylistView">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="verticalScrollBarPolicy">
+               <enum>Qt::ScrollBarAsNeeded</enum>
+              </property>
+              <property name="editTriggers">
+               <set>QAbstractItemView::NoEditTriggers</set>
+              </property>
+             </widget>
+            </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_5">
               <item>
                <layout class="QGridLayout" name="gridLayout_7">
-                <item row="0" column="0">
-                 <widget class="QListView" name="stanpaylistView">
-                  <property name="maximumSize">
-                   <size>
-                    <width>400</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="verticalScrollBarPolicy">
-                   <enum>Qt::ScrollBarAlwaysOn</enum>
-                  </property>
-                 </widget>
-                </item>
                 <item row="1" column="0">
                  <layout class="QGridLayout" name="gridLayout_8"/>
                 </item>
                </layout>
               </item>
               <item>
-               <layout class="QGridLayout" name="gridLayout_6">
-                <item row="1" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-                 <widget class="QLineEdit" name="stanpayaddField">
-                  <property name="minimumSize">
-                   <size>
-                    <width>300</width>
-                    <height>0</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>300</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0" alignment="Qt::AlignBottom">
+               <layout class="QFormLayout" name="formLayout_6">
+                <property name="fieldGrowthPolicy">
+                 <enum>QFormLayout::FieldsStayAtSizeHint</enum>
+                </property>
+                <property name="labelAlignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="formAlignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+                <item row="0" column="0">
                  <widget class="QLabel" name="stanpayaddLabel">
                   <property name="maximumSize">
                    <size>
@@ -1371,52 +1421,104 @@
                     <height>200</height>
                    </size>
                   </property>
+                  <property name="frameShape">
+                   <enum>QFrame::NoFrame</enum>
+                  </property>
                   <property name="text">
-                   <string>Bitte geben sie hier neue Standartzahlungsarten and die sie hinzufügen möchsten</string>
+                   <string>Name</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0">
-                 <layout class="QHBoxLayout" name="horizontalLayout_7">
-                  <item alignment="Qt::AlignTop">
+                <item row="0" column="1">
+                 <widget class="QLineEdit" name="stanpayaddField">
+                  <property name="minimumSize">
+                   <size>
+                    <width>200</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>200</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <layout class="QVBoxLayout" name="verticalLayout_10">
+                  <item>
                    <widget class="QPushButton" name="stanpayaddButton">
+                    <property name="minimumSize">
+                     <size>
+                      <width>120</width>
+                      <height>25</height>
+                     </size>
+                    </property>
                     <property name="maximumSize">
                      <size>
-                      <width>100</width>
-                      <height>16777215</height>
+                      <width>120</width>
+                      <height>25</height>
                      </size>
                     </property>
                     <property name="text">
-                     <string>Hinzufügen</string>
+                     <string>Neu</string>
+                    </property>
+                    <property name="icon">
+                     <iconset>
+                      <normaloff>resources/add.png</normaloff>resources/add.png</iconset>
                     </property>
                    </widget>
                   </item>
-                  <item alignment="Qt::AlignTop">
+                  <item>
                    <widget class="QPushButton" name="stanpaychangeButton">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>120</width>
+                      <height>25</height>
+                     </size>
+                    </property>
                     <property name="maximumSize">
                      <size>
-                      <width>100</width>
-                      <height>16777215</height>
+                      <width>120</width>
+                      <height>25</height>
                      </size>
                     </property>
                     <property name="text">
                      <string>Bearbeiten</string>
                     </property>
+                    <property name="icon">
+                     <iconset>
+                      <normaloff>resources/edit.png</normaloff>resources/edit.png</iconset>
+                    </property>
                    </widget>
                   </item>
-                  <item alignment="Qt::AlignTop">
+                  <item>
                    <widget class="QPushButton" name="stanpaydelButton">
+                    <property name="minimumSize">
+                     <size>
+                      <width>120</width>
+                      <height>25</height>
+                     </size>
+                    </property>
                     <property name="maximumSize">
                      <size>
-                      <width>100</width>
-                      <height>16777215</height>
+                      <width>120</width>
+                      <height>25</height>
                      </size>
                     </property>
                     <property name="text">
                      <string>Entfernen</string>
+                    </property>
+                    <property name="icon">
+                     <iconset>
+                      <normaloff>resources/remove.png</normaloff>resources/remove.png</iconset>
                     </property>
                    </widget>
                   </item>
