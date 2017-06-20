@@ -172,13 +172,11 @@ void StartDAO::addCategory(const QString &name)
 
 void StartDAO::test()
 {
-
     //insert Roland Dietrich as Admin
     createAdmin("Roland Dietrich", "rd@hs.aa", "1970-01-01", "RD");
 
     //insert klara musterfrau
     addUser("km@hs.aa", "KM", "Klara Musterfrau", "1980-05-30", 0);
-
 
     //insert max mustersohn
     addUser("mm@hs.aa", "MM", "Max Mustersohn", "2000-01-12", 0);

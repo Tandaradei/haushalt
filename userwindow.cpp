@@ -171,7 +171,13 @@ void UserWindow::addUserEntry(const QString &email, const QString &name, QDate d
     ui->userTable->setItem(userEntriesCount, 0, new QTableWidgetItem(email));
     ui->userTable->setItem(userEntriesCount, 1, new QTableWidgetItem(name));
     ui->userTable->setItem(userEntriesCount, 2, new QTableWidgetItem(date.toString("yyyy-MM-dd")));
-    ui->userTable->setItem(userEntriesCount, 3, new QTableWidgetItem(QString::number(balance, 'f', 2).replace(QChar('.'), QChar(','))));
+    QString balanceString = "Positiv";
+    if(balance < 0.0f)
+    {
+        balanceString = QString::number(balance, 'f', 2).replace(QChar('.'), QChar(','));
+    }
+    ui->userTable->setItem(userEntriesCount, 3, new QTableWidgetItem(balanceString));
+    ui->userTable->item(userEntriesCount, 3)->setBackgroundColor(balance < 0.0f ? QColor(255,0,0) : QColor(0, 255, 0));
     ui->userTable->setItem(userEntriesCount, 4, new QTableWidgetItem(QString::number(ID)));
 
     ++userEntriesCount;
