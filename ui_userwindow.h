@@ -620,7 +620,7 @@ public:
         verticalLayout_9->setSpacing(6);
         verticalLayout_9->setContentsMargins(11, 11, 11, 11);
         verticalLayout_9->setObjectName(QStringLiteral("verticalLayout_9"));
-        verticalLayout_9->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_9->setContentsMargins(9, 9, 9, 9);
         horizontalLayout_10 = new QHBoxLayout();
         horizontalLayout_10->setSpacing(6);
         horizontalLayout_10->setObjectName(QStringLiteral("horizontalLayout_10"));
@@ -650,6 +650,7 @@ public:
         formLayout_4->setSpacing(6);
         formLayout_4->setObjectName(QStringLiteral("formLayout_4"));
         formLayout_4->setLabelAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        formLayout_4->setFormAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         userEmailLabel = new QLabel(userTab);
         userEmailLabel->setObjectName(QStringLiteral("userEmailLabel"));
         userEmailLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -948,7 +949,7 @@ public:
 
         retranslateUi(UserWindow);
 
-        mainTabWidget->setCurrentIndex(2);
+        mainTabWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(UserWindow);
