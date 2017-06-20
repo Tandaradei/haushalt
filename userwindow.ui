@@ -1058,6 +1058,9 @@
                     <height>16777215</height>
                    </size>
                   </property>
+                  <property name="echoMode">
+                   <enum>QLineEdit::Password</enum>
+                  </property>
                  </widget>
                 </item>
                 <item row="5" column="0">
@@ -1074,6 +1077,9 @@
                     <width>200</width>
                     <height>16777215</height>
                    </size>
+                  </property>
+                  <property name="echoMode">
+                   <enum>QLineEdit::Password</enum>
                   </property>
                  </widget>
                 </item>

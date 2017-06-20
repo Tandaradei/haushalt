@@ -636,7 +636,10 @@ public:
         userTable->setMinimumSize(QSize(600, 0));
         userTable->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         userTable->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        userTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
         userTable->setTabKeyNavigation(false);
+        userTable->setSelectionMode(QAbstractItemView::SingleSelection);
+        userTable->setSelectionBehavior(QAbstractItemView::SelectRows);
         userTable->setRowCount(20);
         userTable->setColumnCount(5);
         userTable->horizontalHeader()->setMinimumSectionSize(50);
@@ -667,6 +670,7 @@ public:
         userPasswordField = new QLineEdit(userTab);
         userPasswordField->setObjectName(QStringLiteral("userPasswordField"));
         userPasswordField->setMaximumSize(QSize(200, 16777215));
+        userPasswordField->setEchoMode(QLineEdit::Password);
 
         formLayout_4->setWidget(4, QFormLayout::FieldRole, userPasswordField);
 
@@ -678,6 +682,7 @@ public:
         userPasswordRepeatField = new QLineEdit(userTab);
         userPasswordRepeatField->setObjectName(QStringLiteral("userPasswordRepeatField"));
         userPasswordRepeatField->setMaximumSize(QSize(200, 16777215));
+        userPasswordRepeatField->setEchoMode(QLineEdit::Password);
 
         formLayout_4->setWidget(5, QFormLayout::FieldRole, userPasswordRepeatField);
 

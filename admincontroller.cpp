@@ -22,6 +22,16 @@ void AdminController::start()
     userWindow.show();
 }
 
+void AdminController::addUser(const QString &email, const QString &password)
+{
+    std::shared_ptr<User> user = adminDAO.addUser(email, password);
+    if(user != nullptr)
+    {
+        userWindow.addUserEntry(email, user->Name, user->Birthdate, user->Balance, user->ID);
+        users = adminDAO.getUsers();
+    }
+}
+
 void AdminController::loadUsers()
 {
     users = adminDAO.loadUsers();

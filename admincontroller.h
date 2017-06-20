@@ -15,6 +15,8 @@ public:
 
 
     void start();
+
+    void addUser(const QString& email, const QString& password);
 private:
     void loadUsers();
 

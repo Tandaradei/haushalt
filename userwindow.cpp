@@ -1,4 +1,5 @@
 #include "usercontroller.h"
+#include "admincontroller.h"
 #include "userwindow.h"
 #include "ui_userwindow.h"
 
@@ -31,6 +32,9 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
     connect(ui->payMethodsList->selectionModel(), SIGNAL (selectionChanged(QItemSelection, QItemSelection)), this, SLOT(handlePayMethodsItemSelectionChanged(QItemSelection, QItemSelection)));
     connect(ui->addPayMethodButton, SIGNAL (released()), this, SLOT (handleAddPayMethodButton()));
     connect(ui->deletePayMethodButton, SIGNAL (released()), this, SLOT (handleDeletePayMethodButton()));
+
+    //users
+    connect(ui->addUserButton, SIGNAL (released()), this, SLOT(handleAddUserButton()));
 
 
 
@@ -164,6 +168,8 @@ void UserWindow::addUserEntry(const QString &email, const QString &name, QDate d
     ui->userTable->setItem(userEntriesCount, 2, new QTableWidgetItem(date.toString("yyyy-MM-dd")));
     ui->userTable->setItem(userEntriesCount, 3, new QTableWidgetItem(QString::number(balance, 'f', 2).replace(QChar('.'), QChar(','))));
     ui->userTable->setItem(userEntriesCount, 4, new QTableWidgetItem(QString::number(ID)));
+
+    ++userEntriesCount;
 }
 
 void UserWindow::setSettings(QString name, QDate birthdate)
@@ -268,5 +274,26 @@ void UserWindow::handleDeletePayMethodButton()
         {
 
         }
+    }
+}
+
+void UserWindow::handleAddUserButton()
+{
+    if(ui->userEmailField->text().isEmpty())
+    {
+        //
+    }
+    else if(ui->userPasswordField->text().isEmpty())
+    {
+        //
+    }
+    else if(ui->userPasswordField->text() != ui->userPasswordRepeatField->text())
+    {
+        //
+    }
+    else
+    {
+
+        adminController->addUser(ui->userEmailField->text(), ui->userPasswordField->text());
     }
 }

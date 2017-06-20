@@ -18,6 +18,8 @@ public:
     std::shared_ptr<std::list<std::shared_ptr<User>>> loadUsers();
     std::shared_ptr<std::list<std::shared_ptr<User>>> getUsers();
 
+    std::shared_ptr<User> addUser(const QString& email, const QString& password);
+
 private:
     DbManager& dbManager;
     std::shared_ptr<std::list<std::shared_ptr<User>>> users;

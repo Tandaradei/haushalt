@@ -56,3 +56,35 @@ std::shared_ptr<std::list<std::shared_ptr<User>>> AdminDAO::getUsers()
     return users;
 }
 
+std::shared_ptr<User> AdminDAO::addUser(const QString &email, const QString &password)
+{
+    QSqlQuery query(dbManager.getDatabase());
+    query.prepare("INSERT INTO Benutzer(Email, HashedKennwort, Name, Geburtsdatum, Kontostand) VALUES(:Email, :HashedKennwort, :Name, :Geburtsdatum, :Kontostand);");
+    query.bindValue(":Email", email);
+    query.bindValue(":HashedKennwort", password);
+    query.bindValue(":Name", "<Name>");
+    query.bindValue(":Geburtsdatum", "1980-01-01");
+    query.bindValue(":Kontostand", 0);
+    qDebug() << query.executedQuery();
+    if(query.exec())
+    {
+        qDebug() << "execution successful";
+        std::shared_ptr<User> user = std::make_shared<User>();
+        user->ID = query.lastInsertId().toInt();
+        // no BID
+        user->Email = email;
+        user->Name = "<Name>";
+        user->Birthdate = QDate::fromString("1980-01-01", "yyyy-MM-dd");
+        user->Balance = 0;
+        // add user to cached users list
+        users->push_back(user);
+        return user;
+    }
+    else
+    {
+        qDebug() << "addTransaction error:  "
+                 << query.lastError().text();
+    }
+    return nullptr;
+}
+
