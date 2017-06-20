@@ -3,6 +3,7 @@
 #include "admincontroller.h"
 #include "user.h"
 #include "stanpayMethod.h"
+#include "category.h"
 
 AdminController::AdminController(MainController& mainController, DbManager &dbManager, std::shared_ptr<User> user)
     :UserController(mainController, dbManager, user)
@@ -69,6 +70,30 @@ void AdminController::deleteStanPayMethod(const QString &name)
             if(adminDAO.deleteStanPayMethod((*stanPayMethodsIt)->ID))
             {
                 userWindow.deleteStanPayMethod(name);
+            }
+            break;
+        }
+    }
+}
+
+void AdminController::addCategory(const QString &name)
+{
+    if(userDAO.addCategory(name) != nullptr)
+    {
+        userWindow.addCategory(name);
+        categories = userDAO.getCategories();
+    }
+}
+
+void AdminController::deleteCategory(const QString &name)
+{
+    for(auto categoriesIt = categories->begin(); categoriesIt != categories->end(); ++categoriesIt)
+    {
+        if((*categoriesIt)->Name == name)
+        {
+            if(userDAO.deleteCategory((*categoriesIt)->ID))
+            {
+                userWindow.deleteCategory(name);
             }
             break;
         }

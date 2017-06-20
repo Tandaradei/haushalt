@@ -53,7 +53,7 @@
          <enum>QTabWidget::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>5</number>
+         <number>4</number>
         </property>
         <property name="elideMode">
          <enum>Qt::ElideLeft</enum>
@@ -1222,7 +1222,7 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_4">
               <item>
-               <widget class="QListView" name="categorylistView">
+               <widget class="QListView" name="categoriesList">
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
@@ -1329,7 +1329,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton">
+                   <widget class="QPushButton" name="deleteCategoryButton">
                     <property name="minimumSize">
                      <size>
                       <width>120</width>

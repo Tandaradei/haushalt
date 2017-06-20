@@ -127,14 +127,14 @@ public:
     QVBoxLayout *verticalLayout_13;
     QHBoxLayout *horizontalLayout_12;
     QHBoxLayout *horizontalLayout_4;
-    QListView *categorylistView;
+    QListView *categoriesList;
     QFormLayout *formLayout_5;
     QLabel *categoryNameLabel;
     QLineEdit *categoryNameField;
     QVBoxLayout *verticalLayout_7;
     QPushButton *addCategoryButton;
     QPushButton *editCategoryButton;
-    QPushButton *pushButton;
+    QPushButton *deleteCategoryButton;
     QWidget *standardPayMethodsTab;
     QVBoxLayout *verticalLayout_11;
     QHBoxLayout *horizontalLayout_14;
@@ -741,13 +741,13 @@ public:
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        categorylistView = new QListView(categoryTab);
-        categorylistView->setObjectName(QStringLiteral("categorylistView"));
-        categorylistView->setMaximumSize(QSize(16777215, 16777215));
-        categorylistView->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-        categorylistView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        categoriesList = new QListView(categoryTab);
+        categoriesList->setObjectName(QStringLiteral("categoriesList"));
+        categoriesList->setMaximumSize(QSize(16777215, 16777215));
+        categoriesList->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        categoriesList->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
-        horizontalLayout_4->addWidget(categorylistView);
+        horizontalLayout_4->addWidget(categoriesList);
 
         formLayout_5 = new QFormLayout();
         formLayout_5->setSpacing(6);
@@ -789,13 +789,13 @@ public:
 
         verticalLayout_7->addWidget(editCategoryButton);
 
-        pushButton = new QPushButton(categoryTab);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setMinimumSize(QSize(120, 25));
-        pushButton->setMaximumSize(QSize(120, 25));
-        pushButton->setIcon(icon3);
+        deleteCategoryButton = new QPushButton(categoryTab);
+        deleteCategoryButton->setObjectName(QStringLiteral("deleteCategoryButton"));
+        deleteCategoryButton->setMinimumSize(QSize(120, 25));
+        deleteCategoryButton->setMaximumSize(QSize(120, 25));
+        deleteCategoryButton->setIcon(icon3);
 
-        verticalLayout_7->addWidget(pushButton);
+        verticalLayout_7->addWidget(deleteCategoryButton);
 
 
         formLayout_5->setLayout(1, QFormLayout::FieldRole, verticalLayout_7);
@@ -960,7 +960,7 @@ public:
 
         retranslateUi(UserWindow);
 
-        mainTabWidget->setCurrentIndex(5);
+        mainTabWidget->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(UserWindow);
@@ -1007,7 +1007,7 @@ public:
         categoryNameLabel->setText(QApplication::translate("UserWindow", "Name", 0));
         addCategoryButton->setText(QApplication::translate("UserWindow", "Neu", 0));
         editCategoryButton->setText(QApplication::translate("UserWindow", "Bearbeiten", 0));
-        pushButton->setText(QApplication::translate("UserWindow", "Entfernen", 0));
+        deleteCategoryButton->setText(QApplication::translate("UserWindow", "Entfernen", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(categoryTab), QApplication::translate("UserWindow", "Kategorien", 0));
         stanPayMethodNameLabel->setText(QApplication::translate("UserWindow", "Name", 0));
         addStanPayMethodButton->setText(QApplication::translate("UserWindow", "Neu", 0));

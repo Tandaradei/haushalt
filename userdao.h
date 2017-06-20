@@ -26,6 +26,9 @@ public:
     std::shared_ptr<std::list<std::shared_ptr<Category>>> loadCategories();
     std::shared_ptr<std::list<std::shared_ptr<Category>>> getCategories();
 
+    std::shared_ptr<Category> addCategory(const QString& name);
+    bool deleteCategory(size_t categoryId);
+
     std::shared_ptr<std::list<std::shared_ptr<PayMethod>>> loadPayMethods();
     std::shared_ptr<std::list<std::shared_ptr<PayMethod>>> getPayMethods();
 

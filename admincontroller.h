@@ -26,6 +26,9 @@ public:
     void addStanPayMethod(const QString& name);
     void deleteStanPayMethod(const QString& name);
 
+    void addCategory(const QString& name);
+    void deleteCategory(const QString& name);
+
 private:
     void loadUsers();
     void loadStanPayMethods();

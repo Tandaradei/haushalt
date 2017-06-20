@@ -173,7 +173,8 @@ void UserController::deleteTransaction(size_t ID)
 {
     if(userDAO.deleteTransaction(ID))
     {
-        //
+        loadTransactions();
+
     }
 }
 

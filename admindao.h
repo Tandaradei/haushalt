@@ -32,6 +32,7 @@ public:
     std::shared_ptr<StanPayMethod> addStanPayMethod(const QString& name);
     bool deleteStanPayMethod(size_t stanPayMethodId);
 
+
 private:
     DbManager& dbManager;
     std::shared_ptr<std::list<std::shared_ptr<User>>> users;

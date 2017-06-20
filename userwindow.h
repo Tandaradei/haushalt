@@ -27,6 +27,7 @@ public:
 
     void clearCategories();
     void addCategory(const QString& name);
+    void deleteCategory(const QString& name);
 
     void clearPayMethods();
     void addPayMethod(const QString& name);
@@ -52,7 +53,7 @@ private slots:
     void handleEditTransactionButton();
     void handleDeleteTransactionButton();
 
-    void handlePayMethodsItemSelectionChanged(const QItemSelection& selection, const QItemSelection& deselection);
+    void handlePayMethodsItemSelectionChanged(const QItemSelection& selection);
     void handleAddPayMethodButton();
     void handleDeletePayMethodButton();
 
@@ -64,7 +65,11 @@ private slots:
     void handleSettingsSaveButton();
     void handelSettingsNewPasswordButton();
 
-    void handleStanPayMethodsItemSelectionChanged(const QItemSelection& selection, const QItemSelection& deselection);
+    void handleCategoriesItemSelectionChanged(const QItemSelection& selection);
+    void handleAddCategoryButton();
+    void handleDeleteCategoryButton();
+
+    void handleStanPayMethodsItemSelectionChanged(const QItemSelection& selection);
     void handleAddStanPayMethodButton();
     void handleDeleteStanPayMethodButton();
 
@@ -83,5 +88,6 @@ private:
     size_t userEntriesCount;
     QStringListModel payMethodsModel;
     QStringListModel stanPayMethodsModel;
+    QStringListModel categoriesModel;
 };
 

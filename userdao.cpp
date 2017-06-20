@@ -97,6 +97,45 @@ std::shared_ptr<std::list<std::shared_ptr<Category>>> UserDAO::getCategories()
     return categories;
 }
 
+std::shared_ptr<Category> UserDAO::addCategory(const QString& name)
+{
+    QSqlQuery query(dbManager.getDatabase());
+    query.prepare("INSERT INTO Kategorie(Name) VALUES(:Name);");
+    query.bindValue(":Name", name);
+    if(query.exec())
+    {
+        qDebug() << "execution successful";
+        std::shared_ptr<Category> category = std::make_shared<Category>();
+        category->ID = query.lastInsertId().toInt();
+        category->Name = name;
+        categories->push_back(category);
+        return category;
+    }
+    else
+    {
+        qDebug() << "addCategory error:  "
+                 << query.lastError().text();
+    }
+    return nullptr;
+}
+
+bool UserDAO::deleteCategory(size_t categoryId)
+{
+    QSqlQuery query(dbManager.getDatabase());
+    query.prepare("DELETE FROM Kategorie WHERE KID = :KID");
+    query.bindValue(":KID", categoryId);
+    if(query.exec())
+    {
+        return true;
+    }
+    else
+    {
+        qDebug() << "deleteCategory error:  "
+                 << query.lastError().text();
+    }
+    return false;
+}
+
 std::shared_ptr<std::list<std::shared_ptr<PayMethod>>> UserDAO::loadPayMethods()
 {
     // clear cached payment methods list

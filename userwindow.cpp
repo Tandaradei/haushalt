@@ -12,6 +12,7 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
     ,userEntriesCount(0)
     ,payMethodsModel()
     ,stanPayMethodsModel()
+    ,categoriesModel()
     ,selectedTransactionID(0)
     ,selectedUserID(0)
 {
@@ -20,6 +21,7 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
     // set model for payment methods list
     ui->payMethodsList->setModel(&payMethodsModel);
     ui->stanPayMethodsList->setModel(&stanPayMethodsModel);
+    ui->categoriesList->setModel(&categoriesModel);
 
     // connections
     connect(ui->logoutButton, SIGNAL (released()), this, SLOT (handleLogoutButton()));
@@ -32,7 +34,7 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
 
     // pay methods
 
-    connect(ui->payMethodsList->selectionModel(), SIGNAL (selectionChanged(QItemSelection, QItemSelection)), this, SLOT(handlePayMethodsItemSelectionChanged(QItemSelection, QItemSelection)));
+    connect(ui->payMethodsList->selectionModel(), SIGNAL (selectionChanged(QItemSelection, QItemSelection)), this, SLOT(handlePayMethodsItemSelectionChanged(QItemSelection)));
     connect(ui->addPayMethodButton, SIGNAL (released()), this, SLOT (handleAddPayMethodButton()));
     connect(ui->deletePayMethodButton, SIGNAL (released()), this, SLOT (handleDeletePayMethodButton()));
 
@@ -46,8 +48,13 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
     connect(ui->resetPasswordButton, SIGNAL (released()), this, SLOT(handleUpdateUserPasswordButton()));
     connect(ui->deleteUserButton, SIGNAL (released()), this, SLOT(handleDeleteUserButton()));
 
+    // categories
+    connect(ui->categoriesList->selectionModel(), SIGNAL (selectionChanged(QItemSelection, QItemSelection)), this, SLOT(handleCategoriesItemSelectionChanged(QItemSelection)));
+    connect(ui->addCategoryButton, SIGNAL (released()), this, SLOT(handleAddCategoryButton()));
+    connect(ui->deleteCategoryButton, SIGNAL (released()), this, SLOT(handleDeleteCategoryButton()));
+
     // stan pay methods
-    connect(ui->stanPayMethodsList->selectionModel(), SIGNAL (selectionChanged(QItemSelection, QItemSelection)), this, SLOT(handleStanPayMethodsItemSelectionChanged(QItemSelection, QItemSelection)));
+    connect(ui->stanPayMethodsList->selectionModel(), SIGNAL (selectionChanged(QItemSelection, QItemSelection)), this, SLOT(handleStanPayMethodsItemSelectionChanged(QItemSelection)));
     connect(ui->addStanPayMethodButton, SIGNAL (released()), this, SLOT(handleAddStanPayMethodButton()));
     connect(ui->deleteStanPayMethodButton, SIGNAL (released()), this, SLOT(handleDeleteStanPayMethodButton()));
 
@@ -90,9 +97,9 @@ void UserWindow::addTransactionEntry(QDate date, float amount, QString descripti
 
 void UserWindow::updateTransactionEntry(QDate date, float amount, QString description, QString category, QString payMethod, size_t ID)
 {
-    for(int i = 0; i < transactionEntriesCount; ++i)
+    for(size_t i = 0; i < transactionEntriesCount; ++i)
     {
-        if(ui->transaktionenTable->item(i, 5)->text().toInt() == ID)
+        if(ui->transaktionenTable->item(i, 5)->text().toUInt() == ID)
         {
             ui->transaktionenTable->setItem(i, 0, new QTableWidgetItem(date.toString("yyyy-MM-dd")));
             ui->transaktionenTable->setItem(i, 1, new QTableWidgetItem(QString::number(amount, 'f', 2).replace(QChar('.'), QChar(','))));
@@ -118,6 +125,29 @@ void UserWindow::addCategory(const QString& name)
     ui->categoriesComboBox->addItem(name, QVariant(name));
     // add category name to add transaction form
     ui->atCategoriesComboBox->addItem(name, QVariant(name));
+
+    // add payment method name to list view
+    categoriesModel.insertRow(categoriesModel.rowCount());
+    QModelIndex index = categoriesModel.index(categoriesModel.rowCount()-1);
+    categoriesModel.setData(index, name);
+
+}
+
+void UserWindow::deleteCategory(const QString &name)
+{
+    ui->categoriesComboBox->removeItem(ui->categoriesComboBox->findText(name));
+
+    ui->atCategoriesComboBox->removeItem(ui->atCategoriesComboBox->findText(name));
+
+    for(int i = 0; i < categoriesModel.rowCount(); ++i)
+    {
+        QModelIndex index = categoriesModel.index(i);
+        if(categoriesModel.data(index, 0) == name)
+        {
+            categoriesModel.removeRow(i);
+            break;
+        }
+    }
 }
 
 void UserWindow::clearPayMethods()
@@ -156,6 +186,7 @@ void UserWindow::deletePayMethod(const QString &name)
        if(payMethodsModel.data(index, 0) == name)
        {
            payMethodsModel.removeRow(i);
+           break;
        }
    }
 }
@@ -214,6 +245,7 @@ void UserWindow::deleteStanPayMethod(const QString &name)
         if(stanPayMethodsModel.data(index, 0) == name)
         {
             stanPayMethodsModel.removeRow(i);
+            break;
         }
     }
 }
@@ -260,7 +292,7 @@ void UserWindow::handleTransactionsItemSelectionChanged()
     if(select->hasSelection())
     {
         QModelIndex index = select->selectedRows().front();
-        if(index.row() <= transactionEntriesCount)
+        if((unsigned)index.row() < transactionEntriesCount)
         {
             ui->atDateEdit->setDate(QDate::fromString(ui->transaktionenTable->item(index.row(), 0)->text(), "yyyy-MM-dd"));
             ui->atAmountSpinner->setValue(ui->transaktionenTable->item(index.row(), 1)->text().replace(QChar(','), QChar('.')).toDouble());
@@ -299,7 +331,7 @@ void UserWindow::handleDeleteTransactionButton()
 
 }
 
-void UserWindow::handlePayMethodsItemSelectionChanged(const QItemSelection& selection, const QItemSelection &deselection)
+void UserWindow::handlePayMethodsItemSelectionChanged(const QItemSelection& selection)
 {
     ui->payMethodNameField->setText(payMethodsModel.data(selection.indexes().front(), 0).toString());
 }
@@ -333,7 +365,7 @@ void UserWindow::handleUsersItemSelectionChanged()
     if(select->hasSelection())
     {
         QModelIndex index = select->selectedRows().front();
-        if(index.row() <= userEntriesCount)
+        if((unsigned)index.row() < userEntriesCount)
         {
             ui->userEmailField->setText(ui->userTable->item(index.row(), 0)->text());
             selectedUserID = ui->userTable->item(index.row(), 4)->text().toInt();
@@ -419,7 +451,36 @@ void UserWindow::handelSettingsNewPasswordButton()
     }
 }
 
-void UserWindow::handleStanPayMethodsItemSelectionChanged(const QItemSelection &selection, const QItemSelection &deselection)
+void UserWindow::handleCategoriesItemSelectionChanged(const QItemSelection &selection)
+{
+    ui->categoryNameField->setText(categoriesModel.data(selection.indexes().front(), 0).toString());
+}
+
+void UserWindow::handleAddCategoryButton()
+{
+    if(ui->categoryNameField->text().isEmpty())
+    {
+        //
+    }
+    else
+    {
+        adminController->addCategory(ui->categoryNameField->text());
+    }
+}
+
+void UserWindow::handleDeleteCategoryButton()
+{
+    if(ui->categoryNameField->text().isEmpty())
+    {
+        //
+    }
+    else
+    {
+        adminController->deleteCategory(ui->categoryNameField->text());
+    }
+}
+
+void UserWindow::handleStanPayMethodsItemSelectionChanged(const QItemSelection &selection)
 {
     ui->stanPayMethodNameField->setText(stanPayMethodsModel.data(selection.indexes().front(), 0).toString());
 }
