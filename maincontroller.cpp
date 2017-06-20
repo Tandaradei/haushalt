@@ -35,7 +35,7 @@ int MainController::exec(char *argv[])
     {
         startController->setDAO();
     }
-    else// if(argument1 == "clean")
+    else if(argument1 == "clean")
     {
         startController->cleanDAO();
     }

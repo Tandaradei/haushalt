@@ -94,13 +94,15 @@ bool StartDAO::createAdmin(const QString &name, const QString &email, const QStr
 
 void StartDAO::setDAO()
 {
+
     //insert Roland Dietrich as Admin
     QSqlQuery query(dbManager.getDatabase());
-    query.prepare("INSERT INTO Benutzer(BID, Email, HashedKennwort, Name) VALUES(:BID, :Email, :HashedKennwort, :Name);");
+    query.prepare("INSERT INTO Benutzer(BID, Email, HashedKennwort, Name, Kontostand) VALUES(:BID, :Email, :HashedKennwort, :Name, :Kontostand);");
     query.bindValue(":BID", 1);
     query.bindValue(":Email", "rd@hs.aa");
     query.bindValue(":HashedKennwort", "RD");
     query.bindValue(":Name", "Roland Dietrich");
+    query.bindValue(":Kontostand", 0);
     qDebug() << query.executedQuery();
     if(query.exec())
     {
@@ -113,11 +115,12 @@ void StartDAO::setDAO()
     }
 
     //insert klara musterfrau
-    query.prepare("INSERT INTO Benutzer(BID, Email, HashedKennwort, Name) VALUES(:BID, :Email, :HashedKennwort, :Name);");
+    query.prepare("INSERT INTO Benutzer(BID, Email, HashedKennwort, Name, Kontostand) VALUES(:BID, :Email, :HashedKennwort, :Name, :Kontostand);");
     query.bindValue(":BID", 2);
     query.bindValue(":Email", "km@hs.aa");
     query.bindValue(":HashedKennwort", "KM");
     query.bindValue(":Name", "Klara Musterfrau");
+    query.bindValue(":Kontostand", 0);
     qDebug() << query.executedQuery();
     if(query.exec())
     {
@@ -131,11 +134,12 @@ void StartDAO::setDAO()
 
 
     //insert max mustersohn
-    query.prepare("INSERT INTO Benutzer(BID, Email, HashedKennwort, Name) VALUES(:BID, :Email, :HashedKennwort, :Name);");
+    query.prepare("INSERT INTO Benutzer(BID, Email, HashedKennwort, Name, Kontostand) VALUES(:BID, :Email, :HashedKennwort, :Name, :Kontostand);");
     query.bindValue(":BID", 3);
     query.bindValue(":Email", "mm@hs.aa");
     query.bindValue(":HashedKennwort", "MM");
     query.bindValue(":Name", "Max Mustersohn");
+    query.bindValue(":Kontostand", 0);
     qDebug() << query.executedQuery();
     if(query.exec())
     {
@@ -174,40 +178,40 @@ void StartDAO::setDAO()
 
     query.prepare("INSERT INTO Zahlungsart(ZID, BID, Name) VALUES(:KID, :BID, :Name);");
     query.bindValue(":ZID", 1);
-    query.bindValue(":KID", 1);
+    query.bindValue(":BID", 1);
     query.bindValue(":Name", "Bar");
     query.exec();
     query.bindValue(":ZID", 2);
-    query.bindValue(":KID", 1);
-    query.bindValue(":Name", "Bar");
+    query.bindValue(":BID", 1);
+    query.bindValue(":Name", "Überweisung");
     query.exec();
     query.bindValue(":ZID", 3);
-    query.bindValue(":KID", 1);
-    query.bindValue(":Name", "Freizeit");
+    query.bindValue(":BID", 1);
+    query.bindValue(":Name", "Kreditkarte");
     query.exec();
     query.bindValue(":ZID", 1);
-    query.bindValue(":KID", 2);
+    query.bindValue(":BID", 2);
     query.bindValue(":Name", "Bar");
     query.exec();
     query.bindValue(":ZID", 2);
-    query.bindValue(":KID", 2);
-    query.bindValue(":Name", "Bar");
+    query.bindValue(":BID", 2);
+    query.bindValue(":Name", "Überweisung");
     query.exec();
     query.bindValue(":ZID", 3);
-    query.bindValue(":KID", 2);
-    query.bindValue(":Name", "Freizeit");
+    query.bindValue(":BID", 2);
+    query.bindValue(":Name", "Kreditkarte");
     query.exec();
     query.bindValue(":ZID", 1);
-    query.bindValue(":KID", 3);
+    query.bindValue(":BID", 3);
     query.bindValue(":Name", "Bar");
     query.exec();
     query.bindValue(":ZID", 2);
-    query.bindValue(":KID", 3);
-    query.bindValue(":Name", "Bar");
+    query.bindValue(":BID", 3);
+    query.bindValue(":Name", "Überweisung");
     query.exec();
     query.bindValue(":ZID", 3);
-    query.bindValue(":KID", 3);
-    query.bindValue(":Name", "Freizeit");
+    query.bindValue(":BID", 3);
+    query.bindValue(":Name", "Kreditkarte");
     qDebug() << query.executedQuery();
     if(query.exec())
     {
@@ -218,18 +222,111 @@ void StartDAO::setDAO()
         qDebug() << "createAdmin Kategorie error:  "
                  << query.lastError().text();
     }
-}
-    /*
+
 
     //insert Transaktionen
-    query.prepare("INSERT INTO Transaktion(TID, BID, Betrag, Beschreibung, Datum, KID, ZID) VALUES(:TID, :BID, :Betrag, :Beschreibung, :Datum, :KID, :ZID);");
+    query.prepare("INSERT INTO Transaktion(TID, BID, Betrag, Datum, KID, ZID) VALUES(:TID, :BID, :Betrag, :Datum, :KID, :ZID);");
     query.bindValue(":TID", 1);
     query.bindValue(":BID", 1);
     query.bindValue(":Betrag", 10);
-    query.bindValue(":Beschreibung", Roland Dietrich);
+    query.bindValue(":Datum", 2017-03-17);
+    query.bindValue(":KID", 1);
+    query.bindValue(":ZID", 1);
     qDebug() << query.executedQuery();
-    */
+    if(query.exec())
+    {
+        qDebug() << "execution Kategorie successful";
+    }
+    else
+    {
+        qDebug() << "createAdmin Kategorie error:  "
+                 << query.lastError().text();
+    }
 
+    query.prepare("INSERT INTO Transaktion(TID, BID, Betrag, Datum, KID, ZID) VALUES(:TID, :BID, :Betrag, :Datum, :KID, :ZID);");
+    query.bindValue(":TID", 2);
+    query.bindValue(":BID", 1);
+    query.bindValue(":Betrag", -200);
+    query.bindValue(":Datum", 2017-03-17);
+    query.bindValue(":KID", 2);
+    query.bindValue(":ZID", 2);
+    qDebug() << query.executedQuery();
+    query.exec();
+
+    query.prepare("INSERT INTO Transaktion(TID, BID, Betrag, Datum, KID, ZID) VALUES(:TID, :BID, :Betrag, :Datum, :KID, :ZID);");
+    query.bindValue(":TID", 3);
+    query.bindValue(":BID", 2);
+    query.bindValue(":Betrag", -250);
+    query.bindValue(":Datum", 2017-03-07);
+    query.bindValue(":KID", 3);
+    query.bindValue(":ZID", 3);
+    qDebug() << query.executedQuery();
+    query.exec();
+
+    query.prepare("INSERT INTO Transaktion(TID, BID, Betrag, Datum, KID, ZID) VALUES(:TID, :BID, :Betrag, :Datum, :KID, :ZID);");
+    query.bindValue(":TID", 4);
+    query.bindValue(":BID", 2);
+    query.bindValue(":Betrag", 105);
+    query.bindValue(":Datum", 2017-05-13);
+    query.bindValue(":KID", 2);
+    query.bindValue(":ZID", 3);
+    query.exec();
+
+    query.prepare("INSERT INTO Transaktion(TID, BID, Betrag, Datum, KID, ZID) VALUES(:TID, :BID, :Betrag, :Datum, :KID, :ZID);");
+    query.bindValue(":TID", 5);
+    query.bindValue(":BID", 3);
+    query.bindValue(":Betrag", 1500);
+    query.bindValue(":Datum", 2017-05-25);
+    query.bindValue(":KID", 1);
+    query.bindValue(":ZID", 3);
+    query.exec();
+
+    query.prepare("INSERT INTO Transaktion(TID, BID, Betrag, Datum, KID, ZID) VALUES(:TID, :BID, :Betrag, :Datum, :KID, :ZID);");
+    query.bindValue(":TID", 6);
+    query.bindValue(":BID", 3);
+    query.bindValue(":Betrag", 150);
+    query.bindValue(":Datum", 2017-05-03);
+    query.bindValue(":KID", 2);
+    query.bindValue(":ZID", 1);
+    query.exec();
+
+    query.prepare("INSERT INTO Transaktion(TID, BID, Betrag, Datum, KID, ZID) VALUES(:TID, :BID, :Betrag, :Datum, :KID, :ZID);");
+    query.bindValue(":TID", 7);
+    query.bindValue(":BID", 3);
+    query.bindValue(":Betrag", 120);
+    query.bindValue(":Datum", 2017-01-23);
+    query.bindValue(":KID", 2);
+    query.bindValue(":ZID", 2);
+    query.exec();
+
+    query.prepare("INSERT INTO Transaktion(TID, BID, Betrag, Datum, KID, ZID) VALUES(:TID, :BID, :Betrag, :Datum, :KID, :ZID);");
+    query.bindValue(":TID", 8);
+    query.bindValue(":BID", 3);
+    query.bindValue(":Betrag", -2560);
+    query.bindValue(":Datum", 2017-01-01);
+    query.bindValue(":KID", 3);
+    query.bindValue(":ZID", 2);
+    query.exec();
+
+    query.prepare("INSERT INTO Transaktion(TID, BID, Betrag, Datum, KID, ZID) VALUES(:TID, :BID, :Betrag, :Datum, :KID, :ZID);");
+    query.bindValue(":TID", 9);
+    query.bindValue(":BID", 3);
+    query.bindValue(":Betrag", 570);
+    query.bindValue(":Datum", 2017-06-19);
+    query.bindValue(":KID", 1);
+    query.bindValue(":ZID", 1);
+    query.exec();
+
+    query.prepare("INSERT INTO Transaktion(TID, BID, Betrag, Datum, KID, ZID) VALUES(:TID, :BID, :Betrag, :Datum, :KID, :ZID);");
+    query.bindValue(":TID", 10);
+    query.bindValue(":BID", 3);
+    query.bindValue(":Betrag", -2390);
+    query.bindValue(":Datum", 2017-05-03);
+    query.bindValue(":KID", 2);
+    query.bindValue(":ZID", 3);
+    qDebug() << query.executedQuery();
+    query.exec();
+}
 
 void StartDAO::cleanDAO()
 {
