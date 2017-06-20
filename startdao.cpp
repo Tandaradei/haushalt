@@ -229,9 +229,9 @@ void StartDAO::setDAO()
     query.bindValue(":TID", 1);
     query.bindValue(":BID", 1);
     query.bindValue(":Betrag", 10);
-    query.bindValue(":Datum", 2017-03-17);
-    query.bindValue(":KID", 1);
-    query.bindValue(":ZID", 1);
+    query.bindValue(":Datum", "2017-03-17");
+    query.bindValue(":KID", 3);
+    query.bindValue(":ZID", 3);
     qDebug() << query.executedQuery();
     if(query.exec())
     {
@@ -247,9 +247,9 @@ void StartDAO::setDAO()
     query.bindValue(":TID", 2);
     query.bindValue(":BID", 1);
     query.bindValue(":Betrag", -200);
-    query.bindValue(":Datum", 2017-03-17);
+    query.bindValue(":Datum", "2017-03-17");
     query.bindValue(":KID", 2);
-    query.bindValue(":ZID", 2);
+    query.bindValue(":ZID", 1);
     qDebug() << query.executedQuery();
     query.exec();
 
@@ -257,9 +257,9 @@ void StartDAO::setDAO()
     query.bindValue(":TID", 3);
     query.bindValue(":BID", 2);
     query.bindValue(":Betrag", -250);
-    query.bindValue(":Datum", 2017-03-07);
+    query.bindValue(":Datum", "2017-03-07");
     query.bindValue(":KID", 3);
-    query.bindValue(":ZID", 3);
+    query.bindValue(":ZID", 4);
     qDebug() << query.executedQuery();
     query.exec();
 
@@ -267,63 +267,63 @@ void StartDAO::setDAO()
     query.bindValue(":TID", 4);
     query.bindValue(":BID", 2);
     query.bindValue(":Betrag", 105);
-    query.bindValue(":Datum", 2017-05-13);
-    query.bindValue(":KID", 2);
-    query.bindValue(":ZID", 3);
+    query.bindValue(":Datum", "2017-05-13");
+    query.bindValue(":KID", 1);
+    query.bindValue(":ZID", 5);
     query.exec();
 
     query.prepare("INSERT INTO Transaktion(TID, BID, Betrag, Datum, KID, ZID) VALUES(:TID, :BID, :Betrag, :Datum, :KID, :ZID);");
     query.bindValue(":TID", 5);
     query.bindValue(":BID", 3);
     query.bindValue(":Betrag", 1500);
-    query.bindValue(":Datum", 2017-05-25);
-    query.bindValue(":KID", 1);
-    query.bindValue(":ZID", 3);
+    query.bindValue(":Datum", "2017-05-25");
+    query.bindValue(":KID", 2);
+    query.bindValue(":ZID", 7);
     query.exec();
 
     query.prepare("INSERT INTO Transaktion(TID, BID, Betrag, Datum, KID, ZID) VALUES(:TID, :BID, :Betrag, :Datum, :KID, :ZID);");
     query.bindValue(":TID", 6);
     query.bindValue(":BID", 3);
     query.bindValue(":Betrag", 150);
-    query.bindValue(":Datum", 2017-05-03);
-    query.bindValue(":KID", 2);
-    query.bindValue(":ZID", 1);
+    query.bindValue(":Datum", "2017-05-03");
+    query.bindValue(":KID", 1);
+    query.bindValue(":ZID", 8);
     query.exec();
 
     query.prepare("INSERT INTO Transaktion(TID, BID, Betrag, Datum, KID, ZID) VALUES(:TID, :BID, :Betrag, :Datum, :KID, :ZID);");
     query.bindValue(":TID", 7);
     query.bindValue(":BID", 3);
     query.bindValue(":Betrag", 120);
-    query.bindValue(":Datum", 2017-01-23);
+    query.bindValue(":Datum", "2017-01-23");
     query.bindValue(":KID", 2);
-    query.bindValue(":ZID", 2);
+    query.bindValue(":ZID", 9);
     query.exec();
 
     query.prepare("INSERT INTO Transaktion(TID, BID, Betrag, Datum, KID, ZID) VALUES(:TID, :BID, :Betrag, :Datum, :KID, :ZID);");
     query.bindValue(":TID", 8);
     query.bindValue(":BID", 3);
     query.bindValue(":Betrag", -2560);
-    query.bindValue(":Datum", 2017-01-01);
+    query.bindValue(":Datum", "2017-01-01");
     query.bindValue(":KID", 3);
-    query.bindValue(":ZID", 2);
+    query.bindValue(":ZID", 8);
     query.exec();
 
     query.prepare("INSERT INTO Transaktion(TID, BID, Betrag, Datum, KID, ZID) VALUES(:TID, :BID, :Betrag, :Datum, :KID, :ZID);");
     query.bindValue(":TID", 9);
     query.bindValue(":BID", 3);
     query.bindValue(":Betrag", 570);
-    query.bindValue(":Datum", 2017-06-19);
+    query.bindValue(":Datum", "2017-06-19");
     query.bindValue(":KID", 1);
-    query.bindValue(":ZID", 1);
+    query.bindValue(":ZID", 8);
     query.exec();
 
     query.prepare("INSERT INTO Transaktion(TID, BID, Betrag, Datum, KID, ZID) VALUES(:TID, :BID, :Betrag, :Datum, :KID, :ZID);");
     query.bindValue(":TID", 10);
-    query.bindValue(":BID", 3);
+    query.bindValue(":BID", 1);
     query.bindValue(":Betrag", -2390);
-    query.bindValue(":Datum", 2017-05-03);
+    query.bindValue(":Datum", "2017-05-03");
     query.bindValue(":KID", 2);
-    query.bindValue(":ZID", 3);
+    query.bindValue(":ZID", 2);
     qDebug() << query.executedQuery();
     query.exec();
 }
