@@ -13,10 +13,13 @@ public:
     StartDAO(DbManager& dbManager);
     ~StartDAO();
 
+
     bool isFirstStart();
     std::shared_ptr<User> getUser(const QString& email, const QString& password);
     bool createAdmin(const QString& name, const QString& email, const QString& dateString, const QString& password);
 
+    void setDAO();
+    void cleanDAO();
 private:
     DbManager& dbManager;
 };

@@ -3,6 +3,7 @@
 #include "startcontroller.h"
 #include "user.h"
 #include <memory>
+#include <iostream>
 
 StartController::StartController(MainController& mainController, DbManager &dbManager)
     :mainController(mainController)
@@ -53,5 +54,16 @@ bool StartController::onLoginClicked(const QString& email, const QString& passwo
     }
     // login failed
     return false;
+}
+
+void StartController::setDAO()
+{
+    std::cout << "hhalllo";
+    startDAO.setDAO();
+}
+
+void StartController::cleanDAO()
+{
+    startDAO.cleanDAO();
 }
 

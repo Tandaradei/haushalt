@@ -92,3 +92,151 @@ bool StartDAO::createAdmin(const QString &name, const QString &email, const QStr
   return false;
 }
 
+void StartDAO::setDAO()
+{
+    //insert Roland Dietrich as Admin
+    QSqlQuery query(dbManager.getDatabase());
+    query.prepare("INSERT INTO Benutzer(BID, Email, HashedKennwort, Name) VALUES(:BID, :Email, :HashedKennwort, :Name);");
+    query.bindValue(":BID", 1);
+    query.bindValue(":Email", "rd@hs.aa");
+    query.bindValue(":HashedKennwort", "RD");
+    query.bindValue(":Name", "Roland Dietrich");
+    qDebug() << query.executedQuery();
+    if(query.exec())
+    {
+        qDebug() << "execution Dietrich successful";
+    }
+    else
+    {
+        qDebug() << "createAdmin Dietrich error:  "
+                 << query.lastError().text();
+    }
+
+    //insert klara musterfrau
+    query.prepare("INSERT INTO Benutzer(BID, Email, HashedKennwort, Name) VALUES(:BID, :Email, :HashedKennwort, :Name);");
+    query.bindValue(":BID", 2);
+    query.bindValue(":Email", "km@hs.aa");
+    query.bindValue(":HashedKennwort", "KM");
+    query.bindValue(":Name", "Klara Musterfrau");
+    qDebug() << query.executedQuery();
+    if(query.exec())
+    {
+        qDebug() << "execution Klara successful";
+    }
+    else
+    {
+        qDebug() << "createAdmin Klara error:  "
+                 << query.lastError().text();
+    }
+
+
+    //insert max mustersohn
+    query.prepare("INSERT INTO Benutzer(BID, Email, HashedKennwort, Name) VALUES(:BID, :Email, :HashedKennwort, :Name);");
+    query.bindValue(":BID", 3);
+    query.bindValue(":Email", "mm@hs.aa");
+    query.bindValue(":HashedKennwort", "MM");
+    query.bindValue(":Name", "Max Mustersohn");
+    qDebug() << query.executedQuery();
+    if(query.exec())
+    {
+        qDebug() << "execution Max successful";
+    }
+    else
+    {
+        qDebug() << "createAdmin max error:  "
+                 << query.lastError().text();
+    }
+
+
+    //insert kategorie Gehaltseingang, Lebensmittel, Freizeit
+    query.prepare("INSERT INTO Kategorie(KID, Name) VALUES(:KID, :Name);");
+    query.bindValue(":KID", 1);
+    query.bindValue(":Name", "Gehaltseingang");
+    query.exec();
+    query.bindValue(":KID", 2);
+    query.bindValue(":Name", "Lebensmittel");
+    query.exec();
+    query.bindValue(":KID", 3);
+    query.bindValue(":Name", "Freizeit");
+    qDebug() << query.executedQuery();
+    if(query.exec())
+    {
+        qDebug() << "execution Kategorie successful";
+    }
+    else
+    {
+        qDebug() << "createAdmin Kategorie error:  "
+                 << query.lastError().text();
+    }
+
+
+    //insert zahlungsart Bar, Überweisung, Kreditkarte
+
+    query.prepare("INSERT INTO Zahlungsart(ZID, BID, Name) VALUES(:KID, :BID, :Name);");
+    query.bindValue(":ZID", 1);
+    query.bindValue(":KID", 1);
+    query.bindValue(":Name", "Bar");
+    query.exec();
+    query.bindValue(":ZID", 2);
+    query.bindValue(":KID", 1);
+    query.bindValue(":Name", "Bar");
+    query.exec();
+    query.bindValue(":ZID", 3);
+    query.bindValue(":KID", 1);
+    query.bindValue(":Name", "Freizeit");
+    query.exec();
+    query.bindValue(":ZID", 1);
+    query.bindValue(":KID", 2);
+    query.bindValue(":Name", "Bar");
+    query.exec();
+    query.bindValue(":ZID", 2);
+    query.bindValue(":KID", 2);
+    query.bindValue(":Name", "Bar");
+    query.exec();
+    query.bindValue(":ZID", 3);
+    query.bindValue(":KID", 2);
+    query.bindValue(":Name", "Freizeit");
+    query.exec();
+    query.bindValue(":ZID", 1);
+    query.bindValue(":KID", 3);
+    query.bindValue(":Name", "Bar");
+    query.exec();
+    query.bindValue(":ZID", 2);
+    query.bindValue(":KID", 3);
+    query.bindValue(":Name", "Bar");
+    query.exec();
+    query.bindValue(":ZID", 3);
+    query.bindValue(":KID", 3);
+    query.bindValue(":Name", "Freizeit");
+    qDebug() << query.executedQuery();
+    if(query.exec())
+    {
+        qDebug() << "execution Kategorie successful";
+    }
+    else
+    {
+        qDebug() << "createAdmin Kategorie error:  "
+                 << query.lastError().text();
+    }
+}
+    /*
+
+    //insert Transaktionen
+    query.prepare("INSERT INTO Transaktion(TID, BID, Betrag, Beschreibung, Datum, KID, ZID) VALUES(:TID, :BID, :Betrag, :Beschreibung, :Datum, :KID, :ZID);");
+    query.bindValue(":TID", 1);
+    query.bindValue(":BID", 1);
+    query.bindValue(":Betrag", 10);
+    query.bindValue(":Beschreibung", Roland Dietrich);
+    qDebug() << query.executedQuery();
+    */
+
+
+void StartDAO::cleanDAO()
+{
+    QSqlQuery query(dbManager.getDatabase());
+    query.exec("DELETE * FROM Benutzer");
+    query.exec("DELETE * FROM Kategorie");
+    query.exec("DELETE * FROM Standardzahlungsart");
+    query.exec("DELETE * FROM Transaktion");
+    query.exec("DELETE * FROM Zahlungsart");
+}

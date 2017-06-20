@@ -3,6 +3,9 @@
 #include "admincontroller.h"
 #include "maincontroller.h"
 #include "user.h"
+#include <string>
+#include <stdio.h>
+#include <iostream>
 
 MainController::MainController(int argc, char *argv[])
     :application(argc, argv)
@@ -11,6 +14,18 @@ MainController::MainController(int argc, char *argv[])
     ,userController()
     ,adminController()
 {
+
+    std::string argument1(argv[1]);
+    //std::cout << argument1;
+    if(argument1 == "test")
+    {
+        startController->setDAO();
+    }
+    else// if(argument1 == "clean")
+    {
+        std::cout << argument1;
+        //startController->cleanDAO();
+    }
 
 }
 
@@ -24,6 +39,7 @@ int MainController::exec()
     // create startController and start it
     startController = std::make_shared<StartController>(*this, dbManager);
     startController->start();
+
     // enter main loop
     return application.exec();
 }

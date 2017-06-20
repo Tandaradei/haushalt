@@ -20,6 +20,7 @@ public:
     void onLoggedIn(std::shared_ptr<User> user);
     void close();
 
+
 private:
     QApplication application;
     DbManager dbManager;

@@ -1,5 +1,6 @@
 #include "maincontroller.h"
 #include <QApplication>
+#include <stdio.h>
 
 
 
