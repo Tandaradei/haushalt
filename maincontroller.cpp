@@ -33,11 +33,11 @@ int MainController::exec(char *argv[])
     std::string argument1(argv[1]);
     if(argument1 == "test")
     {
-        startController->setDAO();
+        startController->test();
     }
     else if(argument1 == "clean")
     {
-        startController->cleanDAO();
+        startController->clean();
     }
 
     startController->start();

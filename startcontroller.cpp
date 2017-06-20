@@ -56,14 +56,13 @@ bool StartController::onLoginClicked(const QString& email, const QString& passwo
     return false;
 }
 
-void StartController::setDAO()
+void StartController::test()
 {
-    std::cout << "hhalllo";
-    startDAO.setDAO();
+    startDAO.test();
 }
 
-void StartController::cleanDAO()
+void StartController::clean()
 {
-    startDAO.cleanDAO();
+    startDAO.clean();
 }
 

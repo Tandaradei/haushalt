@@ -17,8 +17,8 @@ public:
     void start();
     bool onLoginClicked(const QString& email, const QString& password);
     void createAdmin(const QString& name, const QString& email, const QDate date, QString password);
-    void setDAO();
-    void cleanDAO();
+    void test();
+    void clean();
 
 private:
     MainController& mainController;
