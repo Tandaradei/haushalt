@@ -187,6 +187,7 @@ void UserWindow::setSettings(QString name, QDate birthdate)
 {
     setWindowTitle(name);
     // prefill settings fields
+    ui->abmeldenLabel->setText("Benutzer '" +name + "' wirklich abmelden?");
 
     ui->settingsNameField->setText(name);
     ui->settingsBirthdateField->setDate(birthdate);

@@ -18,7 +18,6 @@
 #include <QtWidgets/QDateEdit>
 #include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QFormLayout>
-#include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -73,7 +72,7 @@ public:
     QTextEdit *atDescriptionTextEdit;
     QSpacerItem *verticalSpacer_2;
     QDoubleSpinBox *atAmountSpinner;
-    QHBoxLayout *horizontalLayout_6;
+    QVBoxLayout *verticalLayout;
     QPushButton *addTransactionButton;
     QPushButton *editTransactionButton;
     QPushButton *deleteTransactionButton;
@@ -86,7 +85,7 @@ public:
     QFormLayout *formLayout_3;
     QLabel *paymethodLabel_2;
     QLineEdit *payMethodNameField;
-    QHBoxLayout *horizontalLayout_8;
+    QVBoxLayout *verticalLayout_4;
     QPushButton *addPayMethodButton;
     QPushButton *paymethodeditButton;
     QPushButton *deletePayMethodButton;
@@ -130,24 +129,23 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QListView *categorylistView;
     QFormLayout *formLayout_5;
-    QFrame *line;
     QLabel *categoryNameLabel;
     QLineEdit *categoryNameField;
-    QHBoxLayout *horizontalLayout_13;
+    QVBoxLayout *verticalLayout_7;
     QPushButton *addCategoryButton;
     QPushButton *editCategoryButton;
     QPushButton *pushButton;
     QWidget *standardPayMethodsTab;
     QVBoxLayout *verticalLayout_11;
-    QVBoxLayout *verticalLayout_10;
+    QHBoxLayout *horizontalLayout_14;
+    QListView *stanpaylistView;
     QHBoxLayout *horizontalLayout_5;
     QGridLayout *gridLayout_7;
-    QListView *stanpaylistView;
     QGridLayout *gridLayout_8;
-    QGridLayout *gridLayout_6;
-    QLineEdit *stanpayaddField;
+    QFormLayout *formLayout_6;
     QLabel *stanpayaddLabel;
-    QHBoxLayout *horizontalLayout_7;
+    QLineEdit *stanpayaddField;
+    QVBoxLayout *verticalLayout_10;
     QPushButton *stanpayaddButton;
     QPushButton *stanpaychangeButton;
     QPushButton *stanpaydelButton;
@@ -365,45 +363,45 @@ public:
 
         formLayout->setWidget(1, QFormLayout::FieldRole, atAmountSpinner);
 
-        horizontalLayout_6 = new QHBoxLayout();
-        horizontalLayout_6->setSpacing(6);
-        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        horizontalLayout_6->setSizeConstraint(QLayout::SetMaximumSize);
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(6);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setSizeConstraint(QLayout::SetMaximumSize);
         addTransactionButton = new QPushButton(transaktionenTab);
         addTransactionButton->setObjectName(QStringLiteral("addTransactionButton"));
         addTransactionButton->setEnabled(true);
-        addTransactionButton->setMinimumSize(QSize(100, 25));
-        addTransactionButton->setMaximumSize(QSize(100, 25));
+        addTransactionButton->setMinimumSize(QSize(120, 25));
+        addTransactionButton->setMaximumSize(QSize(120, 25));
         QIcon icon1;
         icon1.addFile(QStringLiteral("resources/add.png"), QSize(), QIcon::Normal, QIcon::Off);
         addTransactionButton->setIcon(icon1);
 
-        horizontalLayout_6->addWidget(addTransactionButton);
+        verticalLayout->addWidget(addTransactionButton);
 
         editTransactionButton = new QPushButton(transaktionenTab);
         editTransactionButton->setObjectName(QStringLiteral("editTransactionButton"));
-        editTransactionButton->setMinimumSize(QSize(100, 25));
-        editTransactionButton->setMaximumSize(QSize(100, 25));
+        editTransactionButton->setMinimumSize(QSize(120, 25));
+        editTransactionButton->setMaximumSize(QSize(120, 25));
         editTransactionButton->setLayoutDirection(Qt::LeftToRight);
         QIcon icon2;
         icon2.addFile(QStringLiteral("resources/edit.png"), QSize(), QIcon::Normal, QIcon::Off);
         editTransactionButton->setIcon(icon2);
         editTransactionButton->setFlat(false);
 
-        horizontalLayout_6->addWidget(editTransactionButton);
+        verticalLayout->addWidget(editTransactionButton);
 
         deleteTransactionButton = new QPushButton(transaktionenTab);
         deleteTransactionButton->setObjectName(QStringLiteral("deleteTransactionButton"));
-        deleteTransactionButton->setMinimumSize(QSize(100, 25));
-        deleteTransactionButton->setMaximumSize(QSize(100, 25));
+        deleteTransactionButton->setMinimumSize(QSize(120, 25));
+        deleteTransactionButton->setMaximumSize(QSize(120, 25));
         QIcon icon3;
         icon3.addFile(QStringLiteral("resources/remove.png"), QSize(), QIcon::Normal, QIcon::Off);
         deleteTransactionButton->setIcon(icon3);
 
-        horizontalLayout_6->addWidget(deleteTransactionButton);
+        verticalLayout->addWidget(deleteTransactionButton);
 
 
-        formLayout->setLayout(7, QFormLayout::FieldRole, horizontalLayout_6);
+        formLayout->setLayout(7, QFormLayout::FieldRole, verticalLayout);
 
 
         horizontalLayout_9->addLayout(formLayout);
@@ -445,7 +443,9 @@ public:
         formLayout_3 = new QFormLayout();
         formLayout_3->setSpacing(6);
         formLayout_3->setObjectName(QStringLiteral("formLayout_3"));
-        formLayout_3->setFormAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        formLayout_3->setFieldGrowthPolicy(QFormLayout::FieldsStayAtSizeHint);
+        formLayout_3->setLabelAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        formLayout_3->setFormAlignment(Qt::AlignCenter);
         paymethodLabel_2 = new QLabel(zahlungsartenTab);
         paymethodLabel_2->setObjectName(QStringLiteral("paymethodLabel_2"));
         paymethodLabel_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -459,33 +459,36 @@ public:
 
         formLayout_3->setWidget(0, QFormLayout::FieldRole, payMethodNameField);
 
-        horizontalLayout_8 = new QHBoxLayout();
-        horizontalLayout_8->setSpacing(6);
-        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setSpacing(6);
+        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         addPayMethodButton = new QPushButton(zahlungsartenTab);
         addPayMethodButton->setObjectName(QStringLiteral("addPayMethodButton"));
-        addPayMethodButton->setMaximumSize(QSize(100, 16777215));
+        addPayMethodButton->setMinimumSize(QSize(120, 25));
+        addPayMethodButton->setMaximumSize(QSize(120, 25));
         addPayMethodButton->setIcon(icon1);
 
-        horizontalLayout_8->addWidget(addPayMethodButton);
+        verticalLayout_4->addWidget(addPayMethodButton);
 
         paymethodeditButton = new QPushButton(zahlungsartenTab);
         paymethodeditButton->setObjectName(QStringLiteral("paymethodeditButton"));
         paymethodeditButton->setEnabled(false);
-        paymethodeditButton->setMaximumSize(QSize(100, 16777215));
+        paymethodeditButton->setMinimumSize(QSize(120, 25));
+        paymethodeditButton->setMaximumSize(QSize(120, 25));
         paymethodeditButton->setIcon(icon2);
 
-        horizontalLayout_8->addWidget(paymethodeditButton);
+        verticalLayout_4->addWidget(paymethodeditButton);
 
         deletePayMethodButton = new QPushButton(zahlungsartenTab);
         deletePayMethodButton->setObjectName(QStringLiteral("deletePayMethodButton"));
-        deletePayMethodButton->setMaximumSize(QSize(100, 16777215));
+        deletePayMethodButton->setMinimumSize(QSize(120, 25));
+        deletePayMethodButton->setMaximumSize(QSize(120, 25));
         deletePayMethodButton->setIcon(icon3);
 
-        horizontalLayout_8->addWidget(deletePayMethodButton);
+        verticalLayout_4->addWidget(deletePayMethodButton);
 
 
-        formLayout_3->setLayout(1, QFormLayout::FieldRole, horizontalLayout_8);
+        formLayout_3->setLayout(1, QFormLayout::FieldRole, verticalLayout_4);
 
 
         horizontalLayout_2->addLayout(formLayout_3);
@@ -579,9 +582,10 @@ public:
 
         settingsNewPasswordButton = new QPushButton(einstellungenTab);
         settingsNewPasswordButton->setObjectName(QStringLiteral("settingsNewPasswordButton"));
-        settingsNewPasswordButton->setMaximumSize(QSize(100, 16777215));
+        settingsNewPasswordButton->setMinimumSize(QSize(120, 25));
+        settingsNewPasswordButton->setMaximumSize(QSize(120, 25));
         QIcon icon6;
-        icon6.addFile(QStringLiteral("resources/check.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon6.addFile(QStringLiteral("resources/id.png"), QSize(), QIcon::Normal, QIcon::Off);
         settingsNewPasswordButton->setIcon(icon6);
 
         formLayout_2->setWidget(10, QFormLayout::FieldRole, settingsNewPasswordButton);
@@ -592,7 +596,9 @@ public:
 
         settingsSaveButton = new QPushButton(einstellungenTab);
         settingsSaveButton->setObjectName(QStringLiteral("settingsSaveButton"));
-        settingsSaveButton->setMaximumSize(QSize(100, 16777215));
+        settingsSaveButton->setMinimumSize(QSize(120, 25));
+        settingsSaveButton->setMaximumSize(QSize(120, 25));
+        settingsSaveButton->setIcon(icon2);
 
         formLayout_2->setWidget(2, QFormLayout::FieldRole, settingsSaveButton);
 
@@ -648,6 +654,7 @@ public:
         formLayout_4 = new QFormLayout();
         formLayout_4->setSpacing(6);
         formLayout_4->setObjectName(QStringLiteral("formLayout_4"));
+        formLayout_4->setFieldGrowthPolicy(QFormLayout::FieldsStayAtSizeHint);
         formLayout_4->setLabelAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         formLayout_4->setFormAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         userEmailLabel = new QLabel(userTab);
@@ -688,21 +695,24 @@ public:
 
         addUserButton = new QPushButton(userTab);
         addUserButton->setObjectName(QStringLiteral("addUserButton"));
-        addUserButton->setMaximumSize(QSize(100, 16777215));
+        addUserButton->setMinimumSize(QSize(120, 25));
+        addUserButton->setMaximumSize(QSize(120, 25));
         addUserButton->setIcon(icon1);
 
         formLayout_4->setWidget(6, QFormLayout::FieldRole, addUserButton);
 
         resetPasswordButton = new QPushButton(userTab);
         resetPasswordButton->setObjectName(QStringLiteral("resetPasswordButton"));
-        resetPasswordButton->setMaximumSize(QSize(120, 16777215));
+        resetPasswordButton->setMinimumSize(QSize(120, 25));
+        resetPasswordButton->setMaximumSize(QSize(120, 25));
         resetPasswordButton->setIcon(icon2);
 
         formLayout_4->setWidget(7, QFormLayout::FieldRole, resetPasswordButton);
 
         deleteUserButton = new QPushButton(userTab);
         deleteUserButton->setObjectName(QStringLiteral("deleteUserButton"));
-        deleteUserButton->setMaximumSize(QSize(100, 16777215));
+        deleteUserButton->setMinimumSize(QSize(120, 25));
+        deleteUserButton->setMaximumSize(QSize(120, 25));
         deleteUserButton->setIcon(icon3);
 
         formLayout_4->setWidget(8, QFormLayout::FieldRole, deleteUserButton);
@@ -742,24 +752,13 @@ public:
         formLayout_5 = new QFormLayout();
         formLayout_5->setSpacing(6);
         formLayout_5->setObjectName(QStringLiteral("formLayout_5"));
-        formLayout_5->setFormAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
-        line = new QFrame(categoryTab);
-        line->setObjectName(QStringLiteral("line"));
-        QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(1);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(line->sizePolicy().hasHeightForWidth());
-        line->setSizePolicy(sizePolicy);
-        line->setMinimumSize(QSize(400, 0));
-        line->setFrameShape(QFrame::HLine);
-        line->setFrameShadow(QFrame::Sunken);
-
-        formLayout_5->setWidget(0, QFormLayout::SpanningRole, line);
-
+        formLayout_5->setFieldGrowthPolicy(QFormLayout::FieldsStayAtSizeHint);
+        formLayout_5->setLabelAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        formLayout_5->setFormAlignment(Qt::AlignCenter);
         categoryNameLabel = new QLabel(categoryTab);
         categoryNameLabel->setObjectName(QStringLiteral("categoryNameLabel"));
 
-        formLayout_5->setWidget(1, QFormLayout::LabelRole, categoryNameLabel);
+        formLayout_5->setWidget(0, QFormLayout::LabelRole, categoryNameLabel);
 
         categoryNameField = new QLineEdit(categoryTab);
         categoryNameField->setObjectName(QStringLiteral("categoryNameField"));
@@ -767,11 +766,11 @@ public:
         categoryNameField->setMaximumSize(QSize(200, 16777215));
         categoryNameField->setAlignment(Qt::AlignCenter);
 
-        formLayout_5->setWidget(1, QFormLayout::FieldRole, categoryNameField);
+        formLayout_5->setWidget(0, QFormLayout::FieldRole, categoryNameField);
 
-        horizontalLayout_13 = new QHBoxLayout();
-        horizontalLayout_13->setSpacing(6);
-        horizontalLayout_13->setObjectName(QStringLiteral("horizontalLayout_13"));
+        verticalLayout_7 = new QVBoxLayout();
+        verticalLayout_7->setSpacing(6);
+        verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
         addCategoryButton = new QPushButton(categoryTab);
         addCategoryButton->setObjectName(QStringLiteral("addCategoryButton"));
         addCategoryButton->setMinimumSize(QSize(100, 25));
@@ -779,7 +778,7 @@ public:
         addCategoryButton->setLayoutDirection(Qt::LeftToRight);
         addCategoryButton->setIcon(icon1);
 
-        horizontalLayout_13->addWidget(addCategoryButton);
+        verticalLayout_7->addWidget(addCategoryButton);
 
         editCategoryButton = new QPushButton(categoryTab);
         editCategoryButton->setObjectName(QStringLiteral("editCategoryButton"));
@@ -788,7 +787,7 @@ public:
         editCategoryButton->setMaximumSize(QSize(120, 25));
         editCategoryButton->setIcon(icon2);
 
-        horizontalLayout_13->addWidget(editCategoryButton);
+        verticalLayout_7->addWidget(editCategoryButton);
 
         pushButton = new QPushButton(categoryTab);
         pushButton->setObjectName(QStringLiteral("pushButton"));
@@ -796,10 +795,10 @@ public:
         pushButton->setMaximumSize(QSize(120, 25));
         pushButton->setIcon(icon3);
 
-        horizontalLayout_13->addWidget(pushButton);
+        verticalLayout_7->addWidget(pushButton);
 
 
-        formLayout_5->setLayout(2, QFormLayout::FieldRole, horizontalLayout_13);
+        formLayout_5->setLayout(1, QFormLayout::FieldRole, verticalLayout_7);
 
 
         horizontalLayout_4->addLayout(formLayout_5);
@@ -818,22 +817,24 @@ public:
         verticalLayout_11->setSpacing(6);
         verticalLayout_11->setContentsMargins(11, 11, 11, 11);
         verticalLayout_11->setObjectName(QStringLiteral("verticalLayout_11"));
-        verticalLayout_10 = new QVBoxLayout();
-        verticalLayout_10->setSpacing(6);
-        verticalLayout_10->setObjectName(QStringLiteral("verticalLayout_10"));
+        horizontalLayout_14 = new QHBoxLayout();
+        horizontalLayout_14->setSpacing(6);
+        horizontalLayout_14->setObjectName(QStringLiteral("horizontalLayout_14"));
+        stanpaylistView = new QListView(standardPayMethodsTab);
+        stanpaylistView->setObjectName(QStringLiteral("stanpaylistView"));
+        stanpaylistView->setMinimumSize(QSize(0, 0));
+        stanpaylistView->setMaximumSize(QSize(16777215, 16777215));
+        stanpaylistView->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        stanpaylistView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+        horizontalLayout_14->addWidget(stanpaylistView);
+
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setSpacing(6);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
         gridLayout_7 = new QGridLayout();
         gridLayout_7->setSpacing(6);
         gridLayout_7->setObjectName(QStringLiteral("gridLayout_7"));
-        stanpaylistView = new QListView(standardPayMethodsTab);
-        stanpaylistView->setObjectName(QStringLiteral("stanpaylistView"));
-        stanpaylistView->setMaximumSize(QSize(400, 16777215));
-        stanpaylistView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-
-        gridLayout_7->addWidget(stanpaylistView, 0, 0, 1, 1);
-
         gridLayout_8 = new QGridLayout();
         gridLayout_8->setSpacing(6);
         gridLayout_8->setObjectName(QStringLiteral("gridLayout_8"));
@@ -843,55 +844,66 @@ public:
 
         horizontalLayout_5->addLayout(gridLayout_7);
 
-        gridLayout_6 = new QGridLayout();
-        gridLayout_6->setSpacing(6);
-        gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
-        stanpayaddField = new QLineEdit(standardPayMethodsTab);
-        stanpayaddField->setObjectName(QStringLiteral("stanpayaddField"));
-        stanpayaddField->setMinimumSize(QSize(300, 0));
-        stanpayaddField->setMaximumSize(QSize(300, 16777215));
-
-        gridLayout_6->addWidget(stanpayaddField, 1, 0, 1, 1, Qt::AlignHCenter|Qt::AlignVCenter);
-
+        formLayout_6 = new QFormLayout();
+        formLayout_6->setSpacing(6);
+        formLayout_6->setObjectName(QStringLiteral("formLayout_6"));
+        formLayout_6->setFieldGrowthPolicy(QFormLayout::FieldsStayAtSizeHint);
+        formLayout_6->setLabelAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        formLayout_6->setFormAlignment(Qt::AlignCenter);
         stanpayaddLabel = new QLabel(standardPayMethodsTab);
         stanpayaddLabel->setObjectName(QStringLiteral("stanpayaddLabel"));
         stanpayaddLabel->setMaximumSize(QSize(16777215, 200));
+        stanpayaddLabel->setFrameShape(QFrame::NoFrame);
         stanpayaddLabel->setAlignment(Qt::AlignCenter);
 
-        gridLayout_6->addWidget(stanpayaddLabel, 0, 0, 1, 1, Qt::AlignBottom);
+        formLayout_6->setWidget(0, QFormLayout::LabelRole, stanpayaddLabel);
 
-        horizontalLayout_7 = new QHBoxLayout();
-        horizontalLayout_7->setSpacing(6);
-        horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
+        stanpayaddField = new QLineEdit(standardPayMethodsTab);
+        stanpayaddField->setObjectName(QStringLiteral("stanpayaddField"));
+        stanpayaddField->setMinimumSize(QSize(200, 0));
+        stanpayaddField->setMaximumSize(QSize(200, 16777215));
+
+        formLayout_6->setWidget(0, QFormLayout::FieldRole, stanpayaddField);
+
+        verticalLayout_10 = new QVBoxLayout();
+        verticalLayout_10->setSpacing(6);
+        verticalLayout_10->setObjectName(QStringLiteral("verticalLayout_10"));
         stanpayaddButton = new QPushButton(standardPayMethodsTab);
         stanpayaddButton->setObjectName(QStringLiteral("stanpayaddButton"));
-        stanpayaddButton->setMaximumSize(QSize(100, 16777215));
+        stanpayaddButton->setMinimumSize(QSize(120, 25));
+        stanpayaddButton->setMaximumSize(QSize(120, 25));
+        stanpayaddButton->setIcon(icon1);
 
-        horizontalLayout_7->addWidget(stanpayaddButton, 0, Qt::AlignTop);
+        verticalLayout_10->addWidget(stanpayaddButton);
 
         stanpaychangeButton = new QPushButton(standardPayMethodsTab);
         stanpaychangeButton->setObjectName(QStringLiteral("stanpaychangeButton"));
-        stanpaychangeButton->setMaximumSize(QSize(100, 16777215));
+        stanpaychangeButton->setEnabled(false);
+        stanpaychangeButton->setMinimumSize(QSize(120, 25));
+        stanpaychangeButton->setMaximumSize(QSize(120, 25));
+        stanpaychangeButton->setIcon(icon2);
 
-        horizontalLayout_7->addWidget(stanpaychangeButton, 0, Qt::AlignTop);
+        verticalLayout_10->addWidget(stanpaychangeButton);
 
         stanpaydelButton = new QPushButton(standardPayMethodsTab);
         stanpaydelButton->setObjectName(QStringLiteral("stanpaydelButton"));
-        stanpaydelButton->setMaximumSize(QSize(100, 16777215));
+        stanpaydelButton->setMinimumSize(QSize(120, 25));
+        stanpaydelButton->setMaximumSize(QSize(120, 25));
+        stanpaydelButton->setIcon(icon3);
 
-        horizontalLayout_7->addWidget(stanpaydelButton, 0, Qt::AlignTop);
-
-
-        gridLayout_6->addLayout(horizontalLayout_7, 2, 0, 1, 1);
-
-
-        horizontalLayout_5->addLayout(gridLayout_6);
+        verticalLayout_10->addWidget(stanpaydelButton);
 
 
-        verticalLayout_10->addLayout(horizontalLayout_5);
+        formLayout_6->setLayout(1, QFormLayout::FieldRole, verticalLayout_10);
 
 
-        verticalLayout_11->addLayout(verticalLayout_10);
+        horizontalLayout_5->addLayout(formLayout_6);
+
+
+        horizontalLayout_14->addLayout(horizontalLayout_5);
+
+
+        verticalLayout_11->addLayout(horizontalLayout_14);
 
         mainTabWidget->addTab(standardPayMethodsTab, QString());
         logoutTab = new QWidget();
@@ -914,11 +926,11 @@ public:
 
         logoutButton = new QPushButton(logoutTab);
         logoutButton->setObjectName(QStringLiteral("logoutButton"));
-        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Fixed);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(logoutButton->sizePolicy().hasHeightForWidth());
-        logoutButton->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(logoutButton->sizePolicy().hasHeightForWidth());
+        logoutButton->setSizePolicy(sizePolicy);
         logoutButton->setMaximumSize(QSize(100, 50));
         QIcon icon7;
         icon7.addFile(QStringLiteral("resources/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -948,7 +960,7 @@ public:
 
         retranslateUi(UserWindow);
 
-        mainTabWidget->setCurrentIndex(4);
+        mainTabWidget->setCurrentIndex(6);
 
 
         QMetaObject::connectSlotsByName(UserWindow);
@@ -997,8 +1009,8 @@ public:
         editCategoryButton->setText(QApplication::translate("UserWindow", "Bearbeiten", 0));
         pushButton->setText(QApplication::translate("UserWindow", "Entfernen", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(categoryTab), QApplication::translate("UserWindow", "Kategorien", 0));
-        stanpayaddLabel->setText(QApplication::translate("UserWindow", "Bitte geben sie hier neue Standartzahlungsarten and die sie hinzuf\303\274gen m\303\266chsten", 0));
-        stanpayaddButton->setText(QApplication::translate("UserWindow", "Hinzuf\303\274gen", 0));
+        stanpayaddLabel->setText(QApplication::translate("UserWindow", "Name", 0));
+        stanpayaddButton->setText(QApplication::translate("UserWindow", "Neu", 0));
         stanpaychangeButton->setText(QApplication::translate("UserWindow", "Bearbeiten", 0));
         stanpaydelButton->setText(QApplication::translate("UserWindow", "Entfernen", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(standardPayMethodsTab), QApplication::translate("UserWindow", "Standardzahlungsarten", 0));
