@@ -7,7 +7,7 @@ AdminController::AdminController(MainController& mainController, DbManager &dbMa
     :UserController(mainController, dbManager, user)
     ,adminDAO(dbManager)
 {
-    userWindow.enableAdminTabs();
+    userWindow.enableAdmin(this);
 }
 
 AdminController::~AdminController()

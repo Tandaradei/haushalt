@@ -111,36 +111,19 @@ public:
     QPushButton *settingsSaveButton;
     QWidget *userTab;
     QVBoxLayout *verticalLayout_9;
-    QVBoxLayout *verticalLayout_7;
-    QTabWidget *usertabWidget;
-    QWidget *useroverviewTab_2;
-    QVBoxLayout *verticalLayout_23;
-    QVBoxLayout *verticalLayout_22;
-    QTableWidget *userTable_2;
-    QLabel *userdelLabel_2;
-    QPushButton *userdelButton_2;
-    QWidget *useraddTab_2;
-    QVBoxLayout *verticalLayout_26;
-    QVBoxLayout *verticalLayout_24;
-    QGridLayout *gridLayout_11;
-    QLabel *useraddpwLabel_2;
-    QLabel *useraddemailLabel_2;
-    QLineEdit *useraddemailField_2;
-    QLineEdit *useraddpwField_2;
-    QVBoxLayout *verticalLayout_25;
-    QPushButton *useraddconfButton_2;
-    QWidget *userpwresetTab;
-    QVBoxLayout *verticalLayout_29;
-    QVBoxLayout *verticalLayout_27;
-    QGridLayout *gridLayout_12;
-    QLabel *userresetpwemailLabel_2;
-    QLabel *userresetpwnewpwLabel_2;
-    QLabel *userresetpwnewpwwdhLabel_2;
-    QLineEdit *userresetpwemailField_2;
-    QLineEdit *userresetpwnewpwField_2;
-    QLineEdit *userresetpwnewpwwdhField_2;
-    QVBoxLayout *verticalLayout_28;
-    QPushButton *userresetpwconfirmButton_2;
+    QHBoxLayout *horizontalLayout_10;
+    QHBoxLayout *horizontalLayout_11;
+    QTableWidget *userTable;
+    QFormLayout *formLayout_4;
+    QLabel *userEmailLabel;
+    QLineEdit *userEmailField;
+    QLabel *userPasswordLabel;
+    QLineEdit *userPasswordField;
+    QLabel *userPasswordRepeatLabel;
+    QLineEdit *userPasswordRepeatField;
+    QPushButton *addUserButton;
+    QPushButton *resetPasswordButton;
+    QPushButton *deleteUserButton;
     QWidget *categoryTab;
     QVBoxLayout *verticalLayout_13;
     QVBoxLayout *verticalLayout_12;
@@ -638,170 +621,95 @@ public:
         verticalLayout_9->setContentsMargins(11, 11, 11, 11);
         verticalLayout_9->setObjectName(QStringLiteral("verticalLayout_9"));
         verticalLayout_9->setContentsMargins(0, 0, 0, 0);
-        verticalLayout_7 = new QVBoxLayout();
-        verticalLayout_7->setSpacing(6);
-        verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
-        usertabWidget = new QTabWidget(userTab);
-        usertabWidget->setObjectName(QStringLiteral("usertabWidget"));
-        useroverviewTab_2 = new QWidget();
-        useroverviewTab_2->setObjectName(QStringLiteral("useroverviewTab_2"));
-        verticalLayout_23 = new QVBoxLayout(useroverviewTab_2);
-        verticalLayout_23->setSpacing(6);
-        verticalLayout_23->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_23->setObjectName(QStringLiteral("verticalLayout_23"));
-        verticalLayout_22 = new QVBoxLayout();
-        verticalLayout_22->setSpacing(6);
-        verticalLayout_22->setObjectName(QStringLiteral("verticalLayout_22"));
-        userTable_2 = new QTableWidget(useroverviewTab_2);
-        if (userTable_2->columnCount() < 3)
-            userTable_2->setColumnCount(3);
-        if (userTable_2->rowCount() < 100)
-            userTable_2->setRowCount(100);
-        userTable_2->setObjectName(QStringLiteral("userTable_2"));
-        userTable_2->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        userTable_2->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-        userTable_2->setRowCount(100);
-        userTable_2->setColumnCount(3);
+        horizontalLayout_10 = new QHBoxLayout();
+        horizontalLayout_10->setSpacing(6);
+        horizontalLayout_10->setObjectName(QStringLiteral("horizontalLayout_10"));
+        horizontalLayout_11 = new QHBoxLayout();
+        horizontalLayout_11->setSpacing(6);
+        horizontalLayout_11->setObjectName(QStringLiteral("horizontalLayout_11"));
+        userTable = new QTableWidget(userTab);
+        if (userTable->columnCount() < 5)
+            userTable->setColumnCount(5);
+        if (userTable->rowCount() < 20)
+            userTable->setRowCount(20);
+        userTable->setObjectName(QStringLiteral("userTable"));
+        userTable->setMinimumSize(QSize(600, 0));
+        userTable->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        userTable->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        userTable->setTabKeyNavigation(false);
+        userTable->setRowCount(20);
+        userTable->setColumnCount(5);
+        userTable->horizontalHeader()->setMinimumSectionSize(50);
 
-        verticalLayout_22->addWidget(userTable_2);
+        horizontalLayout_11->addWidget(userTable);
 
-        userdelLabel_2 = new QLabel(useroverviewTab_2);
-        userdelLabel_2->setObjectName(QStringLiteral("userdelLabel_2"));
+        formLayout_4 = new QFormLayout();
+        formLayout_4->setSpacing(6);
+        formLayout_4->setObjectName(QStringLiteral("formLayout_4"));
+        formLayout_4->setLabelAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        userEmailLabel = new QLabel(userTab);
+        userEmailLabel->setObjectName(QStringLiteral("userEmailLabel"));
+        userEmailLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        verticalLayout_22->addWidget(userdelLabel_2, 0, Qt::AlignHCenter);
+        formLayout_4->setWidget(3, QFormLayout::LabelRole, userEmailLabel);
 
-        userdelButton_2 = new QPushButton(useroverviewTab_2);
-        userdelButton_2->setObjectName(QStringLiteral("userdelButton_2"));
-        userdelButton_2->setMaximumSize(QSize(100, 16777215));
+        userEmailField = new QLineEdit(userTab);
+        userEmailField->setObjectName(QStringLiteral("userEmailField"));
+        userEmailField->setMaximumSize(QSize(200, 16777215));
 
-        verticalLayout_22->addWidget(userdelButton_2, 0, Qt::AlignHCenter);
+        formLayout_4->setWidget(3, QFormLayout::FieldRole, userEmailField);
 
+        userPasswordLabel = new QLabel(userTab);
+        userPasswordLabel->setObjectName(QStringLiteral("userPasswordLabel"));
 
-        verticalLayout_23->addLayout(verticalLayout_22);
+        formLayout_4->setWidget(4, QFormLayout::LabelRole, userPasswordLabel);
 
-        usertabWidget->addTab(useroverviewTab_2, QString());
-        useraddTab_2 = new QWidget();
-        useraddTab_2->setObjectName(QStringLiteral("useraddTab_2"));
-        verticalLayout_26 = new QVBoxLayout(useraddTab_2);
-        verticalLayout_26->setSpacing(6);
-        verticalLayout_26->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_26->setObjectName(QStringLiteral("verticalLayout_26"));
-        verticalLayout_24 = new QVBoxLayout();
-        verticalLayout_24->setSpacing(6);
-        verticalLayout_24->setObjectName(QStringLiteral("verticalLayout_24"));
-        gridLayout_11 = new QGridLayout();
-        gridLayout_11->setSpacing(6);
-        gridLayout_11->setObjectName(QStringLiteral("gridLayout_11"));
-        useraddpwLabel_2 = new QLabel(useraddTab_2);
-        useraddpwLabel_2->setObjectName(QStringLiteral("useraddpwLabel_2"));
+        userPasswordField = new QLineEdit(userTab);
+        userPasswordField->setObjectName(QStringLiteral("userPasswordField"));
+        userPasswordField->setMaximumSize(QSize(200, 16777215));
 
-        gridLayout_11->addWidget(useraddpwLabel_2, 1, 0, 1, 1, Qt::AlignHCenter|Qt::AlignVCenter);
+        formLayout_4->setWidget(4, QFormLayout::FieldRole, userPasswordField);
 
-        useraddemailLabel_2 = new QLabel(useraddTab_2);
-        useraddemailLabel_2->setObjectName(QStringLiteral("useraddemailLabel_2"));
+        userPasswordRepeatLabel = new QLabel(userTab);
+        userPasswordRepeatLabel->setObjectName(QStringLiteral("userPasswordRepeatLabel"));
 
-        gridLayout_11->addWidget(useraddemailLabel_2, 0, 0, 1, 1, Qt::AlignHCenter|Qt::AlignBottom);
+        formLayout_4->setWidget(5, QFormLayout::LabelRole, userPasswordRepeatLabel);
 
-        useraddemailField_2 = new QLineEdit(useraddTab_2);
-        useraddemailField_2->setObjectName(QStringLiteral("useraddemailField_2"));
-        useraddemailField_2->setMaximumSize(QSize(300, 16777215));
+        userPasswordRepeatField = new QLineEdit(userTab);
+        userPasswordRepeatField->setObjectName(QStringLiteral("userPasswordRepeatField"));
+        userPasswordRepeatField->setMaximumSize(QSize(200, 16777215));
 
-        gridLayout_11->addWidget(useraddemailField_2, 0, 1, 1, 1, Qt::AlignLeft|Qt::AlignBottom);
+        formLayout_4->setWidget(5, QFormLayout::FieldRole, userPasswordRepeatField);
 
-        useraddpwField_2 = new QLineEdit(useraddTab_2);
-        useraddpwField_2->setObjectName(QStringLiteral("useraddpwField_2"));
-        useraddpwField_2->setMaximumSize(QSize(300, 16777215));
+        addUserButton = new QPushButton(userTab);
+        addUserButton->setObjectName(QStringLiteral("addUserButton"));
+        addUserButton->setMaximumSize(QSize(100, 16777215));
+        addUserButton->setIcon(icon1);
 
-        gridLayout_11->addWidget(useraddpwField_2, 1, 1, 1, 1, Qt::AlignLeft|Qt::AlignVCenter);
+        formLayout_4->setWidget(6, QFormLayout::FieldRole, addUserButton);
 
+        resetPasswordButton = new QPushButton(userTab);
+        resetPasswordButton->setObjectName(QStringLiteral("resetPasswordButton"));
+        resetPasswordButton->setMaximumSize(QSize(120, 16777215));
+        resetPasswordButton->setIcon(icon2);
 
-        verticalLayout_24->addLayout(gridLayout_11);
+        formLayout_4->setWidget(7, QFormLayout::FieldRole, resetPasswordButton);
 
-        verticalLayout_25 = new QVBoxLayout();
-        verticalLayout_25->setSpacing(6);
-        verticalLayout_25->setObjectName(QStringLiteral("verticalLayout_25"));
-        useraddconfButton_2 = new QPushButton(useraddTab_2);
-        useraddconfButton_2->setObjectName(QStringLiteral("useraddconfButton_2"));
-        useraddconfButton_2->setMaximumSize(QSize(100, 16777215));
+        deleteUserButton = new QPushButton(userTab);
+        deleteUserButton->setObjectName(QStringLiteral("deleteUserButton"));
+        deleteUserButton->setMaximumSize(QSize(100, 16777215));
+        deleteUserButton->setIcon(icon3);
 
-        verticalLayout_25->addWidget(useraddconfButton_2, 0, Qt::AlignHCenter|Qt::AlignTop);
+        formLayout_4->setWidget(8, QFormLayout::FieldRole, deleteUserButton);
 
 
-        verticalLayout_24->addLayout(verticalLayout_25);
+        horizontalLayout_11->addLayout(formLayout_4);
 
 
-        verticalLayout_26->addLayout(verticalLayout_24);
-
-        usertabWidget->addTab(useraddTab_2, QString());
-        userpwresetTab = new QWidget();
-        userpwresetTab->setObjectName(QStringLiteral("userpwresetTab"));
-        verticalLayout_29 = new QVBoxLayout(userpwresetTab);
-        verticalLayout_29->setSpacing(6);
-        verticalLayout_29->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_29->setObjectName(QStringLiteral("verticalLayout_29"));
-        verticalLayout_27 = new QVBoxLayout();
-        verticalLayout_27->setSpacing(6);
-        verticalLayout_27->setObjectName(QStringLiteral("verticalLayout_27"));
-        gridLayout_12 = new QGridLayout();
-        gridLayout_12->setSpacing(6);
-        gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
-        userresetpwemailLabel_2 = new QLabel(userpwresetTab);
-        userresetpwemailLabel_2->setObjectName(QStringLiteral("userresetpwemailLabel_2"));
-
-        gridLayout_12->addWidget(userresetpwemailLabel_2, 1, 1, 1, 1, Qt::AlignHCenter|Qt::AlignBottom);
-
-        userresetpwnewpwLabel_2 = new QLabel(userpwresetTab);
-        userresetpwnewpwLabel_2->setObjectName(QStringLiteral("userresetpwnewpwLabel_2"));
-
-        gridLayout_12->addWidget(userresetpwnewpwLabel_2, 3, 1, 1, 1, Qt::AlignHCenter|Qt::AlignVCenter);
-
-        userresetpwnewpwwdhLabel_2 = new QLabel(userpwresetTab);
-        userresetpwnewpwwdhLabel_2->setObjectName(QStringLiteral("userresetpwnewpwwdhLabel_2"));
-
-        gridLayout_12->addWidget(userresetpwnewpwwdhLabel_2, 4, 1, 1, 1, Qt::AlignHCenter|Qt::AlignTop);
-
-        userresetpwemailField_2 = new QLineEdit(userpwresetTab);
-        userresetpwemailField_2->setObjectName(QStringLiteral("userresetpwemailField_2"));
-        userresetpwemailField_2->setMaximumSize(QSize(300, 16777215));
-
-        gridLayout_12->addWidget(userresetpwemailField_2, 1, 2, 1, 1, Qt::AlignLeft|Qt::AlignBottom);
-
-        userresetpwnewpwField_2 = new QLineEdit(userpwresetTab);
-        userresetpwnewpwField_2->setObjectName(QStringLiteral("userresetpwnewpwField_2"));
-        userresetpwnewpwField_2->setMaximumSize(QSize(300, 16777215));
-
-        gridLayout_12->addWidget(userresetpwnewpwField_2, 3, 2, 1, 1, Qt::AlignLeft|Qt::AlignVCenter);
-
-        userresetpwnewpwwdhField_2 = new QLineEdit(userpwresetTab);
-        userresetpwnewpwwdhField_2->setObjectName(QStringLiteral("userresetpwnewpwwdhField_2"));
-        userresetpwnewpwwdhField_2->setMaximumSize(QSize(300, 16777215));
-
-        gridLayout_12->addWidget(userresetpwnewpwwdhField_2, 4, 2, 1, 1, Qt::AlignLeft|Qt::AlignTop);
+        horizontalLayout_10->addLayout(horizontalLayout_11);
 
 
-        verticalLayout_27->addLayout(gridLayout_12);
-
-        verticalLayout_28 = new QVBoxLayout();
-        verticalLayout_28->setSpacing(6);
-        verticalLayout_28->setObjectName(QStringLiteral("verticalLayout_28"));
-        userresetpwconfirmButton_2 = new QPushButton(userpwresetTab);
-        userresetpwconfirmButton_2->setObjectName(QStringLiteral("userresetpwconfirmButton_2"));
-        userresetpwconfirmButton_2->setMaximumSize(QSize(100, 16777215));
-
-        verticalLayout_28->addWidget(userresetpwconfirmButton_2, 0, Qt::AlignHCenter|Qt::AlignTop);
-
-
-        verticalLayout_27->addLayout(verticalLayout_28);
-
-
-        verticalLayout_29->addLayout(verticalLayout_27);
-
-        usertabWidget->addTab(userpwresetTab, QString());
-
-        verticalLayout_7->addWidget(usertabWidget);
-
-
-        verticalLayout_9->addLayout(verticalLayout_7);
+        verticalLayout_9->addLayout(horizontalLayout_10);
 
         mainTabWidget->addTab(userTab, QString());
         categoryTab = new QWidget();
@@ -1035,8 +943,7 @@ public:
 
         retranslateUi(UserWindow);
 
-        mainTabWidget->setCurrentIndex(1);
-        usertabWidget->setCurrentIndex(0);
+        mainTabWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(UserWindow);
@@ -1073,18 +980,12 @@ public:
         settingsNewPasswordButton->setText(QApplication::translate("UserWindow", "Passwort \303\244ndern", 0));
         settingsSaveButton->setText(QApplication::translate("UserWindow", "Speichern", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(einstellungenTab), QApplication::translate("UserWindow", "Einstellungen", 0));
-        userdelLabel_2->setText(QApplication::translate("UserWindow", "Bitte markieren sie die User die gel\303\266scht werden sollen", 0));
-        userdelButton_2->setText(QApplication::translate("UserWindow", "L\303\266schen", 0));
-        usertabWidget->setTabText(usertabWidget->indexOf(useroverviewTab_2), QApplication::translate("UserWindow", "Nutzer\303\274bersicht", 0));
-        useraddpwLabel_2->setText(QApplication::translate("UserWindow", "Passwort", 0));
-        useraddemailLabel_2->setText(QApplication::translate("UserWindow", "E-Mail", 0));
-        useraddconfButton_2->setText(QApplication::translate("UserWindow", "Best\303\244tigen", 0));
-        usertabWidget->setTabText(usertabWidget->indexOf(useraddTab_2), QApplication::translate("UserWindow", "Nutzer hinzuf\303\274gen", 0));
-        userresetpwemailLabel_2->setText(QApplication::translate("UserWindow", "E-Mail", 0));
-        userresetpwnewpwLabel_2->setText(QApplication::translate("UserWindow", "Neues Kennwort", 0));
-        userresetpwnewpwwdhLabel_2->setText(QApplication::translate("UserWindow", "Neues Kennwort wiederholen", 0));
-        userresetpwconfirmButton_2->setText(QApplication::translate("UserWindow", "Best\303\244tigen", 0));
-        usertabWidget->setTabText(usertabWidget->indexOf(userpwresetTab), QApplication::translate("UserWindow", "Nutzer Passwort zur\303\274cksetzen", 0));
+        userEmailLabel->setText(QApplication::translate("UserWindow", "E-Mail", 0));
+        userPasswordLabel->setText(QApplication::translate("UserWindow", "Neues Kennwort", 0));
+        userPasswordRepeatLabel->setText(QApplication::translate("UserWindow", "Neues Kennwort wiederholen", 0));
+        addUserButton->setText(QApplication::translate("UserWindow", "Neu", 0));
+        resetPasswordButton->setText(QApplication::translate("UserWindow", "Passwort \303\244ndern", 0));
+        deleteUserButton->setText(QApplication::translate("UserWindow", "Entfernen", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(userTab), QApplication::translate("UserWindow", "Benutzer", 0));
         delcategoryLabel->setText(QApplication::translate("UserWindow", "Bitte markieren sie links die Kategorieen die gel\303\266scht werden sollen", 0));
         delcategoryButton->setText(QApplication::translate("UserWindow", "l\303\266schen", 0));

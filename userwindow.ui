@@ -53,7 +53,7 @@
          <enum>QTabWidget::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>3</number>
         </property>
         <property name="elideMode">
          <enum>Qt::ElideLeft</enum>
@@ -953,312 +953,175 @@
            <number>0</number>
           </property>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_7">
+           <layout class="QHBoxLayout" name="horizontalLayout_10">
             <item>
-             <widget class="QTabWidget" name="usertabWidget">
-              <property name="currentIndex">
-               <number>0</number>
-              </property>
-              <widget class="QWidget" name="useroverviewTab_2">
-               <attribute name="title">
-                <string>Nutzerübersicht</string>
-               </attribute>
-               <layout class="QVBoxLayout" name="verticalLayout_23">
-                <item>
-                 <layout class="QVBoxLayout" name="verticalLayout_22">
-                  <item>
-                   <widget class="QTableWidget" name="userTable_2">
-                    <property name="verticalScrollBarPolicy">
-                     <enum>Qt::ScrollBarAlwaysOn</enum>
-                    </property>
-                    <property name="horizontalScrollBarPolicy">
-                     <enum>Qt::ScrollBarAsNeeded</enum>
-                    </property>
-                    <property name="rowCount">
-                     <number>100</number>
-                    </property>
-                    <property name="columnCount">
-                     <number>3</number>
-                    </property>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <row/>
-                    <column/>
-                    <column/>
-                    <column/>
-                   </widget>
-                  </item>
-                  <item alignment="Qt::AlignHCenter">
-                   <widget class="QLabel" name="userdelLabel_2">
-                    <property name="text">
-                     <string>Bitte markieren sie die User die gelöscht werden sollen</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item alignment="Qt::AlignHCenter">
-                   <widget class="QPushButton" name="userdelButton_2">
-                    <property name="maximumSize">
-                     <size>
-                      <width>100</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="text">
-                     <string>Löschen</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
+             <layout class="QHBoxLayout" name="horizontalLayout_11">
+              <item>
+               <widget class="QTableWidget" name="userTable">
+                <property name="minimumSize">
+                 <size>
+                  <width>600</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="verticalScrollBarPolicy">
+                 <enum>Qt::ScrollBarAlwaysOn</enum>
+                </property>
+                <property name="horizontalScrollBarPolicy">
+                 <enum>Qt::ScrollBarAsNeeded</enum>
+                </property>
+                <property name="tabKeyNavigation">
+                 <bool>false</bool>
+                </property>
+                <property name="rowCount">
+                 <number>20</number>
+                </property>
+                <property name="columnCount">
+                 <number>5</number>
+                </property>
+                <attribute name="horizontalHeaderMinimumSectionSize">
+                 <number>50</number>
+                </attribute>
+                <row/>
+                <row/>
+                <row/>
+                <row/>
+                <row/>
+                <row/>
+                <row/>
+                <row/>
+                <row/>
+                <row/>
+                <row/>
+                <row/>
+                <row/>
+                <row/>
+                <row/>
+                <row/>
+                <row/>
+                <row/>
+                <row/>
+                <row/>
+                <column/>
+                <column/>
+                <column/>
+                <column/>
+                <column/>
+               </widget>
+              </item>
+              <item>
+               <layout class="QFormLayout" name="formLayout_4">
+                <property name="labelAlignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <item row="3" column="0">
+                 <widget class="QLabel" name="userEmailLabel">
+                  <property name="text">
+                   <string>E-Mail</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QLineEdit" name="userEmailField">
+                  <property name="maximumSize">
+                   <size>
+                    <width>200</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0">
+                 <widget class="QLabel" name="userPasswordLabel">
+                  <property name="text">
+                   <string>Neues Kennwort</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1">
+                 <widget class="QLineEdit" name="userPasswordField">
+                  <property name="maximumSize">
+                   <size>
+                    <width>200</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="0">
+                 <widget class="QLabel" name="userPasswordRepeatLabel">
+                  <property name="text">
+                   <string>Neues Kennwort wiederholen</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="1">
+                 <widget class="QLineEdit" name="userPasswordRepeatField">
+                  <property name="maximumSize">
+                   <size>
+                    <width>200</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="6" column="1">
+                 <widget class="QPushButton" name="addUserButton">
+                  <property name="maximumSize">
+                   <size>
+                    <width>100</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>Neu</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>resources/add.png</normaloff>resources/add.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="1">
+                 <widget class="QPushButton" name="resetPasswordButton">
+                  <property name="maximumSize">
+                   <size>
+                    <width>120</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>Passwort ändern</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>resources/edit.png</normaloff>resources/edit.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item row="8" column="1">
+                 <widget class="QPushButton" name="deleteUserButton">
+                  <property name="maximumSize">
+                   <size>
+                    <width>100</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>Entfernen</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>resources/remove.png</normaloff>resources/remove.png</iconset>
+                  </property>
+                 </widget>
                 </item>
                </layout>
-              </widget>
-              <widget class="QWidget" name="useraddTab_2">
-               <attribute name="title">
-                <string>Nutzer hinzufügen</string>
-               </attribute>
-               <layout class="QVBoxLayout" name="verticalLayout_26">
-                <item>
-                 <layout class="QVBoxLayout" name="verticalLayout_24">
-                  <item>
-                   <layout class="QGridLayout" name="gridLayout_11">
-                    <item row="1" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-                     <widget class="QLabel" name="useraddpwLabel_2">
-                      <property name="text">
-                       <string>Passwort</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="0" alignment="Qt::AlignHCenter|Qt::AlignBottom">
-                     <widget class="QLabel" name="useraddemailLabel_2">
-                      <property name="text">
-                       <string>E-Mail</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="1" alignment="Qt::AlignLeft|Qt::AlignBottom">
-                     <widget class="QLineEdit" name="useraddemailField_2">
-                      <property name="maximumSize">
-                       <size>
-                        <width>300</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="1" alignment="Qt::AlignLeft|Qt::AlignVCenter">
-                     <widget class="QLineEdit" name="useraddpwField_2">
-                      <property name="maximumSize">
-                       <size>
-                        <width>300</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <layout class="QVBoxLayout" name="verticalLayout_25">
-                    <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-                     <widget class="QPushButton" name="useraddconfButton_2">
-                      <property name="maximumSize">
-                       <size>
-                        <width>100</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string>Bestätigen</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
-              </widget>
-              <widget class="QWidget" name="userpwresetTab">
-               <attribute name="title">
-                <string>Nutzer Passwort zurücksetzen</string>
-               </attribute>
-               <layout class="QVBoxLayout" name="verticalLayout_29">
-                <item>
-                 <layout class="QVBoxLayout" name="verticalLayout_27">
-                  <item>
-                   <layout class="QGridLayout" name="gridLayout_12">
-                    <item row="1" column="1" alignment="Qt::AlignHCenter|Qt::AlignBottom">
-                     <widget class="QLabel" name="userresetpwemailLabel_2">
-                      <property name="text">
-                       <string>E-Mail</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="3" column="1" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-                     <widget class="QLabel" name="userresetpwnewpwLabel_2">
-                      <property name="text">
-                       <string>Neues Kennwort</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="4" column="1" alignment="Qt::AlignHCenter|Qt::AlignTop">
-                     <widget class="QLabel" name="userresetpwnewpwwdhLabel_2">
-                      <property name="text">
-                       <string>Neues Kennwort wiederholen</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="2" alignment="Qt::AlignLeft|Qt::AlignBottom">
-                     <widget class="QLineEdit" name="userresetpwemailField_2">
-                      <property name="maximumSize">
-                       <size>
-                        <width>300</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="3" column="2" alignment="Qt::AlignLeft|Qt::AlignVCenter">
-                     <widget class="QLineEdit" name="userresetpwnewpwField_2">
-                      <property name="maximumSize">
-                       <size>
-                        <width>300</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="4" column="2" alignment="Qt::AlignLeft|Qt::AlignTop">
-                     <widget class="QLineEdit" name="userresetpwnewpwwdhField_2">
-                      <property name="maximumSize">
-                       <size>
-                        <width>300</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <layout class="QVBoxLayout" name="verticalLayout_28">
-                    <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-                     <widget class="QPushButton" name="userresetpwconfirmButton_2">
-                      <property name="maximumSize">
-                       <size>
-                        <width>100</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string>Bestätigen</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
-              </widget>
-             </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </item>

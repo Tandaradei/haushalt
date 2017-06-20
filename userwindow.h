@@ -3,6 +3,7 @@
 #include <QMainWindow>
 #include <QStringListModel>
 #include <QItemSelection>
+#include <memory>
 
 
 namespace Ui {
@@ -10,6 +11,7 @@ class UserWindow;
 }
 
 class UserController;
+class AdminController;
 
 class UserWindow : public QMainWindow
 {
@@ -28,7 +30,7 @@ public:
     void addPayMethod(const QString& name);
     void deletePayMethod(const QString& name);
 
-    void enableAdminTabs();
+    void enableAdmin(std::shared_ptr<AdminController> newAdminController);
     void setSettings(QString name, QDate birthdate);
 
 
@@ -51,6 +53,7 @@ private:
     size_t selectedTransactionID;
 
     UserController& userController;
+    std::shared_ptr<AdminController> adminController;
 
     Ui::UserWindow *ui;
     size_t transactionEntriesCount;

@@ -140,8 +140,9 @@ void UserWindow::deletePayMethod(const QString &name)
    }
 }
 
-void UserWindow::enableAdminTabs()
+void UserWindow::enableAdmin(std::shared_ptr<AdminController> adminController)
 {
+    adminController = adminController;
     // remove logout tab
     ui->mainTabWidget->removeTab(3);
 
