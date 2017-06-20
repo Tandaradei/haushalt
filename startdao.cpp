@@ -71,8 +71,7 @@ bool StartDAO::createAdmin(const QString &name, const QString &email, const QStr
   delQuery.prepare("DELETE * FROM Benutzer");
   delQuery.exec();
   QSqlQuery query(dbManager.getDatabase());
-  query.prepare("INSERT INTO Benutzer(BID, Email, HashedKennwort, Name, Geburtsdatum, Kontostand) VALUES(:BID, :Email, :HashedKennwort, :Name, :Geburtsdatum, :Kontostand);");
-  query.bindValue(":BID", 1);
+  query.prepare("INSERT INTO Benutzer(Email, HashedKennwort, Name, Geburtsdatum, Kontostand) VALUES(:Email, :HashedKennwort, :Name, :Geburtsdatum, :Kontostand);");
   query.bindValue(":Email", email);
   query.bindValue(":HashedKennwort", password);
   query.bindValue(":Name", name);

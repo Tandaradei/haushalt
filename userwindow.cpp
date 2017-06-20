@@ -18,6 +18,7 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
 {
     ui->setupUi(this);
 
+    ui->mainTabWidget->setCurrentIndex(0);
     // set model for payment methods list
     ui->payMethodsList->setModel(&payMethodsModel);
     ui->stanPayMethodsList->setModel(&stanPayMethodsModel);
@@ -175,20 +176,22 @@ void UserWindow::addPayMethod(const QString &name)
 
 void UserWindow::deletePayMethod(const QString &name)
 {
+    // delete from filter combo box
     ui->payMethodsComboBox->removeItem(ui->payMethodsComboBox->findText(name));
 
+    // delete from transaction combo box
     ui->atPayMethodsComboBox->removeItem(ui->atPayMethodsComboBox->findText(name));
 
-
-   for(int i = 0; i < payMethodsModel.rowCount(); ++i)
-   {
+    // delete from pay method list
+    for(int i = 0; i < payMethodsModel.rowCount(); ++i)
+    {
        QModelIndex index = payMethodsModel.index(i);
        if(payMethodsModel.data(index, 0) == name)
        {
            payMethodsModel.removeRow(i);
            break;
        }
-   }
+    }
 }
 
 void UserWindow::enableAdmin(AdminController *newAdminController)
@@ -204,6 +207,7 @@ void UserWindow::enableAdmin(AdminController *newAdminController)
 
     // add logout tab behind
     ui->mainTabWidget->addTab(ui->logoutTab, QIcon(QString("resources/exit.png")), "Abmelden");
+    ui->mainTabWidget->setCurrentIndex(3);
 }
 
 void UserWindow::addUserEntry(const QString &email, const QString &name, QDate date, float balance, size_t ID)

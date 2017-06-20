@@ -1,5 +1,5 @@
 #include "loginwindow.h"
-#include "ui_login.h"
+#include "ui_loginwindow.h"
 #include "startcontroller.h"
 
 LoginWindow::LoginWindow(StartController& startController, QWidget *parent) :
