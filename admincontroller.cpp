@@ -9,6 +9,7 @@ AdminController::AdminController(MainController& mainController, DbManager &dbMa
     ,users(nullptr)
 {
     userWindow.enableAdmin(this);
+    loadStanPayMethods();
     loadUsers();
 }
 
@@ -32,6 +33,23 @@ void AdminController::addUser(const QString &email, const QString &password)
     }
 }
 
+void AdminController::updateUserPassword(size_t userId, const QString &password)
+{
+    if(adminDAO.updateUserPassword(userId, password))
+    {
+        //
+    }
+}
+
+void AdminController::deleteUser(size_t userId)
+{
+    if(adminDAO.deleteUser(userId))
+    {
+        userWindow.clearUsers();
+        loadUsers();
+    }
+}
+
 void AdminController::loadUsers()
 {
     users = adminDAO.loadUsers();
@@ -48,5 +66,14 @@ void AdminController::loadUsers()
                                     , (*usersIt)->ID
                                     );
         }
+    }
+}
+
+void AdminController::loadStanPayMethods()
+{
+    stanPayMethods = adminDAO.loadStanPayMethods();
+    if(stanPayMethods != nullptr)
+    {
+        // TODO
     }
 }

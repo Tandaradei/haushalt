@@ -21,6 +21,10 @@ public:
 
 
     std::shared_ptr<User> addUser(const QString& email, const QString& password);
+    void addPayMethod(size_t userId, const QString& payMethodName);
+
+    bool updateUserPassword(size_t userId, const QString& password);
+    bool deleteUser(size_t userId);
 
     std::shared_ptr<std::list<std::shared_ptr<StanPayMethod>>> loadStanPayMethods();
     std::shared_ptr<std::list<std::shared_ptr<StanPayMethod>>> getStanPayMethods();

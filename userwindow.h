@@ -37,6 +37,7 @@ public:
     // admin
     void enableAdmin(AdminController* newAdminController);
     void addUserEntry(const QString& email, const QString& name, QDate date, float balance, size_t ID);
+    void clearUsers();
 
 
 
@@ -54,6 +55,8 @@ private slots:
 
     void handleUsersItemSelectionChanged();
     void handleAddUserButton();
+    void handleUpdateUserPasswordButton();
+    void handleDeleteUserButton();
 
     void handleSettingsSaveButton();
     void handelSettingsNewPasswordButton();
@@ -63,6 +66,7 @@ private:
     void initTable();
 
     size_t selectedTransactionID;
+    size_t selectedUserID;
 
     UserController& userController;
     AdminController* adminController;

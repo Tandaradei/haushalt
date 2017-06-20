@@ -80,6 +80,10 @@ std::shared_ptr<User> AdminDAO::addUser(const QString &email, const QString &pas
         user->Balance = 0;
         // add user to cached users list
         users->push_back(user);
+        for(auto stanPayMethodsIt = stanpayMethods->begin(); stanPayMethodsIt != stanpayMethods->end(); ++stanPayMethodsIt)
+        {
+            addPayMethod(user->ID, (*stanPayMethodsIt)->Name);
+        }
         return user;
     }
     else
@@ -88,6 +92,79 @@ std::shared_ptr<User> AdminDAO::addUser(const QString &email, const QString &pas
                  << query.lastError().text();
     }
     return nullptr;
+}
+
+void AdminDAO::addPayMethod(size_t userId, const QString &payMethodName)
+{
+    QSqlQuery query(dbManager.getDatabase());
+    query.prepare("INSERT INTO Zahlungsart(BID, Name) VALUES(:BID, :Name);");
+    query.bindValue(":BID", userId);
+    query.bindValue(":Name", payMethodName);
+    qDebug() << query.executedQuery();
+    if(query.exec())
+    {
+        qDebug() << "execution successful";
+    }
+    else
+    {
+        qDebug() << "addPayMethod error:  "
+                 << query.lastError().text();
+    }
+}
+
+bool AdminDAO::updateUserPassword(size_t userId, const QString &password)
+{
+    QSqlQuery query(dbManager.getDatabase());
+    query.prepare("UPDATE Benutzer SET HashedKennwort = :HashedKennwort WHERE BID = :BID;");
+    query.bindValue(":HashedKennwort", password);
+    query.bindValue(":BID", userId);
+    if(query.exec())
+    {
+        return true;
+    }
+    else
+    {
+        qDebug() << "updateUserPassword update error:  "
+                 << query.lastError().text();
+    }
+    return false;
+}
+
+bool AdminDAO::deleteUser(size_t userId)
+{
+    QSqlQuery query(dbManager.getDatabase());
+    query.prepare("DELETE FROM Benutzer WHERE BID = :BID");
+    query.bindValue(":BID", userId);
+    if(query.exec())
+    {
+        query.prepare("DELETE FROM Transaktion WHERE BID = :BID");
+        query.bindValue(":BID", userId);
+        if(query.exec())
+        {
+            query.prepare("DELETE FROM Zahlungsart WHERE BID = :BID");
+            query.bindValue(":BID", userId);
+            if(query.exec())
+            {
+                return true;
+            }
+            else
+            {
+                qDebug() << "deleteUser pay method error:  "
+                         << query.lastError().text();
+            }
+        }
+        else
+        {
+            qDebug() << "deleteUser transaction error:  "
+                     << query.lastError().text();
+        }
+    }
+    else
+    {
+        qDebug() << "deleteUser user error:  "
+                 << query.lastError().text();
+    }
+    return false;
 }
 
 std::shared_ptr<std::list<std::shared_ptr<StanPayMethod>>> AdminDAO::loadStanPayMethods()
@@ -104,8 +181,7 @@ std::shared_ptr<std::list<std::shared_ptr<StanPayMethod>>> AdminDAO::loadStanPay
             qDebug() << "StanPayMethod found!";
             std::shared_ptr<StanPayMethod> stanpayMethod = std::make_shared<StanPayMethod>();
             stanpayMethod->ID = query.value(0).toInt();
-            // no BID
-            stanpayMethod->Name = query.value(2).toString();
+            stanpayMethod->Name = query.value(1).toString();
             // add standardpayment method to cached payment methods list
             stanpayMethods->push_back(stanpayMethod);
         }

@@ -20,6 +20,9 @@ public:
     void start();
 
     void addUser(const QString& email, const QString& password);
+    void updateUserPassword(size_t userId, const QString& password);
+    void deleteUser(size_t userId);
+
 private:
     void loadUsers();
     void loadStanPayMethods();

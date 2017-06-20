@@ -12,6 +12,7 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
     ,userEntriesCount(0)
     ,payMethodsModel()
     ,selectedTransactionID(0)
+    ,selectedUserID(0)
 {
     ui->setupUi(this);
 
@@ -40,6 +41,8 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
     //users
     connect(ui->userTable, SIGNAL(itemSelectionChanged()), this, SLOT (handleUsersItemSelectionChanged()));
     connect(ui->addUserButton, SIGNAL (released()), this, SLOT(handleAddUserButton()));
+    connect(ui->resetPasswordButton, SIGNAL (released()), this, SLOT(handleUpdateUserPasswordButton()));
+    connect(ui->deleteUserButton, SIGNAL (released()), this, SLOT(handleDeleteUserButton()));
 
 
 
@@ -183,6 +186,12 @@ void UserWindow::addUserEntry(const QString &email, const QString &name, QDate d
     ++userEntriesCount;
 }
 
+void UserWindow::clearUsers()
+{
+    ui->userTable->clear();
+    userEntriesCount = 0;
+}
+
 void UserWindow::setSettings(QString name, QDate birthdate)
 {
     setWindowTitle(name);
@@ -301,6 +310,7 @@ void UserWindow::handleUsersItemSelectionChanged()
         if(index.row() <= userEntriesCount)
         {
             ui->userEmailField->setText(ui->userTable->item(index.row(), 0)->text());
+            selectedUserID = ui->userTable->item(index.row(), 4)->text().toInt();
         }
     }
 }
@@ -323,6 +333,38 @@ void UserWindow::handleAddUserButton()
     {
 
         adminController->addUser(ui->userEmailField->text(), ui->userPasswordField->text());
+    }
+}
+
+void UserWindow::handleUpdateUserPasswordButton()
+{
+    if(ui->userPasswordField->text().isEmpty())
+    {
+        //
+    }
+    else if(ui->userPasswordField->text() != ui->userPasswordRepeatField->text())
+    {
+        //
+    }
+    else if(selectedUserID <= 1)
+    {
+        //
+    }
+    else
+    {
+        adminController->updateUserPassword(selectedUserID, ui->userPasswordField->text());
+    }
+}
+
+void UserWindow::handleDeleteUserButton()
+{
+    if(selectedUserID <= 1)
+    {
+        //
+    }
+    else
+    {
+        adminController->deleteUser(selectedUserID);
     }
 }
 
