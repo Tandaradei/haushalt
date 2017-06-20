@@ -31,9 +31,12 @@ public:
 
 private slots:
     void handleLogoutButton();
+
     void handleAddTransactionButton();
     void handleTransactionsItemSelectionChanged();
     void handleDeleteTransactionButton();
+
+    void handleAddPayMethodButton();
 
 
 private:

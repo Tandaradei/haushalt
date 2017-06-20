@@ -218,7 +218,7 @@ bool UserDAO::deleteTransaction(size_t ID)
 std::shared_ptr<PayMethod> UserDAO::addPayMethod(const QString &name)
 {
     QSqlQuery query(dbManager.getDatabase());
-    query.prepare("INSERT INTO Zahlungsart(BID, Name) VALUES(:BID, Name);");
+    query.prepare("INSERT INTO Zahlungsart(BID, Name) VALUES(:BID, :Name);");
     query.bindValue(":BID", user->ID);
     query.bindValue(":Name", name);
     qDebug() << query.executedQuery();

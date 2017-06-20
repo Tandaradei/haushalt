@@ -15,7 +15,7 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
     connect(ui->logoutButton, SIGNAL (released()), this, SLOT (handleLogoutButton()));
     connect(ui->addTransactionButton, SIGNAL (released()), this, SLOT (handleAddTransactionButton()));
     connect(ui->deleteTransactionButton, SIGNAL (released()), this, SLOT (handleDeleteTransactionButton()));
-
+    connect(ui->addPayMethodButton, SIGNAL (released()), this, SLOT (handleAddPayMethodButton()));
     connect(ui->transaktionenTable, SIGNAL (itemSelectionChanged()), this, SLOT (handleTransactionsItemSelectionChanged()));
 
     // remove admin tabs
@@ -173,4 +173,15 @@ void UserWindow::handleDeleteTransactionButton()
     }
 
 
+}
+
+void UserWindow::handleAddPayMethodButton()
+{
+    if(!ui->payMethodNameField->text().isEmpty())
+    {
+        if(userController.addPayMethod(ui->payMethodNameField->text()))
+        {
+
+        }
+    }
 }

@@ -82,13 +82,14 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QGridLayout *gridLayout_2;
     QGridLayout *gridLayout_3;
+    QListView *payMethodsList;
+    QFormLayout *formLayout_3;
+    QLabel *paymethodLabel_2;
+    QLineEdit *payMethodNameField;
+    QHBoxLayout *horizontalLayout_8;
+    QPushButton *addPayMethodButton;
     QPushButton *paymethodeditButton;
     QPushButton *paymethoddeleteButton;
-    QListView *payMethodsList;
-    QGridLayout *gridLayout;
-    QLineEdit *paymethodField;
-    QLabel *paymethodLabel_2;
-    QPushButton *paymethodaddButton;
     QWidget *einstellungenTab;
     QVBoxLayout *verticalLayout_6;
     QVBoxLayout *verticalLayout_5;
@@ -446,20 +447,6 @@ public:
         gridLayout_3 = new QGridLayout();
         gridLayout_3->setSpacing(6);
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
-        paymethodeditButton = new QPushButton(zahlungsartenTab);
-        paymethodeditButton->setObjectName(QStringLiteral("paymethodeditButton"));
-        paymethodeditButton->setMaximumSize(QSize(100, 16777215));
-        paymethodeditButton->setIcon(icon2);
-
-        gridLayout_3->addWidget(paymethodeditButton, 0, 0, 1, 1);
-
-        paymethoddeleteButton = new QPushButton(zahlungsartenTab);
-        paymethoddeleteButton->setObjectName(QStringLiteral("paymethoddeleteButton"));
-        paymethoddeleteButton->setMaximumSize(QSize(100, 16777215));
-        paymethoddeleteButton->setIcon(icon3);
-
-        gridLayout_3->addWidget(paymethoddeleteButton, 0, 1, 1, 1);
-
 
         gridLayout_2->addLayout(gridLayout_3, 1, 0, 1, 1);
 
@@ -471,32 +458,53 @@ public:
 
         horizontalLayout_2->addLayout(gridLayout_2);
 
-        gridLayout = new QGridLayout();
-        gridLayout->setSpacing(6);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        paymethodField = new QLineEdit(zahlungsartenTab);
-        paymethodField->setObjectName(QStringLiteral("paymethodField"));
-
-        gridLayout->addWidget(paymethodField, 2, 0, 1, 1);
-
+        formLayout_3 = new QFormLayout();
+        formLayout_3->setSpacing(6);
+        formLayout_3->setObjectName(QStringLiteral("formLayout_3"));
+        formLayout_3->setFormAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         paymethodLabel_2 = new QLabel(zahlungsartenTab);
         paymethodLabel_2->setObjectName(QStringLiteral("paymethodLabel_2"));
-        paymethodLabel_2->setAlignment(Qt::AlignCenter);
+        paymethodLabel_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout->addWidget(paymethodLabel_2, 1, 0, 1, 1, Qt::AlignBottom);
+        formLayout_3->setWidget(0, QFormLayout::LabelRole, paymethodLabel_2);
 
-        paymethodaddButton = new QPushButton(zahlungsartenTab);
-        paymethodaddButton->setObjectName(QStringLiteral("paymethodaddButton"));
-        paymethodaddButton->setMaximumSize(QSize(100, 16777215));
-        paymethodaddButton->setIcon(icon1);
+        payMethodNameField = new QLineEdit(zahlungsartenTab);
+        payMethodNameField->setObjectName(QStringLiteral("payMethodNameField"));
+        payMethodNameField->setMinimumSize(QSize(200, 25));
+        payMethodNameField->setMaximumSize(QSize(200, 25));
 
-        gridLayout->addWidget(paymethodaddButton, 3, 0, 1, 1, Qt::AlignHCenter|Qt::AlignTop);
+        formLayout_3->setWidget(0, QFormLayout::FieldRole, payMethodNameField);
 
-        gridLayout->setRowMinimumHeight(1, 176);
-        gridLayout->setRowMinimumHeight(2, 100);
-        gridLayout->setRowMinimumHeight(3, 176);
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setSpacing(6);
+        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
+        addPayMethodButton = new QPushButton(zahlungsartenTab);
+        addPayMethodButton->setObjectName(QStringLiteral("addPayMethodButton"));
+        addPayMethodButton->setMaximumSize(QSize(100, 16777215));
+        addPayMethodButton->setIcon(icon1);
 
-        horizontalLayout_2->addLayout(gridLayout);
+        horizontalLayout_8->addWidget(addPayMethodButton);
+
+        paymethodeditButton = new QPushButton(zahlungsartenTab);
+        paymethodeditButton->setObjectName(QStringLiteral("paymethodeditButton"));
+        paymethodeditButton->setEnabled(false);
+        paymethodeditButton->setMaximumSize(QSize(100, 16777215));
+        paymethodeditButton->setIcon(icon2);
+
+        horizontalLayout_8->addWidget(paymethodeditButton);
+
+        paymethoddeleteButton = new QPushButton(zahlungsartenTab);
+        paymethoddeleteButton->setObjectName(QStringLiteral("paymethoddeleteButton"));
+        paymethoddeleteButton->setMaximumSize(QSize(100, 16777215));
+        paymethoddeleteButton->setIcon(icon3);
+
+        horizontalLayout_8->addWidget(paymethoddeleteButton);
+
+
+        formLayout_3->setLayout(1, QFormLayout::FieldRole, horizontalLayout_8);
+
+
+        horizontalLayout_2->addLayout(formLayout_3);
 
 
         verticalLayout_2->addLayout(horizontalLayout_2);
@@ -1025,7 +1033,7 @@ public:
 
         retranslateUi(UserWindow);
 
-        mainTabWidget->setCurrentIndex(5);
+        mainTabWidget->setCurrentIndex(1);
         usertabWidget->setCurrentIndex(0);
 
 
@@ -1049,10 +1057,10 @@ public:
         editTransactionButton->setText(QApplication::translate("UserWindow", "Bearbeiten", 0));
         deleteTransactionButton->setText(QApplication::translate("UserWindow", "Entfernen", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(transaktionenTab), QApplication::translate("UserWindow", "Transaktionen", 0));
+        paymethodLabel_2->setText(QApplication::translate("UserWindow", "Name", 0));
+        addPayMethodButton->setText(QApplication::translate("UserWindow", "Neu", 0));
         paymethodeditButton->setText(QApplication::translate("UserWindow", "Bearbeiten", 0));
         paymethoddeleteButton->setText(QApplication::translate("UserWindow", "Entfernen", 0));
-        paymethodLabel_2->setText(QApplication::translate("UserWindow", "Bitte geben sie die Zahlungsart an die sie hinzuf\303\274gen  m\303\266chten", 0));
-        paymethodaddButton->setText(QApplication::translate("UserWindow", "Hinzuf\303\274gen", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(zahlungsartenTab), QApplication::translate("UserWindow", "Zahlungsarten", 0));
         settingsnameLabel->setText(QApplication::translate("UserWindow", "Name", 0));
         settingsbirthLabel->setText(QApplication::translate("UserWindow", "Geburtsdatum", 0));
