@@ -102,12 +102,12 @@ std::shared_ptr<std::list<std::shared_ptr<StanPayMethod>>> AdminDAO::loadStanPay
         while(query.next())
         {
             qDebug() << "StanPayMethod found!";
-            std::shared_ptr<StanPayMethod> stanpayMethod1 = std::make_shared<StanPayMethod>();
-            stanpayMethod1.ID = query.value(0).toInt();
+            std::shared_ptr<StanPayMethod> stanpayMethod = std::make_shared<StanPayMethod>();
+            stanpayMethod->ID = query.value(0).toInt();
             // no BID
-            stanpayMethod1->Name = query.value(2).toString();
+            stanpayMethod->Name = query.value(2).toString();
             // add standardpayment method to cached payment methods list
-            stanpayMethods->push_back(stanpayMethod1);
+            stanpayMethods->push_back(stanpayMethod);
         }
     }
     else

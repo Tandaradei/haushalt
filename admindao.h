@@ -22,10 +22,10 @@ public:
 
     std::shared_ptr<User> addUser(const QString& email, const QString& password);
 
-    std::shared_ptr<std::list<std::shared_ptr<StanPayMethod>>> loadStanPayMethods;
+    std::shared_ptr<std::list<std::shared_ptr<StanPayMethod>>> loadStanPayMethods();
     std::shared_ptr<std::list<std::shared_ptr<StanPayMethod>>> getStanPayMethods();
 
-    std::shared_ptr<StanPayMethod> getPayMethod(size_t ID);
+    std::shared_ptr<StanPayMethod> getStanPayMethod(size_t ID);
     bool deletestandardpayment(size_t ID);
 
 private:
