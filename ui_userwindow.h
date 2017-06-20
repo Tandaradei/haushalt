@@ -1033,7 +1033,7 @@ public:
 
         retranslateUi(UserWindow);
 
-        mainTabWidget->setCurrentIndex(1);
+        mainTabWidget->setCurrentIndex(0);
         usertabWidget->setCurrentIndex(0);
 
 

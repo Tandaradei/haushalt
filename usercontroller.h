@@ -19,6 +19,7 @@ public:
     void start();
     void onLogout();
     void addTransaction(float amount, const QDate& date, const QString& categoryName, const QString& payMethodName, const QString& description);
+    void updateTransaction(float amount, const QDate& date, const QString& categoryName, const QString& payMethodName, const QString& description, size_t ID);
     void deleteTransaction(size_t ID);
 
     bool addPayMethod(const QString& name);

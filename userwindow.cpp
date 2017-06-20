@@ -13,9 +13,13 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
     ui->setupUi(this);
     // connect buttons with handle functions
     connect(ui->logoutButton, SIGNAL (released()), this, SLOT (handleLogoutButton()));
+
     connect(ui->addTransactionButton, SIGNAL (released()), this, SLOT (handleAddTransactionButton()));
+    connect(ui->editTransactionButton, SIGNAL (released()), this, SLOT (handleEditTransactionButton()));
     connect(ui->deleteTransactionButton, SIGNAL (released()), this, SLOT (handleDeleteTransactionButton()));
+
     connect(ui->addPayMethodButton, SIGNAL (released()), this, SLOT (handleAddPayMethodButton()));
+
     connect(ui->transaktionenTable, SIGNAL (itemSelectionChanged()), this, SLOT (handleTransactionsItemSelectionChanged()));
 
     // remove admin tabs
@@ -53,6 +57,23 @@ void UserWindow::addTransactionEntry(QDate date, float amount, QString descripti
     ui->transaktionenTable->item(transactionEntriesCount, 1)->setBackgroundColor(amount < 0 ? QColor(255,0,0) : QColor(0, 255, 0));
 
     ++transactionEntriesCount;
+}
+
+void UserWindow::updateTransactionEntry(QDate date, float amount, QString description, QString category, QString payMethod, size_t ID)
+{
+    for(int i = 0; i < transactionEntriesCount; ++i)
+    {
+        if(ui->transaktionenTable->item(i, 5)->text().toInt() == ID)
+        {
+            ui->transaktionenTable->setItem(i, 0, new QTableWidgetItem(date.toString("yyyy-MM-dd")));
+            ui->transaktionenTable->setItem(i, 1, new QTableWidgetItem(QString::number(amount, 'f', 2).replace(QChar('.'), QChar(','))));
+            ui->transaktionenTable->setItem(i, 2, new QTableWidgetItem(description));
+            ui->transaktionenTable->setItem(i, 3, new QTableWidgetItem(category));
+            ui->transaktionenTable->setItem(i, 4, new QTableWidgetItem(payMethod));
+            // color amount field (red if < 0; green if >= 0)
+            ui->transaktionenTable->item(i, 1)->setBackgroundColor(amount < 0 ? QColor(255,0,0) : QColor(0, 255, 0));
+        }
+    }
 }
 
 void UserWindow::clearCategories()
@@ -127,6 +148,16 @@ void UserWindow::handleAddTransactionButton()
                                 , ui->atCategoriesComboBox->currentData().toString()
                                 , ui->atPayMethodsComboBox->currentData().toString()
                                 , ui->atDescriptionTextEdit->toPlainText());
+}
+
+void UserWindow::handleEditTransactionButton()
+{
+    userController.updateTransaction(ui->atAmountSpinner->value()
+                                     , ui->atDateEdit->date()
+                                     , ui->atCategoriesComboBox->currentText()
+                                     , ui->atPayMethodsComboBox->currentText()
+                                     , ui->atDescriptionTextEdit->toPlainText()
+                                     , selectedTransactionID);
 }
 
 void UserWindow::handleTransactionsItemSelectionChanged()

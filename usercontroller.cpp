@@ -53,6 +53,24 @@ void UserController::addTransaction(float amount, const QDate &date, const QStri
     }
 }
 
+void UserController::updateTransaction(float amount, const QDate &date, const QString &categoryName, const QString &payMethodName, const QString &description, size_t ID)
+{
+    std::shared_ptr<Transaction> transaction = userDAO.getTransaction(ID);
+    if(transaction != nullptr)
+    {
+        if(userDAO.updateTransaction(transaction
+                                     , (int)(amount*100)
+                                     , description
+                                     , date.toString("yyyy-MM-dd")
+                                     , getCategoryByName(categoryName)
+                                     , getPayMethodByName(payMethodName)
+                                     ))
+        {
+            userWindow.updateTransactionEntry(date, amount, description, categoryName, payMethodName, transaction->ID);
+        }
+    }
+}
+
 void UserController::loadCategories()
 {
     userWindow.clearCategories();

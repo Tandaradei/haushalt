@@ -132,6 +132,21 @@ std::shared_ptr<std::list<std::shared_ptr<PayMethod>>> UserDAO::getPayMethods()
     return payMethods;
 }
 
+std::shared_ptr<Transaction> UserDAO::getTransaction(size_t ID)
+{
+    // iterate through all transactions
+    for(auto transactionsIt = transactions->begin(), transactionsEnd = transactions->end(); transactionsIt != transactionsEnd; ++transactionsIt)
+    {
+        if((*transactionsIt)->ID == ID)
+        {
+            // if ID equals -> return transaction
+            return *transactionsIt;
+        }
+    }
+    // return nullptr if transaction wasn't found
+    return nullptr;
+}
+
 std::shared_ptr<Category> UserDAO::getCategory(size_t ID)
 {
     // iterate through all categories
@@ -194,6 +209,37 @@ std::shared_ptr<Transaction> UserDAO::addTransaction(int amount, const QString& 
                  << query.lastError().text();
     }
     return nullptr;
+}
+
+bool UserDAO::updateTransaction(std::shared_ptr<Transaction> transaction, int amount, const QString &description, const QString &dateString, std::shared_ptr<Category> category, std::shared_ptr<PayMethod> payMethod)
+{
+    QSqlQuery query(dbManager.getDatabase());
+    query.prepare("UPDATE Transaktion SET Betrag = :Betrag, Beschreibung = :Beschreibung, Datum = :Datum, KID = :KID, ZID = :ZID WHERE TID = :TID;");
+    query.bindValue(":Betrag", amount);
+    query.bindValue(":Beschreibung", description);
+    query.bindValue(":Datum", dateString);
+    query.bindValue(":KID", category->ID);
+    query.bindValue(":ZID", payMethod->ID);
+    query.bindValue(":TID", transaction->ID);
+    qDebug() << query.executedQuery();
+    if(query.exec())
+    {
+        qDebug() << "execution successful";
+        // TID unchanged
+        // BID unchanged
+        transaction->Amount = amount;
+        transaction->Description = description;
+        transaction->Date = QDate::fromString(dateString, "yyyy-MM-dd");
+        transaction->Category = category;
+        transaction->PayMethod = payMethod;
+        return true;
+    }
+    else
+    {
+        qDebug() << "updateTransaction error:  "
+                 << query.lastError().text();
+    }
+    return false;
 }
 
 bool UserDAO::deleteTransaction(size_t ID)

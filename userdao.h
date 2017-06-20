@@ -29,10 +29,12 @@ public:
     std::shared_ptr<std::list<std::shared_ptr<PayMethod>>> loadPayMethods();
     std::shared_ptr<std::list<std::shared_ptr<PayMethod>>> getPayMethods();
 
+    std::shared_ptr<Transaction> getTransaction(size_t ID);
     std::shared_ptr<Category> getCategory(size_t ID);
     std::shared_ptr<PayMethod> getPayMethod(size_t ID);
 
     std::shared_ptr<Transaction> addTransaction(int amount, const QString& description, const QString& dateString, std::shared_ptr<Category> category, std::shared_ptr<PayMethod> payMethod);
+    bool updateTransaction(std::shared_ptr<Transaction> transaction, int amount, const QString& description, const QString& dateString, std::shared_ptr<Category> category, std::shared_ptr<PayMethod> payMethod);
     bool deleteTransaction(size_t ID);
 
     std::shared_ptr<PayMethod> addPayMethod(const QString& name);

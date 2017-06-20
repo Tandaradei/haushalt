@@ -20,6 +20,7 @@ public:
 
     void clearTransactionEntries();
     void addTransactionEntry(QDate date, float amount, QString description, QString category, QString payMethod, size_t ID);
+    void updateTransactionEntry(QDate date, float amount, QString description, QString category, QString payMethod, size_t ID);
     void clearCategories();
     void addCategory(const QString& name);
     void clearPayMethods();
@@ -32,8 +33,9 @@ public:
 private slots:
     void handleLogoutButton();
 
-    void handleAddTransactionButton();
     void handleTransactionsItemSelectionChanged();
+    void handleAddTransactionButton();
+    void handleEditTransactionButton();
     void handleDeleteTransactionButton();
 
     void handleAddPayMethodButton();
