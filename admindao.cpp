@@ -10,7 +10,7 @@
 AdminDAO::AdminDAO(DbManager &dbManager)
     :dbManager(dbManager)
     ,users(std::make_shared<std::list<std::shared_ptr<User>>>())
-    ,stanpayMethods(std::make_shared<std::list<std::shared_ptr<StanPayMethod>>>())
+    ,stanPayMethods(std::make_shared<std::list<std::shared_ptr<StanPayMethod>>>())
 {
 
 }
@@ -80,7 +80,7 @@ std::shared_ptr<User> AdminDAO::addUser(const QString &email, const QString &pas
         user->Balance = 0;
         // add user to cached users list
         users->push_back(user);
-        for(auto stanPayMethodsIt = stanpayMethods->begin(); stanPayMethodsIt != stanpayMethods->end(); ++stanPayMethodsIt)
+        for(auto stanPayMethodsIt = stanPayMethods->begin(); stanPayMethodsIt != stanPayMethods->end(); ++stanPayMethodsIt)
         {
             addPayMethod(user->ID, (*stanPayMethodsIt)->Name);
         }
@@ -170,11 +170,13 @@ bool AdminDAO::deleteUser(size_t userId)
 std::shared_ptr<std::list<std::shared_ptr<StanPayMethod>>> AdminDAO::loadStanPayMethods()
 {
     // clear cached standardpayment methods list
-    stanpayMethods->clear();
+    stanPayMethods->clear();
     QSqlQuery query(dbManager.getDatabase());
     query.prepare("SELECT * FROM Standardzahlungsart");
+    qDebug() << query.executedQuery();
     if(query.exec())
     {
+        qDebug() << "execution successful";
         // iterate through all rows
         while(query.next())
         {
@@ -183,7 +185,7 @@ std::shared_ptr<std::list<std::shared_ptr<StanPayMethod>>> AdminDAO::loadStanPay
             stanpayMethod->ID = query.value(0).toInt();
             stanpayMethod->Name = query.value(1).toString();
             // add standardpayment method to cached payment methods list
-            stanpayMethods->push_back(stanpayMethod);
+            stanPayMethods->push_back(stanpayMethod);
         }
     }
     else
@@ -191,40 +193,52 @@ std::shared_ptr<std::list<std::shared_ptr<StanPayMethod>>> AdminDAO::loadStanPay
         qDebug() << "getPayMethods error:  "
                  << query.lastError().text();
     }
-    return stanpayMethods;
+    return stanPayMethods;
 }
 
-std::shared_ptr<StanPayMethod> AdminDAO::getStanPayMethod(size_t ID)
+std::shared_ptr<std::list<std::shared_ptr<StanPayMethod> > > AdminDAO::getStanPayMethods()
 {
-    // iterate through all payment methods
-    for(auto stanpayMethodsIt = stanpayMethods->begin(), stanpayMethodsEnd = stanpayMethods->end(); stanpayMethodsIt != stanpayMethodsEnd; ++stanpayMethodsIt)
-    {
-        if((*stanpayMethodsIt)->ID == ID)
-        {
-            // if ID equals -> return payment method
-            return *stanpayMethodsIt;
-        }
-    }
-    // return nullptr if standardpayment method wasn't found
-    return nullptr;
+    return stanPayMethods;
 }
 
-
-bool AdminDAO::deletestandardpayment(size_t ID)
+std::shared_ptr<StanPayMethod> AdminDAO::addStanPayMethod(const QString &name)
 {
     QSqlQuery query(dbManager.getDatabase());
-    query.prepare("DELETE FROM Standartzahlungsart WHERE StandartzahlungsartID = :SID");
-    query.bindValue(":SID", ID);
-    qDebug() << query.executedQuery();
+    query.prepare("INSERT INTO Standardzahlungsart(Name) VALUES(:Name);");
+    query.bindValue(":Name", name);
     if(query.exec())
     {
-         qDebug() << "execution successful";
-         return true;
+        qDebug() << "execution successful";
+        std::shared_ptr<StanPayMethod> stanPayMethod = std::make_shared<StanPayMethod>();
+        stanPayMethod->ID = query.lastInsertId().toInt();
+        stanPayMethod->Name = name;
+        stanPayMethods->push_back(stanPayMethod);
+        return stanPayMethod;
     }
     else
     {
-        qDebug() << "addTransaction error:  "
+        qDebug() << "addStanPayMethod error:  "
+                 << query.lastError().text();
+    }
+    return nullptr;
+
+}
+
+bool AdminDAO::deleteStanPayMethod(size_t stanPayMethodId)
+{
+    QSqlQuery query(dbManager.getDatabase());
+    query.prepare("DELETE FROM Standardzahlungsart WHERE SID = :SID");
+    query.bindValue(":SID", stanPayMethodId);
+    if(query.exec())
+    {
+        return true;
+    }
+    else
+    {
+        qDebug() << "deleteStanPayMethod error:  "
                  << query.lastError().text();
     }
     return false;
 }
+
+

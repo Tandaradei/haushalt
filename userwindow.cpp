@@ -11,6 +11,7 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
     ,transactionEntriesCount(0)
     ,userEntriesCount(0)
     ,payMethodsModel()
+    ,stanPayMethodsModel()
     ,selectedTransactionID(0)
     ,selectedUserID(0)
 {
@@ -18,6 +19,7 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
 
     // set model for payment methods list
     ui->payMethodsList->setModel(&payMethodsModel);
+    ui->stanPayMethodsList->setModel(&stanPayMethodsModel);
 
     // connections
     connect(ui->logoutButton, SIGNAL (released()), this, SLOT (handleLogoutButton()));
@@ -44,6 +46,10 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
     connect(ui->resetPasswordButton, SIGNAL (released()), this, SLOT(handleUpdateUserPasswordButton()));
     connect(ui->deleteUserButton, SIGNAL (released()), this, SLOT(handleDeleteUserButton()));
 
+    // stan pay methods
+    connect(ui->stanPayMethodsList->selectionModel(), SIGNAL (selectionChanged(QItemSelection, QItemSelection)), this, SLOT(handleStanPayMethodsItemSelectionChanged(QItemSelection, QItemSelection)));
+    connect(ui->addStanPayMethodButton, SIGNAL (released()), this, SLOT(handleAddStanPayMethodButton()));
+    connect(ui->deleteStanPayMethodButton, SIGNAL (released()), this, SLOT(handleDeleteStanPayMethodButton()));
 
 
     // remove admin tabs
@@ -190,6 +196,26 @@ void UserWindow::clearUsers()
 {
     ui->userTable->clear();
     userEntriesCount = 0;
+}
+
+void UserWindow::addStanPayMethodEntry(const QString &name)
+{
+    // add payment method name to list view
+    stanPayMethodsModel.insertRow(stanPayMethodsModel.rowCount());
+    QModelIndex index = stanPayMethodsModel.index(stanPayMethodsModel.rowCount()-1);
+    stanPayMethodsModel.setData(index, name);
+}
+
+void UserWindow::deleteStanPayMethod(const QString &name)
+{
+    for(int i = 0; i < stanPayMethodsModel.rowCount(); ++i)
+    {
+        QModelIndex index = stanPayMethodsModel.index(i);
+        if(stanPayMethodsModel.data(index, 0) == name)
+        {
+            stanPayMethodsModel.removeRow(i);
+        }
+    }
 }
 
 void UserWindow::setSettings(QString name, QDate birthdate)
@@ -390,5 +416,34 @@ void UserWindow::handelSettingsNewPasswordButton()
     else
     {
         userController.updateUserPassword(ui->settingsOldPasswordField->text(), ui->settingsNewPasswordField->text());
+    }
+}
+
+void UserWindow::handleStanPayMethodsItemSelectionChanged(const QItemSelection &selection, const QItemSelection &deselection)
+{
+    ui->stanPayMethodNameField->setText(stanPayMethodsModel.data(selection.indexes().front(), 0).toString());
+}
+
+void UserWindow::handleAddStanPayMethodButton()
+{
+    if(ui->stanPayMethodNameField->text().isEmpty())
+    {
+        //
+    }
+    else
+    {
+        adminController->addStanPayMethod(ui->stanPayMethodNameField->text());
+    }
+}
+
+void UserWindow::handleDeleteStanPayMethodButton()
+{
+    if(ui->stanPayMethodNameField->text().isEmpty())
+    {
+        //
+    }
+    else
+    {
+        adminController->deleteStanPayMethod(ui->stanPayMethodNameField->text());
     }
 }

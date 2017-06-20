@@ -2,6 +2,7 @@
 #include "dbmanager.h"
 #include "admincontroller.h"
 #include "user.h"
+#include "stanpayMethod.h"
 
 AdminController::AdminController(MainController& mainController, DbManager &dbManager, std::shared_ptr<User> user)
     :UserController(mainController, dbManager, user)
@@ -50,6 +51,30 @@ void AdminController::deleteUser(size_t userId)
     }
 }
 
+void AdminController::addStanPayMethod(const QString &name)
+{
+    if(adminDAO.addStanPayMethod(name) != nullptr)
+    {
+        userWindow.addStanPayMethodEntry(name);
+        stanPayMethods = adminDAO.getStanPayMethods();
+    }
+}
+
+void AdminController::deleteStanPayMethod(const QString &name)
+{
+    for(auto stanPayMethodsIt = stanPayMethods->begin(); stanPayMethodsIt != stanPayMethods->end(); ++stanPayMethodsIt)
+    {
+        if((*stanPayMethodsIt)->Name == name)
+        {
+            if(adminDAO.deleteStanPayMethod((*stanPayMethodsIt)->ID))
+            {
+                userWindow.deleteStanPayMethod(name);
+            }
+            break;
+        }
+    }
+}
+
 void AdminController::loadUsers()
 {
     users = adminDAO.loadUsers();
@@ -74,6 +99,11 @@ void AdminController::loadStanPayMethods()
     stanPayMethods = adminDAO.loadStanPayMethods();
     if(stanPayMethods != nullptr)
     {
-        // TODO
+        // iterate through users
+        for(auto stanPayMethodsIt = stanPayMethods->begin(); stanPayMethodsIt != stanPayMethods->end(); ++stanPayMethodsIt)
+        {
+            // add stanPayMethod to UI
+            userWindow.addStanPayMethodEntry((*stanPayMethodsIt)->Name);
+        }
     }
 }

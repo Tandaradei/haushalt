@@ -23,6 +23,9 @@ public:
     void updateUserPassword(size_t userId, const QString& password);
     void deleteUser(size_t userId);
 
+    void addStanPayMethod(const QString& name);
+    void deleteStanPayMethod(const QString& name);
+
 private:
     void loadUsers();
     void loadStanPayMethods();

@@ -39,6 +39,9 @@ public:
     void addUserEntry(const QString& email, const QString& name, QDate date, float balance, size_t ID);
     void clearUsers();
 
+    void addStanPayMethodEntry(const QString& name);
+    void deleteStanPayMethod(const QString& name);
+
 
 
 private slots:
@@ -61,6 +64,10 @@ private slots:
     void handleSettingsSaveButton();
     void handelSettingsNewPasswordButton();
 
+    void handleStanPayMethodsItemSelectionChanged(const QItemSelection& selection, const QItemSelection& deselection);
+    void handleAddStanPayMethodButton();
+    void handleDeleteStanPayMethodButton();
+
 
 private:
     void initTable();
@@ -75,5 +82,6 @@ private:
     size_t transactionEntriesCount;
     size_t userEntriesCount;
     QStringListModel payMethodsModel;
+    QStringListModel stanPayMethodsModel;
 };
 

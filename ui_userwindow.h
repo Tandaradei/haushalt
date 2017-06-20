@@ -138,17 +138,17 @@ public:
     QWidget *standardPayMethodsTab;
     QVBoxLayout *verticalLayout_11;
     QHBoxLayout *horizontalLayout_14;
-    QListView *stanpaylistView;
+    QListView *stanPayMethodsList;
     QHBoxLayout *horizontalLayout_5;
     QGridLayout *gridLayout_7;
     QGridLayout *gridLayout_8;
     QFormLayout *formLayout_6;
-    QLabel *stanpayaddLabel;
-    QLineEdit *stanpayaddField;
+    QLabel *stanPayMethodNameLabel;
+    QLineEdit *stanPayMethodNameField;
     QVBoxLayout *verticalLayout_10;
-    QPushButton *stanpayaddButton;
-    QPushButton *stanpaychangeButton;
-    QPushButton *stanpaydelButton;
+    QPushButton *addStanPayMethodButton;
+    QPushButton *editStanPayMethodButton;
+    QPushButton *deleteStanPayMethodButton;
     QWidget *logoutTab;
     QVBoxLayout *verticalLayout_8;
     QVBoxLayout *abmeldenTabLayout;
@@ -820,14 +820,14 @@ public:
         horizontalLayout_14 = new QHBoxLayout();
         horizontalLayout_14->setSpacing(6);
         horizontalLayout_14->setObjectName(QStringLiteral("horizontalLayout_14"));
-        stanpaylistView = new QListView(standardPayMethodsTab);
-        stanpaylistView->setObjectName(QStringLiteral("stanpaylistView"));
-        stanpaylistView->setMinimumSize(QSize(0, 0));
-        stanpaylistView->setMaximumSize(QSize(16777215, 16777215));
-        stanpaylistView->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-        stanpaylistView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        stanPayMethodsList = new QListView(standardPayMethodsTab);
+        stanPayMethodsList->setObjectName(QStringLiteral("stanPayMethodsList"));
+        stanPayMethodsList->setMinimumSize(QSize(0, 0));
+        stanPayMethodsList->setMaximumSize(QSize(16777215, 16777215));
+        stanPayMethodsList->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        stanPayMethodsList->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-        horizontalLayout_14->addWidget(stanpaylistView);
+        horizontalLayout_14->addWidget(stanPayMethodsList);
 
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setSpacing(6);
@@ -850,48 +850,48 @@ public:
         formLayout_6->setFieldGrowthPolicy(QFormLayout::FieldsStayAtSizeHint);
         formLayout_6->setLabelAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         formLayout_6->setFormAlignment(Qt::AlignCenter);
-        stanpayaddLabel = new QLabel(standardPayMethodsTab);
-        stanpayaddLabel->setObjectName(QStringLiteral("stanpayaddLabel"));
-        stanpayaddLabel->setMaximumSize(QSize(16777215, 200));
-        stanpayaddLabel->setFrameShape(QFrame::NoFrame);
-        stanpayaddLabel->setAlignment(Qt::AlignCenter);
+        stanPayMethodNameLabel = new QLabel(standardPayMethodsTab);
+        stanPayMethodNameLabel->setObjectName(QStringLiteral("stanPayMethodNameLabel"));
+        stanPayMethodNameLabel->setMaximumSize(QSize(16777215, 200));
+        stanPayMethodNameLabel->setFrameShape(QFrame::NoFrame);
+        stanPayMethodNameLabel->setAlignment(Qt::AlignCenter);
 
-        formLayout_6->setWidget(0, QFormLayout::LabelRole, stanpayaddLabel);
+        formLayout_6->setWidget(0, QFormLayout::LabelRole, stanPayMethodNameLabel);
 
-        stanpayaddField = new QLineEdit(standardPayMethodsTab);
-        stanpayaddField->setObjectName(QStringLiteral("stanpayaddField"));
-        stanpayaddField->setMinimumSize(QSize(200, 0));
-        stanpayaddField->setMaximumSize(QSize(200, 16777215));
+        stanPayMethodNameField = new QLineEdit(standardPayMethodsTab);
+        stanPayMethodNameField->setObjectName(QStringLiteral("stanPayMethodNameField"));
+        stanPayMethodNameField->setMinimumSize(QSize(200, 0));
+        stanPayMethodNameField->setMaximumSize(QSize(200, 16777215));
 
-        formLayout_6->setWidget(0, QFormLayout::FieldRole, stanpayaddField);
+        formLayout_6->setWidget(0, QFormLayout::FieldRole, stanPayMethodNameField);
 
         verticalLayout_10 = new QVBoxLayout();
         verticalLayout_10->setSpacing(6);
         verticalLayout_10->setObjectName(QStringLiteral("verticalLayout_10"));
-        stanpayaddButton = new QPushButton(standardPayMethodsTab);
-        stanpayaddButton->setObjectName(QStringLiteral("stanpayaddButton"));
-        stanpayaddButton->setMinimumSize(QSize(120, 25));
-        stanpayaddButton->setMaximumSize(QSize(120, 25));
-        stanpayaddButton->setIcon(icon1);
+        addStanPayMethodButton = new QPushButton(standardPayMethodsTab);
+        addStanPayMethodButton->setObjectName(QStringLiteral("addStanPayMethodButton"));
+        addStanPayMethodButton->setMinimumSize(QSize(120, 25));
+        addStanPayMethodButton->setMaximumSize(QSize(120, 25));
+        addStanPayMethodButton->setIcon(icon1);
 
-        verticalLayout_10->addWidget(stanpayaddButton);
+        verticalLayout_10->addWidget(addStanPayMethodButton);
 
-        stanpaychangeButton = new QPushButton(standardPayMethodsTab);
-        stanpaychangeButton->setObjectName(QStringLiteral("stanpaychangeButton"));
-        stanpaychangeButton->setEnabled(false);
-        stanpaychangeButton->setMinimumSize(QSize(120, 25));
-        stanpaychangeButton->setMaximumSize(QSize(120, 25));
-        stanpaychangeButton->setIcon(icon2);
+        editStanPayMethodButton = new QPushButton(standardPayMethodsTab);
+        editStanPayMethodButton->setObjectName(QStringLiteral("editStanPayMethodButton"));
+        editStanPayMethodButton->setEnabled(false);
+        editStanPayMethodButton->setMinimumSize(QSize(120, 25));
+        editStanPayMethodButton->setMaximumSize(QSize(120, 25));
+        editStanPayMethodButton->setIcon(icon2);
 
-        verticalLayout_10->addWidget(stanpaychangeButton);
+        verticalLayout_10->addWidget(editStanPayMethodButton);
 
-        stanpaydelButton = new QPushButton(standardPayMethodsTab);
-        stanpaydelButton->setObjectName(QStringLiteral("stanpaydelButton"));
-        stanpaydelButton->setMinimumSize(QSize(120, 25));
-        stanpaydelButton->setMaximumSize(QSize(120, 25));
-        stanpaydelButton->setIcon(icon3);
+        deleteStanPayMethodButton = new QPushButton(standardPayMethodsTab);
+        deleteStanPayMethodButton->setObjectName(QStringLiteral("deleteStanPayMethodButton"));
+        deleteStanPayMethodButton->setMinimumSize(QSize(120, 25));
+        deleteStanPayMethodButton->setMaximumSize(QSize(120, 25));
+        deleteStanPayMethodButton->setIcon(icon3);
 
-        verticalLayout_10->addWidget(stanpaydelButton);
+        verticalLayout_10->addWidget(deleteStanPayMethodButton);
 
 
         formLayout_6->setLayout(1, QFormLayout::FieldRole, verticalLayout_10);
@@ -960,7 +960,7 @@ public:
 
         retranslateUi(UserWindow);
 
-        mainTabWidget->setCurrentIndex(3);
+        mainTabWidget->setCurrentIndex(5);
 
 
         QMetaObject::connectSlotsByName(UserWindow);
@@ -1009,10 +1009,10 @@ public:
         editCategoryButton->setText(QApplication::translate("UserWindow", "Bearbeiten", 0));
         pushButton->setText(QApplication::translate("UserWindow", "Entfernen", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(categoryTab), QApplication::translate("UserWindow", "Kategorien", 0));
-        stanpayaddLabel->setText(QApplication::translate("UserWindow", "Name", 0));
-        stanpayaddButton->setText(QApplication::translate("UserWindow", "Neu", 0));
-        stanpaychangeButton->setText(QApplication::translate("UserWindow", "Bearbeiten", 0));
-        stanpaydelButton->setText(QApplication::translate("UserWindow", "Entfernen", 0));
+        stanPayMethodNameLabel->setText(QApplication::translate("UserWindow", "Name", 0));
+        addStanPayMethodButton->setText(QApplication::translate("UserWindow", "Neu", 0));
+        editStanPayMethodButton->setText(QApplication::translate("UserWindow", "Bearbeiten", 0));
+        deleteStanPayMethodButton->setText(QApplication::translate("UserWindow", "Entfernen", 0));
         mainTabWidget->setTabText(mainTabWidget->indexOf(standardPayMethodsTab), QApplication::translate("UserWindow", "Standardzahlungsarten", 0));
         abmeldenLabel->setText(QApplication::translate("UserWindow", "Benutzer <Benutzer> wirklich abmelden?", 0));
         logoutButton->setText(QApplication::translate("UserWindow", "Abmelden", 0));

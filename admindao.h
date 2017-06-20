@@ -29,13 +29,13 @@ public:
     std::shared_ptr<std::list<std::shared_ptr<StanPayMethod>>> loadStanPayMethods();
     std::shared_ptr<std::list<std::shared_ptr<StanPayMethod>>> getStanPayMethods();
 
-    std::shared_ptr<StanPayMethod> getStanPayMethod(size_t ID);
-    bool deletestandardpayment(size_t ID);
+    std::shared_ptr<StanPayMethod> addStanPayMethod(const QString& name);
+    bool deleteStanPayMethod(size_t stanPayMethodId);
 
 private:
     DbManager& dbManager;
     std::shared_ptr<std::list<std::shared_ptr<User>>> users;
 
-    std::shared_ptr<std::list<std::shared_ptr<StanPayMethod>>> stanpayMethods;
+    std::shared_ptr<std::list<std::shared_ptr<StanPayMethod>>> stanPayMethods;
 };
 
