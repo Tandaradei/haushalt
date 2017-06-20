@@ -96,15 +96,15 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QFormLayout *formLayout_2;
     QLabel *settingsnameLabel;
-    QLineEdit *settingsnameField;
+    QLineEdit *settingsNameField;
     QLabel *settingsbirthLabel;
     QDateEdit *settingsBirthdateField;
     QLabel *settingsoldpwLabel;
-    QLineEdit *settingsoldpwField;
+    QLineEdit *settingsOldPasswordField;
     QLabel *settingsnewpwLabel;
-    QLineEdit *settingsnewpwField;
+    QLineEdit *settingsNewPasswordField;
     QLabel *settingsnewpwwdhLabel;
-    QLineEdit *settingsnewpwwdhField;
+    QLineEdit *settingsNewPasswordRepeatField;
     QLabel *label_12;
     QPushButton *settingsNewPasswordButton;
     QSpacerItem *verticalSpacer_3;
@@ -517,11 +517,11 @@ public:
 
         formLayout_2->setWidget(0, QFormLayout::LabelRole, settingsnameLabel);
 
-        settingsnameField = new QLineEdit(einstellungenTab);
-        settingsnameField->setObjectName(QStringLiteral("settingsnameField"));
-        settingsnameField->setMaximumSize(QSize(300, 16777215));
+        settingsNameField = new QLineEdit(einstellungenTab);
+        settingsNameField->setObjectName(QStringLiteral("settingsNameField"));
+        settingsNameField->setMaximumSize(QSize(300, 16777215));
 
-        formLayout_2->setWidget(0, QFormLayout::FieldRole, settingsnameField);
+        formLayout_2->setWidget(0, QFormLayout::FieldRole, settingsNameField);
 
         settingsbirthLabel = new QLabel(einstellungenTab);
         settingsbirthLabel->setObjectName(QStringLiteral("settingsbirthLabel"));
@@ -541,36 +541,36 @@ public:
 
         formLayout_2->setWidget(4, QFormLayout::LabelRole, settingsoldpwLabel);
 
-        settingsoldpwField = new QLineEdit(einstellungenTab);
-        settingsoldpwField->setObjectName(QStringLiteral("settingsoldpwField"));
-        settingsoldpwField->setMaximumSize(QSize(300, 16777215));
-        settingsoldpwField->setEchoMode(QLineEdit::Password);
+        settingsOldPasswordField = new QLineEdit(einstellungenTab);
+        settingsOldPasswordField->setObjectName(QStringLiteral("settingsOldPasswordField"));
+        settingsOldPasswordField->setMaximumSize(QSize(300, 16777215));
+        settingsOldPasswordField->setEchoMode(QLineEdit::Password);
 
-        formLayout_2->setWidget(4, QFormLayout::FieldRole, settingsoldpwField);
+        formLayout_2->setWidget(4, QFormLayout::FieldRole, settingsOldPasswordField);
 
         settingsnewpwLabel = new QLabel(einstellungenTab);
         settingsnewpwLabel->setObjectName(QStringLiteral("settingsnewpwLabel"));
 
         formLayout_2->setWidget(6, QFormLayout::LabelRole, settingsnewpwLabel);
 
-        settingsnewpwField = new QLineEdit(einstellungenTab);
-        settingsnewpwField->setObjectName(QStringLiteral("settingsnewpwField"));
-        settingsnewpwField->setMaximumSize(QSize(300, 16777215));
-        settingsnewpwField->setEchoMode(QLineEdit::Password);
+        settingsNewPasswordField = new QLineEdit(einstellungenTab);
+        settingsNewPasswordField->setObjectName(QStringLiteral("settingsNewPasswordField"));
+        settingsNewPasswordField->setMaximumSize(QSize(300, 16777215));
+        settingsNewPasswordField->setEchoMode(QLineEdit::Password);
 
-        formLayout_2->setWidget(6, QFormLayout::FieldRole, settingsnewpwField);
+        formLayout_2->setWidget(6, QFormLayout::FieldRole, settingsNewPasswordField);
 
         settingsnewpwwdhLabel = new QLabel(einstellungenTab);
         settingsnewpwwdhLabel->setObjectName(QStringLiteral("settingsnewpwwdhLabel"));
 
         formLayout_2->setWidget(7, QFormLayout::LabelRole, settingsnewpwwdhLabel);
 
-        settingsnewpwwdhField = new QLineEdit(einstellungenTab);
-        settingsnewpwwdhField->setObjectName(QStringLiteral("settingsnewpwwdhField"));
-        settingsnewpwwdhField->setMaximumSize(QSize(300, 16777215));
-        settingsnewpwwdhField->setEchoMode(QLineEdit::Password);
+        settingsNewPasswordRepeatField = new QLineEdit(einstellungenTab);
+        settingsNewPasswordRepeatField->setObjectName(QStringLiteral("settingsNewPasswordRepeatField"));
+        settingsNewPasswordRepeatField->setMaximumSize(QSize(300, 16777215));
+        settingsNewPasswordRepeatField->setEchoMode(QLineEdit::Password);
 
-        formLayout_2->setWidget(7, QFormLayout::FieldRole, settingsnewpwwdhField);
+        formLayout_2->setWidget(7, QFormLayout::FieldRole, settingsNewPasswordRepeatField);
 
         label_12 = new QLabel(einstellungenTab);
         label_12->setObjectName(QStringLiteral("label_12"));
@@ -948,7 +948,7 @@ public:
 
         retranslateUi(UserWindow);
 
-        mainTabWidget->setCurrentIndex(3);
+        mainTabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(UserWindow);

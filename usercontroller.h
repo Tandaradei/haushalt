@@ -25,6 +25,9 @@ public:
     bool addPayMethod(const QString& name);
     bool deletePayMethod(const QString& name);
 
+    void updateUserData(const QString& name, const QDate& date);
+    void updateUserPassword(const QString& oldPassword, const QString& newPassword);
+
 protected:
 
     MainController& mainController;

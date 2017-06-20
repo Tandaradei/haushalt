@@ -53,7 +53,7 @@
          <enum>QTabWidget::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>2</number>
         </property>
         <property name="elideMode">
          <enum>Qt::ElideLeft</enum>
@@ -766,7 +766,7 @@
                  </widget>
                 </item>
                 <item row="0" column="1">
-                 <widget class="QLineEdit" name="settingsnameField">
+                 <widget class="QLineEdit" name="settingsNameField">
                   <property name="maximumSize">
                    <size>
                     <width>300</width>
@@ -806,7 +806,7 @@
                  </widget>
                 </item>
                 <item row="4" column="1">
-                 <widget class="QLineEdit" name="settingsoldpwField">
+                 <widget class="QLineEdit" name="settingsOldPasswordField">
                   <property name="maximumSize">
                    <size>
                     <width>300</width>
@@ -826,7 +826,7 @@
                  </widget>
                 </item>
                 <item row="6" column="1">
-                 <widget class="QLineEdit" name="settingsnewpwField">
+                 <widget class="QLineEdit" name="settingsNewPasswordField">
                   <property name="maximumSize">
                    <size>
                     <width>300</width>
@@ -846,7 +846,7 @@
                  </widget>
                 </item>
                 <item row="7" column="1">
-                 <widget class="QLineEdit" name="settingsnewpwwdhField">
+                 <widget class="QLineEdit" name="settingsNewPasswordRepeatField">
                   <property name="maximumSize">
                    <size>
                     <width>300</width>

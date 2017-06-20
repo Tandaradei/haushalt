@@ -323,3 +323,63 @@ bool UserDAO::deletePayMethod(std::shared_ptr<PayMethod> payMethod)
     }
     return false;
 }
+
+bool UserDAO::updateUserData(const QString &name, const QString &dateString)
+{
+    QSqlQuery query(dbManager.getDatabase());
+    query.prepare("UPDATE Benutzer SET Name = :Name, Geburtsdatum = :Geburtsdatum WHERE BID = :BID;");
+    query.bindValue(":Name", name);
+    query.bindValue(":Geburtsdatum", dateString);
+    query.bindValue(":BID", user->ID);
+    if(query.exec())
+    {
+        user->Name = name;
+        user->Birthdate = QDate::fromString(dateString, "yyyy-MM-dd");
+        return true;
+    }
+    else
+    {
+        qDebug() << "updateUser error:  "
+                 << query.lastError().text();
+    }
+    return false;
+}
+
+bool UserDAO::updateUserPassword(const QString &oldPassword, const QString &newPassword)
+{
+    QSqlQuery testQuery(dbManager.getDatabase());
+    testQuery.prepare("SELECT * FROM Benutzer WHERE BID = :BID AND HashedKennwort = :HashedKennwort;");
+    testQuery.bindValue(":BID", user->ID);
+    testQuery.bindValue(":HashedKennwort", oldPassword);
+    if(testQuery.exec())
+    {
+        if(testQuery.next())
+        {
+            QSqlQuery query(dbManager.getDatabase());
+            query.prepare("UPDATE Benutzer SET HashedKennwort = :HashedKennwort WHERE BID = :BID;");
+            query.bindValue(":HashedKennwort", newPassword);
+            query.bindValue(":BID", user->ID);
+            if(query.exec())
+            {
+                return true;
+            }
+            else
+            {
+                qDebug() << "updateUserPassword update error:  "
+                         << query.lastError().text();
+            }
+        }
+        else
+        {
+            qDebug() << "wrong password";
+            return false;
+        }
+    }
+    else
+    {
+        qDebug() << "updateUserPassword select error:  "
+                 << testQuery.lastError().text();
+    }
+
+    return false;
+}

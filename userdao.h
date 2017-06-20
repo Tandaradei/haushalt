@@ -39,6 +39,11 @@ public:
 
     std::shared_ptr<PayMethod> addPayMethod(const QString& name);
     bool deletePayMethod(std::shared_ptr<PayMethod> payMethod);
+
+    bool updateUserData(const QString& name, const QString& dateString);
+    bool updateUserPassword(const QString& oldPassword, const QString& newPassword);
+
+    bool updateUserBalance(int add);
 private:
     std::shared_ptr<std::list<std::shared_ptr<Transaction>>> transactions;
     std::shared_ptr<std::list<std::shared_ptr<Category>>> categories;

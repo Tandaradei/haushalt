@@ -33,6 +33,10 @@ UserWindow::UserWindow(UserController& userController, QWidget *parent)
     connect(ui->addPayMethodButton, SIGNAL (released()), this, SLOT (handleAddPayMethodButton()));
     connect(ui->deletePayMethodButton, SIGNAL (released()), this, SLOT (handleDeletePayMethodButton()));
 
+    // settings
+    connect(ui->settingsSaveButton, SIGNAL(released()), this, SLOT(handleSettingsSaveButton()));
+    connect(ui->settingsNewPasswordButton, SIGNAL(released()), this, SLOT(handelSettingsNewPasswordButton()));
+
     //users
     connect(ui->userTable, SIGNAL(itemSelectionChanged()), this, SLOT (handleUsersItemSelectionChanged()));
     connect(ui->addUserButton, SIGNAL (released()), this, SLOT(handleAddUserButton()));
@@ -175,8 +179,10 @@ void UserWindow::addUserEntry(const QString &email, const QString &name, QDate d
 
 void UserWindow::setSettings(QString name, QDate birthdate)
 {
+    setWindowTitle(name);
     // prefill settings fields
-    ui->settingsnameField->setText(name);
+
+    ui->settingsNameField->setText(name);
     ui->settingsBirthdateField->setDate(birthdate);
 }
 
@@ -310,5 +316,30 @@ void UserWindow::handleAddUserButton()
     {
 
         adminController->addUser(ui->userEmailField->text(), ui->userPasswordField->text());
+    }
+}
+
+void UserWindow::handleSettingsSaveButton()
+{
+    userController.updateUserData(ui->settingsNameField->text(), ui->settingsBirthdateField->date());
+}
+
+void UserWindow::handelSettingsNewPasswordButton()
+{
+    if(ui->settingsOldPasswordField->text().isEmpty())
+    {
+        //
+    }
+    else if(ui->settingsNewPasswordField->text().isEmpty())
+    {
+        //
+    }
+    else if(ui->settingsNewPasswordField->text() != ui->settingsNewPasswordRepeatField->text())
+    {
+        //
+    }
+    else
+    {
+        userController.updateUserPassword(ui->settingsOldPasswordField->text(), ui->settingsNewPasswordField->text());
     }
 }

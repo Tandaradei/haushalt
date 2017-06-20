@@ -55,6 +55,9 @@ private slots:
     void handleUsersItemSelectionChanged();
     void handleAddUserButton();
 
+    void handleSettingsSaveButton();
+    void handelSettingsNewPasswordButton();
+
 
 private:
     void initTable();

@@ -15,7 +15,6 @@ UserController::UserController(MainController& mainController, DbManager &dbMana
     ,payMethods(nullptr)
     ,transactions(nullptr)
 {
-    userWindow.setWindowTitle(user->Name);
     loadCategories();
     loadPayMethods();
     loadTransactions();
@@ -209,4 +208,20 @@ bool UserController::deletePayMethod(const QString &name)
         payMethods = userDAO.getPayMethods();
     }
     return true;
+}
+
+void UserController::updateUserData(const QString &name, const QDate &date)
+{
+    if(userDAO.updateUserData(name, date.toString("yyyy-MM-dd")))
+    {
+        userWindow.setSettings(name, date);
+    }
+}
+
+void UserController::updateUserPassword(const QString &oldPassword, const QString &newPassword)
+{
+    if(userDAO.updateUserPassword(oldPassword, newPassword))
+    {
+        //
+    }
 }
