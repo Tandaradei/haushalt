@@ -5,10 +5,12 @@
 #include "dbmanager.h"
 #include "admindao.h"
 #include "user.h"
+#include "stanpayMethod.h"
 
 AdminDAO::AdminDAO(DbManager &dbManager)
     :dbManager(dbManager)
     ,users(std::make_shared<std::list<std::shared_ptr<User>>>())
+    ,stanpayMethods(std::make_shared<std::list<std::shared_ptr<StanPayMethod>>>())
 {
 
 }
@@ -88,3 +90,65 @@ std::shared_ptr<User> AdminDAO::addUser(const QString &email, const QString &pas
     return nullptr;
 }
 
+std::shared_ptr<std::list<std::shared_ptr<StanPayMethod>>> AdminDAO::loadStanPayMethods()
+{
+    // clear cached standardpayment methods list
+    stanpayMethods->clear();
+    QSqlQuery query(dbManager.getDatabase());
+    query.prepare("SELECT * FROM Standardzahlungsart");
+    if(query.exec())
+    {
+        // iterate through all rows
+        while(query.next())
+        {
+            qDebug() << "StanPayMethod found!";
+            std::shared_ptr<StanPayMethod> stanpayMethod1 = std::make_shared<StanPayMethod>();
+            stanpayMethod1.ID = query.value(0).toInt();
+            // no BID
+            stanpayMethod1->Name = query.value(2).toString();
+            // add standardpayment method to cached payment methods list
+            stanpayMethods->push_back(stanpayMethod1);
+        }
+    }
+    else
+    {
+        qDebug() << "getPayMethods error:  "
+                 << query.lastError().text();
+    }
+    return stanpayMethods;
+}
+
+std::shared_ptr<StanPayMethod> AdminDAO::getStanPayMethod(size_t ID)
+{
+    // iterate through all payment methods
+    for(auto stanpayMethodsIt = stanpayMethods->begin(), stanpayMethodsEnd = stanpayMethods->end(); stanpayMethodsIt != stanpayMethodsEnd; ++stanpayMethodsIt)
+    {
+        if((*stanpayMethodsIt)->ID == ID)
+        {
+            // if ID equals -> return payment method
+            return *stanpayMethodsIt;
+        }
+    }
+    // return nullptr if standardpayment method wasn't found
+    return nullptr;
+}
+
+
+bool AdminDAO::deletestandardpayment(size_t ID)
+{
+    QSqlQuery query(dbManager.getDatabase());
+    query.prepare("DELETE FROM Standartzahlungsart WHERE StandartzahlungsartID = :SID");
+    query.bindValue(":SID", ID);
+    qDebug() << query.executedQuery();
+    if(query.exec())
+    {
+         qDebug() << "execution successful";
+         return true;
+    }
+    else
+    {
+        qDebug() << "addTransaction error:  "
+                 << query.lastError().text();
+    }
+    return false;
+}

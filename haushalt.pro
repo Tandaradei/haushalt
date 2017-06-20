@@ -41,7 +41,8 @@ HEADERS  += \
     user.h \
     transaction.h \
     category.h \
-    paymethod.h
+    paymethod.h \
+    stanpayMethod.h
 
 FORMS    += \
     userwindow.ui \
